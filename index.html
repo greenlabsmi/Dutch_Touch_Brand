@@ -16,49 +16,69 @@
 
 <!-- NAV -->
 <header class="nav">
-  <div class="nav-left">
-    <a href="index.html" class="nav-logo">
-      <img src="assets/img/logo/dtg-font-logo.png" alt="Dutch Touch Genetics">
-    </a>
-  </div>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo/dtg-font-logo.png" alt="Dutch Touch Genetics Logo">
+  </a>
 
   <div class="nav-right">
     <nav class="nav-socials">
-      <a href="#" aria-label="Instagram">IG</a>
-      <a href="#" aria-label="Facebook">FB</a>
-      <a href="#" aria-label="Leafly">LF</a>
+      <a href="#">IG</a>
+      <a href="#">FB</a>
+      <a href="#">LF</a>
     </nav>
 
-    <button class="menu-btn" type="button" aria-label="Menu" onclick="toggleMenu()">
-      ☰
-    </button>
+    <button class="menu-btn" aria-label="Menu" onclick="toggleMenu()">☰</button>
   </div>
 </header>
 
-<!-- FULL-SCREEN OVERLAY MENU -->
+<!-- FULLSCREEN MENU -->
 <div class="menu-overlay" id="menu">
-  <a href="apparel.html">Apparel</a>
-  <a href="strains.html">Strains</a>
-  <a href="#find-us">Find Us</a>
-  <a href="#contact">Contact</a>
+  <a href="apparel.html" onclick="toggleMenu()">Apparel</a>
+  <a href="strains.html" onclick="toggleMenu()">Strains</a>
+  <a href="#find-us" onclick="toggleMenu()">Find Us</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <button class="menu-close" onclick="toggleMenu()">✕</button>
 </div>
 
-<!-- HERO (MODEL PHOTO, TEXT BOTTOM-LEFT) -->
+<!-- HERO SECTION (CAROUSEL) -->
 <section class="hero">
-  <div class="hero-bg" style="background-image:url('assets/img/banners/hero-model-01.png');"></div>
-  <div class="hero-gradient"></div>
 
-  <div class="hero-inner">
-    <p class="hero-kicker">Dutch Touch Genetics</p>
-    <h1 class="hero-title">Keep It Dutch.</h1>
-    <p class="hero-sub">
-      Award-winning Michigan genetics — now a capsule you can wear.
-    </p>
-    <a href="apparel.html" class="hero-btn">Shop Apparel</a>
+  <!-- SLIDE 1 -->
+  <div class="hero-slide active" style="background-image:url('assets/img/banners/hero-model-01.png');">
+    <div class="hero-gradient"></div>
+    <div class="hero-inner">
+      <p class="hero-kicker">Dutch Touch Genetics</p>
+      <h1 class="hero-title">Keep It Dutch.</h1>
+      <p class="hero-sub">Detroit-grown genetics. Michigan-made heat.</p>
+      <a href="apparel.html" class="hero-btn">Shop Apparel</a>
+    </div>
   </div>
+
+  <!-- SLIDE 2 -->
+  <div class="hero-slide" style="background-image:url('assets/img/banners/hero-model-02.png');">
+    <div class="hero-gradient"></div>
+    <div class="hero-inner">
+      <p class="hero-kicker">Award Winning</p>
+      <h1 class="hero-title">4x Cup Champions</h1>
+      <p class="hero-sub">Lemon Wookie • Space Hippy • Mr. Clean • Lilac Diesel</p>
+      <a href="strains.html" class="hero-btn">Explore Strains</a>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="hero-slide" style="background-image:url('assets/img/banners/hero-model-03.png');">
+    <div class="hero-gradient"></div>
+    <div class="hero-inner">
+      <p class="hero-kicker">Find Dutch Touch</p>
+      <h1 class="hero-title">Statewide Access</h1>
+      <p class="hero-sub">See stores that carry Dutch Touch near you.</p>
+      <a href="#find-us" class="hero-btn">View Locations</a>
+    </div>
+  </div>
+
 </section>
 
-<!-- JEETER-STYLE TILES -->
+<!-- JEETER-STYLE CATEGORY TILES -->
 <section class="home-tiles">
   <a href="apparel.html" class="tile tile-apparel">
     <span class="tile-label">01</span>
@@ -69,28 +89,23 @@
   <a href="strains.html" class="tile tile-strains">
     <span class="tile-label">02</span>
     <h2>Strains</h2>
-    <p>Explore award-winning Dutch Touch flower.</p>
+    <p>Explore Dutch Touch flower.</p>
   </a>
 
   <a href="#find-us" class="tile tile-find">
     <span class="tile-label">03</span>
     <h2>Find Us</h2>
-    <p>See where to grab Dutch Touch near you.</p>
+    <p>Partner stores across Michigan.</p>
   </a>
 </section>
 
 <section id="find-us" class="section section-simple">
   <h3 class="section-heading">Find Dutch Touch</h3>
-  <p class="section-copy">
-    Coming soon — a full map of partner dispensaries across Michigan.
-  </p>
+  <p class="section-copy">Store locator coming soon.</p>
 </section>
 
 <footer id="contact" class="site-footer">
   <p>© 2025 Dutch Touch Genetics • All Rights Reserved</p>
-  <p class="footer-small">
-    Branding & web by Dutch Republic / Green Labs crew.
-  </p>
 </footer>
 
 <!-- JS -->
