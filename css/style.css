@@ -9,33 +9,32 @@
   --container:1080px;
 }
 
-/* RESET / BASE -------------------------------------------------- */
+/* RESET / BASE */
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
 body{
   background:var(--bg);
   color:var(--ink);
-  font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:Inter, sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 
-/* NAV ----------------------------------------------------------- */
+/* NAV */
 .nav{
   position:fixed;
   top:0;left:0;right:0;
   height:64px;
+  padding:0 18px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 16px 0 20px;
-  z-index:40;
-  background:linear-gradient(to bottom,rgba(0,0,0,0.95),rgba(0,0,0,0));
+  z-index:50;
+  background:linear-gradient(to bottom,rgba(0,0,0,.85),rgba(0,0,0,0));
 }
+
 .nav-logo img{
   height:40px;
-  width:auto;
 }
 
 .nav-right{
@@ -46,245 +45,160 @@ a{text-decoration:none;color:inherit}
 
 .nav-socials{
   display:flex;
-  gap:8px;
+  gap:6px;
 }
 .nav-socials a{
   font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.14em;
-  border-radius:999px;
   padding:4px 9px;
+  border-radius:20px;
   border:1px solid rgba(255,255,255,.25);
-  color:var(--ink);
 }
 
-.menu-btn{
-  background:none;
-  border:none;
-  color:var(--ink);
-  font-size:26px;
-  cursor:pointer;
-}
-
-/* OVERLAY MENU -------------------------------------------------- */
+/* MENU */
 .menu-overlay{
   position:fixed;
   inset:0;
-  background:#050505;
+  background:rgba(5,5,5,.96);
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
-  gap:24px;
+  align-items:center;
+  gap:26px;
   transform:translateY(-100%);
-  transition:transform .35s ease;
-  z-index:60;
+  transition:.3s ease-in-out;
+  z-index:100;
 }
+
 .menu-overlay.active{
   transform:translateY(0);
 }
+
 .menu-overlay a{
-  font-size:32px;
+  font-size:34px;
   font-weight:800;
-  letter-spacing:-0.03em;
-  text-transform:uppercase;
+  letter-spacing:-.02em;
 }
 
-/* HERO ---------------------------------------------------------- */
+.menu-close{
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:34px;
+  margin-top:20px;
+  cursor:pointer;
+}
+
+/* HERO (CAROUSEL) */
 .hero{
-  position:relative;
-  margin-top:64px;
+  width:100%;
   height:80vh;
-  min-height:480px;
+  margin-top:64px;
   max-height:720px;
+  position:relative;
   overflow:hidden;
 }
-.hero-bg{
+
+.hero-slide{
   position:absolute;
   inset:0;
   background-size:cover;
   background-position:center;
+  opacity:0;
+  transition:opacity 1.2s ease;
 }
+
+.hero-slide.active{
+  opacity:1;
+}
+
 .hero-gradient{
   position:absolute;
   inset:0;
   background:linear-gradient(
     to top,
-    rgba(0,0,0,0.88) 0%,
-    rgba(0,0,0,0.35) 55%,
-    rgba(0,0,0,0.0) 100%
+    rgba(0,0,0,0.88),
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0)
   );
 }
+
 .hero-inner{
   position:absolute;
-  left:20px;
-  right:20px;
-  bottom:32px;
+  left:22px;
+  right:22px;
+  bottom:34px;
+  z-index:5;
   max-width:460px;
 }
+
 .hero-kicker{
-  text-transform:uppercase;
-  letter-spacing:.26em;
-  font-size:11px;
   color:var(--gold);
-  margin-bottom:8px;
-}
-.hero-title{
-  font-family:Cinzel, serif;
-  font-size:32px;
-  line-height:1.1;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.22em;
   margin-bottom:6px;
 }
-.hero-sub{
-  font-size:14px;
-  color:var(--muted);
-  margin-bottom:14px;
-}
-.hero-btn{
-  display:inline-block;
-  padding:10px 22px;
-  border-radius:999px;
-  background:var(--orange);
-  color:#fff;
-  font-weight:700;
-  font-size:14px;
+
+.hero-title{
+  font-family:Cinzel, serif;
+  font-size:36px;
+  margin-bottom:5px;
 }
 
-/* HOME TILES (JEETER STYLE) ------------------------------------ */
+.hero-sub{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.hero-btn{
+  background:var(--orange);
+  padding:10px 24px;
+  border-radius:30px;
+  font-weight:700;
+  color:#fff;
+  display:inline-block;
+}
+
+/* CATEGORY TILES */
 .home-tiles{
-  margin:32px auto 40px;
   max-width:var(--container);
+  margin:32px auto;
   padding:0 16px;
   display:grid;
   gap:18px;
 }
+
 .tile{
-  position:relative;
+  padding:28px 26px;
   border-radius:var(--radius);
-  padding:26px 22px 30px;
-  overflow:hidden;
-  color:#111;
+  position:relative;
 }
+
 .tile h2{
   font-family:Cinzel, serif;
-  font-size:24px;
-  margin-bottom:4px;
+  font-size:26px;
+  margin-bottom:5px;
 }
-.tile p{
-  font-size:14px;
-  font-weight:500;
-}
+
+.tile p{font-size:14px;}
+
 .tile-label{
   position:absolute;
   top:10px;
-  left:16px;
+  left:18px;
   font-size:11px;
-  font-weight:700;
   opacity:.6;
 }
 
-/* individual colors */
 .tile-apparel{background:var(--orange);color:#fff;}
-.tile-strains{background:var(--gold);}
-.tile-find{background:var(--cream);}
+.tile-strains{background:var(--gold);color:#111;}
+.tile-find{background:var(--cream);color:#111;}
 
-/* SIMPLE SECTION ------------------------------------------------ */
-.section{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:0 16px 40px;
-}
-.section-simple{
-  text-align:center;
-}
-.section-heading{
-  font-family:Cinzel, serif;
-  font-size:24px;
-  margin-bottom:8px;
-  color:var(--gold);
-}
-.section-copy{
-  font-size:14px;
-  color:var(--muted);
-}
-
-/* FOOTER -------------------------------------------------------- */
+/* FOOTER */
 .site-footer{
-  border-top:1px solid rgba(255,255,255,.18);
-  padding:24px 16px 40px;
   text-align:center;
-  font-size:12px;
+  padding:40px 16px;
   color:var(--muted);
-}
-.footer-small{margin-top:4px;font-size:11px;}
-
-/* SHARED GRID STYLES (for apparel/strains pages later) ---------- */
-.grid{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:0 16px 40px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:24px;
-}
-
-/* Product cards */
-.product{
-  background:#111;
-  border-radius:var(--radius);
-  padding:16px;
-  text-align:center;
-  border:1px solid rgba(255,255,255,0.07);
-}
-.product img{border-radius:14px;background:#000;}
-.product-title{
-  margin:12px 0 6px;
-  font-size:17px;
-  color:var(--gold);
-  font-family:Cinzel,serif;
-}
-.buy-btn{
-  margin-top:4px;
-  display:inline-block;
-  background:var(--orange);
-  padding:8px 18px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:13px;
-  color:#fff;
-}
-
-/* Strain cards */
-.strain-card{
-  background:#111;
-  border-radius:var(--radius);
-  padding:18px 16px;
-  border:1px solid rgba(255,255,255,0.06);
-}
-.strain-name{
-  font-size:20px;
-  color:var(--orange);
-  font-family:Cinzel,serif;
-  text-align:center;
-}
-
-/* RESPONSIVE ---------------------------------------------------- */
-@media (min-width:768px){
-  .hero{
-    height:78vh;
-  }
-  .hero-inner{
-    left:48px;
-    bottom:52px;
-  }
-  .hero-title{
-    font-size:40px;
-  }
-  .hero-sub{
-    font-size:15px;
-    max-width:420px;
-  }
-  .home-tiles{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-  }
+  font-size:12px;
 }
