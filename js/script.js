@@ -11,4 +11,3 @@ setInterval(() => {
   slideIndex = (slideIndex + 1) % slides.length;
   slides[slideIndex].classList.add("active");
 }, 4200);
-
