@@ -98,14 +98,33 @@ a {
 /* ============================================================
    FULLSCREEN MENU OVERLAY
 ============================================================ */
+/* Slide-out menu that covers ~75% width */
 .dt-menu-overlay {
-  position:fixed;
-  inset:0;
-  background:#000;
-  z-index:2000;
-  transform:translateX(-100%);
-  transition:transform .35s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 75%;          /* <-- shrink menu */
+  max-width: 320px;    /* <-- perfect on mobile */
+  background: #000;
+  z-index: 2000;
+  transform: translateX(-100%);
+  transition: transform .35s ease;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.6);
 }
+
+/* Dark fade on right side to allow closing */
+.dt-menu-overlay::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 25%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  pointer-events: none;
+}
+
 
 .dt-menu-overlay.active {
   transform:translateX(0);
