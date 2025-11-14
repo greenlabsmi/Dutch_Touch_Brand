@@ -1,27 +1,34 @@
-// MENU TOGGLE
+// ============ MENU TOGGLE ============
 function toggleMenu() {
   const menu = document.getElementById("menu");
+  const body = document.body;
   menu.classList.toggle("active");
+  body.classList.toggle("no-scroll");
 }
 
-// Close menu when clicking outside (optional; smooth UX)
+// Close menu if user clicks outside inner container
 document.addEventListener("click", function (e) {
   const menu = document.getElementById("menu");
-  const btn = document.querySelector(".menu-btn");
+  const menuInner = document.querySelector(".menu-inner");
+  const menuBtn = document.querySelector(".menu-btn");
 
-  if (!menu.contains(e.target) && !btn.contains(e.target)) {
-    menu.classList.remove("active");
+  if (!menu.classList.contains("active")) return;
+
+  // If click is NOT inside menu content and not on the button → close
+  if (!menuInner.contains(e.target) && !menuBtn.contains(e.target)) {
+    toggleMenu();
   }
 });
 
-// HERO CAROUSEL
+// ============ HERO CAROUSEL ============
 let currentSlide = 0;
 const slides = document.querySelectorAll(".hero-slide");
 
-function nextSlide() {
+function showNextSlide() {
+  if (slides.length === 0) return;
   slides[currentSlide].classList.remove("active");
   currentSlide = (currentSlide + 1) % slides.length;
   slides[currentSlide].classList.add("active");
 }
 
-setInterval(nextSlide, 5000);
+// start carous
