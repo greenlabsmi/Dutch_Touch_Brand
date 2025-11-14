@@ -5,214 +5,221 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dutch Touch Genetics • Apparel</title>
 
-  <!-- Global site styles -->
+  <!-- GLOBAL STYLES -->
   <link rel="stylesheet" href="css/style.css">
-
-  <!-- Apparel page styles -->
   <link rel="stylesheet" href="css/apparel.css">
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body class="dt-apparel-page">
 
-  <!-- ================= HEADER / NAV ================= -->
-  <header class="dt-header">
-    <div class="dt-nav">
-      <button class="dt-nav-toggle" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+<!-- =========================
+     NAV (JEETER STYLE)
+========================= -->
+<header class="dt-nav">
+  <button class="dt-nav-hamburger" onclick="toggleMenu()">☰</button>
 
-      <a href="index.html" class="dt-logo">
-        <!-- swap src for your real logo -->
-        <span class="dt-logo-text">Dutch&nbsp;Touch</span>
-      </a>
+  <a href="index.html" class="dt-nav-logo">
+    <img src="assets/img/logo/dtg-font-logo.png" alt="Dutch Touch Genetics">
+  </a>
 
-      <div class="dt-nav-icons">
-        <button class="icon-btn" aria-label="Account">
-          <span class="icon-circle">👤</span>
-        </button>
-        <button class="icon-btn" aria-label="Search">
-          <span class="icon-circle">🔍</span>
-        </button>
-        <button class="icon-btn" aria-label="Cart">
-          <span class="icon-circle">🛒</span>
-        </button>
-      </div>
-    </div>
-  </header>
+  <div class="dt-nav-icons">
+    <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg"></a>
+    <a href="#" aria-label="Search"><img src="assets/icons/search.svg"></a>
+    <a href="#" aria-label="Cart"><img src="assets/icons/cart.svg"></a>
+  </div>
+</header>
 
-  <!-- ================= HERO ================= -->
-  <section class="dt-hero dt-hero-apparel" 
-         style="background-image:url('assets/img/banners/hero-model-02.JPG');">
+<!-- FULLSCREEN MENU -->
+<div id="dt-menu" class="dt-menu-overlay">
+  <div class="dt-menu-inner">
+    <button class="dt-menu-close" onclick="toggleMenu()">×</button>
+    <img src="assets/img/logo/dtg-font-logo.png" class="dt-menu-logo">
+
+    <nav class="dt-menu-links">
+      <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="apparel.html" onclick="toggleMenu()">Apparel</a>
+      <a href="strains.html" onclick="toggleMenu()">Strains</a>
+      <a href="#contact" onclick="toggleMenu()">Contact</a>
+    </nav>
+  </div>
+</div>
+
+
+<!-- =========================
+     HERO
+========================= -->
+<section class="dt-hero dt-hero-apparel" style="background-image:url('assets/img/banners/hero-model-02.JPG');">
   <div class="dt-hero-inner fade-in">
     <p class="hero-eyebrow">Dutch Touch Genetics</p>
     <h1 class="hero-title">Keep It Dutch.</h1>
-    <p class="hero-subtitle">
-      Detroit-bred genetics. Michigan-made heat. Limited apparel capsule.
-    </p>
-    <a href="#new-arrivals" class="btn-primary">
-      Shop Apparel
-    </a>
+    <p class="hero-subtitle">Detroit-bred genetics. Michigan-made heat. Limited apparel capsule.</p>
+    <a href="#new-arrivals" class="btn-primary">Shop Apparel</a>
   </div>
 </section>
 
-  <!-- ================= NEW ARRIVALS + FILTERS ================= -->
-  <main>
-    <section id="new-arrivals" class="dt-section dt-section-new">
-      <div class="dt-section-header">
-        <h2>New Arrivals</h2>
 
-        <div class="dt-filters">
-          <button class="filter-btn is-active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="hoodie">Hoodies</button>
-          <button class="filter-btn" data-filter="shirt">Shirts</button>
-          <button class="filter-btn" data-filter="sweats">Sweats</button>
-          <button class="filter-btn" data-filter="hat">Hats</button>
-          <button class="filter-btn" data-filter="accessory">Accessories</button>
-        </div>
-      </div>
+<!-- =========================
+     NEW ARRIVALS
+========================= -->
+<main>
+  <section id="new-arrivals" class="dt-section dt-section-new">
 
-      <div class="product-grid">
-        <!-- Hoodie -->
-        <article class="product-card fade-in" data-category="hoodie">
-          <div class="product-media placeholder-hoodie"></div>
-          <button class="quick-add" aria-label="View hoodie">
-            +
-          </button>
-          <h3>Dutch Touch Hoodie</h3>
-          <p class="product-type">Hoodie</p>
-          <p class="product-price">$49</p>
-        </article>
+    <div class="dt-section-header">
+      <h2>New Arrivals</h2>
 
-        <!-- Sweatpants -->
-        <article class="product-card fade-in" data-category="sweats">
-          <div class="product-media placeholder-sweats"></div>
-          <button class="quick-add" aria-label="View sweats">
-            +
-          </button>
-          <h3>Dutch Touch Sweatpants</h3>
-          <p class="product-type">Sweatpants</p>
-          <p class="product-price">$45</p>
-        </article>
-
-        <!-- T-Shirt -->
-        <article class="product-card fade-in" data-category="shirt">
-          <div class="product-media placeholder-shirt"></div>
-          <button class="quick-add" aria-label="View t-shirt">
-            +
-          </button>
-          <h3>Dutch Touch T-Shirt</h3>
-          <p class="product-type">T-Shirt</p>
-          <p class="product-price">$30</p>
-        </article>
-
-        <!-- Beanie -->
-        <article class="product-card fade-in" data-category="hat">
-          <div class="product-media placeholder-beanie"></div>
-          <button class="quick-add" aria-label="View beanie">
-            +
-          </button>
-          <h3>Dutch Touch Beanie</h3>
-          <p class="product-type">Beanie</p>
-          <p class="product-price">$25</p>
-        </article>
-
-        <!-- Hat -->
-        <article class="product-card fade-in" data-category="hat">
-          <div class="product-media placeholder-hat"></div>
-          <button class="quick-add" aria-label="View hat">
-            +
-          </button>
-          <h3>Dutch Touch Hat</h3>
-          <p class="product-type">Hat</p>
-          <p class="product-price">$25</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ================= CAPSULE CAROUSEL ================= -->
-    <section class="dt-section dt-section-carousel">
-      <div class="dt-section-header">
-        <h2>Capsule Highlights</h2>
-      </div>
-
-      <div class="dt-carousel">
-        <button class="carousel-btn carousel-btn-prev" aria-label="Previous">
-          ‹
-        </button>
-
-        <div class="carousel-track">
-          <div class="carousel-item">
-            <div class="carousel-media"></div>
-            <p class="carousel-label">Classic Lion Set</p>
-          </div>
-          <div class="carousel-item">
-            <div class="carousel-media"></div>
-            <p class="carousel-label">Black &amp; Gold Pack</p>
-          </div>
-          <div class="carousel-item">
-            <div class="carousel-media"></div>
-            <p class="carousel-label">Beanies &amp; Lids</p>
-          </div>
-          <div class="carousel-item">
-            <div class="carousel-media"></div>
-            <p class="carousel-label">Cozy Mornings</p>
-          </div>
-        </div>
-
-        <button class="carousel-btn carousel-btn-next" aria-label="Next">
-          ›
-        </button>
-      </div>
-    </section>
-  </main>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="dt-footer">
-    <div class="dt-footer-inner">
-
-      <div class="dt-footer-grid">
-        <div class="dt-footer-col">
-          <h4>Shop</h4>
-          <ul>
-            <li><a href="apparel.html">Apparel</a></li>
-            <li><a href="index.html#strains">Strains</a></li>
-            <li><a href="index.html#drops">Capsule Drops</a></li>
-          </ul>
-        </div>
-
-        <div class="dt-footer-col">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">Returns</a></li>
-            <li><a href="#">Store Policy</a></li>
-          </ul>
-        </div>
-
-        <div class="dt-footer-col">
-          <h4>Join our list</h4>
-          <form class="dt-footer-form">
-            <input type="email" placeholder="Email address">
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-
-        <div class="dt-footer-col">
-          <h4>Social</h4>
-          <div class="dt-footer-social">
-            <a href="#" aria-label="Instagram">IG</a>
-            <a href="#" aria-label="YouTube">YT</a>
-            <a href="#" aria-label="TikTok">TT</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="dt-footer-bottom">
-        <p>© 2025 Dutch Touch Genetics. All rights reserved.</p>
+      <div class="dt-filters">
+        <button class="filter-btn is-active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="hoodie">Hoodies</button>
+        <button class="filter-btn" data-filter="shirt">Shirts</button>
+        <button class="filter-btn" data-filter="sweats">Sweats</button>
+        <button class="filter-btn" data-filter="hat">Hats</button>
+        <button class="filter-btn" data-filter="accessory">Accessories</button>
       </div>
     </div>
-  </footer>
 
-  <!-- ================= SCRIPTS ================= -->
-  <script src="js/apparel.js"></script>
+    <!-- PRODUCT GRID -->
+    <div class="product-grid">
+
+      <article class="product-card fade-in" data-category="hoodie">
+        <div class="product-media placeholder-hoodie"></div>
+        <button class="quick-add" aria-label="View hoodie">+</button>
+        <h3>Dutch Touch Hoodie</h3>
+        <p class="product-type">Hoodie</p>
+        <p class="product-price">$49</p>
+      </article>
+
+      <article class="product-card fade-in" data-category="sweats">
+        <div class="product-media placeholder-sweats"></div>
+        <button class="quick-add" aria-label="View sweatpants">+</button>
+        <h3>Dutch Touch Sweatpants</h3>
+        <p class="product-type">Sweatpants</p>
+        <p class="product-price">$45</p>
+      </article>
+
+      <article class="product-card fade-in" data-category="shirt">
+        <div class="product-media placeholder-shirt"></div>
+        <button class="quick-add" aria-label="View t-shirt">+</button>
+        <h3>Dutch Touch T-Shirt</h3>
+        <p class="product-type">T-Shirt</p>
+        <p class="product-price">$30</p>
+      </article>
+
+      <article class="product-card fade-in" data-category="hat">
+        <div class="product-media placeholder-beanie"></div>
+        <button class="quick-add" aria-label="View beanie">+</button>
+        <h3>Dutch Touch Beanie</h3>
+        <p class="product-type">Beanie</p>
+        <p class="product-price">$25</p>
+      </article>
+
+      <article class="product-card fade-in" data-category="hat">
+        <div class="product-media placeholder-hat"></div>
+        <button class="quick-add" aria-label="View hat">+</button>
+        <h3>Dutch Touch Hat</h3>
+        <p class="product-type">Hat</p>
+        <p class="product-price">$25</p>
+      </article>
+
+    </div>
+  </section>
+
+
+<!-- =========================
+     CAPSULE CAROUSEL
+========================= -->
+<section class="dt-section dt-section-carousel">
+  <div class="dt-section-header">
+    <h2>Capsule Highlights</h2>
+  </div>
+
+  <div class="dt-carousel">
+    <button class="carousel-btn carousel-btn-prev">‹</button>
+
+    <div class="carousel-track">
+      <div class="carousel-item">
+        <div class="carousel-media"></div>
+        <p class="carousel-label">Classic Lion Set</p>
+      </div>
+
+      <div class="carousel-item">
+        <div class="carousel-media"></div>
+        <p class="carousel-label">Black &amp; Gold Pack</p>
+      </div>
+
+      <div class="carousel-item">
+        <div class="carousel-media"></div>
+        <p class="carousel-label">Beanies &amp; Lids</p>
+      </div>
+
+      <div class="carousel-item">
+        <div class="carousel-media"></div>
+        <p class="carousel-label">Cozy Mornings</p>
+      </div>
+    </div>
+
+    <button class="carousel-btn carousel-btn-next">›</button>
+  </div>
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer class="dt-footer">
+  <div class="dt-footer-inner">
+
+    <div class="dt-footer-grid">
+      <div class="dt-footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="apparel.html">Apparel</a></li>
+          <li><a href="index.html#strains">Strains</a></li>
+          <li><a href="index.html#drops">Capsule Drops</a></li>
+        </ul>
+      </div>
+
+      <div class="dt-footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Store Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="dt-footer-col">
+        <h4>Join our list</h4>
+        <form class="dt-footer-form">
+          <input type="email" placeholder="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="dt-footer-col">
+        <h4>Social</h4>
+        <div class="dt-footer-social">
+          <a href="#">IG</a>
+          <a href="#">YT</a>
+          <a href="#">TT</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dt-footer-bottom">
+      <p>© 2025 Dutch Touch Genetics. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- =========================
+     JS
+========================= -->
+<script src="js/apparel.js"></script>
 </body>
 </html>
