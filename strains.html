@@ -1,1 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dutch Touch Genetics • Strains</title>
+
+  <!-- Global styles + Strains page styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/strains.css">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="dt-strains-page">
+
+  <!-- ================= NAV (same pattern as home/apparel) ================= -->
+  <header class="dt-nav">
+    <button class="dt-nav-hamburger" aria-label="Open menu">☰</button>
+
+    <a href="index.html" class="dt-nav-logo">
+      <img src="assets/img/logo/dtg-font-logo.png" alt="Dutch Touch Genetics">
+    </a>
+
+    <div class="dt-nav-icons">
+      <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt=""></a>
+      <a href="#" aria-label="Search"><img src="assets/icons/search.svg" alt=""></a>
+      <a href="#" aria-label="Cart"><img src="assets/icons/cart.svg" alt=""></a>
+    </div>
+  </header>
+
+  <!-- Slide-out menu (75% width, same as others) -->
+  <div id="dt-menu" class="dt-menu-overlay">
+    <div class="dt-menu-inner">
+      <button class="dt-menu-close" aria-label="Close menu">×</button>
+      <img src="assets/img/logo/dtg-font-logo.png" class="dt-menu-logo" alt="Dutch Touch Genetics">
+
+      <nav class="dt-menu-links">
+        <a href="index.html">Home</a>
+        <a href="apparel.html">Apparel</a>
+        <a href="strains.html">Strains</a>
+        <a href="stores.html">Stores</a>
+        <a href="about.html">About Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ================= HERO ================= -->
+  <section class="dt-strains-hero">
+    <div class="dt-strains-hero-inner">
+      <p class="hero-eyebrow">Dutch Touch Genetics</p>
+      <h1 class="strains-title">Strain Library</h1>
+      <p class="strains-subtitle">
+        Award-winning Detroit-bred genetics. Explore the full Dutch Touch lineup and find your next favorite.
+      </p>
+    </div>
+  </section>
+
+  <main class="dt-strains-main">
+
+    <!-- ================= FILTERS ================= -->
+    <section class="dt-strains-section">
+      <div class="dt-strains-header">
+        <h2>Browse Strains</h2>
+        <p>Filter by award winners or effect type. Tap a strain card to see more details.</p>
+      </div>
+
+      <div class="strain-filters">
+        <button class="strain-filter is-active" data-filter="all">All</button>
+        <button class="strain-filter" data-filter="award">Award Winning</button>
+        <button class="strain-filter" data-filter="az">A–Z</button>
+        <button class="strain-filter" data-filter="sativa">Sativa</button>
+        <button class="strain-filter" data-filter="hybrid">Hybrid</button>
+        <button class="strain-filter" data-filter="indica">Indica</button>
+      </div>
+
+      <!-- ================= STRAIN GRID ================= -->
+      <div class="strain-grid">
+
+        <!-- ===== AWARD WINNERS FIRST ===== -->
+
+        <!-- Lemon Wookie #4 -->
+        <article class="strain-card"
+          data-name="Lemon Wookie #4"
+          data-type="sativa"
+          data-award="true"
+          data-lineage="Lemon Skunk x Wookie"
+          data-flavor="Sweet lemon, diesel, bright citrus peel"
+          data-effects="Uplifting, focused, creative">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Lemon Wookie #4</h3>
+                <span class="strain-badge">Award Winner</span>
+              </div>
+              <p class="strain-meta">Sativa-dominant • Cup Champion</p>
+              <p class="strain-notes">Sharp lemon and diesel funk with an energetic, daytime-friendly high.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Lilac Diesel -->
+        <article class="strain-card"
+          data-name="Lilac Diesel"
+          data-type="sativa"
+          data-award="true"
+          data-lineage="Silver Lemon Haze x Forbidden Fruit x NYCD"
+          data-flavor="Floral, fuel, citrus rind"
+          data-effects="Euphoric, social, clear-headed">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Lilac Diesel</h3>
+                <span class="strain-badge">Award Winner</span>
+              </div>
+              <p class="strain-meta">Sativa-dominant • Cup Winner</p>
+              <p class="strain-notes">A floral, gassy sativa with a clean, uplifting head high.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mr. Clean -->
+        <article class="strain-card"
+          data-name="Mr. Clean"
+          data-type="sativa"
+          data-award="true"
+          data-lineage="Lime Skunk x The Cube"
+          data-flavor="Citrus, pine, fresh cleaner"
+          data-effects="Energetic, focused, motivating">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Mr. Clean</h3>
+                <span class="strain-badge">Award Winner</span>
+              </div>
+              <p class="strain-meta">Sativa • Cup Winner</p>
+              <p class="strain-notes">Bright citrus and pine with a sharp, focused, get-things-done energy.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Space Hippy -->
+        <article class="strain-card"
+          data-name="Space Hippy"
+          data-type="hybrid"
+          data-award="true"
+          data-lineage="Hybrid lineage"
+          data-flavor="Fruity funk, earthy gas"
+          data-effects="Balanced, relaxed, spacey">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Space Hippy</h3>
+                <span class="strain-badge">Award Winner</span>
+              </div>
+              <p class="strain-meta">Hybrid • Cup Winner</p>
+              <p class="strain-notes">A funky, fruity hybrid that floats between a heady buzz and body melt.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Death By Funk -->
+        <article class="strain-card"
+          data-name="Death By Funk"
+          data-type="hybrid"
+          data-award="true"
+          data-lineage="Heavy gas lineage"
+          data-flavor="Deep funk, gas, earthy kush"
+          data-effects="Sedating, heavy, couch-lock">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Death By Funk</h3>
+                <span class="strain-badge">Award Winner</span>
+              </div>
+              <p class="strain-meta">Hybrid • Cup Winner</p>
+              <p class="strain-notes">Loud funk-driven hybrid built for late nights and heavy sessions.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Forbidden Jelly -->
+        <article class="strain-card"
+          data-name="Forbidden Jelly"
+          data-type="indica"
+          data-award="true"
+          data-lineage="Forbidden Fruit cross"
+          data-flavor="Berry jam, grape, tropical fruit"
+          data-effects="Relaxing, dreamy, end-of-day calm">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Forbidden Jelly</h3>
+                <span class="strain-badge">Award Winner</span>
+              </div>
+              <p class="strain-meta">Indica-dominant • Cup Winner</p>
+              <p class="strain-notes">Dessert-style indica with sweet berry jelly notes and deep relaxation.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===== PREMIUM LINEUP ===== -->
+
+        <!-- Death Star -->
+        <article class="strain-card"
+          data-name="Death Star"
+          data-type="indica"
+          data-award="false"
+          data-lineage="Sensi Star x Sour Diesel"
+          data-flavor="Diesel, earthy, skunky"
+          data-effects="Powerful, heavy, night-time">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Death Star</h3>
+              </div>
+              <p class="strain-meta">Indica-dominant</p>
+              <p class="strain-notes">Classic diesel indica with a heavy, immersive body stone.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Clusterfunk -->
+        <article class="strain-card"
+          data-name="Clusterfunk"
+          data-type="hybrid"
+          data-award="false"
+          data-lineage="Old-school hybrid"
+          data-flavor="Hashy, earthy, gas"
+          data-effects="Nostalgic, balanced, chill">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Clusterfunk</h3>
+              </div>
+              <p class="strain-meta">Hybrid</p>
+              <p class="strain-notes">Throwback hybrid with classic hash and gas flavor for everyday sessions.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pina Rita -->
+        <article class="strain-card"
+          data-name="Pina Rita"
+          data-type="sativa"
+          data-award="false"
+          data-lineage="Tropical hybrid"
+          data-flavor="Pineapple, citrus, candy"
+          data-effects="Bright, social, mood-lifting">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Pina Rita</h3>
+              </div>
+              <p class="strain-meta">Sativa-dominant</p>
+              <p class="strain-notes">Tropical pineapple and citrus with a vacation-style daytime buzz.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 10K -->
+        <article class="strain-card"
+          data-name="10K"
+          data-type="indica"
+          data-award="false"
+          data-lineage="High-THC indica"
+          data-flavor="Dank, earthy, loud"
+          data-effects="Potent, heavy, long-lasting">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">10K</h3>
+              </div>
+              <p class="strain-meta">Indica-dominant</p>
+              <p class="strain-notes">Dense, high-impact indica built for experienced heads and night sessions.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fruit Brute -->
+        <article class="strain-card"
+          data-name="Fruit Brute"
+          data-type="hybrid"
+          data-award="false"
+          data-lineage="Dessert hybrid"
+          data-flavor="Fruit candy, creamy, sweet"
+          data-effects="Happy, relaxed, snacky">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Fruit Brute</h3>
+              </div>
+              <p class="strain-meta">Hybrid</p>
+              <p class="strain-notes">Candy-forward hybrid with dessert sweetness and a mellow, stoney high.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Glue Bert -->
+        <article class="strain-card"
+          data-name="Glue Bert"
+          data-type="indica"
+          data-award="false"
+          data-lineage="Glue lineage hybrid"
+          data-flavor="Glue, gas, earth"
+          data-effects="Sticky, heavy, deep relaxation">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Glue Bert</h3>
+              </div>
+              <p class="strain-meta">Indica-dominant</p>
+              <p class="strain-notes">Glue-style indica with sticky resin and full-body melt.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Big Smooth -->
+        <article class="strain-card"
+          data-name="Big Smooth"
+          data-type="hybrid"
+          data-award="false"
+          data-lineage="Hybrid dessert lineage"
+          data-flavor="Creamy, berry, vanilla"
+          data-effects="Smooth, floaty, chill">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Big Smooth</h3>
+              </div>
+              <p class="strain-meta">Hybrid</p>
+              <p class="strain-notes">Creamy dessert hybrid with a mellow, floaty hybrid high.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Angelica -->
+        <article class="strain-card"
+          data-name="Angelica"
+          data-type="sativa"
+          data-award="false"
+          data-lineage="Gas-heavy sativa"
+          data-flavor="Sharp gas, pine, citrus rind"
+          data-effects="Alert, energized, heady">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Angelica</h3>
+              </div>
+              <p class="strain-meta">Sativa-dominant</p>
+              <p class="strain-notes">Straight gas sativa built for people who like loud jars and active days.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Old Widow -->
+        <article class="strain-card"
+          data-name="Old Widow"
+          data-type="indica"
+          data-award="false"
+          data-lineage="Widow-style indica"
+          data-flavor="Spicy, herbal, earthy"
+          data-effects="Sedating, classic, couchy">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Old Widow</h3>
+              </div>
+              <p class="strain-meta">Indica</p>
+              <p class="strain-notes">Traditional heavy hitter with classic widow vibes and full-body calm.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Secret Chief -->
+        <article class="strain-card"
+          data-name="Secret Chief"
+          data-type="hybrid"
+          data-award="false"
+          data-lineage="Mystery hybrid"
+          data-flavor="Rich gas, spice, forest"
+          data-effects="Layered, thoughtful, balanced">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Secret Chief</h3>
+              </div>
+              <p class="strain-meta">Hybrid</p>
+              <p class="strain-notes">Deep, complex hybrid with mystery lineage and rich, gassy flavor.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Chocolate Marshmallow -->
+        <article class="strain-card"
+          data-name="Chocolate Marshmallow"
+          data-type="hybrid"
+          data-award="false"
+          data-lineage="Dessert cross"
+          data-flavor="Chocolate, marshmallow, cream"
+          data-effects="Cozy, comforting, relaxed">
+
+          <div class="strain-card-inner">
+            <div class="strain-image"></div>
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">Chocolate Marshmallow</h3>
+              </div>
+              <p class="strain-meta">Hybrid</p>
+              <p class="strain-notes">Dessert-style hybrid with chocolate-marshmallow vibes and couch-friendly effects.</p>
+            </div>
+          </div>
+        </article>
+
+      </div> <!-- /strain-grid -->
+    </section>
+
+    <!-- FIND US CTA (optional simple section) -->
+    <section class="dt-strains-findus">
+      <h2>Find Dutch Touch Near You</h2>
+      <p>Coming soon: a full locator for partner stores across Michigan.</p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (simple, pointing to global contact anchor if needed) -->
+  <footer id="contact" class="dt-footer">
+    <div class="dt-footer-inner">
+      <p>© 2025 Dutch Touch Genetics • All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/strains.js"></script>
+</body>
+</html>
 
