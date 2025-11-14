@@ -1,100 +1,160 @@
-:root {
+/* =========================
+   VARIABLES
+========================= */
+:root{
   --bg:#050505;
   --ink:#F7F3E9;
   --muted:#AAA7A0;
   --gold:#CDA45A;
   --orange:#E67A00;
   --cream:#F5EFE7;
+  --line:#1A1A1A;
   --radius:18px;
   --container:1080px;
 }
 
-/* RESET / BASE */
+/* =========================
+   BASE
+========================= */
 *{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
 body{
   background:var(--bg);
   color:var(--ink);
-  font-family:Inter, sans-serif;
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 
-/* NAV */
+/* Utility */
+.no-scroll{overflow:hidden}
+
+/* =========================
+   NAV
+========================= */
 .nav{
   position:fixed;
   top:0;left:0;right:0;
   height:64px;
-  padding:0 18px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  z-index:50;
+  padding:0 16px;
+  z-index:40;
   background:linear-gradient(to bottom,rgba(0,0,0,.85),rgba(0,0,0,0));
 }
 
 .nav-logo img{
-  height:40px;
+  height:38px;
 }
 
-.nav-right{
-  display:flex;
-  align-items:center;
-  gap:16px;
+.menu-btn{
+  background:none;
+  border:none;
+  color:var(--ink);
+  font-size:24px;
+  cursor:pointer;
 }
 
-.nav-socials{
-  display:flex;
-  gap:6px;
-}
-.nav-socials a{
-  font-size:11px;
-  padding:4px 9px;
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,.25);
-}
-
-/* MENU */
+/* =========================
+   FULLSCREEN MENU (JEETER STYLE)
+========================= */
 .menu-overlay{
   position:fixed;
   inset:0;
-  background:rgba(5,5,5,.96);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:26px;
+  background:#ffffff;
+  color:#000000;
+  z-index:60;
   transform:translateY(-100%);
-  transition:.3s ease-in-out;
-  z-index:100;
+  transition:transform .32s ease-in-out;
 }
 
 .menu-overlay.active{
   transform:translateY(0);
 }
 
-.menu-overlay a{
-  font-size:34px;
-  font-weight:800;
-  letter-spacing:-.02em;
+.menu-inner{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:24px 18px 40px;
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+/* Top row */
+.menu-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:24px;
 }
 
 .menu-close{
   background:none;
   border:none;
-  color:#fff;
-  font-size:34px;
-  margin-top:20px;
+  font-size:32px;
   cursor:pointer;
 }
 
-/* HERO (CAROUSEL) */
+.menu-logo{
+  height:40px;
+}
+
+/* Main big links */
+.menu-links{
+  margin-top:8px;
+  margin-bottom:32px;
+}
+
+.menu-links a{
+  display:block;
+  font-family:Cinzel, serif;
+  font-weight:900;
+  font-size:30px;
+  letter-spacing:.03em;
+  margin-bottom:10px;
+}
+
+/* Social row */
+.menu-social{
+  margin-bottom:28px;
+  font-size:13px;
+}
+.menu-social a{
+  text-decoration:underline;
+}
+
+/* Locations */
+.menu-locations-wrap{
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px solid #e1e1e1;
+}
+
+.menu-locations-label{
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#888;
+  margin-bottom:6px;
+}
+
+.menu-locations a{
+  display:block;
+  font-size:16px;
+  margin-bottom:4px;
+}
+
+/* =========================
+   HERO (CAROUSEL)
+========================= */
 .hero{
-  width:100%;
-  height:80vh;
-  margin-top:64px;
-  max-height:720px;
   position:relative;
+  margin-top:64px; /* height of nav */
+  height:80vh;
+  max-height:720px;
   overflow:hidden;
 }
 
@@ -104,101 +164,118 @@ a{text-decoration:none;color:inherit}
   background-size:cover;
   background-position:center;
   opacity:0;
-  transition:opacity 1.2s ease;
+  transition:opacity 1.1s ease;
 }
 
 .hero-slide.active{
   opacity:1;
 }
 
+/* gradient overlay on each slide */
 .hero-gradient{
   position:absolute;
   inset:0;
   background:linear-gradient(
     to top,
-    rgba(0,0,0,0.88),
-    rgba(0,0,0,0.25),
-    rgba(0,0,0,0)
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0.3) 55%,
+    rgba(0,0,0,0) 100%
   );
 }
 
+/* hero text */
 .hero-inner{
   position:absolute;
-  left:22px;
-  right:22px;
-  bottom:34px;
+  left:20px;
+  right:20px;
+  bottom:32px;
+  max-width:480px;
   z-index:5;
-  max-width:460px;
 }
 
 .hero-kicker{
   color:var(--gold);
   font-size:11px;
   text-transform:uppercase;
-  letter-spacing:.22em;
+  letter-spacing:.18em;
   margin-bottom:6px;
 }
 
 .hero-title{
   font-family:Cinzel, serif;
-  font-size:36px;
-  margin-bottom:5px;
+  font-size:34px;
+  line-height:1.1;
+  margin-bottom:4px;
 }
 
 .hero-sub{
-  color:var(--muted);
   font-size:14px;
+  color:var(--muted);
   margin-bottom:12px;
 }
 
 .hero-btn{
-  background:var(--orange);
-  padding:10px 24px;
-  border-radius:30px;
-  font-weight:700;
-  color:#fff;
   display:inline-block;
+  padding:10px 24px;
+  border-radius:999px;
+  background:var(--orange);
+  color:#fff;
+  font-weight:600;
+  font-size:14px;
 }
 
-/* CATEGORY TILES */
+/* =========================
+   CATEGORY TILES (Jeeter style)
+========================= */
 .home-tiles{
   max-width:var(--container);
-  margin:32px auto;
-  padding:0 16px;
+  margin:30px auto;
+  padding:0 18px 10px;
   display:grid;
   gap:18px;
 }
 
 .tile{
-  padding:28px 26px;
   border-radius:var(--radius);
+  padding:26px 24px;
   position:relative;
+  overflow:hidden;
 }
 
 .tile h2{
   font-family:Cinzel, serif;
-  font-size:26px;
-  margin-bottom:5px;
+  font-size:24px;
+  margin-bottom:4px;
 }
 
-.tile p{font-size:14px;}
+.tile p{
+  font-size:14px;
+}
 
 .tile-label{
   position:absolute;
   top:10px;
-  left:18px;
+  left:16px;
   font-size:11px;
   opacity:.6;
 }
 
-.tile-apparel{background:var(--orange);color:#fff;}
-.tile-strains{background:var(--gold);color:#111;}
-.tile-find{background:var(--cream);color:#111;}
-
-/* FOOTER */
-.site-footer{
-  text-align:center;
-  padding:40px 16px;
-  color:var(--muted);
-  font-size:12px;
+.tile-apparel{
+  background:var(--orange);
+  color:#fff;
 }
+.tile-strains{
+  background:var(--gold);
+  color:#181818;
+}
+.tile-find{
+  background:var(--cream);
+  color:#181818;
+}
+
+/* =========================
+   FIND-US SECTION
+========================= */
+.section{
+  max-width:var(--container);
+  margin:10px auto
