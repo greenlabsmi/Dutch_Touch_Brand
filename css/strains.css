@@ -1,1 +1,272 @@
+/* ============================================================
+   DUTCH TOUCH • STRAINS PAGE STYLES
+   Hybrid of Jeeter layout + Dutch Touch luxury
+============================================================ */
+
+:root {
+  --str-bg:#050505;
+  --str-surface:#101010;
+  --str-surface-soft:#161616;
+  --str-line:#262626;
+  --str-ink:#f7f3e9;
+  --str-muted:#a6a3a0;
+  --str-gold:#cda45a;
+  --str-orange:#e67a00;
+  --str-radius:18px;
+}
+
+/* Base for this page */
+body.dt-strains-page {
+  background:var(--str-bg);
+  color:var(--str-ink);
+}
+
+/* ================= HERO ================= */
+.dt-strains-hero {
+  padding:110px 18px 40px;
+  max-width:1080px;
+  margin:0 auto;
+  background:
+    radial-gradient(circle at top left, rgba(230,122,0,0.35), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(205,164,90,0.25), transparent 55%);
+}
+
+.dt-strains-hero-inner {
+  max-width:620px;
+}
+
+.strains-title {
+  font-family:Cinzel, serif;
+  font-size:34px;
+  margin-bottom:8px;
+}
+
+.strains-subtitle {
+  font-size:14px;
+  color:var(--str-muted);
+  max-width:460px;
+}
+
+/* ================= MAIN WRAP ================= */
+.dt-strains-main {
+  max-width:1080px;
+  margin:0 auto 50px;
+  padding:0 18px 40px;
+}
+
+/* ================= HEADER + FILTERS ================= */
+.dt-strains-header {
+  margin-bottom:16px;
+}
+
+.dt-strains-header h2 {
+  font-family:Cinzel, serif;
+  font-size:24px;
+  margin-bottom:6px;
+}
+
+.dt-strains-header p {
+  font-size:13px;
+  color:var(--str-muted);
+}
+
+.strain-filters {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:18px;
+}
+
+.strain-filter {
+  border-radius:999px;
+  border:1px solid var(--str-line);
+  background:#0b0b0b;
+  color:var(--str-muted);
+  font-size:12px;
+  padding:7px 13px;
+  cursor:pointer;
+}
+
+.strain-filter.is-active {
+  background:#161616;
+  border-color:var(--str-orange);
+  color:var(--str-ink);
+}
+
+/* ================= STRAIN GRID ================= */
+.strain-grid {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+
+.strain-card {
+  background:var(--str-surface-soft);
+  border-radius:var(--str-radius);
+  padding:10px;
+  cursor:pointer;
+  transition:transform .28s ease, box-shadow .28s ease;
+  box-shadow:0 14px 32px rgba(0,0,0,0.65);
+}
+
+@media (min-width: 720px) {
+  .strain-card {
+    padding:12px;
+  }
+}
+
+.strain-card-inner {
+  display:flex;
+  gap:12px;
+}
+
+.strain-image {
+  width:34%;
+  min-width:120px;
+  height:130px;
+  border-radius:14px;
+  background:radial-gradient(circle at top, #f4e1c8, #c17837);
+  background-size:cover;
+  background-position:center;
+}
+
+/* When you have real photos later, you can override with:
+   <div class="strain-image" style="background-image:url('assets/img/strains/lemon-wookie.jpg')"></div>
+*/
+
+.strain-content {
+  flex:1;
+}
+
+.strain-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:8px;
+  margin-bottom:4px;
+}
+
+.strain-name {
+  font-family:Cinzel, serif;
+  font-size:16px;
+}
+
+.strain-badge {
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  padding:4px 8px;
+  border-radius:999px;
+  border:1px solid rgba(205,164,90,0.8);
+  color:var(--str-gold);
+}
+
+.strain-meta {
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:var(--str-muted);
+  margin-bottom:6px;
+}
+
+.strain-notes {
+  font-size:13px;
+  color:var(--str-ink);
+}
+
+/* Hover lift on larger screens */
+@media (min-width: 900px) {
+  .strain-card:hover {
+    transform:translateY(-5px);
+    box-shadow:0 22px 45px rgba(0,0,0,0.8);
+  }
+}
+
+/* Hidden by filters */
+.strain-card.is-hidden {
+  display:none;
+}
+
+/* ================= FIND US CTA ================= */
+.dt-strains-findus {
+  margin-top:28px;
+  padding:22px 16px;
+  border-radius:var(--str-radius);
+  background:#0d0d0d;
+  text-align:left;
+}
+
+.dt-strains-findus h2 {
+  font-family:Cinzel, serif;
+  font-size:20px;
+  margin-bottom:6px;
+}
+
+.dt-strains-findus p {
+  font-size:13px;
+  color:var(--str-muted);
+}
+
+/* ================= MODAL ================= */
+.strain-modal {
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.75);
+  z-index:3000;
+}
+
+.strain-modal.open {
+  display:flex;
+}
+
+.strain-modal-dialog {
+  width:90%;
+  max-width:480px;
+  background:#101010;
+  border-radius:20px;
+  padding:20px 18px 18px;
+  box-shadow:0 24px 60px rgba(0,0,0,0.9);
+}
+
+.strain-modal-close {
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:26px;
+  float:right;
+  cursor:pointer;
+  margin-bottom:4px;
+}
+
+.strain-modal-name {
+  font-family:Cinzel, serif;
+  font-size:20px;
+  margin:0 0 4px;
+}
+
+.strain-modal-meta {
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:var(--str-muted);
+  margin-bottom:10px;
+}
+
+.strain-modal-section {
+  font-size:13px;
+  margin-bottom:6px;
+}
+
+.strain-modal-section span {
+  color:var(--str-muted);
+}
+
+/* Small footer override to stay consistent */
+.dt-footer-inner {
+  max-width:1080px;
+  margin:0 auto;
+}
 
