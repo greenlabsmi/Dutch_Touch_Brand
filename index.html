@@ -12,127 +12,141 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="dt-home">
 
-<!-- NAV -->
-<header class="nav">
-  <button class="menu-btn" aria-label="Menu" onclick="toggleMenu()">☰</button>
+<!-- =========================
+     NAV (JEETER STYLE)
+========================= -->
+<header class="dt-nav">
+  <button class="dt-nav-hamburger" onclick="toggleMenu()">☰</button>
 
-  <a href="index.html" class="nav-logo">
-    <img src="assets/img/logo/dtg-font-logo.png" alt="Dutch Touch Genetics Logo">
+  <a href="index.html" class="dt-nav-logo">
+    <img src="assets/img/logo/dtg-font-logo.png" alt="Dutch Touch Genetics">
   </a>
+
+  <div class="dt-nav-icons">
+    <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg"></a>
+    <a href="#" aria-label="Search"><img src="assets/icons/search.svg"></a>
+    <a href="#" aria-label="Cart"><img src="assets/icons/cart.svg"></a>
+  </div>
 </header>
 
-<!-- FULLSCREEN MENU (JEETER-STYLE LAYOUT) -->
-<div class="menu-overlay" id="menu">
-  <div class="menu-inner">
-    <!-- Top row: X + logo -->
-    <div class="menu-top">
-      <button class="menu-close" aria-label="Close menu" onclick="toggleMenu()">✕</button>
-      <img src="assets/img/logo/dtg-font-logo.png" alt="Dutch Touch Genetics" class="menu-logo">
-    </div>
+<!-- FULLSCREEN MENU -->
+<div id="dt-menu" class="dt-menu-overlay">
+  <div class="dt-menu-inner">
+    <button class="dt-menu-close" onclick="toggleMenu()">×</button>
+    <img src="assets/img/logo/dtg-font-logo.png" class="dt-menu-logo">
 
-    <!-- Main links -->
-    <nav class="menu-links">
-      <a href="index.html" onclick="toggleMenu()">HOME</a>
-      <a href="apparel.html" onclick="toggleMenu()">APPAREL</a>
-      <a href="strains.html" onclick="toggleMenu()">STRAINS</a>
-      <a href="#find-us" onclick="toggleMenu()">FIND US</a>
-      <a href="#contact" onclick="toggleMenu()">CONTACT</a>
+    <nav class="dt-menu-links">
+      <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="apparel.html" onclick="toggleMenu()">Apparel</a>
+      <a href="strains.html" onclick="toggleMenu()">Strains</a>
+      <a href="#find-us" onclick="toggleMenu()">Find Us</a>
+      <a href="#contact" onclick="toggleMenu()">Contact</a>
     </nav>
-
-    <!-- Socials (optional placeholders) -->
-    <div class="menu-social">
-      <a href="#" aria-label="Instagram">Instagram</a>
-      <!-- Add real links later -->
-    </div>
-
-    <!-- Locations -->
-    <div class="menu-locations-wrap">
-      <div class="menu-locations-label">LOCATIONS</div>
-      <div class="menu-locations">
-        <a href="https://greenlabsmi.com" target="_blank" rel="noopener">
-          Green Labs – Luna Pier, MI
-        </a>
-        <a href="https://dutchrepublic.org" target="_blank" rel="noopener">
-          Dutch Republic – Saugatuck, MI
-        </a>
-      </div>
-    </div>
   </div>
 </div>
 
-<!-- HERO SECTION (FADE CAROUSEL) -->
-<section class="hero">
 
-  <!-- SLIDE 1 -->
+<!-- =========================
+     HERO CAROUSEL (STATIC)
+========================= -->
+<section class="dt-hero dt-hero-home">
+
+  <!-- Slide 1 -->
   <div class="hero-slide active" style="background-image:url('assets/img/banners/hero-model-02.JPG');">
     <div class="hero-gradient"></div>
     <div class="hero-inner">
-      <p class="hero-kicker">Dutch Touch Genetics</p>
+      <p class="hero-eyebrow">Dutch Touch Genetics</p>
       <h1 class="hero-title">Keep It Dutch.</h1>
       <p class="hero-sub">Detroit-bred genetics. Michigan-made heat.</p>
-      <a href="apparel.html" class="hero-btn">Shop Apparel</a>
+      <a href="apparel.html" class="btn-primary">Shop Apparel</a>
     </div>
   </div>
 
-  <!-- SLIDE 2 -->
+  <!-- Slide 2 -->
   <div class="hero-slide" style="background-image:url('assets/img/banners/hero-model-02.JPG');">
     <div class="hero-gradient"></div>
     <div class="hero-inner">
-      <p class="hero-kicker">Award Winning</p>
+      <p class="hero-eyebrow">Award Winning</p>
       <h1 class="hero-title">4x Cup Champions</h1>
       <p class="hero-sub">Lemon Wookie • Space Hippy • Mr. Clean • Lilac Diesel</p>
-      <a href="strains.html" class="hero-btn">Explore Strains</a>
+      <a href="strains.html" class="btn-primary">Explore Strains</a>
     </div>
   </div>
 
-  <!-- SLIDE 3 -->
+  <!-- Slide 3 -->
   <div class="hero-slide" style="background-image:url('assets/img/banners/hero-model-03.png');">
     <div class="hero-gradient"></div>
     <div class="hero-inner">
-      <p class="hero-kicker">Find Dutch Touch</p>
+      <p class="hero-eyebrow">Find Dutch Touch</p>
       <h1 class="hero-title">Statewide Access</h1>
       <p class="hero-sub">See stores that carry Dutch Touch Genetics near you.</p>
-      <a href="#find-us" class="hero-btn">View Locations</a>
+      <a href="#find-us" class="btn-primary">View Locations</a>
     </div>
   </div>
 
 </section>
 
-<!-- JEETER-STYLE CATEGORY TILES -->
-<section class="home-tiles">
-  <a href="apparel.html" class="tile tile-apparel">
-    <span class="tile-label">01</span>
-    <h2>Apparel</h2>
-    <p>View the full capsule drop.</p>
+
+<!-- =========================
+     JEETER-STYLE CATEGORY TILES
+========================= -->
+<section class="dt-category-grid">
+
+  <!-- Apparel -->
+  <a href="apparel.html" class="dt-category dt-cat-apparel">
+    <div class="dt-cat-text">
+      <h2>Apparel</h2>
+      <p>View the limited capsule drop.</p>
+    </div>
+    <div class="dt-cat-img" style="background-image:url('assets/img/tiles/apparel-tile.jpg');"></div>
   </a>
 
-  <a href="strains.html" class="tile tile-strains">
-    <span class="tile-label">02</span>
-    <h2>Strains</h2>
-    <p>Explore Dutch Touch flower.</p>
+  <!-- Strains -->
+  <a href="strains.html" class="dt-category dt-cat-strains">
+    <div class="dt-cat-text">
+      <h2>Strains</h2>
+      <p>Explore Dutch Touch flower.</p>
+    </div>
+    <div class="dt-cat-img" style="background-image:url('assets/img/tiles/strains-tile.jpg');"></div>
   </a>
 
-  <a href="#find-us" class="tile tile-find">
-    <span class="tile-label">03</span>
-    <h2>Find Us</h2>
-    <p>Partner stores across Michigan.</p>
+  <!-- Find Us -->
+  <a href="#find-us" class="dt-category dt-cat-find">
+    <div class="dt-cat-text">
+      <h2>Find Us</h2>
+      <p>Partner stores across Michigan.</p>
+    </div>
+    <div class="dt-cat-img" style="background-image:url('assets/img/tiles/findus-tile.jpg');"></div>
   </a>
+
 </section>
 
-<!-- FIND US SECTION -->
-<section id="find-us" class="section section-simple">
-  <h3 class="section-heading">Find Dutch Touch</h3>
+
+<!-- =========================
+     FIND US
+========================= -->
+<section id="find-us" class="dt-section dt-section-simple">
+  <h2 class="section-heading">Find Dutch Touch</h2>
   <p class="section-copy">Store locator coming soon.</p>
 </section>
 
-<!-- FOOTER -->
-<footer id="contact" class="site-footer">
-  <p>© 2025 Dutch Touch Genetics • All Rights Reserved</p>
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer id="contact" class="dt-footer">
+  <div class="dt-footer-inner">
+    <p>© 2025 Dutch Touch Genetics • All Rights Reserved</p>
+  </div>
 </footer>
 
-<!-- JS -->
+
+<!-- =========================
+     JS
+========================= -->
 <script src="js/script.js"></script>
+
 </body>
 </html>
