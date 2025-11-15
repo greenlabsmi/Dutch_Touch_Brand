@@ -64,16 +64,20 @@ a {
 
 .dt-nav {
   position: fixed;
-  top:0; left:0; right:0;
-  height:64px;              /* NAV NEVER SHRINKS */
+  top:0;
+  left:0;
+  right:0;
+  height:64px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 18px;
-  background:var(--nav-bg);
-  backdrop-filter:none;
+
+  background: var(--nav-bg);        /* TRANSPARENT AT TOP */
+  backdrop-filter: none;
+
   z-index:1000;
-  transition: var(--nav-transition);
+  transition: background .35s ease, backdrop-filter .35s ease;
 }
 
 /* Solid on scroll — NO shrinking */
@@ -209,16 +213,6 @@ a {
     rgba(0,0,0,0) 100%
   );
   pointer-events:none;
-}
-
-/* HERO WRAPPER — REQUIRED FOR TEXT POSITIONING */
-.dt-hero,
-.dt-hero-home {
-  position: relative;
-  height: 80vh;
-  max-height: 720px;
-  overflow: hidden;
-  margin-top: 64px; /* matches nav height */
 }
 
 /* TEXT BLOCK — fixed bottom-left */
