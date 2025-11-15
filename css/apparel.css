@@ -63,6 +63,11 @@ body.dt-apparel-page {
   padding: 0 18px !important;
 }
 
+/* Reserve space so the nav never appears to shrink */
+body.dt-apparel-page {
+  padding-top: 64px;
+}
+
 
 /* LOGO */
 .dt-nav-logo img {
