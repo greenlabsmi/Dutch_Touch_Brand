@@ -17,7 +17,7 @@
 <!-- =========================
      NAV (JEETER STYLE)
 ========================= -->
-<header class="dt-nav">
+<header class="dt-nav" id="dtNav">
   <button class="dt-nav-hamburger" onclick="toggleMenu()">☰</button>
 
   <a href="index.html" class="dt-nav-logo">
@@ -31,26 +31,30 @@
   </div>
 </header>
 
-<!-- FULLSCREEN MENU -->
+<!-- =========================
+     FULLSCREEN MENU
+========================= -->
 <div id="dt-menu" class="dt-menu-overlay">
   <div class="dt-menu-inner">
     <button class="dt-menu-close" onclick="toggleMenu()">×</button>
     <img src="assets/img/logo/dtg-font-logo.png" class="dt-menu-logo">
 
     <nav class="dt-menu-links">
-  <a href="index.html" onclick="toggleMenu()">Home</a>
-  <a href="apparel.html" onclick="toggleMenu()">Apparel</a>
-  <a href="strains.html" onclick="toggleMenu()">Strains</a>
-  <a href="stores.html" onclick="toggleMenu()">Stores</a>
-  <a href="about.html" onclick="toggleMenu()">About Us</a>
-  <a href="#contact" onclick="toggleMenu()">Contact</a>
-</nav>
+      <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="apparel.html" onclick="toggleMenu()">Apparel</a>
+      <a href="strains.html" onclick="toggleMenu()">Strains</a>
+      <a href="products.html" onclick="toggleMenu()">Products</a>
+      <a href="deals.html" onclick="toggleMenu()">Deals</a>
+      <a href="stores.html" onclick="toggleMenu()">Stores</a>
+      <a href="about.html" onclick="toggleMenu()">About Us</a>
+      <a href="#contact" onclick="toggleMenu()">Contact</a>
+    </nav>
   </div>
 </div>
 
 
 <!-- =========================
-     HERO CAROUSEL (STATIC)
+     HERO CAROUSEL
 ========================= -->
 <section class="dt-hero dt-hero-home">
 
@@ -82,7 +86,7 @@
     <div class="hero-inner">
       <p class="hero-eyebrow">Find Dutch Touch</p>
       <h1 class="hero-title">Statewide Access</h1>
-      <p class="hero-sub">See stores that carry Dutch Touch Genetics near you.</p>
+      <p class="hero-sub">Stores across Michigan.</p>
       <a href="#find-us" class="btn-primary">View Locations</a>
     </div>
   </div>
@@ -91,7 +95,7 @@
 
 
 <!-- =========================
-     JEETER-STYLE CATEGORY TILES
+     4-TILE JEETER GRID
 ========================= -->
 <section class="dt-category-grid">
 
@@ -104,6 +108,15 @@
     <div class="dt-cat-img" style="background-image:url('assets/img/tiles/apparel-tile.jpg');"></div>
   </a>
 
+  <!-- Deals -->
+  <a href="apparel.html" class="dt-category dt-cat-deals">
+    <div class="dt-cat-text">
+      <h2>Deals</h2>
+      <p>Online & in-store specials.</p>
+    </div>
+    <div class="dt-cat-img" style="background-image:url('assets/img/tiles/deals-tile.jpg');"></div>
+  </a>
+
   <!-- Strains -->
   <a href="strains.html" class="dt-category dt-cat-strains">
     <div class="dt-cat-text">
@@ -113,20 +126,20 @@
     <div class="dt-cat-img" style="background-image:url('assets/img/tiles/strains-tile.jpg');"></div>
   </a>
 
-  <!-- Find Us -->
-  <a href="#find-us" class="dt-category dt-cat-find">
+  <!-- Products -->
+  <a href="products.html" class="dt-category dt-cat-products">
     <div class="dt-cat-text">
-      <h2>Find Us</h2>
-      <p>Partner stores across Michigan.</p>
+      <h2>Products</h2>
+      <p>Disposables, gummies, resin & more.</p>
     </div>
-    <div class="dt-cat-img" style="background-image:url('assets/img/tiles/findus-tile.jpg');"></div>
+    <div class="dt-cat-img" style="background-image:url('assets/img/tiles/products-tile.jpg');"></div>
   </a>
 
 </section>
 
 
 <!-- =========================
-     FIND US
+     FIND US (FULL SECTION)
 ========================= -->
 <section id="find-us" class="dt-section dt-section-simple">
   <h2 class="section-heading">Find Dutch Touch</h2>
