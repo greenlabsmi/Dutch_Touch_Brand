@@ -283,6 +283,47 @@ body.dt-apparel-page {
   box-shadow: 0 10px 30px rgba(199,107,36,0.55);
 }
 
+/* DESKTOP HERO IMAGE */
+.hero-desktop {
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+}
+
+/* MOBILE SLIDER HIDDEN ON DESKTOP */
+.hero-mobile-slider {
+  display:none;
+}
+
+/* MOBILE SLIDES */
+.hero-mobile-slide {
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity .9s ease;
+}
+
+.hero-mobile-slide.active {
+  opacity:1;
+}
+
+/* MOBILE ONLY */
+@media (max-width: 900px) {
+
+  .hero-desktop {
+    display:none;
+  }
+
+  .hero-mobile-slider {
+    display:block;
+    position:absolute;
+    inset:0;
+  }
+}
+
 /* =====================================================
    SECTION HEADERS
 ===================================================== */
