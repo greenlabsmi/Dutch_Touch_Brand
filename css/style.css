@@ -100,8 +100,9 @@ a {
 }
 
 .dt-nav-icons img {
-  width:22px;
-  height:22px;
+  width: 22px;
+  height: 22px;
+  display: block;
 }
 
 /* FIX HERO TOP GAP — MATCH NAV HEIGHT */
