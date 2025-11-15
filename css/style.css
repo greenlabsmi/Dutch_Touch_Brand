@@ -221,7 +221,7 @@ a {
 }
 
 /* TEXT BLOCK — fixed bottom-left */
-.dt-hero-inner {
+.hero-inner {
   position:absolute;
   left:20px;
   bottom:32px;
