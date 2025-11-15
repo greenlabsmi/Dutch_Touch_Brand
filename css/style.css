@@ -183,6 +183,19 @@ a {
 }
 
 /* ============================================================
+   HERO WRAPPER — REQUIRED FOR STATIC SLIDES
+============================================================ */
+.dt-hero,
+.dt-hero-home {
+  position: relative;
+  height: 80vh;
+  max-height: 720px;
+  overflow: hidden;
+  margin: 0;              /* no accidental gaps */
+  padding-top: 64px;      /* nav height */
+}
+
+/* ============================================================
    HERO SECTION (STATIC SLIDES)
 ============================================================ */
 
