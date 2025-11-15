@@ -264,7 +264,6 @@ a {
 ============================================================ */
 .dt-hero {
   position:relative;
-  margin-top:64px;
   height:80vh;
   max-height:720px;
   overflow:hidden;
