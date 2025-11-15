@@ -19,8 +19,8 @@
   --radius:18px;
   --container:1080px;
 
-  --nav-bg: rgba(0,0,0,0);        /* transparent at top */
-  --nav-bg-solid: rgba(0,0,0,0.90); /* solid when scrolling */
+  --nav-bg: rgba(0,0,0,0);
+  --nav-bg-solid: rgba(0,0,0,0.90);
   --nav-transition: background .35s ease, backdrop-filter .35s ease;
 }
 
@@ -61,23 +61,26 @@ a {
 /* ============================================================
    NAV (JEETER STYLE — TRANSPARENT → SOLID ON SCROLL)
 ============================================================ */
+
 .dt-nav {
   position: fixed;
   top:0; left:0; right:0;
-  height:64px;
+  height:64px;              /* NAV NEVER SHRINKS */
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 18px;
   background:var(--nav-bg);
-  backdrop-filter: none;
+  backdrop-filter:none;
   z-index:1000;
   transition: var(--nav-transition);
 }
 
+/* Solid on scroll — NO shrinking */
 .dt-nav.scrolled {
   background:var(--nav-bg-solid);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  box-shadow:0 2px 14px rgba(0,0,0,0.55);
 }
 
 .dt-nav-logo img {
@@ -85,14 +88,21 @@ a {
   width:auto;
 }
 
+/* HAMBURGER */
 .dt-nav-hamburger {
   font-size:28px;
   background:none;
   border:none;
   color:#fff;
   cursor:pointer;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.dt-nav-hamburger:hover {
+  transform:translateY(-2px) scale(1.1);
+  opacity:1;
 }
 
+/* NAV ICONS */
 .dt-nav-icons {
   display:flex;
   align-items:center;
@@ -100,117 +110,37 @@ a {
 }
 
 .dt-nav-icons img {
-  width: 22px;
-  height: 22px;
-  display: block;
-  filter: none;        /* ensure no weird invert gets applied */
-}
-.dt-nav-icons svg,
-.dt-nav-icons img {
-  fill: white !important;
-}
-
-/* NAV ICON HOVER EFFECTS — SAFE VERSION */
-.dt-nav-icons img {
+  width:22px;
+  height:22px;
+  display:block;
+  fill:white !important;
   transition: transform .25s ease, opacity .25s ease;
 }
 
 .dt-nav-icons img:hover {
-  transform: translateY(-2px) scale(1.12);
-  opacity: 1;
+  transform:translateY(-2px) scale(1.12);
+  opacity:1;
 }
-
-/* ============================================================
-   PREMIUM NAV INTERACTIONS — DUTCH TOUCH
-   Lift • Glow • Compress on Scroll • Icon Animations
-============================================================ */
-
-/* Smooth fade-in when nav becomes solid */
-.dt-nav.scrolled {
-  background: var(--nav-bg-solid);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 2px 14px rgba(0,0,0,0.55);
-  transform: translateY(0) scale(0.98);
-  transition: background .35s ease, 
-              backdrop-filter .35s ease,
-              box-shadow .35s ease,
-              transform .35s ease;
-}
-
-/* Hamburger hover effect */
-.dt-nav-hamburger {
-  transition: transform .25s ease, opacity .25s ease;
-}
-
-.dt-nav-hamburger:hover {
-  transform: translateY(-2px) scale(1.1);
-  opacity: 1;
-}
-
-/* Icon base animation */
-.dt-nav-icons img {
-  opacity: 0.9;
-  transition: transform .25s ease, opacity .25s ease;
-}
-
-/* Icon hover — lift + pop */
-.dt-nav-icons img:hover {
-  transform: translateY(-2px) scale(1.12);
-  opacity: 1;
-}
-
-/* Compress nav on scroll (JS adds .scrolled) */
-.dt-nav.scrolled {
-  height: 58px; /* slightly shorter */
-  padding: 0 16px;
-}
-
-/* Smoothly resize logo when scrolled */
-.dt-nav.scrolled .dt-nav-logo img {
-  height: 44px;
-  transition: height .3s ease;
-}
-
-
-/* FIX HERO TOP GAP — MATCH NAV HEIGHT */
-.dt-hero-home,
-.dt-hero {
-  margin-top:0 !important;
-  padding-top:64px; /* nav height */
-}
-
 
 /* ============================================================
    FULLSCREEN MENU OVERLAY (SLIDE-IN LEFT)
 ============================================================ */
+
 .dt-menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 75%;
-  max-width: 320px;
-  background: #000;
-  z-index: 2000;
-  transform: translateX(-100%);
-  transition: transform .35s ease;
-  box-shadow: 4px 0 20px rgba(0,0,0,0.6);
+  position:fixed;
+  top:0; left:0;
+  height:100%;
+  width:75%;
+  max-width:320px;
+  background:#000;
+  z-index:2000;
+  transform:translateX(-100%);
+  transition:transform .35s ease;
+  box-shadow:4px 0 20px rgba(0,0,0,0.6);
 }
 
 .dt-menu-overlay.active {
   transform:translateX(0);
-}
-
-/* dimmed right-side click-close zone */
-.dt-menu-overlay::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 25%;
-  height: 100%;
-  background: rgba(0,0,0,0.4);
-  pointer-events: none;
 }
 
 .dt-menu-inner {
@@ -236,39 +166,32 @@ a {
   font-family:Cinzel, serif;
   font-size:30px;
   margin-bottom:18px;
-  transition: opacity .25s ease, transform .25s ease;
-}
-
-/* MENU LINKS — LUXURY LIFT + POP + GLOW */
-.dt-menu-links a {
-  display:block;
-  font-family:Cinzel, serif;
-  font-size:30px;
-  color:#fff;
-  margin-bottom:18px;
-  opacity:0.85;
-  transform: translateY(0) scale(1);
-  transition: transform .25s ease, opacity .25s ease, text-shadow .25s ease;
+  opacity:.85;
+  transform:translateY(0) scale(1);
+  transition:opacity .25s ease, transform .25s ease, text-shadow .25s ease;
 }
 
 .dt-menu-links a:hover {
   opacity:1;
-  transform: translateY(-2px) scale(1.08);
-  text-shadow: 
-    0 0 10px rgba(230,122,0,0.35),
-    0 0 16px rgba(230,122,0,0.20);
+  transform:translateY(-2px) scale(1.08);
+  text-shadow:0 0 10px rgba(230,122,0,0.35),
+              0 0 16px rgba(230,122,0,0.20);
 }
 
 /* ============================================================
    HERO SECTION (STATIC SLIDES)
 ============================================================ */
+
+/* Hero wrapper */
 .dt-hero {
   position:relative;
+  padding-top:64px;       /* space for nav */
   height:80vh;
   max-height:720px;
   overflow:hidden;
 }
 
+/* Slides */
 .hero-slide {
   position:absolute;
   inset:0;
@@ -276,36 +199,34 @@ a {
   background-position:center;
   opacity:0;
   transition:opacity 1.1s ease;
+  z-index:1;
 }
 
 .hero-slide.active {
   opacity:1;
 }
 
+/* Gradient overlay */
 .hero-gradient {
   position:absolute;
   inset:0;
   z-index:2;
-  pointer-events:none;
   background:linear-gradient(
     to top,
     rgba(0,0,0,0.9) 0%,
     rgba(0,0,0,0.3) 55%,
     rgba(0,0,0,0) 100%
   );
+  pointer-events:none;
 }
 
+/* TEXT BLOCK — fixed bottom-left */
 .dt-hero-inner {
   position:absolute;
   left:20px;
   bottom:32px;
   max-width:480px;
-  z-index:3;
-}
-
-.hero-desktop,
-.hero-mobile-slide {
-  z-index:1;
+  z-index:3;     /* ← always above image */
 }
 
 .hero-eyebrow {
@@ -340,7 +261,7 @@ a {
 }
 
 /* ============================================================
-   4-TILE CATEGORY GRID (JEETER STYLE)
+   4-TILE CATEGORY GRID
 ============================================================ */
 .dt-category-grid {
   max-width:var(--container);
@@ -359,11 +280,11 @@ a {
   border-radius:var(--radius);
   overflow:hidden;
   text-decoration:none;
-  transition: transform .3s ease, box-shadow .3s ease;
+  transition:transform .3s ease, box-shadow .3s ease;
 }
 
 .dt-category:hover {
-  transform: translateY(-4px);
+  transform:translateY(-4px);
   box-shadow:0 12px 30px rgba(0,0,0,0.35);
 }
 
@@ -377,7 +298,7 @@ a {
   font-size:14px;
 }
 
-/* Right-side image */
+/* Image tile */
 .dt-cat-img {
   width:42%;
   height:130px;
@@ -386,44 +307,24 @@ a {
   background-position:center;
 }
 
-/* Tile Colors */
-.dt-cat-apparel {
-  background:var(--orange);
-  color:#fff;
-}
+/* Tile Color Themes */
+.dt-cat-apparel { background:var(--orange); color:#fff; }
+.dt-cat-deals   { background:#E24A1B; color:#fff; }
+.dt-cat-strains { background:var(--gold); color:#181818; }
+.dt-cat-products{ background:#8F5CF6; color:#fff; }
 
-.dt-cat-deals {
-  background:#E24A1B;
-  color:#fff;
-}
-
-.dt-cat-strains {
-  background:var(--gold);
-  color:#181818;
-}
-
-.dt-cat-products {
-  background:#8F5CF6;
-  color:#fff;
-}
-
-/* ============================================================
-   DESKTOP 2×2 GRID
-============================================================ */
-@media (min-width: 900px) {
+/* Desktop grid */
+@media (min-width:900px) {
   .dt-category-grid {
     display:grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:repeat(2, 1fr);
     gap:24px;
   }
-
   .dt-category {
     height:200px;
   }
-
   .dt-cat-img {
-    height:100%;
-    width:45%;
+    height:100%; width:45%;
   }
 }
 
@@ -449,7 +350,7 @@ a {
 }
 
 /* ============================================================
-   NEW JEETER-STYLE FOOTER (Dutch Touch Version)
+   FOOTER — JEETER STYLE
 ============================================================ */
 
 .dt-footer {
@@ -460,41 +361,20 @@ a {
   margin-top:60px;
 }
 
-/* gold bar separator */
 .dt-footer-divider {
   width:100%;
   height:6px;
-  background:var(--orange); /* brand color */
+  background:var(--orange);
   margin-bottom:40px;
+  border-radius:3px;
 }
 
-/* centered DTG logo */
 .dt-footer-logo {
   height:50px;
   margin:0 auto 26px;
   opacity:0.92;
 }
 
-/* LEGAL LINKS */
-.dt-footer-legal {
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  margin-bottom:32px;
-}
-
-.dt-footer-legal a {
-  font-size:14px;
-  color:var(--muted);
-  letter-spacing:0.03em;
-  text-transform:uppercase;
-}
-
-.dt-footer-legal a:hover {
-  color:var(--orange);
-}
-
-/* SOCIAL ICON ROW */
 .dt-footer-social {
   display:flex;
   justify-content:center;
@@ -503,23 +383,31 @@ a {
 }
 
 .dt-footer-social img {
-  width: 26px;
-  opacity: 0.85;
-  transition: opacity .25s ease, transform .25s ease;
-  display: block;
+  width:26px;
+  opacity:0.85;
+  transition:opacity .25s ease, transform .25s ease;
 }
-.dt-footer-social img:hover {
-  opacity: 1;
-  transform: scale(1.08);
-}
-
-
 .dt-footer-social img:hover {
   opacity:1;
   transform:scale(1.08);
 }
 
-/* COPYRIGHT */
+.dt-footer-legal {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:32px;
+}
+.dt-footer-legal a {
+  font-size:14px;
+  color:var(--muted);
+  letter-spacing:0.03em;
+  text-transform:uppercase;
+}
+.dt-footer-legal a:hover {
+  color:var(--orange);
+}
+
 .dt-footer-copy {
   font-size:12px;
   color:var(--muted);
