@@ -1,9 +1,26 @@
 // ============================================================
 // DUTCH TOUCH • GLOBAL HOMEPAGE JS
-// Slide-out menu • Outside click • Hero rotation
+// Slide-out menu • Outside click • Hero rotation • Sticky Nav
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  // ------------------------------------------------------------
+  // NAV: TRANSPARENT AT TOP → SOLID ON SCROLL (JEETER STYLE)
+  // ------------------------------------------------------------
+  const nav = document.querySelector(".dt-nav");
+
+  function updateNavOnScroll() {
+    if (window.scrollY > 10) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+  }
+
+  updateNavOnScroll();
+  window.addEventListener("scroll", updateNavOnScroll);
+
 
   // ------------------------------------------------------------
   // SLIDE-OUT MENU (75% WIDTH PANEL)
@@ -17,37 +34,37 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.classList.toggle("active");
     body.classList.toggle("no-scroll");
 
-    // animate links in (optional)
+    // link animation when opening
     if (menu.classList.contains("active")) {
       animateMenuLinks();
     }
   }
 
   // OPEN
-  if (menuToggle) {
-    menuToggle.addEventListener("click", toggleMenu);
-  }
+  if (menuToggle) menuToggle.addEventListener("click", toggleMenu);
 
   // CLOSE BUTTON
-  if (menuClose) {
-    menuClose.addEventListener("click", toggleMenu);
-  }
+  if (menuClose) menuClose.addEventListener("click", toggleMenu);
 
-  // OUTSIDE CLICK CLOSE
+  // ------------------------------------------------------------
+  // CLOSE MENU WHEN CLICKING OUTSIDE PANEL ONLY
+  // ------------------------------------------------------------
   document.addEventListener("click", (e) => {
     if (!menu.classList.contains("active")) return;
 
-    const insideMenu = menu.contains(e.target);
+    const menuInner = document.querySelector(".dt-menu-inner");
+
+    const clickedInsidePanel = menuInner.contains(e.target);
     const clickedHamburger = menuToggle.contains(e.target);
 
-    if (!insideMenu && !clickedHamburger) {
+    if (!clickedInsidePanel && !clickedHamburger) {
       toggleMenu();
     }
   });
 
 
   // ------------------------------------------------------------
-  // ANIMATED SLIDE-IN LINKS
+  // ANIMATED SLIDE-IN MENU LINKS
   // ------------------------------------------------------------
   function animateMenuLinks() {
     const links = document.querySelectorAll(".dt-menu-links a");
@@ -64,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // ------------------------------------------------------------
-  // HERO CAROUSEL
+  // HERO CAROUSEL (STATIC FADE)
   // ------------------------------------------------------------
   const slides = document.querySelectorAll(".hero-slide");
   let currentSlide = 0;
@@ -82,5 +99,25 @@ document.addEventListener("DOMContentLoaded", () => {
     slides[0].classList.add("active");
     setInterval(showNextSlide, 6000);
   }
+
+
+  // ------------------------------------------------------------
+  // OPTIONAL: APPEARING ANIMATIONS PREP (future use)
+  // ------------------------------------------------------------
+  const animateEls = document.querySelectorAll(".animate-up");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  animateEls.forEach((el) => observer.observe(el));
 
 });
