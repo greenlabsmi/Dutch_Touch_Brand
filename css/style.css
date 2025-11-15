@@ -102,7 +102,6 @@ a {
 .dt-nav-icons img {
   width:22px;
   height:22px;
-  filter:invert(1);
 }
 
 /* FIX HERO TOP GAP — MATCH NAV HEIGHT */
