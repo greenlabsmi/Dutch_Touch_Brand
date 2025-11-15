@@ -421,11 +421,16 @@ a {
 }
 
 .dt-footer-social img {
-  width:28px;
-  filter:invert(1);
-  opacity:0.85;
-  transition:opacity .25s ease, transform .25s ease;
+  width: 26px;
+  opacity: 0.85;
+  transition: opacity .25s ease, transform .25s ease;
+  display: block;
 }
+.dt-footer-social img:hover {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
 
 .dt-footer-social img:hover {
   opacity:1;
