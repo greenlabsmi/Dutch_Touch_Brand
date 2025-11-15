@@ -103,7 +103,13 @@ a {
   width: 22px;
   height: 22px;
   display: block;
+  filter: none;        /* ensure no weird invert gets applied */
 }
+.dt-nav-icons svg,
+.dt-nav-icons img {
+  fill: white !important;
+}
+
 
 /* FIX HERO TOP GAP — MATCH NAV HEIGHT */
 .dt-hero-home,
