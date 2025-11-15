@@ -239,7 +239,7 @@ a {
   transition: opacity .25s ease, transform .25s ease;
 }
 
-/* MENU LINKS — LUXURY LIFT + POP (MATCHES NAV ICONS) */
+/* MENU LINKS — LUXURY LIFT + POP + GLOW */
 .dt-menu-links a {
   display:block;
   font-family:Cinzel, serif;
@@ -248,14 +248,16 @@ a {
   margin-bottom:18px;
   opacity:0.85;
   transform: translateY(0) scale(1);
-  transition: transform .25s ease, opacity .25s ease;
+  transition: transform .25s ease, opacity .25s ease, text-shadow .25s ease;
 }
 
 .dt-menu-links a:hover {
   opacity:1;
   transform: translateY(-2px) scale(1.08);
+  text-shadow: 
+    0 0 10px rgba(230,122,0,0.35),
+    0 0 16px rgba(230,122,0,0.20);
 }
-
 
 /* ============================================================
    HERO SECTION (STATIC SLIDES)
