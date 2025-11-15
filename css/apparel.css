@@ -588,3 +588,49 @@ body.dt-apparel-page {
   box-shadow: none !important;
 }
 
+/* ============================================================
+   MOBILE HERO SLIDER — ONLY SHOW ON PHONES
+============================================================ */
+
+/* Desktop hero stays visible by default */
+.hero-desktop {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Hide mobile slider on desktop */
+.hero-mobile-slider {
+  display: none;
+}
+
+/* Mobile slide base styles */
+.hero-mobile-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.hero-mobile-slide.active {
+  opacity: 1;
+}
+
+/* MOBILE ONLY (show slider / hide desktop image) */
+@media (max-width: 900px) {
+
+  .hero-desktop {
+    display: none;
+  }
+
+  .hero-mobile-slider {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
