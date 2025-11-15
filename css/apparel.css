@@ -58,8 +58,11 @@ body.dt-apparel-page {
 
 /* Only fade background — NO blur */
 .dt-nav.scrolled {
-  background:var(--nav-bg-solid);
+  background: var(--nav-bg-solid);
+  height: 64px !important;
+  padding: 0 18px !important;
 }
+
 
 /* LOGO */
 .dt-nav-logo img {
