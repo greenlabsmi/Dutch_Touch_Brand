@@ -110,6 +110,65 @@ a {
   fill: white !important;
 }
 
+/* ============================================================
+   PREMIUM NAV INTERACTIONS — DUTCH TOUCH
+   Lift • Glow • Compress on Scroll • Icon Animations
+============================================================ */
+
+/* Smooth fade-in when nav becomes solid */
+.dt-nav.scrolled {
+  background: var(--nav-bg-solid);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.55);
+  transform: translateY(0) scale(0.98);
+  transition: background .35s ease, 
+              backdrop-filter .35s ease,
+              box-shadow .35s ease,
+              transform .35s ease;
+}
+
+/* Luxury lift + glow on hover */
+.dt-nav:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 24px rgba(0,0,0,0.45),
+    0 0 18px rgba(230,122,0,0.18); /* subtle orange glow */
+}
+
+/* Hamburger hover effect */
+.dt-nav-hamburger {
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.dt-nav-hamburger:hover {
+  transform: translateY(-2px) scale(1.1);
+  opacity: 1;
+}
+
+/* Icon base animation */
+.dt-nav-icons img {
+  opacity: 0.9;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+/* Icon hover — lift + pop */
+.dt-nav-icons img:hover {
+  transform: translateY(-2px) scale(1.12);
+  opacity: 1;
+}
+
+/* Compress nav on scroll (JS adds .scrolled) */
+.dt-nav.scrolled {
+  height: 58px; /* slightly shorter */
+  padding: 0 16px;
+}
+
+/* Smoothly resize logo when scrolled */
+.dt-nav.scrolled .dt-nav-logo img {
+  height: 44px;
+  transition: height .3s ease;
+}
+
 
 /* FIX HERO TOP GAP — MATCH NAV HEIGHT */
 .dt-hero-home,
