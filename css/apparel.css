@@ -1,6 +1,6 @@
 /* ======================================================
    DUTCH TOUCH • APPAREL PAGE STYLES
-   Clean rebuild • Jeeter-style • Cinzel headings
+   Optimized • Cleaned • Mobile Slider Fixed
 ====================================================== */
 
 /* -----------------------------
@@ -19,6 +19,11 @@
 
   --dt-radius: 16px;
   --dt-shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
+
+  /* NAV */
+  --nav-bg: rgba(0,0,0,0);
+  --nav-bg-solid: rgba(0,0,0,0.95);
+  --nav-transition: background .35s ease;
 }
 
 /* -----------------------------
@@ -28,30 +33,15 @@ body.dt-apparel-page {
   background: var(--dt-bg);
   color: var(--dt-ink);
   font-family: Inter, system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ============================================================
-   DUTCH TOUCH • JEETER-STYLE MASTER NAV
-   Transparent at top → solid on scroll
-   Slide-out left menu with animated links
+   NAV BAR — CLEAN / NO SHRINKING
 ============================================================ */
 
-/* -----------------------------
-   NAV VARIABLES
------------------------------ */
-:root {
-  --nav-bg: rgba(0,0,0,0);        /* transparent */
-  --nav-bg-solid: rgba(0,0,0,0.92); /* solid when scrolling */
-  --nav-transition: background .35s ease, backdrop-filter .35s ease;
-}
-
-
-/* ============================================================
-   NAV WRAPPER
-============================================================ */
 .dt-nav {
   position: fixed;
   top:0; left:0; right:0;
@@ -61,121 +51,75 @@ body.dt-apparel-page {
   justify-content:space-between;
   padding:0 18px;
   background:var(--nav-bg);
-  backdrop-filter:none;
   z-index:1000;
   transition:var(--nav-transition);
   box-shadow:none;
 }
 
-/* When scrolled, match Jeeter: solid + blur */
+/* Only fade background — NO blur */
 .dt-nav.scrolled {
   background:var(--nav-bg-solid);
-  backdrop-filter:blur(6px);
-  box-shadow:0 2px 10px rgba(0,0,0,0.3);
 }
 
-
-/* ============================================================
-   NAV LOGO
-============================================================ */
+/* LOGO */
 .dt-nav-logo img {
   height:50px;
   width:auto;
-  display:block;
 }
 
-
-/* ============================================================
-   HAMBURGER ICON
-============================================================ */
+/* HAMBURGER */
 .dt-nav-hamburger {
   font-size:28px;
   background:none;
   border:none;
   color:#fff;
   cursor:pointer;
+  transition:transform .25s ease, filter .25s ease;
 }
 
+.dt-nav-hamburger:hover {
+  transform:translateY(-3px);
+  filter:drop-shadow(0 0 6px rgba(255,255,255,0.6));
+}
 
-/* ============================================================
-   RIGHT SIDE ICON ROW
-============================================================ */
+/* ICON ROW */
 .dt-nav-icons {
   display:flex;
-  align-items:center;
   gap:14px;
 }
 
 .dt-nav-icons img {
   width:22px;
   height:22px;
-  display:block;
-  filter: none !important;
-  opacity:1;
+  filter:none !important;
+  transition:transform .25s ease, filter .25s ease;
 }
-/* Force SVG icons to render white */
-.dt-nav-icons svg,
-.dt-nav-icons img {
-  fill: white !important;
-}
-
 
 .dt-nav-icons img:hover {
-  opacity:1;
+  transform:translateY(-3px);
+  filter:drop-shadow(0 0 6px rgba(255,255,255,0.6));
 }
 
-
 /* ============================================================
-   SLIDE-OUT MENU (LEFT SIDE)
+   SLIDE-OUT MENU
 ============================================================ */
+
 .dt-menu-overlay {
   position:fixed;
   top:0; left:0;
-  height:100%;
   width:75%;
   max-width:320px;
+  height:100%;
   background:#000;
-  z-index:2000;
   transform:translateX(-100%);
   transition:transform .35s ease;
-  box-shadow:4px 0 22px rgba(0,0,0,0.6);
-}
-
-/* Dimmed right background */
-.dt-menu-overlay::after {
-  content:"";
-  position:fixed;
-  top:0; right:0;
-  width:25%;
-  height:100%;
-  background:rgba(0,0,0,0.45);
-  pointer-events:none;
+  z-index:2000;
 }
 
 .dt-menu-overlay.active {
   transform:translateX(0);
 }
 
-/* Clean icon alignment + white color */
-.dt-nav-icons a {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.dt-nav-icons img.dt-icon {
-  width:22px;
-  height:22px;
-  display:block;
-  filter:none !important;
-  fill:white !important;
-  opacity:1;
-}
-
-
-/* ============================================================
-   MENU INNER CONTENT
-============================================================ */
 .dt-menu-inner {
   padding:28px;
 }
@@ -185,105 +129,57 @@ body.dt-apparel-page {
   background:none;
   border:none;
   color:#fff;
-  margin-bottom:20px;
   cursor:pointer;
+  margin-bottom:20px;
 }
 
 .dt-menu-logo {
   height:48px;
   margin-bottom:30px;
-  opacity:0.95;
 }
 
-
-/* ============================================================
-   MENU LINKS
-============================================================ */
+/* MENU LINKS */
 .dt-menu-links a {
   display:block;
   font-family:Cinzel, serif;
   font-size:30px;
-  color:#fff;
-  text-decoration:none;
   margin-bottom:18px;
+  color:#fff;
   opacity:0;
   transform:translateX(-20px);
   transition:opacity .35s ease, transform .35s ease;
 }
 
-/* Hover styling */
-.dt-menu-links a:hover {
-  opacity:0.7 !important;
-  transform:translateX(4px) !important;
-}
-
-
-/* ============================================================
-   MENU LINK ANIMATION CLASS
-   (.animate-in added via JS)
-============================================================ */
 .dt-menu-links a.animate-in {
   opacity:1;
   transform:translateX(0);
 }
 
+.dt-menu-links a:hover {
+  opacity:.7;
+  transform:translateX(4px);
+}
+
 /* =====================================================
-   HERO
+   HERO (DESKTOP + MOBILE SLIDER)
 ===================================================== */
+
 .dt-hero {
   position: relative;
   width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.dt-hero-apparel {
   min-height: 65vh;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
   padding: 110px 18px 40px;
-  background-size: cover;
-  background-position: center;
+  display:flex;
+  align-items:flex-end;
+  border-bottom:1px solid rgba(255,255,255,0.06);
 }
 
 .dt-hero-inner {
-  width: 100%;
-  max-width: 1100px;
+  width:100%;
+  max-width:1100px;
 }
 
-.hero-eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 11px;
-  color: var(--dt-muted);
-  margin-bottom: 8px;
-}
-
-.hero-title {
-  font-family: Cinzel, serif;
-  font-size: 40px;
-  margin: 0 0 10px;
-}
-
-.hero-subtitle {
-  font-size: 15px;
-  max-width: 420px;
-  color: var(--dt-muted);
-  margin-bottom: 22px;
-}
-
-.btn-primary {
-  display: inline-flex;
-  padding: 10px 24px;
-  background: var(--dt-orange);
-  border-radius: 999px;
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-  box-shadow: 0 10px 30px rgba(199,107,36,0.55);
-}
-
-/* DESKTOP HERO IMAGE */
+/* Desktop background image container */
 .hero-desktop {
   position:absolute;
   inset:0;
@@ -291,12 +187,12 @@ body.dt-apparel-page {
   background-position:center;
 }
 
-/* MOBILE SLIDER HIDDEN ON DESKTOP */
+/* Mobile slider hidden by default */
 .hero-mobile-slider {
   display:none;
 }
 
-/* MOBILE SLIDES */
+/* Mobile slides */
 .hero-mobile-slide {
   position:absolute;
   inset:0;
@@ -310,327 +206,132 @@ body.dt-apparel-page {
   opacity:1;
 }
 
-/* MOBILE ONLY */
-@media (max-width: 900px) {
-
-  .hero-desktop {
-    display:none;
-  }
-
-  .hero-mobile-slider {
-    display:block;
-    position:absolute;
-    inset:0;
-  }
+/* MOBILE ONLY — SHOW SLIDER */
+@media (max-width:900px) {
+  .hero-desktop { display:none; }
+  .hero-mobile-slider { display:block; }
 }
 
 /* =====================================================
    SECTION HEADERS
 ===================================================== */
 .dt-section {
-  padding: 40px 18px 50px;
-  max-width: 1100px;
-  margin: 0 auto;
+  max-width:1100px;
+  margin:0 auto;
+  padding:40px 18px 50px;
 }
 
 .dt-section-header h2 {
-  font-family: Cinzel, serif;
-  font-size: 26px;
-  margin-bottom: 14px;
+  font-family:Cinzel, serif;
+  font-size:26px;
+  margin-bottom:14px;
 }
 
 /* =====================================================
    FILTER BAR
 ===================================================== */
 .dt-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
 }
 
 .filter-btn {
-  border-radius: 999px;
-  background: #0c0c0c;
-  border: 1px solid var(--dt-line);
-  padding: 7px 14px;
-  font-size: 12px;
-  color: var(--dt-muted);
-  cursor: pointer;
+  border-radius:999px;
+  background:#0c0c0c;
+  border:1px solid var(--dt-line);
+  padding:7px 14px;
+  font-size:12px;
+  color:var(--dt-muted);
+  cursor:pointer;
 }
 
 .filter-btn.is-active {
-  background: #161616;
-  border-color: var(--dt-orange);
-  color: var(--dt-ink);
+  background:#161616;
+  border-color:var(--dt-orange);
+  color:var(--dt-ink);
 }
 
 /* =====================================================
    PRODUCT GRID
 ===================================================== */
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 24px;
+  display:grid;
+  gap:24px;
+  grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
 }
 
 .product-card {
-  background: var(--dt-surface-soft);
-  border-radius: var(--dt-radius);
-  padding: 14px;
-  box-shadow: 0 15px 35px rgba(0,0,0,.55);
-  position: relative;
-  transition: transform .3s ease;
+  background:var(--dt-surface-soft);
+  border-radius:var(--dt-radius);
+  padding:14px;
+  box-shadow:0 15px 35px rgba(0,0,0,.55);
+  transition:transform .3s ease;
+  position:relative;
 }
 
-@media (min-width: 900px) {
+@media (min-width:900px) {
   .product-card:hover {
-    transform: translateY(-6px);
+    transform:translateY(-6px);
   }
 }
 
 .product-media {
-  height: 240px;
-  border-radius: 12px;
-  background: linear-gradient(180deg, #eee, #ccc);
-}
-
-/* placeholders */
-.placeholder-hoodie { background: linear-gradient(180deg, #f3e3cf, #d5b58a); }
-.placeholder-sweats { background: linear-gradient(180deg, #e1e5eb, #b7c1d1); }
-.placeholder-shirt { background: linear-gradient(180deg, #202020, #0f0f0f); }
-.placeholder-beanie { background: linear-gradient(180deg, #132821, #0b1713); }
-.placeholder-hat { background: linear-gradient(180deg, #d99a5b, #b87434); }
-
-.quick-add {
-  position: absolute;
-  bottom: 18px;
-  right: 18px;
-  width: 36px;
-  height: 36px;
-  font-size: 22px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.18);
-  background: rgba(15,15,15,.92);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* product text */
-.product-card h3 {
-  margin: 12px 0 4px;
-  font-size: 15px;
-}
-
-.product-type {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  color: var(--dt-muted);
-}
-
-.product-price {
-  margin-top: 6px;
-  font-size: 14px;
-}
-
-/* hidden by filters */
-.product-card.is-hidden {
-  display: none;
+  height:240px;
+  border-radius:12px;
+  background:linear-gradient(180deg,#eee,#ccc);
 }
 
 /* =====================================================
    CAROUSEL
 ===================================================== */
-.dt-section-carousel {
-  padding-top: 8px;
-}
-
 .dt-carousel {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  position: relative;
+  display:flex;
+  gap:12px;
+  align-items:center;
 }
 
 .carousel-track {
-  display: flex;
-  overflow-x: auto;
-  gap: 14px;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
+  display:flex;
+  gap:14px;
+  scroll-snap-type:x mandatory;
+  overflow-x:auto;
 }
 
-.carousel-track::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel-item {
-  min-width: 220px;
-  max-width: 220px;
-  background: var(--dt-surface-soft);
-  padding: 12px;
-  border-radius: var(--dt-radius);
-  scroll-snap-align: start;
-  box-shadow: var(--dt-shadow-soft);
-}
-
-.carousel-media {
-  height: 140px;
-  border-radius: 12px;
-  background: linear-gradient(180deg, #f4e1c8, #c17837);
-}
-
-.carousel-label {
-  margin-top: 8px;
-  font-size: 13px;
-}
-
-.carousel-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.2);
-  background: #141414;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-}
+.carousel-track::-webkit-scrollbar { display:none; }
 
 /* =====================================================
-   JEETER-STYLE FOOTER — DUTCH TOUCH VERSION
-   Clean • Centered • Social Row • Legal Links • DT Bar
+   FOOTER
 ===================================================== */
-
 .dt-footer {
-  background: #000;
-  padding: 50px 20px 40px;
-  margin-top: 60px;
-  text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  padding:50px 20px 40px;
+  margin-top:60px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,0.08);
+  background:#000;
 }
 
-/* ORANGE/GOLD BRAND BAR */
 .dt-footer-divider {
-  width: 100%;
-  height: 6px;
-  background: var(--dt-orange); /* Dutch Touch color */
-  margin: 0 auto 34px;
-  border-radius: 3px;
+  width:100%;
+  height:6px;
+  background:var(--dt-orange);
+  border-radius:3px;
+  margin:0 auto 34px;
 }
 
-/* DTG TEXT LOGO */
 .dt-footer-logo {
-  height: 48px;
-  display: block;
-  margin: 0 auto 26px;
-  opacity: 0.92;
-}
-
-/* SOCIAL ICON ROW */
-.dt-footer-social {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  margin-bottom: 28px;
+  height:48px;
+  opacity:.92;
+  margin:0 auto 26px;
 }
 
 .dt-footer-social img {
-  width: 26px;
-  opacity: 0.85;
-  transition: opacity .25s ease, transform .25s ease;
-  display: block;
+  width:26px;
+  opacity:.85;
+  transition:opacity .25s ease, transform .25s ease;
 }
-.dt-footer-social img:hover {
-  opacity: 1;
-  transform: scale(1.08);
-}
-
 
 .dt-footer-social img:hover {
-  opacity: 1;
-}
-
-/* LEGAL LINKS (centered) */
-.dt-footer-legal {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 26px;
-}
-
-.dt-footer-legal a {
-  color: var(--dt-muted);
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  text-decoration: none;
-}
-
-.dt-footer-legal a:hover {
-  color: var(--dt-orange);
-}
-
-/* COPYRIGHT LINE */
-.dt-footer-copy {
-  font-size: 12px;
-  color: var(--dt-muted);
-  opacity: 0.65;
-  margin-top: 10px;
-  line-height: 1.4;
-}
-
-/* Remove any grid artifacts */
-.dt-footer *,
-.dt-footer-inner * {
-  background-image: none !important;
-  box-shadow: none !important;
-}
-
-/* ============================================================
-   MOBILE HERO SLIDER — ONLY SHOW ON PHONES
-============================================================ */
-
-/* Desktop hero stays visible by default */
-.hero-desktop {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-}
-
-/* Hide mobile slider on desktop */
-.hero-mobile-slider {
-  display: none;
-}
-
-/* Mobile slide base styles */
-.hero-mobile-slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-.hero-mobile-slide.active {
-  opacity: 1;
-}
-
-/* MOBILE ONLY (show slider / hide desktop image) */
-@media (max-width: 900px) {
-
-  .hero-desktop {
-    display: none;
-  }
-
-  .hero-mobile-slider {
-    display: block;
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
+  opacity:1;
+  transform:scale(1.08);
 }
