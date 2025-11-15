@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------------------------------------
   // NAV: TRANSPARENT AT TOP → SOLID ON SCROLL (JEETER STYLE)
   // ------------------------------------------------------------
-  const nav = document.querySelector(".dt-nav");
+  const nav = document.getElementById("dtNav");
 
   function updateNavOnScroll() {
     if (window.scrollY > 10) {
