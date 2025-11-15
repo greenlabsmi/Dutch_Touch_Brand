@@ -105,6 +105,14 @@ a {
   filter:invert(1);
 }
 
+/* FIX HERO TOP GAP — MATCH NAV HEIGHT */
+.dt-hero-home,
+.dt-hero {
+  margin-top:0 !important;
+  padding-top:64px; /* nav height */
+}
+
+
 /* ============================================================
    FULLSCREEN MENU OVERLAY (SLIDE-IN LEFT)
 ============================================================ */
