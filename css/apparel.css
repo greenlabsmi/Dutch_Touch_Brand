@@ -202,6 +202,7 @@ body.dt-apparel-page {
 
 /* Mobile slides */
 .hero-mobile-slide {
+  z-index:1;
   position:absolute;
   inset:0;
   background-size:cover;
