@@ -1,12 +1,81 @@
 // ============================================================
 // DUTCH TOUCH • APPAREL PAGE JS
-// Smooth fade-ins, filters, carousel, mobile menu
+// Fade-ins • Filters • Carousel • Jeeter-Style Nav + Menu
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
 
   // ------------------------------------------------------------
-  // FADE-IN OBSERVER
+  // NAVBAR TRANSPARENT → SOLID ON SCROLL
+  // ------------------------------------------------------------
+  const nav = document.querySelector(".dt-nav");
+
+  function handleNavScroll() {
+    if (window.scrollY > 10) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+  }
+
+  handleNavScroll();
+  window.addEventListener("scroll", handleNavScroll);
+
+
+
+  // ------------------------------------------------------------
+  // SLIDE-OUT MENU (LEFT SIDE) — JEETER STYLE
+  // ------------------------------------------------------------
+  const menu = document.getElementById("dt-menu");
+  const body = document.body;
+  const hamburger = document.querySelector(".dt-nav-hamburger");
+  const closeBtn = document.querySelector(".dt-menu-close");
+
+  function toggleMenu() {
+    menu.classList.toggle("active");
+    body.classList.toggle("no-scroll");
+
+    if (menu.classList.contains("active")) {
+      animateMenuLinks();
+    }
+  }
+
+  if (hamburger) hamburger.addEventListener("click", toggleMenu);
+  if (closeBtn) closeBtn.addEventListener("click", toggleMenu);
+
+
+  // Outside-click closes menu
+  document.addEventListener("click", (e) => {
+    if (!menu.classList.contains("active")) return;
+
+    const insideMenu = menu.contains(e.target);
+    const clickedHamburger = hamburger.contains(e.target);
+
+    if (!insideMenu && !clickedHamburger) {
+      toggleMenu();
+    }
+  });
+
+
+
+  // ------------------------------------------------------------
+  // ANIMATE MENU LINKS ON OPEN
+  // ------------------------------------------------------------
+  function animateMenuLinks() {
+    const links = document.querySelectorAll(".dt-menu-links a");
+
+    links.forEach((link, i) => {
+      link.classList.remove("animate-in");
+      setTimeout(() => {
+        link.classList.add("animate-in");
+      }, 90 * i);
+    });
+  }
+
+
+
+  // ------------------------------------------------------------
+  // FADE-IN OBSERVER (PRODUCT CARDS)
   // ------------------------------------------------------------
   const fadeEls = document.querySelectorAll(".fade-in");
 
@@ -19,13 +88,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     },
-    {
-      threshold: 0.2,
-      rootMargin: "0px 0px -40px 0px"
-    }
+    { threshold: 0.2, rootMargin: "0px 0px -40px 0px" }
   );
 
   fadeEls.forEach(el => observer.observe(el));
+
 
 
   // ------------------------------------------------------------
@@ -43,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       productCards.forEach(card => {
         const cat = card.dataset.category;
-        if (filter === "all" || filter === cat) {
+        if (filter === "all" || cat === filter) {
           card.classList.remove("is-hidden");
         } else {
           card.classList.add("is-hidden");
@@ -53,8 +120,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
+
   // ------------------------------------------------------------
-  // CAPSULE CAROUSEL  (NON-GLITCH VERSION)
+  // CAPSULE CAROUSEL (non-glitch version)
   // ------------------------------------------------------------
   const track = document.querySelector(".carousel-track");
   const prevBtn = document.querySelector(".carousel-btn-prev");
@@ -73,51 +141,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+
   // ------------------------------------------------------------
-  // QUICK-ADD (placeholder behavior)
+  // QUICK ADD (placeholder)
   // ------------------------------------------------------------
-  const quickAdds = document.querySelectorAll(".quick-add");
-  quickAdds.forEach(btn => {
-    btn.addEventListener("click", e => {
+  document.querySelectorAll(".quick-add").forEach(btn => {
+    btn.addEventListener("click", (e) => {
       e.preventDefault();
       const card = btn.closest(".product-card");
-      const name = card?.querySelector("h3")?.textContent || "Item";
+      const name = card.querySelector("h3")?.textContent || "Item";
       console.log("Quick View:", name);
-
-      // Future:
-      // window.location.href = `product.html?item=${encodeURIComponent(name)}`;
     });
-  });
-
-
-  // ------------------------------------------------------------
-  // MOBILE SLIDE-OUT MENU
-  // ------------------------------------------------------------
-  const menu = document.querySelector("#dt-menu");
-  const menuToggle = document.querySelector(".dt-nav-hamburger");
-  const menuClose = document.querySelector(".dt-menu-close");
-
-  if (menu && menuToggle) {
-    menuToggle.addEventListener("click", () => {
-      menu.classList.toggle("active");
-    });
-  }
-
-  if (menu && menuClose) {
-    menuClose.addEventListener("click", () => {
-      menu.classList.remove("active");
-    });
-  }
-
-  // Close menu on outside click
-  document.addEventListener("click", (e) => {
-    if (menu.classList.contains("active")) {
-      const insideMenu = menu.contains(e.target);
-      const isToggle = menuToggle.contains(e.target);
-      if (!insideMenu && !isToggle) {
-        menu.classList.remove("active");
-      }
-    }
   });
 
 });
