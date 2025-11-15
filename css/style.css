@@ -182,15 +182,6 @@ a {
    HERO SECTION (STATIC SLIDES)
 ============================================================ */
 
-/* Hero wrapper */
-.dt-hero {
-  position:relative;
-  padding-top:64px;       /* space for nav */
-  height:80vh;
-  max-height:720px;
-  overflow:hidden;
-}
-
 /* Slides */
 .hero-slide {
   position:absolute;
