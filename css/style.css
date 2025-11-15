@@ -137,14 +137,6 @@ a {
               transform .35s ease;
 }
 
-/* Luxury lift + glow on hover */
-.dt-nav:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 8px 24px rgba(0,0,0,0.45),
-    0 0 18px rgba(230,122,0,0.18); /* subtle orange glow */
-}
-
 /* Hamburger hover effect */
 .dt-nav-hamburger {
   transition: transform .25s ease, opacity .25s ease;
