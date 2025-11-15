@@ -22,9 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", handleNavScroll);
 
 
-
   // ------------------------------------------------------------
-  // SLIDE-OUT MENU (LEFT SIDE) — JEETER STYLE
+  // SLIDE-OUT MENU (LEFT SIDE)
   // ------------------------------------------------------------
   const menu = document.getElementById("dt-menu");
   const body = document.body;
@@ -43,8 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (hamburger) hamburger.addEventListener("click", toggleMenu);
   if (closeBtn) closeBtn.addEventListener("click", toggleMenu);
 
-
-  // Outside-click closes menu
   document.addEventListener("click", (e) => {
     if (!menu.classList.contains("active")) return;
 
@@ -56,14 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-
-
-  // ------------------------------------------------------------
-  // ANIMATE MENU LINKS ON OPEN
-  // ------------------------------------------------------------
   function animateMenuLinks() {
     const links = document.querySelectorAll(".dt-menu-links a");
-
     links.forEach((link, i) => {
       link.classList.remove("animate-in");
       setTimeout(() => {
@@ -73,9 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-
   // ------------------------------------------------------------
-  // FADE-IN OBSERVER (PRODUCT CARDS)
+  // FADE-IN OBSERVER
   // ------------------------------------------------------------
   const fadeEls = document.querySelectorAll(".fade-in");
 
@@ -92,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   fadeEls.forEach(el => observer.observe(el));
-
 
 
   // ------------------------------------------------------------
@@ -120,9 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-
   // ------------------------------------------------------------
-  // CAPSULE CAROUSEL (non-glitch version)
+  // CAPSULE CAROUSEL
   // ------------------------------------------------------------
   const track = document.querySelector(".carousel-track");
   const prevBtn = document.querySelector(".carousel-btn-prev");
@@ -141,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-
   // ------------------------------------------------------------
   // QUICK ADD (placeholder)
   // ------------------------------------------------------------
@@ -154,4 +141,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+}); // ← ✅ CLOSES MAIN DOMContentLoaded
+
+
+// ============================================================
+// MOBILE HERO SLIDER (only below 900px)
+// ============================================================
+
+function initMobileHeroSlider() {
+  if (window.innerWidth > 900) return;
+
+  const slides = document.querySelectorAll(".hero-mobile-slide");
+  if (!slides.length) return;
+
+  let index = 0;
+  slides[index].classList.add("active");
+
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 3500);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initMobileHeroSlider();
 });
