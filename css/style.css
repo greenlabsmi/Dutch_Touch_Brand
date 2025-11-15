@@ -286,6 +286,8 @@ a {
 .hero-gradient {
   position:absolute;
   inset:0;
+  z-index:2;
+  pointer-events:none;
   background:linear-gradient(
     to top,
     rgba(0,0,0,0.9) 0%,
@@ -294,12 +296,17 @@ a {
   );
 }
 
-.hero-inner {
+.dt-hero-inner {
   position:absolute;
   left:20px;
   bottom:32px;
   max-width:480px;
-  z-index:5;
+  z-index:3;
+}
+
+.hero-desktop,
+.hero-mobile-slide {
+  z-index:1;
 }
 
 .hero-eyebrow {
