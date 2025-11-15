@@ -220,6 +220,16 @@ a {
   pointer-events:none;
 }
 
+/* HERO WRAPPER — REQUIRED FOR TEXT POSITIONING */
+.dt-hero,
+.dt-hero-home {
+  position: relative;
+  height: 80vh;
+  max-height: 720px;
+  overflow: hidden;
+  margin-top: 64px; /* matches nav height */
+}
+
 /* TEXT BLOCK — fixed bottom-left */
 .hero-inner {
   position:absolute;
