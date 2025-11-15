@@ -308,6 +308,21 @@ body.dt-apparel-page {
 
 .carousel-track::-webkit-scrollbar { display:none; }
 
+.carousel-item {
+  position: relative;
+}
+
+.carousel-media {
+  position: relative;
+  z-index: 1; /* image layer */
+}
+
+.carousel-label {
+  position: relative;
+  z-index: 2; /* text layer stays on top */
+}
+
+
 /* =====================================================
    FOOTER
 ===================================================== */
