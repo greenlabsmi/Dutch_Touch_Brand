@@ -156,6 +156,22 @@ body.dt-apparel-page {
   transform:translateX(0);
 }
 
+/* Clean icon alignment + white color */
+.dt-nav-icons a {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.dt-nav-icons img.dt-icon {
+  width:22px;
+  height:22px;
+  display:block;
+  filter:none !important;
+  fill:white !important;
+  opacity:1;
+}
+
 
 /* ============================================================
    MENU INNER CONTENT
