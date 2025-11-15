@@ -410,18 +410,20 @@ a {
 .dt-footer-social {
   display:flex;
   justify-content:center;
-  gap:18px;
+  gap:22px;
   margin-bottom:30px;
 }
 
 .dt-footer-social img {
-  width:26px;
+  width:28px;
   filter:invert(1);
   opacity:0.85;
+  transition:opacity .25s ease, transform .25s ease;
 }
 
 .dt-footer-social img:hover {
   opacity:1;
+  transform:scale(1.08);
 }
 
 /* COPYRIGHT */
