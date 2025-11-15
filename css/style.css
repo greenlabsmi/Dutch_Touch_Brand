@@ -239,10 +239,23 @@ a {
   transition: opacity .25s ease, transform .25s ease;
 }
 
-.dt-menu-links a:hover {
-  opacity:0.7;
-  transform: translateX(4px);
+/* MENU LINKS — LUXURY LIFT + POP (MATCHES NAV ICONS) */
+.dt-menu-links a {
+  display:block;
+  font-family:Cinzel, serif;
+  font-size:30px;
+  color:#fff;
+  margin-bottom:18px;
+  opacity:0.85;
+  transform: translateY(0) scale(1);
+  transition: transform .25s ease, opacity .25s ease;
 }
+
+.dt-menu-links a:hover {
+  opacity:1;
+  transform: translateY(-2px) scale(1.08);
+}
+
 
 /* ============================================================
    HERO SECTION (STATIC SLIDES)
