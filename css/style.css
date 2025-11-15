@@ -110,6 +110,16 @@ a {
   fill: white !important;
 }
 
+/* NAV ICON HOVER EFFECTS — SAFE VERSION */
+.dt-nav-icons img {
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.dt-nav-icons img:hover {
+  transform: translateY(-2px) scale(1.12);
+  opacity: 1;
+}
+
 /* ============================================================
    PREMIUM NAV INTERACTIONS — DUTCH TOUCH
    Lift • Glow • Compress on Scroll • Icon Animations
