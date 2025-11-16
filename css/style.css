@@ -92,9 +92,8 @@ a {
    DESKTOP = TEXT PNG
 ----------------------------- */
 
-/* Mobile default: lion icon */
+/* Mobile default: lion icon (HTML controls src) */
 .dt-nav-logo img {
-  content: url("assets/img/logo/dtg-logo-orange.png");
   height:32px;
   width:auto;
   display:block;
@@ -114,11 +113,10 @@ a {
   }
 }
 
-/* Desktop: swap to the full text PNG */
+/* Desktop: swap handled in HTML, just resize + animate */
 @media (min-width: 768px) {
 
   .dt-nav-logo img {
-    content: url("assets/img/logo/dtg-font-logo.png");
     height:48px;
     filter: brightness(0) invert(1);
   }
