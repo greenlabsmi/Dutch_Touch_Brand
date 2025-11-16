@@ -87,9 +87,12 @@ a {
   box-shadow:0 2px 14px rgba(0,0,0,0.55);
 }
 
+/* NAV LOGO — Bigger + White Filter */
 .dt-nav-logo img {
-  height:50px;
+  height:70px;     /* ← make the logo bigger */
   width:auto;
+  filter: brightness(0) invert(1);   /* ← turns logo white */
+  transition: filter .3s ease, height .3s ease;
 }
 
 /* HAMBURGER */
