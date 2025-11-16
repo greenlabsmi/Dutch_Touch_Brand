@@ -67,7 +67,7 @@ a {
   top:0;
   left:0;
   right:0;
-  height:64px;
+  height:120px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -89,7 +89,7 @@ a {
 
 /* NAV LOGO — Bigger + White Filter */
 .dt-nav-logo img {
-  height:80px;     /* ← make the logo bigger */
+  height:110px;     /* ← make the logo bigger */
   width:auto;
   filter: brightness(0) invert(1);   /* ← turns logo white */
   transition: filter .3s ease, height .3s ease;
@@ -201,7 +201,7 @@ a {
   max-height: 720px;
   overflow: hidden;
   margin: 0;              /* no accidental gaps */
-  padding-top: 64px;      /* nav height */
+  padding-top: 120px;      /* nav height */
 }
 
 /* ============================================================
