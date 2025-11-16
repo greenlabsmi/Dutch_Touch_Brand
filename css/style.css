@@ -123,20 +123,10 @@ a {
     filter: brightness(0) invert(1);
   }
 
-  /* apply animation to logo container */
   .dt-nav-logo.animate {
     animation: dtgSlide 2.4s ease forwards;
   }
-}
 
-/* ---------------------------------------------------------
-   Brand name centered container (DESKTOP ONLY)
---------------------------------------------------------- */
-.dt-nav-brand {
-  display: none;
-}
-
-@media (min-width: 768px) {
   .dt-nav-brand {
     display: flex;
     justify-content: center;
