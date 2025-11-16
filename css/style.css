@@ -89,7 +89,7 @@ a {
 
 /* NAV LOGO — Bigger + White Filter */
 .dt-nav-logo img {
-  height:52px;
+  height:38px;
   width:auto;
   display:block;
   filter: brightness(0) invert(1);
@@ -101,10 +101,25 @@ a {
   flex-shrink: 0 !important;
 }
 
+/* Tablet scaling */
+@media (min-width: 500px) {
+  .dt-nav-logo img {
+    height:52px;
+  }
+}
+
+/* Desktop scaling */
 @media (min-width: 768px) {
   .dt-nav-logo img {
-    height:72px;   /* desktop size */
+    height:72px;
   }
+}
+
+/* Left cluster (burger + logo) */
+.dt-nav-left {
+  display:flex;
+  align-items:center;
+  gap:6px;    /* smaller spacing between hamburger + logo */
 }
 
 /* HAMBURGER */
