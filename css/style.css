@@ -94,7 +94,7 @@ a {
 
 /* Mobile default: lion icon */
 .dt-nav-logo img {
-  content: url("assets/img/logo/dtg-logo-orange.png");
+  content: url("/assets/img/logo/dtg-logo-orange.png");
   height:32px;
   width:auto;
   display:block;
@@ -118,7 +118,7 @@ a {
 @media (min-width: 768px) {
 
   .dt-nav-logo img {
-    content: url("assets/img/logo/dtg-font-logo.png");
+    content: url("/assets/img/logo/dtg-font-logo.png");
     height:48px;
     filter: brightness(0) invert(1);
   }
