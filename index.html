@@ -15,18 +15,26 @@
 <body class="dt-home">
 
 <!-- =========================
-     NAV (JEETER STYLE)
+     NAV (PREMIUM LUXURY STYLE)
 ========================= -->
 <header class="dt-nav" id="dtNav">
 
+  <!-- LEFT SIDE: Hamburger + Lion Logo -->
   <div class="dt-nav-left">
     <button class="dt-nav-hamburger" onclick="toggleMenu()">☰</button>
 
+    <!-- Mobile: Lion Only | Desktop: Lion + Center Text -->
     <a href="index.html" class="dt-nav-logo">
-      <img src="assets/img/logo/dtg-font-logo.png" alt="Dutch Touch Genetics">
+      <img src="assets/img/logo/dtg-logo-orange.png" alt="Dutch Touch Genetics Lion">
     </a>
   </div>
 
+  <!-- CENTER BRAND NAME (DESKTOP ONLY) -->
+  <div class="dt-nav-brand">
+    <span class="dt-brand-animated">Dutch Touch Genetics</span>
+  </div>
+
+  <!-- RIGHT SIDE: SOCIAL ICONS -->
   <div class="dt-nav-icons">
     <a href="https://instagram.com/dutchtouchgenetics" target="_blank">
       <img src="assets/icons/instagram.svg" alt="Instagram">
@@ -47,7 +55,8 @@
 <div id="dt-menu" class="dt-menu-overlay">
   <div class="dt-menu-inner">
     <button class="dt-menu-close" onclick="toggleMenu()">×</button>
-    <img src="assets/img/logo/dtg-font-logo.png" class="dt-menu-logo">
+
+    <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo" alt="Logo">
 
     <nav class="dt-menu-links">
       <a href="index.html" onclick="toggleMenu()">Home</a>
@@ -58,10 +67,6 @@
       <a href="stores.html" onclick="toggleMenu()">Stores</a>
       <a href="about.html" onclick="toggleMenu()">About Us</a>
       <a href="#contact" onclick="toggleMenu()">Contact</a>
-    </nav>
-  </div>
-</div>
-
 
 <!-- =========================
      HERO CAROUSEL
