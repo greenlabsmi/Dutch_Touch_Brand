@@ -73,7 +73,7 @@ a {
   justify-content:space-between;
   padding:0 16px;
 
-  background: var(--nav-bg);        /* TRANSPARENT AT TOP */
+  background: var(--nav-bg);
   backdrop-filter: none;
 
   z-index:1000;
@@ -87,35 +87,95 @@ a {
   box-shadow:0 2px 14px rgba(0,0,0,0.55);
 }
 
-/* NAV LOGO — force smaller */
+/* -----------------------------
+   NAV LOGO: MOBILE = LION PNG
+   DESKTOP = TEXT PNG
+----------------------------- */
+
+/* Mobile default: lion icon */
 .dt-nav-logo img {
-  height:26px !important;      /* hard cap for mobile */
-  max-height:26px !important;
+  content: url("assets/img/logo/dtg-logo-orange.png");
+  height:32px;
   width:auto;
   display:block;
-  filter: brightness(0) invert(1);
-}
-  transition: filter .3s ease, height .3s ease;
+  filter: brightness(1);
+  transition: transform .35s ease, opacity .35s ease;
 }
 
-/* NAV LOGO FIX: prevent shrinking */
+/* Prevent shrinking */
 .dt-nav-logo {
   flex-shrink: 0 !important;
 }
 
-/* Tablet scaling */
+/* Tablet */
 @media (min-width: 500px) {
   .dt-nav-logo img {
-    height:32px !important;
-    max-height:32px !important;
+    height:38px;
   }
 }
 
-/* Desktop scaling */
+/* Desktop: swap to the full text PNG */
 @media (min-width: 768px) {
+
   .dt-nav-logo img {
-    height:40px !important;
-    max-height:40px !important;
+    content: url("assets/img/logo/dtg-font-logo.png");
+    height:48px;
+    filter: brightness(0) invert(1);
+  }
+
+  /* apply animation to logo container */
+  .dt-nav-logo.animate {
+    animation: dtgSlide 2.4s ease forwards;
+  }
+}
+
+/* ---------------------------------------------------------
+   Brand name centered container (DESKTOP ONLY)
+--------------------------------------------------------- */
+.dt-nav-brand {
+  display: none; /* hidden on mobile */
+}
+
+@media (min-width: 768px) {
+  .dt-nav-brand {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------------------------------------------------------
+   Keyframes: slide-out → gold glow → settle
+--------------------------------------------------------- */
+@keyframes dtgSlide {
+  0% { 
+    transform: translateX(-20px); 
+    opacity: 0;
+    filter: brightness(0.4);
+  }
+  25% { 
+    transform: translateX(0); 
+    opacity: 1;
+    filter: brightness(1)
+            drop-shadow(0 0 4px rgba(255,180,60,0.3));
+  }
+  50% { 
+    filter: brightness(2.4)
+            drop-shadow(0 0 10px rgba(255,180,60,0.55))
+            drop-shadow(0 0 20px rgba(255,180,60,0.35));
+  }
+  75% {
+    filter: brightness(1.2)
+            drop-shadow(0 0 6px rgba(255,180,60,0.28));
+  }
+  100% { 
+    transform: translateX(0);
+    opacity: 1;
+    filter: brightness(1)
+            drop-shadow(0 0 0 rgba(0,0,0,0));
   }
 }
 
@@ -123,7 +183,7 @@ a {
 .dt-nav-left {
   display:flex;
   align-items:center;
-  gap:6px;    /* smaller spacing between hamburger + logo */
+  gap:6px;
 }
 
 /* HAMBURGER */
@@ -135,6 +195,7 @@ a {
   cursor:pointer;
   transition: transform .25s ease, opacity .25s ease;
 }
+
 .dt-nav-hamburger:hover {
   transform:translateY(-2px) scale(1.1);
   opacity:1;
