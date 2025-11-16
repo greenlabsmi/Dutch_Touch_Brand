@@ -120,4 +120,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   animateEls.forEach((el) => observer.observe(el));
 
+  
+  // ------------------------------------------------------------
+  // DESKTOP NAV LOGO ANIMATION (SLIDE + GOLD GLOW)
+  // ------------------------------------------------------------
+  if (window.innerWidth >= 768) {
+    const logo = document.querySelector(".dt-nav-logo");
+    if (logo) {
+      logo.classList.add("animate");
+    }
+  }
+  
 });
