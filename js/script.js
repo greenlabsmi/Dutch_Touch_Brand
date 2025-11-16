@@ -1,12 +1,15 @@
 // ============================================================
-// DUTCH TOUCH • GLOBAL HOMEPAGE JS
+// DUTCH TOUCH • GLOBAL HOMEPAGE JS (PATCHED & STABLE)
 // Slide-out menu • Outside click • Hero rotation • Sticky Nav
 // ============================================================
+
+// Make toggleMenu globally accessible BEFORE DOMContentLoaded
+let toggleMenu;
 
 document.addEventListener("DOMContentLoaded", () => {
 
   // ------------------------------------------------------------
-  // NAV: TRANSPARENT AT TOP → SOLID ON SCROLL (JEETER STYLE)
+  // NAV: TRANSPARENT AT TOP → SOLID ON SCROLL
   // ------------------------------------------------------------
   const nav = document.getElementById("dtNav");
 
@@ -23,39 +26,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // ------------------------------------------------------------
-  // SLIDE-OUT MENU (75% WIDTH PANEL)
+  // SLIDE-OUT MENU
   // ------------------------------------------------------------
   const menu = document.getElementById("dt-menu");
-  const menuToggle = document.querySelector(".dt-nav-hamburger");
-  const menuClose = document.querySelector(".dt-menu-close");
+  const menuToggleBtn = document.querySelector(".dt-nav-hamburger");
+  const menuCloseBtn = document.querySelector(".dt-menu-close");
   const body = document.body;
 
-  function toggleMenu() {
+  // GLOBAL toggleMenu (fixes onclick error)
+  toggleMenu = function () {
     menu.classList.toggle("active");
     body.classList.toggle("no-scroll");
 
-    // link animation when opening
+    // Animate links when opening
     if (menu.classList.contains("active")) {
       animateMenuLinks();
     }
+  };
+
+  // Hamburger button
+  if (menuToggleBtn) {
+    menuToggleBtn.addEventListener("click", toggleMenu);
   }
 
-  // OPEN
-  if (menuToggle) menuToggle.addEventListener("click", toggleMenu);
+  // Close button
+  if (menuCloseBtn) {
+    menuCloseBtn.addEventListener("click", toggleMenu);
+  }
 
-  // CLOSE BUTTON
-  if (menuClose) menuClose.addEventListener("click", toggleMenu);
 
   // ------------------------------------------------------------
-  // CLOSE MENU WHEN CLICKING OUTSIDE PANEL ONLY
+  // CLICK OUTSIDE TO CLOSE MENU
   // ------------------------------------------------------------
   document.addEventListener("click", (e) => {
     if (!menu.classList.contains("active")) return;
 
     const menuInner = document.querySelector(".dt-menu-inner");
-
     const clickedInsidePanel = menuInner.contains(e.target);
-    const clickedHamburger = menuToggle.contains(e.target);
+    const clickedHamburger = menuToggleBtn.contains(e.target);
 
     if (!clickedInsidePanel && !clickedHamburger) {
       toggleMenu();
@@ -64,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // ------------------------------------------------------------
-  // ANIMATED SLIDE-IN MENU LINKS
+  // ANIMATED MENU LINKS
   // ------------------------------------------------------------
   function animateMenuLinks() {
     const links = document.querySelectorAll(".dt-menu-links a");
@@ -94,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     slides[currentSlide].classList.add("active");
   }
 
-  // Start rotation
+  // Start with the first slide visible (prevents black screen)
   if (slides.length > 0) {
     slides[0].classList.add("active");
     setInterval(showNextSlide, 6000);
@@ -102,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // ------------------------------------------------------------
-  // OPTIONAL: APPEARING ANIMATIONS PREP (future use)
+  // APPEARING ANIMATIONS (future use)
   // ------------------------------------------------------------
   const animateEls = document.querySelectorAll(".animate-up");
 
@@ -120,15 +128,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   animateEls.forEach((el) => observer.observe(el));
 
-  
+
   // ------------------------------------------------------------
-  // DESKTOP NAV LOGO ANIMATION (SLIDE + GOLD GLOW)
+  // DESKTOP NAV LOGO ANIMATION
   // ------------------------------------------------------------
-  if (window.innerWidth >= 768) {
+  const desktop = window.matchMedia("(min-width: 768px)");
+
+  if (desktop.matches) {
     const logo = document.querySelector(".dt-nav-logo");
     if (logo) {
-      logo.classList.add("animate");
+      setTimeout(() => {
+        logo.classList.add("animate");
+      }, 200); // slight delay prevents layout shift
     }
   }
-  
+
 });
