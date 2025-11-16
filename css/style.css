@@ -132,8 +132,8 @@ a {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-  z-index: 1100; /* above nav-left and icons */
-}
+    z-index: 1100; /* above nav-left and icons */
+  }
 }
 
 /* ---------------------------------------------------------
