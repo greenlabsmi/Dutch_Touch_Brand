@@ -92,12 +92,11 @@ a {
    DESKTOP = TEXT PNG
 ----------------------------- */
 
-/* Mobile default: lion icon (HTML controls src) */
+/* NAV LOGO SIZES (smaller + tighter spacing) */
 .dt-nav-logo img {
-  height:32px;
-  width:auto;
-  display:block;
-  filter: brightness(1);
+  height: 24px; /* smaller mobile */
+  width: auto;
+  display: block;
   transition: transform .35s ease, opacity .35s ease;
 }
 
@@ -109,16 +108,14 @@ a {
 /* Tablet */
 @media (min-width: 500px) {
   .dt-nav-logo img {
-    height:38px;
+    height: 28px;
   }
 }
 
-/* Desktop: swap handled in HTML, just resize + animate */
+/* Desktop */
 @media (min-width: 768px) {
-
   .dt-nav-logo img {
-    height:48px;
-    filter: brightness(1);
+    height: 34px; /* smaller desktop */
   }
 
   .dt-nav-logo.animate {
@@ -132,9 +129,17 @@ a {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1100; /* above nav-left and icons */
+    z-index: 1100;
   }
 }
+
+/* Pull logo closer to hamburger */
+.dt-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* smaller spacing */
+}
+
 
 /* ---------------------------------------------------------
    Keyframes: slide-out → gold glow → settle
