@@ -67,7 +67,7 @@ a {
   top:0;
   left:0;
   right:0;
-  height:120px;
+  height:90px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -89,9 +89,10 @@ a {
 
 /* NAV LOGO — Bigger + White Filter */
 .dt-nav-logo img {
-  height:110px;     /* ← make the logo bigger */
+  height:52px;
   width:auto;
-  filter: brightness(0) invert(1);   /* ← turns logo white */
+  display:block;
+  filter: brightness(0) invert(1);
   transition: filter .3s ease, height .3s ease;
 }
 
@@ -100,6 +101,11 @@ a {
   flex-shrink: 0 !important;
 }
 
+@media (min-width: 768px) {
+  .dt-nav-logo img {
+    height:72px;   /* desktop size */
+  }
+}
 
 /* HAMBURGER */
 .dt-nav-hamburger {
@@ -201,7 +207,7 @@ a {
   max-height: 720px;
   overflow: hidden;
   margin: 0;              /* no accidental gaps */
-  padding-top: 120px;      /* nav height */
+  padding-top: 90px;      /* nav height */
 }
 
 /* ============================================================
