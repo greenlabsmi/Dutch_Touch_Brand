@@ -88,26 +88,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  // ------------------------------------------------------------
-  // HERO CAROUSEL (STATIC FADE)
-  // ------------------------------------------------------------
-  const slides = document.querySelectorAll(".hero-slide");
-  let currentSlide = 0;
+ // ------------------------------------------------------------
+// HERO CAROUSEL (STATIC FADE)
+// ------------------------------------------------------------
+const slides = document.querySelectorAll(".hero-slide");
+let currentSlide = 0;
 
-  function showNextSlide() {
-    if (slides.length <= 1) return;
+function showNextSlide() {
+  if (slides.length <= 1) return;
 
-    slides[currentSlide].classList.remove("active");
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add("active");
-  }
+  // remove active from all slides first (safety)
+  slides.forEach(slide => slide.classList.remove("active"));
 
-  // Start with the first slide visible (prevents black screen)
-  if (slides.length > 0) {
-    slides[0].classList.add("active");
-    setInterval(showNextSlide, 6000);
-  }
+  // move to next
+  currentSlide = (currentSlide + 1) % slides.length;
 
+  // activate current
+  slides[currentSlide].classList.add("active");
+}
+
+// Initialize
+if (slides.length > 0) {
+  // ensure only the first slide starts as active
+  slides.forEach((slide, index) => {
+    slide.classList.toggle("active", index === 0);
+  });
+
+  setInterval(showNextSlide, 6000);
+}
 
   // ------------------------------------------------------------
   // APPEARING ANIMATIONS (future use)
