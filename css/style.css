@@ -67,11 +67,11 @@ a {
   top:0;
   left:0;
   right:0;
-  height:90px;
+  height:72px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 18px;
+  padding:0 16px;
 
   background: var(--nav-bg);        /* TRANSPARENT AT TOP */
   backdrop-filter: none;
@@ -87,12 +87,14 @@ a {
   box-shadow:0 2px 14px rgba(0,0,0,0.55);
 }
 
-/* NAV LOGO — Bigger + White Filter */
+/* NAV LOGO — force smaller */
 .dt-nav-logo img {
-  height:38px;
+  height:26px !important;      /* hard cap for mobile */
+  max-height:26px !important;
   width:auto;
   display:block;
   filter: brightness(0) invert(1);
+}
   transition: filter .3s ease, height .3s ease;
 }
 
@@ -104,14 +106,16 @@ a {
 /* Tablet scaling */
 @media (min-width: 500px) {
   .dt-nav-logo img {
-    height:52px;
+    height:32px !important;
+    max-height:32px !important;
   }
 }
 
 /* Desktop scaling */
 @media (min-width: 768px) {
   .dt-nav-logo img {
-    height:72px;
+    height:40px !important;
+    max-height:40px !important;
   }
 }
 
@@ -222,7 +226,7 @@ a {
   max-height: 720px;
   overflow: hidden;
   margin: 0;              /* no accidental gaps */
-  padding-top: 90px;      /* nav height */
+  padding-top: 72px;      /* nav height */
 }
 
 /* ============================================================
