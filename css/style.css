@@ -89,11 +89,17 @@ a {
 
 /* NAV LOGO — Bigger + White Filter */
 .dt-nav-logo img {
-  height:70px;     /* ← make the logo bigger */
+  height:80px;     /* ← make the logo bigger */
   width:auto;
   filter: brightness(0) invert(1);   /* ← turns logo white */
   transition: filter .3s ease, height .3s ease;
 }
+
+/* NAV LOGO FIX: prevent shrinking */
+.dt-nav-logo {
+  flex-shrink: 0 !important;
+}
+
 
 /* HAMBURGER */
 .dt-nav-hamburger {
