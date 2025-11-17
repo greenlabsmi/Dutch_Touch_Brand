@@ -148,6 +148,7 @@ a {
   gap: 4px; /* smaller spacing */
 }
 
+ 
 /* ============================================
    NAV TEXT LOGO (Replacing PNG)
 ============================================ */
@@ -179,7 +180,7 @@ a {
 @media (min-width: 768px) {
   .dt-nav-text {
     display: flex;
-    font-size: 26px;
+    font-size: 32px;
   }
 }
 
