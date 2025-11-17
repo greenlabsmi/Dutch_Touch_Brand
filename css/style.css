@@ -122,37 +122,16 @@ a {
     animation: dtgSlide 2.4s ease forwards;
   }
 
-  .dt-nav-brand {
-    display: flex;
-    justify-content: center;
-    flex: 1;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1100;
-  }
-}
-
-/* Desktop brand logo sizing */
-.dt-nav-brand img {
-  height: 34px;   /* Adjust to taste (30–40px is good) */
-  width: auto;
-  display: block;
-  opacity: 0.92;  /* optional, looks more premium */
-}
-
-/* Pull logo closer to hamburger */
+/* NAV LOGO (lion) & left cluster */
 .dt-nav-left {
   display: flex;
   align-items: center;
-  gap: 4px; /* smaller spacing */
+  gap: 4px;
 }
 
- 
 /* ============================================
    NAV TEXT LOGO (Replaces PNG)
 ============================================ */
-
 .dt-nav-text {
   font-family: Cinzel, serif;
   font-weight: 700;
@@ -160,7 +139,7 @@ a {
   color: var(--ink);
   letter-spacing: 0.5px;
 
-  display: none; /* hidden on mobile */
+  display: none;
   align-items: center;
   gap: 4px;
   white-space: nowrap;
@@ -176,21 +155,19 @@ a {
       rgba(255,255,255,0.2) 0%,
       var(--orange) 50%,
       rgba(255,255,255,0.2) 100%
-    );
+  );
   background-size: 200% auto;
   -webkit-background-clip: text;
   color: transparent;
   animation: shimmer 3.5s linear infinite;
 }
 
-/* Middle word highlight stays orange */
 .dt-nav-text span {
   background: var(--orange);
   -webkit-background-clip: text;
   color: transparent;
 }
 
-/* Desktop only */
 @media (min-width: 768px) {
   .dt-nav-text {
     display: flex;
@@ -198,20 +175,14 @@ a {
   }
 }
 
-/* On scroll – get a touch smaller */
 .dt-nav.scrolled .dt-nav-text {
   font-size: 22px;
   transition: font-size .3s ease;
 }
 
-/* ===== SHIMMER KEYFRAMES ===== */
 @keyframes shimmer {
-  0% {
-    background-position: 200% center;
-  }
-  100% {
-    background-position: -200% center;
-  }
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
 
 /* ============================================================
