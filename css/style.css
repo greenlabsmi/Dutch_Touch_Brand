@@ -148,6 +148,46 @@ a {
   gap: 4px; /* smaller spacing */
 }
 
+/* ============================================
+   NAV TEXT LOGO (Replacing PNG)
+============================================ */
+
+.dt-nav-text {
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: 22px;           /* adjust for size */
+  color: var(--ink);         /* cream/white text */
+  letter-spacing: 0.5px;
+
+  display: none;             /* hidden on mobile */
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
+}
+
+/* Highlight the middle word “Touch” */
+.dt-nav-text span {
+  color: var(--orange);
+}
+
+/* Desktop only */
+@media (min-width: 768px) {
+  .dt-nav-text {
+    display: flex;
+    font-size: 26px;
+  }
+}
+
+/* On scroll – slightly smaller */
+.dt-nav.scrolled .dt-nav-text {
+  font-size: 22px;
+  transition: font-size .3s ease;
+}
 
 /* ---------------------------------------------------------
    Keyframes: slide-out → gold glow → settle
