@@ -150,17 +150,17 @@ a {
 
  
 /* ============================================
-   NAV TEXT LOGO (Replacing PNG)
+   NAV TEXT LOGO (Replaces PNG)
 ============================================ */
 
 .dt-nav-text {
   font-family: Cinzel, serif;
   font-weight: 700;
-  font-size: 22px;           /* adjust for size */
-  color: var(--ink);         /* cream/white text */
+  font-size: 22px;
+  color: var(--ink);
   letter-spacing: 0.5px;
 
-  display: none;             /* hidden on mobile */
+  display: none; /* hidden on mobile */
   align-items: center;
   gap: 4px;
   white-space: nowrap;
@@ -169,11 +169,25 @@ a {
   left: 50%;
   transform: translateX(-50%);
   z-index: 1100;
+
+  /* shimmer */
+  background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0.2) 0%,
+      var(--orange) 50%,
+      rgba(255,255,255,0.2) 100%
+    );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmer 3.5s linear infinite;
 }
 
-/* Highlight the middle word “Touch” */
+/* Middle word highlight stays orange */
 .dt-nav-text span {
-  color: var(--orange);
+  background: var(--orange);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 /* Desktop only */
@@ -184,84 +198,20 @@ a {
   }
 }
 
-/* On scroll – slightly smaller */
+/* On scroll – get a touch smaller */
 .dt-nav.scrolled .dt-nav-text {
   font-size: 22px;
   transition: font-size .3s ease;
 }
 
-/* ---------------------------------------------------------
-   Keyframes: slide-out → gold glow → settle
---------------------------------------------------------- */
-@keyframes dtgSlide {
-  0% { 
-    transform: translateX(-20px); 
-    opacity: 0;
-    filter: brightness(0.4);
+/* ===== SHIMMER KEYFRAMES ===== */
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
   }
-  25% { 
-    transform: translateX(0); 
-    opacity: 1;
-    filter: brightness(1)
-            drop-shadow(0 0 4px rgba(255,180,60,0.3));
+  100% {
+    background-position: -200% center;
   }
-  50% { 
-    filter: brightness(2.4)
-            drop-shadow(0 0 10px rgba(255,180,60,0.55))
-            drop-shadow(0 0 20px rgba(255,180,60,0.35));
-  }
-  75% {
-    filter: brightness(1.2)
-            drop-shadow(0 0 6px rgba(255,180,60,0.28));
-  }
-  100% { 
-    transform: translateX(0);
-    opacity: 1;
-    filter: brightness(1)
-            drop-shadow(0 0 0 rgba(0,0,0,0));
-  }
-}
-
-/* Left cluster (burger + logo) */
-.dt-nav-left {
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-
-/* HAMBURGER */
-.dt-nav-hamburger {
-  font-size:28px;
-  background:none;
-  border:none;
-  color:#fff;
-  cursor:pointer;
-  transition: transform .25s ease, opacity .25s ease;
-}
-
-.dt-nav-hamburger:hover {
-  transform:translateY(-2px) scale(1.1);
-  opacity:1;
-}
-
-/* NAV ICONS */
-.dt-nav-icons {
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.dt-nav-icons img {
-  width:22px;
-  height:22px;
-  display:block;
-  fill:white !important;
-  transition: transform .25s ease, opacity .25s ease;
-}
-
-.dt-nav-icons img:hover {
-  transform:translateY(-2px) scale(1.12);
-  opacity:1;
 }
 
 /* ============================================================
