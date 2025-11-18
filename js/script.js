@@ -42,14 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Hamburger click
-  if (menuToggleBtn) {
-    menuToggleBtn.addEventListener("click", toggleMenu);
-  }
+  if (menuToggleBtn) menuToggleBtn.addEventListener("click", toggleMenu);
 
   // Close button
-  if (menuCloseBtn) {
-    menuCloseBtn.addEventListener("click", toggleMenu);
-  }
+  if (menuCloseBtn) menuCloseBtn.addEventListener("click", toggleMenu);
+
 
   // ------------------------------------------------------------
   // CLICK OUTSIDE TO CLOSE
