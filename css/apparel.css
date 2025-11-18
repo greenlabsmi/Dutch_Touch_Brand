@@ -1,7 +1,9 @@
 /* ======================================================
-   DUTCH TOUCH • APPAREL PAGE STYLES
-   Optimized • Cleaned • Mobile Slider Fixed
+   DUTCH TOUCH • APPAREL PAGE STYLES — CLEAN, ISOLATED
+   Prevents conflicts with homepage • Fixes shimmer &
+   hamburger • Keeps all existing visuals
 ====================================================== */
+
 
 /* -----------------------------
    COLOR SYSTEM + GLOBAL VARS
@@ -18,7 +20,6 @@
   --dt-orange: #c76b24;
 
   --dt-radius: 16px;
-  --dt-shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
 
   /* NAV */
   --nav-bg: rgba(0,0,0,0);
@@ -27,7 +28,7 @@
 }
 
 /* -----------------------------
-   BASE PAGE
+   PAGE BASE
 ----------------------------- */
 body.dt-apparel-page {
   background: var(--dt-bg);
@@ -35,14 +36,16 @@ body.dt-apparel-page {
   font-family: Inter, system-ui, sans-serif;
   margin: 0;
   padding: 0;
-  -webkit-font-smoothing: antialiased;
+  padding-top: 64px;   /* reserve nav space */
+  overflow-x: hidden;
 }
 
+
 /* ============================================================
-   NAV BAR — CLEAN / NO SHRINKING
+   NAV — COMPLETELY FIXED + ISOLATED FROM HOMEPAGE
 ============================================================ */
 
-.dt-nav {
+body.dt-apparel-page .dt-nav {
   position: fixed;
   top:0; left:0; right:0;
   height:64px;
@@ -50,139 +53,126 @@ body.dt-apparel-page {
   align-items:center;
   justify-content:space-between;
   padding:0 18px;
-  background:var(--nav-bg);
-  z-index:1000;
-  transition:var(--nav-transition);
+
+  background: rgba(0,0,0,0);   /* fully transparent at top */
   box-shadow:none;
+  backdrop-filter:none;
+
+  z-index:5000; /* highest non-menu layer */
+  transition:var(--nav-transition);
 }
 
-/* Only fade background — NO blur */
-.dt-nav.scrolled {
-  background: var(--nav-bg-solid);
-  height: 64px !important;
-  padding: 0 18px !important;
-}
-
-body.dt-apparel-page {
-  margin: 0;
-  padding-top: 64px; /* Already there — GOOD */
-  overflow-x: hidden;
+/* Solid after scroll */
+body.dt-apparel-page .dt-nav.scrolled {
+  background:var(--nav-bg-solid) !important;
 }
 
 
+/* ------------------------------------------------------------
+   HAMBURGER — TEXT ICON VERSION (NO SPANS)
+------------------------------------------------------------ */
+body.dt-apparel-page .dt-nav-hamburger {
+  position: relative;
+  z-index: 6000;
+  pointer-events: auto;
 
-/* LOGO */
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:32px;
+  line-height:1;
+  padding:6px 10px;
+  cursor:pointer;
+}
+
+body.dt-apparel-page .dt-nav-hamburger span {
+  display:none !important;  /* kills the span-bar version */
+}
+
+
+/* ------------------------------------------------------------
+   LOGO LEFT
+------------------------------------------------------------ */
 .dt-nav-logo img {
   height:50px;
   width:auto;
+  display:block;
+  z-index:5500;
 }
 
-/* --------------------------
-   UNIVERSAL HAMBURGER FIX
----------------------------*/
-.dt-nav-hamburger {
-  width: 32px;
-  height: 22px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0;
-  margin: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 2000;
-}
 
-.dt-nav-hamburger span {
-  width: 100%;
-  height: 3px;
-  background: #fff;
-  border-radius: 3px;
-  display: block;
-}
-
-/* ICON ROW */
+/* ------------------------------------------------------------
+   RIGHT ICONS (IG / Search / Cart)
+------------------------------------------------------------ */
 .dt-nav-icons {
   display:flex;
   gap:14px;
+  z-index:5500;
 }
 
 .dt-nav-icons img {
   width:22px;
   height:22px;
-  filter:none !important;
-  transition:transform .25s ease, filter .25s ease;
+  transition:transform .25s ease, opacity .25s ease;
 }
 
 .dt-nav-icons img:hover {
   transform:translateY(-3px);
-  filter:drop-shadow(0 0 6px rgba(255,255,255,0.6));
+  opacity:.85;
 }
+
 
 /* ============================================================
-   FORCE APPAREL NAV TRANSPARENT AT TOP
+   CENTER TEXT LOGO — FIXED SHIMMER (NO BOX)
 ============================================================ */
 
-body.dt-apparel-page .dt-nav {
-  background: rgba(0,0,0,0) !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
-}
-
-/* ============================================
-   NAV TEXT LOGO — CLEAN GOLD SHIMMER (NO BOX)
-============================================ */
-
 .dt-nav-text {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1100;
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:5400;
 
-  font-family: Cinzel, serif;
-  font-weight: 700;
-  font-size: 28px;
-  letter-spacing: 0.5px;
+  font-family:Cinzel, serif;
+  font-weight:700;
+  font-size:28px;
+  color:var(--dt-orange);
+  white-space:nowrap;
 
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-
-  color: var(--orange);
+  pointer-events: none; /* NEVER block other clicks */
 }
 
 /* TOUCH in gold */
 .dt-nav-text span {
-  color: var(--gold);
+  color:var(--dt-gold);
 }
 
-/* ✨ TRUE TEXT SHIMMER — ONLY SHINES ON GLYPHS */
+/* TRUE GLYPH SHIMMER */
 .dt-nav-text.shimmer-active {
   background: linear-gradient(
     120deg,
     #ffffff33 0%,
-    var(--gold) 50%,
+    var(--dt-gold) 50%,
     #ffffff33 100%
   );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  color: transparent;              /* text becomes mask */
-  animation: textShimmer 3.5s linear infinite;
+  background-size:200% auto;
+
+  -webkit-background-clip:text;
+  color:transparent;
+
+  animation:textShimmer 3.5s linear infinite;
 }
 
-/* smoother shimmer keyframes */
 @keyframes textShimmer {
-  0% { background-position: 200% center; }
-  100% { background-position: -200% center; }
+  0% { background-position:200% center; }
+  100% { background-position:-200% center; }
 }
 
 
 /* ============================================================
-   SLIDE-OUT MENU
+   SLIDE-OUT MENU — WORKING VERSION
 ============================================================ */
 
-.dt-menu-overlay {
+#dt-menu {
   position:fixed;
   top:0; left:0;
   width:75%;
@@ -191,10 +181,10 @@ body.dt-apparel-page .dt-nav {
   background:#000;
   transform:translateX(-100%);
   transition:transform .35s ease;
-  z-index:2000;
+  z-index:9999; /* above everything */
 }
 
-.dt-menu-overlay.active {
+#dt-menu.active {
   transform:translateX(0);
 }
 
@@ -203,12 +193,12 @@ body.dt-apparel-page .dt-nav {
 }
 
 .dt-menu-close {
-  font-size:42px;
+  font-size:44px;
   background:none;
   border:none;
   color:#fff;
   cursor:pointer;
-  margin-bottom:20px;
+  margin-bottom:24px;
 }
 
 .dt-menu-logo {
@@ -216,7 +206,6 @@ body.dt-apparel-page .dt-nav {
   margin-bottom:30px;
 }
 
-/* MENU LINKS */
 .dt-menu-links a {
   display:block;
   font-family:Cinzel, serif;
@@ -225,7 +214,7 @@ body.dt-apparel-page .dt-nav {
   color:#fff;
   opacity:0;
   transform:translateX(-20px);
-  transition:opacity .35s ease, transform .35s ease;
+  transition:all .35s ease;
 }
 
 .dt-menu-links a.animate-in {
@@ -238,26 +227,18 @@ body.dt-apparel-page .dt-nav {
   transform:translateX(4px);
 }
 
-/* =====================================================
-   HERO (DESKTOP + MOBILE SLIDER)
-===================================================== */
 
+/* ============================================================
+   HERO / MOBILE SLIDER
+============================================================ */
 .dt-hero {
-  position: relative;
-  width: 100%;
-  min-height: 65vh;
-  padding: 110px 18px 40px;
+  position:relative;
+  min-height:65vh;
+  padding:110px 18px 40px;
   display:flex;
   align-items:flex-end;
-  border-bottom:1px solid rgba(255,255,255,0.06);
 }
 
-.dt-hero-inner {
-  width:100%;
-  max-width:1100px;
-}
-
-/* Desktop background image container */
 .hero-desktop {
   position:absolute;
   inset:0;
@@ -265,14 +246,9 @@ body.dt-apparel-page .dt-nav {
   background-position:center;
 }
 
-/* Mobile slider hidden by default */
-.hero-mobile-slider {
-  display:none;
-}
+.hero-mobile-slider { display:none; }
 
-/* Mobile slides */
 .hero-mobile-slide {
-  z-index:1;
   position:absolute;
   inset:0;
   background-size:cover;
@@ -281,19 +257,17 @@ body.dt-apparel-page .dt-nav {
   transition:opacity .9s ease;
 }
 
-.hero-mobile-slide.active {
-  opacity:1;
-}
+.hero-mobile-slide.active { opacity:1; }
 
-/* MOBILE ONLY — SHOW SLIDER */
 @media (max-width:900px) {
   .hero-desktop { display:none; }
   .hero-mobile-slider { display:block; }
 }
 
-/* =====================================================
+
+/* ============================================================
    SECTION HEADERS
-===================================================== */
+============================================================ */
 .dt-section {
   max-width:1100px;
   margin:0 auto;
@@ -306,9 +280,10 @@ body.dt-apparel-page .dt-nav {
   margin-bottom:14px;
 }
 
-/* =====================================================
-   FILTER BAR
-===================================================== */
+
+/* ============================================================
+   FILTERS
+============================================================ */
 .dt-filters {
   display:flex;
   flex-wrap:wrap;
@@ -328,12 +303,13 @@ body.dt-apparel-page .dt-nav {
 .filter-btn.is-active {
   background:#161616;
   border-color:var(--dt-orange);
-  color:var(--dt-ink);
+  color:#fff;
 }
 
-/* =====================================================
+
+/* ============================================================
    PRODUCT GRID
-===================================================== */
+============================================================ */
 .product-grid {
   display:grid;
   gap:24px;
@@ -350,9 +326,7 @@ body.dt-apparel-page .dt-nav {
 }
 
 @media (min-width:900px) {
-  .product-card:hover {
-    transform:translateY(-6px);
-  }
+  .product-card:hover { transform:translateY(-6px); }
 }
 
 .product-media {
@@ -361,9 +335,10 @@ body.dt-apparel-page .dt-nav {
   background:linear-gradient(180deg,#eee,#ccc);
 }
 
-/* =====================================================
+
+/* ============================================================
    CAROUSEL
-===================================================== */
+============================================================ */
 .dt-carousel {
   display:flex;
   gap:12px;
@@ -379,24 +354,19 @@ body.dt-apparel-page .dt-nav {
 
 .carousel-track::-webkit-scrollbar { display:none; }
 
-.carousel-item {
-  position: relative;
-}
+.carousel-item { position:relative; }
 
-.carousel-media {
-  position: relative;
-  z-index: 1; /* image layer */
-}
+.carousel-media { z-index:1; }
 
 .carousel-label {
-  position: relative;
-  z-index: 2; /* text layer stays on top */
+  position:relative;
+  z-index:2;
 }
 
 
-/* =====================================================
+/* ============================================================
    FOOTER
-===================================================== */
+============================================================ */
 .dt-footer {
   padding:50px 20px 40px;
   margin-top:60px;
@@ -415,8 +385,7 @@ body.dt-apparel-page .dt-nav {
 
 .dt-footer-logo {
   height:48px;
-  opacity:.92;
-  margin:0 auto 26px;
+  margin-bottom:26px;
 }
 
 .dt-footer-social img {
@@ -428,52 +397,4 @@ body.dt-apparel-page .dt-nav {
 .dt-footer-social img:hover {
   opacity:1;
   transform:scale(1.08);
-}
-
-/* --- FIX HAMBURGER NOT CLICKING --- */
-
-/* Ensure nothing overlays the hamburger */
-.dt-nav-hamburger {
-  position: relative;
-  z-index: 5000 !important;
-  pointer-events: auto !important;
-}
-
-/* Ensure shimmer does NOT block clicks */
-.dt-nav-text::before {
-  pointer-events: none !important;
-}
-
-/* Ensure shimmer layer stays ON the text ONLY */
-.dt-nav-text {
-  position: relative;
-  z-index: 3000;
-}
-
-/* Ensure nav itself does not cover hamburger */
-.dt-nav {
-  position: relative;
-  z-index: 1000;
-}
-
-/* Prevent any accidental overlay from hero image */
-.dt-hero,
-.hero-desktop {
-  position: relative;
-  z-index: 1;
-}
-
-/* FIX — Apparel hamburger uses text icon, NOT span bars */
-body.dt-apparel-page .dt-nav-hamburger {
-  display: block !important;
-  width: auto !important;
-  height: auto !important;
-  font-size: 28px !important;
-  line-height: 1 !important;
-  padding: 8px 12px;
-}
-
-/* Remove the span-bar hamburger styling */
-body.dt-apparel-page .dt-nav-hamburger span {
-  display: none !important;
 }
