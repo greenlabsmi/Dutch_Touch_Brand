@@ -137,40 +137,37 @@ body.dt-apparel-page {
   color: var(--gold);
 }
 
-/* GOLD SHIMMER — real metallic shine, NOT a box */
-.dt-nav-text::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+/* === GOLD TEXT SHIMMER (NO BOX, ONLY TEXT) === */
+.dt-nav-text {
+  position: relative;
   background: linear-gradient(
       120deg,
-      transparent 0%,
-      rgba(255,255,255,0.2) 40%,
-      rgba(255,230,150,0.9) 50%,
-      rgba(255,255,255,0.2) 60%,
-      transparent 100%
+      #CDA45A 0%,
+      #F8E6A0 20%,
+      #FFFFFF 40%,
+      #CDA45A 60%,
+      #B78E4A 100%
   );
-
-  background-size: 250% 100%;
-  animation: dtgGoldShimmer 3.8s linear infinite;
-
-  /* This is the key – shimmer ON the text, no box */
-  mix-blend-mode: lighten;
-  pointer-events: none;
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;             /* text becomes the shimmer surface */
+  animation: goldShimmer 3.5s linear infinite;
 }
 
-/* The smooth shimmer motion */
-@keyframes dtgGoldShimmer {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+/* Middle word stays pure gold */
+.dt-nav-text span {
+  color: var(--gold);
+  background: none !important;
+  -webkit-background-clip: unset !important;
 }
 
-/* Only show on desktop */
-@media (max-width: 767px) {
-  .dt-nav-text {
-    display: none;
-  }
+/* TRUE clean shimmer */
+@keyframes goldShimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
+
 
 /* ============================================================
    SLIDE-OUT MENU
