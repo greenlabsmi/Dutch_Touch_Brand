@@ -327,7 +327,11 @@ body.dt-apparel-page .dt-menu-overlay.active {
 
 .carousel-track::-webkit-scrollbar { display:none; }
 
-.carousel-item { position:relative; }
+.carousel-item {
+  position:relative;
+  flex:0 0 auto;
+  width:260px;
+}
 
 .carousel-media { z-index:1; }
 
