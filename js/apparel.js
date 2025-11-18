@@ -1,9 +1,9 @@
 // ============================================================
 // DUTCH TOUCH • APPAREL PAGE JS
-// Nav shimmer • Working hamburger menu • Filters • Carousel
+// Clean • Conflict-Proof • Shimmer-Safe • Working Hamburger
 // ============================================================
 
-// Make toggleMenu available to HTML onclick
+// Make toggleMenu available for inline HTML onclick
 let toggleMenu;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------------------------------------
   const nav = document.querySelector(".dt-nav");
 
-  function handleNavScroll() {
+  function updateNavOnScroll() {
     if (window.scrollY > 10) {
       nav.classList.add("scrolled");
     } else {
@@ -21,42 +21,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  handleNavScroll();
-  window.addEventListener("scroll", handleNavScroll);
+  updateNavOnScroll();
+  window.addEventListener("scroll", updateNavOnScroll);
 
 
   // ------------------------------------------------------------
   // SLIDE-OUT MENU (LEFT SIDE)
   // ------------------------------------------------------------
   const menu = document.getElementById("dt-menu");
-  const body = document.body;
   const hamburger = document.querySelector(".dt-nav-hamburger");
   const closeBtn = document.querySelector(".dt-menu-close");
+  const body = document.body;
 
   toggleMenu = function () {
+    if (!menu) return;
+
     menu.classList.toggle("active");
     body.classList.toggle("no-scroll");
 
-    if (menu.classList.contains("active")) {
-      animateMenuLinks();
-    }
+    if (menu.classList.contains("active")) animateMenuLinks();
   };
 
-  if (hamburger) hamburger.addEventListener("click", toggleMenu);
-  if (closeBtn) closeBtn.addEventListener("click", toggleMenu);
+  // Click handlers (always bound once)
+  if (hamburger) hamburger.onclick = toggleMenu;
+  if (closeBtn) closeBtn.onclick = toggleMenu;
 
-  // Click outside to close
+  // CLICK OUTSIDE MENU TO CLOSE
   document.addEventListener("click", (e) => {
     if (!menu.classList.contains("active")) return;
 
     const insideMenu = menu.contains(e.target);
-    const clickedHamburger = hamburger.contains(e.target);
+    const clickedBurger = hamburger.contains(e.target);
 
-    if (!insideMenu && !clickedHamburger) toggleMenu();
+    if (!insideMenu && !clickedBurger) toggleMenu();
   });
 
+  // Link stagger animation
   function animateMenuLinks() {
     const links = document.querySelectorAll(".dt-menu-links a");
+
     links.forEach((link, i) => {
       link.classList.remove("animate-in");
       setTimeout(() => link.classList.add("animate-in"), 90 * i);
@@ -65,50 +68,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // ------------------------------------------------------------
-  // NAV TEXT LOGO — ACTIVATE SHIMMER
+  // NAV TEXT SHIMMER — SAFE + DOES NOT BLOCK HAMBURGER
   // ------------------------------------------------------------
   const navText = document.querySelector(".dt-nav-text");
   if (navText) {
-    navText.classList.add("shimmer-active");
+    // add shimmer AFTER DOM paints to avoid click-block
+    requestAnimationFrame(() => {
+      navText.classList.add("shimmer-active");
+    });
   }
 
 
   // ------------------------------------------------------------
   // FADE-IN OBSERVER
   // ------------------------------------------------------------
-  const fadeEls = document.querySelectorAll(".fade-in");
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
+  const fadeItems = document.querySelectorAll(".fade-in");
+
+  const fadeObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+          fadeObserver.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.2, rootMargin: "0px 0px -40px 0px" }
+    { threshold: 0.15 }
   );
 
-  fadeEls.forEach(el => observer.observe(el));
+  fadeItems.forEach((el) => fadeObserver.observe(el));
 
 
   // ------------------------------------------------------------
   // PRODUCT FILTERS
   // ------------------------------------------------------------
   const filterBtns = document.querySelectorAll(".filter-btn");
-  const productCards = document.querySelectorAll(".product-card");
+  const cards = document.querySelectorAll(".product-card");
 
-  filterBtns.forEach(btn => {
+  filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const filter = btn.dataset.filter;
 
-      filterBtns.forEach(b => b.classList.remove("is-active"));
+      filterBtns.forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
 
-      productCards.forEach(card => {
+      cards.forEach((card) => {
         const cat = card.dataset.category;
-        if (filter === "all" || cat === filter) card.classList.remove("is-hidden");
-        else card.classList.add("is-hidden");
+        card.classList.toggle("is-hidden", filter !== "all" && filter !== cat);
       });
     });
   });
@@ -118,40 +124,35 @@ document.addEventListener("DOMContentLoaded", () => {
   // CAPSULE CAROUSEL
   // ------------------------------------------------------------
   const track = document.querySelector(".carousel-track");
-  const prevBtn = document.querySelector(".carousel-btn-prev");
-  const nextBtn = document.querySelector(".carousel-btn-next");
+  const prev = document.querySelector(".carousel-btn-prev");
+  const next = document.querySelector(".carousel-btn-next");
 
-  if (track && prevBtn && nextBtn) {
+  if (track && prev && next) {
     const scrollAmount = () => track.clientWidth * 0.8;
 
-    prevBtn.addEventListener("click", () => {
+    prev.onclick = () =>
       track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
-    });
 
-    nextBtn.addEventListener("click", () => {
+    next.onclick = () =>
       track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
-    });
   }
 
 
   // ------------------------------------------------------------
-  // QUICK ADD (placeholder)
+  // QUICK ADD (TEMP)
   // ------------------------------------------------------------
-  document.querySelectorAll(".quick-add").forEach(btn => {
+  document.querySelectorAll(".quick-add").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      const card = btn.closest(".product-card");
-      const name = card.querySelector("h3")?.textContent || "Item";
-      console.log("Quick View:", name);
+      const item = btn.closest(".product-card")?.querySelector("h3")?.textContent;
+      console.log("Quick View:", item);
     });
   });
-
-}); // END DOMContentLoaded
-
+});
 
 
 // ============================================================
-// MOBILE HERO SLIDER (<900px)
+// MOBILE HERO SLIDER (<900px only)
 // ============================================================
 function initMobileHeroSlider() {
   if (window.innerWidth > 900) return;
