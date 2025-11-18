@@ -1,7 +1,10 @@
 // ============================================================
 // DUTCH TOUCH • APPAREL PAGE JS
-// Fade-ins • Filters • Carousel • Jeeter-Style Nav + Menu
+// Nav shimmer • Working hamburger menu • Filters • Carousel
 // ============================================================
+
+// Make toggleMenu available to HTML onclick
+let toggleMenu;
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -30,37 +33,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.querySelector(".dt-nav-hamburger");
   const closeBtn = document.querySelector(".dt-menu-close");
 
-  function toggleMenu() {
+  toggleMenu = function () {
     menu.classList.toggle("active");
     body.classList.toggle("no-scroll");
 
     if (menu.classList.contains("active")) {
       animateMenuLinks();
     }
-  }
+  };
 
   if (hamburger) hamburger.addEventListener("click", toggleMenu);
   if (closeBtn) closeBtn.addEventListener("click", toggleMenu);
 
+  // Click outside to close
   document.addEventListener("click", (e) => {
     if (!menu.classList.contains("active")) return;
 
     const insideMenu = menu.contains(e.target);
     const clickedHamburger = hamburger.contains(e.target);
 
-    if (!insideMenu && !clickedHamburger) {
-      toggleMenu();
-    }
+    if (!insideMenu && !clickedHamburger) toggleMenu();
   });
 
   function animateMenuLinks() {
     const links = document.querySelectorAll(".dt-menu-links a");
     links.forEach((link, i) => {
       link.classList.remove("animate-in");
-      setTimeout(() => {
-        link.classList.add("animate-in");
-      }, 90 * i);
+      setTimeout(() => link.classList.add("animate-in"), 90 * i);
     });
+  }
+
+
+  // ------------------------------------------------------------
+  // NAV TEXT LOGO — ACTIVATE SHIMMER
+  // ------------------------------------------------------------
+  const navText = document.querySelector(".dt-nav-text");
+  if (navText) {
+    navText.classList.add("shimmer-active");
   }
 
 
@@ -68,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // FADE-IN OBSERVER
   // ------------------------------------------------------------
   const fadeEls = document.querySelectorAll(".fade-in");
-
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
@@ -99,11 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       productCards.forEach(card => {
         const cat = card.dataset.category;
-        if (filter === "all" || cat === filter) {
-          card.classList.remove("is-hidden");
-        } else {
-          card.classList.add("is-hidden");
-        }
+        if (filter === "all" || cat === filter) card.classList.remove("is-hidden");
+        else card.classList.add("is-hidden");
       });
     });
   });
@@ -141,13 +146,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-}); // ← ✅ CLOSES MAIN DOMContentLoaded
+}); // END DOMContentLoaded
+
 
 
 // ============================================================
-// MOBILE HERO SLIDER (only below 900px)
+// MOBILE HERO SLIDER (<900px)
 // ============================================================
-
 function initMobileHeroSlider() {
   if (window.innerWidth > 900) return;
 
@@ -164,6 +169,4 @@ function initMobileHeroSlider() {
   }, 3500);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  initMobileHeroSlider();
-});
+document.addEventListener("DOMContentLoaded", initMobileHeroSlider);
