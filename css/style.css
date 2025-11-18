@@ -249,14 +249,27 @@ a {
   width:75%;
   max-width:320px;
   background:#000;
-  z-index:2000;
+  z-index:3000;
   transform:translateX(-100%);
   transition:transform .35s ease;
   box-shadow:4px 0 20px rgba(0,0,0,0.6);
 }
 
+/* FORCE MENU ABOVE NAV */
+#dt-menu {
+  position: fixed;            /* ensures its own stacking context */
+  z-index: 9999 !important;   /* sits above ALL nav elements */
+  top: 0;
+  left: 0;
+}
+
 .dt-menu-overlay.active {
   transform:translateX(0);
+}
+
+.dt-menu-overlay,
+.dt-menu-inner {
+  pointer-events: auto;
 }
 
 .dt-menu-inner {
