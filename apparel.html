@@ -16,55 +16,69 @@
 <body class="dt-apparel-page">
 
 <!-- =========================
-     NAV (JEETER STYLE)
+     NAV (Jeeter-Style • Updated)
 ========================= -->
-<!-- =========================
-     UPDATED NAV (MATCHES HOMEPAGE)
-========================= -->
-<header class="dt-nav">
-  <!-- Hamburger -->
-  <button class="dt-nav-hamburger" onclick="toggleMenu()">☰</button>
+<header class="dt-nav" id="dtNav">
 
-  <!-- Logo -->
-  <a href="index.html" class="dt-nav-logo">
-    <img src="assets/img/logo/dtg-font-logo.png" alt="Dutch Touch Genetics">
-  </a>
+  <!-- LEFT: Hamburger + Lion -->
+  <div class="dt-nav-left">
 
-  <!-- RIGHT ICONS (ONLY IG, SEARCH, CART) -->
-  <div class="dt-nav-icons">
+    <!-- Hamburger (working on apparel.js) -->
+    <button class="dt-nav-hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-    <!-- Instagram -->
-    <a href="https://instagram.com/dutchtouchgenetics"
-       target="_blank"
-       aria-label="Instagram">
-      <img src="assets/icons/instagram.svg" alt="Instagram" class="dt-icon">
-    </a>
-
-    <!-- Search -->
-    <a href="#" aria-label="Search">
-      <img src="assets/icons/search.svg" alt="Search" class="dt-icon">
-    </a>
-
-    <!-- Cart -->
-    <a href="#" aria-label="Cart">
-      <img src="assets/icons/cart.svg" alt="Cart" class="dt-icon">
+    <!-- Mobile Lion Logo -->
+    <a href="index.html" class="dt-nav-logo">
+      <img src="assets/img/logo/dtg-logo-orange.png" alt="Dutch Touch Lion">
     </a>
 
   </div>
+
+  <!-- CENTER TEXT LOGO (New Shimmer Version) -->
+  <div class="dt-nav-text">
+    Dutch <span>Touch</span> Genetics
+  </div>
+
+  <!-- RIGHT ICONS -->
+  <div class="dt-nav-icons">
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/dutchtouchgenetics" target="_blank">
+      <img src="assets/icons/instagram.svg" alt="Instagram">
+    </a>
+
+    <!-- Search -->
+    <a href="#">
+      <img src="assets/icons/search.svg" alt="Search">
+    </a>
+
+    <!-- Cart -->
+    <a href="#">
+      <img src="assets/icons/cart.svg" alt="Cart">
+    </a>
+
+  </div>
+
 </header>
 
+
 <!-- =========================
-     SLIDE-OUT MENU OVERLAY
+     FULLSCREEN MENU (Working)
 ========================= -->
 <div id="dt-menu" class="dt-menu-overlay">
+
   <div class="dt-menu-inner">
 
+    <!-- Close Button -->
     <button class="dt-menu-close" onclick="toggleMenu()">×</button>
 
-    <!-- Logo inside menu -->
-    <img src="assets/img/logo/dtg-font-logo.png" class="dt-menu-logo" alt="Dutch Touch Genetics">
+    <!-- Menu Logo -->
+    <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo" alt="Dutch Touch Genetics">
 
-    <!-- MENU LINKS -->
+    <!-- Menu Links -->
     <nav class="dt-menu-links">
       <a href="index.html" onclick="toggleMenu()">Home</a>
       <a href="apparel.html" onclick="toggleMenu()">Apparel</a>
@@ -75,6 +89,7 @@
     </nav>
 
   </div>
+
 </div>
 
 <!-- =========================
