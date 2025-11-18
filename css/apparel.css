@@ -77,19 +77,29 @@ body.dt-apparel-page {
   width:auto;
 }
 
-/* HAMBURGER */
+/* --------------------------
+   UNIVERSAL HAMBURGER FIX
+---------------------------*/
 .dt-nav-hamburger {
-  font-size:28px;
-  background:none;
-  border:none;
-  color:#fff;
-  cursor:pointer;
-  transition:transform .25s ease, filter .25s ease;
+  width: 32px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2000;
 }
 
-.dt-nav-hamburger:hover {
-  transform:translateY(-3px);
-  filter:drop-shadow(0 0 6px rgba(255,255,255,0.6));
+.dt-nav-hamburger span {
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  border-radius: 3px;
+  display: block;
 }
 
 /* ICON ROW */
