@@ -109,6 +109,70 @@ body.dt-apparel-page {
 }
 
 /* ============================================================
+   NAV TEXT LOGO — CENTERED WITH GOLD SHIMMER
+============================================================ */
+
+/* center text logo in nav */
+.dt-nav-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1200;
+
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+}
+
+/* Touch = gold */
+.dt-nav-text span {
+  color: var(--gold);
+}
+
+/* GOLD SHIMMER — real metallic shine, NOT a box */
+.dt-nav-text::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255,255,255,0.2) 40%,
+      rgba(255,230,150,0.9) 50%,
+      rgba(255,255,255,0.2) 60%,
+      transparent 100%
+  );
+
+  background-size: 250% 100%;
+  animation: dtgGoldShimmer 3.8s linear infinite;
+
+  /* This is the key – shimmer ON the text, no box */
+  mix-blend-mode: lighten;
+  pointer-events: none;
+}
+
+/* The smooth shimmer motion */
+@keyframes dtgGoldShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Only show on desktop */
+@media (max-width: 767px) {
+  .dt-nav-text {
+    display: none;
+  }
+}
+
+/* ============================================================
    SLIDE-OUT MENU
 ============================================================ */
 
