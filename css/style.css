@@ -247,53 +247,65 @@ a {
   .dt-nav-logo img { height:36px; }
 }
 
-/* ------------------------------------------------------------
-   CENTER TEXT LOGO (DESKTOP ONLY)
------------------------------------------------------------- */
+/* ============================================
+   NAV TEXT LOGO (Solid text + Gold shimmer overlay)
+============================================ */
+
 .dt-nav-text {
-  font-family:Cinzel, serif;
-  font-weight:700;
-  font-size:28px;
-  white-space:nowrap;
-  display:none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
 
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:1200;
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 0.5px;
 
-  /* TRUE TEXT SHIMMER (Gold only on letters) */
-  background:linear-gradient(
-      90deg,
-      rgba(205,164,90,0.1),
-      var(--gold),
-      rgba(205,164,90,0.1)
-  );
-  background-size:200% auto;
-  -webkit-background-clip:text;
-  color:transparent;
-  animation:textShimmer 3s linear infinite;
+  display: none;
+  align-items: center;
+  white-space: nowrap;
+
+  color: var(--orange);     /* <- Dutch & Genetics stay solid orange */
 }
 
+/* TOUCH stays pure gold */
 .dt-nav-text span {
-  color:var(--ink);       /* EXTERNAL white, not shimmer */
-  background:none;
-  -webkit-background-clip:unset;
+  color: var(--gold);
 }
 
-@media (min-width:768px) {
-  .dt-nav-text { display:flex; }
+/* === GOLD SHIMMER OVERLAY === */
+.dt-nav-text::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(205,164,90,0.4) 45%,
+      rgba(255,230,150,0.9) 50%,   /* bright gold line */
+      rgba(205,164,90,0.4) 55%,
+      transparent 100%
+  );
+  background-size: 300% 100%;
+  animation: goldShine 4.5s linear infinite;  /* slower shimmer */
+  mix-blend-mode: screen;                      /* <- makes it look like real light */
+  pointer-events: none;
 }
 
-.dt-nav.scrolled .dt-nav-text {
-  font-size:22px;
+/* Slower, smoother shimmer */
+@keyframes goldShine {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
-/* Shimmer keyframes */
-@keyframes textShimmer {
-  0% { background-position:200% center; }
-  100% { background-position:-200% center; }
+/* Desktop only */
+@media (min-width: 768px) {
+  .dt-nav-text {
+    display: flex;
+  }
 }
+
 
 /* ------------------------------------------------------------
    RIGHT ICONS (INSTAGRAM / FB / TWITTER)
