@@ -87,29 +87,29 @@ a {
   box-shadow:0 2px 14px rgba(0,0,0,0.55);
 }
 
-/* ============================
-   HAMBURGER — smaller + cleaner
-============================ */
-
+/* HAMBURGER (Three lines, smaller, proper spacing) */
 .dt-nav-hamburger {
-  width: 28px;   /* smaller */
-  height: 20px;
-  padding: 0;
+  width: 32px;
+  height: 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: none;
   border: none;
+  padding: 0;
   cursor: pointer;
+  z-index: 2000;
 }
 
+/* each line */
 .dt-nav-hamburger span {
   display: block;
-  height: 3px;       /* thinner */
+  height: 3px;
   width: 100%;
   background: var(--ink);
   border-radius: 3px;
 }
+
 
 /* Lion PNG logo */
 .dt-nav-logo {
@@ -148,9 +148,8 @@ a {
 }
 
 /* ============================================
-   NAV TEXT LOGO (Clean text shimmer)
+   NAV TEXT LOGO (Replaces PNG)
 ============================================ */
-
 .dt-nav-text {
   font-family: Cinzel, serif;
   font-weight: 700;
@@ -159,7 +158,7 @@ a {
 
   display: none;
   align-items: center;
-  gap: 6px;
+  gap: 12px;
   white-space: nowrap;
 
   position: absolute;
@@ -167,31 +166,26 @@ a {
   transform: translateX(-50%);
   z-index: 1100;
 
-  /* TEXT COLOR BEFORE SHIMMER */
-  color: var(--ink);
-
-  /* TRUE SHIMMER — applied to TEXT ONLY */
+  /* GOLD shimmer on text ONLY */
   background: linear-gradient(
-      120deg,
-      var(--ink) 0%,
-      var(--ink) 40%,
-      var(--orange) 50%,
-      var(--ink) 60%,
-      var(--ink) 100%
+      90deg,
+      rgba(205,164,90,0.2) 0%,
+      var(--gold) 50%,
+      rgba(205,164,90,0.2) 100%
   );
-  background-size: 250% auto;
+  background-size: 200% auto;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textShimmer 3.5s linear infinite;
+  color: transparent;
+  animation: shimmer 3.5s linear infinite;
 }
 
-/* Keep “Touch” solid & readable */
+/* keeps TOUCH in gold without fading */
 .dt-nav-text span {
+  color: var(--gold);
   background: none !important;
-  -webkit-text-fill-color: var(--orange) !important;
-  color: var(--orange) !important;
-  -webkit-background-clip: initial !important;
+  -webkit-background-clip: unset !important;
 }
+
 
 /* Desktop only */
 @media (min-width: 768px) {
