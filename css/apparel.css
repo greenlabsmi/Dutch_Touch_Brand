@@ -462,3 +462,18 @@ body.dt-apparel-page .dt-nav {
   position: relative;
   z-index: 1;
 }
+
+/* FIX — Apparel hamburger uses text icon, NOT span bars */
+body.dt-apparel-page .dt-nav-hamburger {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  font-size: 28px !important;
+  line-height: 1 !important;
+  padding: 8px 12px;
+}
+
+/* Remove the span-bar hamburger styling */
+body.dt-apparel-page .dt-nav-hamburger span {
+  display: none !important;
+}
