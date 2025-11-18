@@ -110,6 +110,16 @@ body.dt-apparel-page {
   filter:drop-shadow(0 0 6px rgba(255,255,255,0.6));
 }
 
+/* ============================================================
+   FORCE APPAREL NAV TRANSPARENT AT TOP
+============================================================ */
+
+body.dt-apparel-page .dt-nav {
+  background: rgba(0,0,0,0) !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
 /* ============================================
    NAV TEXT LOGO — CLEAN GOLD SHIMMER (NO BOX)
 ============================================ */
