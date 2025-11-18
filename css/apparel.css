@@ -1,9 +1,7 @@
 /* ======================================================
-   DUTCH TOUCH • APPAREL PAGE STYLES — CLEAN, ISOLATED
-   Prevents conflicts with homepage • Fixes shimmer &
-   hamburger • Keeps all existing visuals
+   DUTCH TOUCH • APPAREL PAGE STYLES
+   Conflict-Proof • Shimmer-Safe • Working Hamburger
 ====================================================== */
-
 
 /* -----------------------------
    COLOR SYSTEM + GLOBAL VARS
@@ -21,158 +19,130 @@
 
   --dt-radius: 16px;
 
-  /* NAV */
   --nav-bg: rgba(0,0,0,0);
   --nav-bg-solid: rgba(0,0,0,0.95);
   --nav-transition: background .35s ease;
 }
 
 /* -----------------------------
-   PAGE BASE
+   BASE PAGE
 ----------------------------- */
 body.dt-apparel-page {
   background: var(--dt-bg);
   color: var(--dt-ink);
-  font-family: Inter, system-ui, sans-serif;
+  font-family: Inter, sans-serif;
   margin: 0;
-  padding: 0;
-  padding-top: 64px;   /* reserve nav space */
+  padding-top: 64px;
   overflow-x: hidden;
 }
 
 
 /* ============================================================
-   NAV — COMPLETELY FIXED + ISOLATED FROM HOMEPAGE
+   NAV — CONFLICT PROOF
 ============================================================ */
 
 body.dt-apparel-page .dt-nav {
   position: fixed;
   top:0; left:0; right:0;
   height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
   padding:0 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 
-  background: rgba(0,0,0,0);   /* fully transparent at top */
-  box-shadow:none;
-  backdrop-filter:none;
-
-  z-index:5000; /* highest non-menu layer */
-  transition:var(--nav-transition);
+  background: rgba(0,0,0,0);
+  z-index:3000;
+  transition: var(--nav-transition);
 }
 
-/* Solid after scroll */
 body.dt-apparel-page .dt-nav.scrolled {
-  background:var(--nav-bg-solid) !important;
+  background: var(--nav-bg-solid) !important;
 }
 
-
-/* ------------------------------------------------------------
-   HAMBURGER — TEXT ICON VERSION (NO SPANS)
------------------------------------------------------------- */
-body.dt-apparel-page .dt-nav-hamburger {
-  position: relative;
-  z-index: 6000;
-  pointer-events: auto;
-
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:32px;
-  line-height:1;
-  padding:6px 10px;
-  cursor:pointer;
-}
-
-body.dt-apparel-page .dt-nav-hamburger span {
-  display:none !important;  /* kills the span-bar version */
-}
-
-
-/* ------------------------------------------------------------
-   LOGO LEFT
------------------------------------------------------------- */
-.dt-nav-logo img {
+/* LOGO */
+body.dt-apparel-page .dt-nav-logo img {
   height:50px;
   width:auto;
-  display:block;
-  z-index:5500;
-}
-
-
-/* ------------------------------------------------------------
-   RIGHT ICONS (IG / Search / Cart)
------------------------------------------------------------- */
-.dt-nav-icons {
-  display:flex;
-  gap:14px;
-  z-index:5500;
-}
-
-.dt-nav-icons img {
-  width:22px;
-  height:22px;
-  transition:transform .25s ease, opacity .25s ease;
-}
-
-.dt-nav-icons img:hover {
-  transform:translateY(-3px);
-  opacity:.85;
+  z-index:3001;
 }
 
 
 /* ============================================================
-   CENTER TEXT LOGO — FIXED SHIMMER (NO BOX)
+   HAMBURGER — TEXT ICON (override homepage)
 ============================================================ */
 
-.dt-nav-text {
+body.dt-apparel-page .dt-nav-hamburger {
+  display:block !important;
+  width:auto !important;
+  height:auto !important;
+
+  font-size:32px;
+  line-height:1;
+  background:none;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+
+  padding:6px 10px;
+  z-index:5000 !important;
+  pointer-events:auto;
+}
+
+/* kill the homepage 3-line hamburger */
+body.dt-apparel-page .dt-nav-hamburger span {
+  display:none !important;
+}
+
+
+/* ============================================================
+   NAV TEXT SHIMMER — NO BOX, NO OVERLAY
+============================================================ */
+
+body.dt-apparel-page .dt-nav-text {
   position:absolute;
   left:50%;
   transform:translateX(-50%);
-  z-index:5400;
+  z-index:4000;
 
   font-family:Cinzel, serif;
-  font-weight:700;
   font-size:28px;
-  color:var(--dt-orange);
+  font-weight:700;
   white-space:nowrap;
+  letter-spacing:0.5px;
 
-  pointer-events: none; /* NEVER block other clicks */
+  color:var(--dt-orange);
+  pointer-events:none; /* cannot block clicks ever */
 }
 
-/* TOUCH in gold */
-.dt-nav-text span {
+body.dt-apparel-page .dt-nav-text span {
   color:var(--dt-gold);
 }
 
-/* TRUE GLYPH SHIMMER */
-.dt-nav-text.shimmer-active {
-  background: linear-gradient(
+/* TRUE shimmer on glyphs ONLY */
+body.dt-apparel-page .dt-nav-text.shimmer-active {
+  background:linear-gradient(
     120deg,
     #ffffff33 0%,
     var(--dt-gold) 50%,
     #ffffff33 100%
   );
   background-size:200% auto;
-
   -webkit-background-clip:text;
-  color:transparent;
-
+  color:transparent !important;
   animation:textShimmer 3.5s linear infinite;
 }
 
 @keyframes textShimmer {
-  0% { background-position:200% center; }
-  100% { background-position:-200% center; }
+  from { background-position:200% center; }
+  to   { background-position:-200% center; }
 }
 
 
 /* ============================================================
-   SLIDE-OUT MENU — WORKING VERSION
+   SLIDE-OUT MENU
 ============================================================ */
 
-#dt-menu {
+body.dt-apparel-page .dt-menu-overlay {
   position:fixed;
   top:0; left:0;
   width:75%;
@@ -181,10 +151,10 @@ body.dt-apparel-page .dt-nav-hamburger span {
   background:#000;
   transform:translateX(-100%);
   transition:transform .35s ease;
-  z-index:9999; /* above everything */
+  z-index:4500;
 }
 
-#dt-menu.active {
+body.dt-apparel-page .dt-menu-overlay.active {
   transform:translateX(0);
 }
 
@@ -193,12 +163,12 @@ body.dt-apparel-page .dt-nav-hamburger span {
 }
 
 .dt-menu-close {
-  font-size:44px;
+  font-size:42px;
   background:none;
   border:none;
   color:#fff;
   cursor:pointer;
-  margin-bottom:24px;
+  margin-bottom:20px;
 }
 
 .dt-menu-logo {
@@ -210,11 +180,13 @@ body.dt-apparel-page .dt-nav-hamburger span {
   display:block;
   font-family:Cinzel, serif;
   font-size:30px;
-  margin-bottom:18px;
   color:#fff;
+
   opacity:0;
   transform:translateX(-20px);
-  transition:all .35s ease;
+  margin-bottom:18px;
+
+  transition:opacity .35s ease, transform .35s ease;
 }
 
 .dt-menu-links a.animate-in {
@@ -222,11 +194,12 @@ body.dt-apparel-page .dt-nav-hamburger span {
   transform:translateX(0);
 }
 
-.dt-menu-links a:hover {
-  opacity:.7;
-  transform:translateX(4px);
-}
 
+/* ============================================================
+   HERO, PRODUCT GRID, FOOTER (UNCHANGED)
+============================================================ */
+
+/* All your existing hero + product + footer CSS stays the same. */
 
 /* ============================================================
    HERO / MOBILE SLIDER
