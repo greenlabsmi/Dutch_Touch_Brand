@@ -110,63 +110,50 @@ body.dt-apparel-page {
   filter:drop-shadow(0 0 6px rgba(255,255,255,0.6));
 }
 
-/* ============================================================
-   NAV TEXT LOGO — CENTERED WITH GOLD SHIMMER
-============================================================ */
+/* ============================================
+   NAV TEXT LOGO — CLEAN GOLD SHIMMER (NO BOX)
+============================================ */
 
-/* center text logo in nav */
 .dt-nav-text {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1200;
+  z-index: 1100;
 
   font-family: Cinzel, serif;
   font-weight: 700;
-  font-size: 26px;
+  font-size: 28px;
   letter-spacing: 0.5px;
+
+  display: flex;
+  align-items: center;
   white-space: nowrap;
 
   color: var(--orange);
-  display: flex;
-  align-items: center;
 }
 
-/* Touch = gold */
+/* TOUCH in gold */
 .dt-nav-text span {
   color: var(--gold);
 }
 
-/* === GOLD TEXT SHIMMER (NO BOX, ONLY TEXT) === */
-.dt-nav-text {
-  position: relative;
+/* ✨ TRUE TEXT SHIMMER — ONLY SHINES ON GLYPHS */
+.dt-nav-text.shimmer-active {
   background: linear-gradient(
-      120deg,
-      #CDA45A 0%,
-      #F8E6A0 20%,
-      #FFFFFF 40%,
-      #CDA45A 60%,
-      #B78E4A 100%
+    120deg,
+    #ffffff33 0%,
+    var(--gold) 50%,
+    #ffffff33 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;             /* text becomes the shimmer surface */
-  animation: goldShimmer 3.5s linear infinite;
+  color: transparent;              /* text becomes mask */
+  animation: textShimmer 3.5s linear infinite;
 }
 
-/* Middle word stays pure gold */
-.dt-nav-text span {
-  color: var(--gold);
-  background: none !important;
-  -webkit-background-clip: unset !important;
-}
-
-/* TRUE clean shimmer */
-@keyframes goldShimmer {
-  0%   { background-position: 200% center; }
+/* smoother shimmer keyframes */
+@keyframes textShimmer {
+  0% { background-position: 200% center; }
   100% { background-position: -200% center; }
 }
 
