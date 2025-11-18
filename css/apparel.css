@@ -419,3 +419,36 @@ body.dt-apparel-page .dt-nav {
   opacity:1;
   transform:scale(1.08);
 }
+
+/* --- FIX HAMBURGER NOT CLICKING --- */
+
+/* Ensure nothing overlays the hamburger */
+.dt-nav-hamburger {
+  position: relative;
+  z-index: 5000 !important;
+  pointer-events: auto !important;
+}
+
+/* Ensure shimmer does NOT block clicks */
+.dt-nav-text::before {
+  pointer-events: none !important;
+}
+
+/* Ensure shimmer layer stays ON the text ONLY */
+.dt-nav-text {
+  position: relative;
+  z-index: 3000;
+}
+
+/* Ensure nav itself does not cover hamburger */
+.dt-nav {
+  position: relative;
+  z-index: 1000;
+}
+
+/* Prevent any accidental overlay from hero image */
+.dt-hero,
+.hero-desktop {
+  position: relative;
+  z-index: 1;
+}
