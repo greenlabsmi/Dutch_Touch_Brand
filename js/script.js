@@ -1,9 +1,7 @@
 // ============================================================
-// DUTCH TOUCH • GLOBAL HOMEPAGE JS (PATCHED & STABLE)
-// Slide-out menu • Outside click • Hero rotation • Sticky Nav
+// DUTCH TOUCH • GLOBAL HOMEPAGE JS (CLEAN & FIXED)
 // ============================================================
 
-// Make toggleMenu globally accessible BEFORE DOMContentLoaded
 let toggleMenu;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -28,23 +26,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------------------------------------
   // SLIDE-OUT MENU
   // ------------------------------------------------------------
-  const menu = document.getElementById("dt-menu");
+  const menu = document.getElementById("dt-menu");   // ✔ correct ID
   const menuToggleBtn = document.querySelector(".dt-nav-hamburger");
   const menuCloseBtn = document.querySelector(".dt-menu-close");
   const body = document.body;
 
-  // GLOBAL toggleMenu (fixes onclick error)
+  // SINGLE correct toggle function
   toggleMenu = function () {
     menu.classList.toggle("active");
     body.classList.toggle("no-scroll");
 
-    // Animate links when opening
     if (menu.classList.contains("active")) {
       animateMenuLinks();
     }
   };
 
-  // Hamburger button
+  // Hamburger click
   if (menuToggleBtn) {
     menuToggleBtn.addEventListener("click", toggleMenu);
   }
@@ -54,9 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
     menuCloseBtn.addEventListener("click", toggleMenu);
   }
 
-
   // ------------------------------------------------------------
-  // CLICK OUTSIDE TO CLOSE MENU
+  // CLICK OUTSIDE TO CLOSE
   // ------------------------------------------------------------
   document.addEventListener("click", (e) => {
     if (!menu.classList.contains("active")) return;
@@ -69,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleMenu();
     }
   });
-
 
   // ------------------------------------------------------------
   // ANIMATED MENU LINKS
@@ -88,66 +83,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
- // ------------------------------------------------------------
-// HERO CAROUSEL (STATIC FADE)
-// ------------------------------------------------------------
-const slides = document.querySelectorAll(".hero-slide");
-let currentSlide = 0;
+  // ------------------------------------------------------------
+  // HERO CAROUSEL
+  // ------------------------------------------------------------
+  const slides = document.querySelectorAll(".hero-slide");
+  let currentSlide = 0;
 
-function showNextSlide() {
-  if (slides.length <= 1) return;
+  function showNextSlide() {
+    if (slides.length <= 1) return;
 
-  // remove active from all slides first (safety)
-  slides.forEach(slide => slide.classList.remove("active"));
+    slides.forEach(slide => slide.classList.remove("active"));
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("active");
+  }
 
-  // move to next
-  currentSlide = (currentSlide + 1) % slides.length;
-
-  // activate current
-  slides[currentSlide].classList.add("active");
-}
-
-// Initialize
-if (slides.length > 0) {
-  // ensure only the first slide starts as active
-  slides.forEach((slide, index) => {
-    slide.classList.toggle("active", index === 0);
-  });
-
-  setInterval(showNextSlide, 6000);
-}
+  if (slides.length > 0) {
+    slides.forEach((slide, index) => {
+      slide.classList.toggle("active", index === 0);
+    });
+    setInterval(showNextSlide, 6000);
+  }
 
   // ------------------------------------------------------------
-  // APPEARING ANIMATIONS (future use)
+  // DESKTOP LOGO SLIDE-IN
   // ------------------------------------------------------------
-  const animateEls = document.querySelectorAll(".animate-up");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  animateEls.forEach((el) => observer.observe(el));
-
-
-  // ------------------------------------------------------------
-  // DESKTOP NAV LOGO ANIMATION
-  // ------------------------------------------------------------
-  const desktop = window.matchMedia("(min-width: 768px)");
-
-  if (desktop.matches) {
+  if (window.innerWidth >= 768) {
     const logo = document.querySelector(".dt-nav-logo");
     if (logo) {
-      setTimeout(() => {
-        logo.classList.add("animate");
-      }, 200); // slight delay prevents layout shift
+      setTimeout(() => logo.classList.add("animate"), 200);
     }
   }
 
