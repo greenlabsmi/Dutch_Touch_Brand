@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.getElementById("dtNav");
 
   function updateNavOnScroll() {
-    if (window.scrollY > 10) {
+    if (window.scrollY > 40) {
       nav.classList.add("scrolled");
     } else {
       nav.classList.remove("scrolled");
