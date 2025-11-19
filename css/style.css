@@ -94,7 +94,7 @@ body.dt-home .dt-nav.scrolled {
 .dt-nav-left {
   display:flex;
   align-items:center;
-  gap:12px;      
+  gap:12px;
   position:relative;
   z-index:1500;   /* ensures lion never hides */
 }
@@ -150,7 +150,7 @@ body.dt-home .dt-nav-hamburger {
 }
 
 /* ============================================
-   NAV TEXT LOGO (Solid text + Gold shimmer overlay)
+   NAV TEXT LOGO (Solid text + Gold shimmer)
 ============================================ */
 
 body.dt-home .dt-nav-text {
@@ -168,15 +168,16 @@ body.dt-home .dt-nav-text {
   align-items: center;
   white-space: nowrap;
 
-  color: var(--orange);     /* <- Dutch & Genetics stay solid orange */
+  color: var(--orange);     /* Dutch & Genetics = orange */
 }
 
-/* TOUCH stays pure gold */
+/* TOUCH word = animated warm gold pulse */
 .dt-nav-text span {
   color: var(--gold);
+  animation: goldPulse 3.2s ease-in-out infinite alternate;
 }
 
-/* === GOLD SHIMMER OVERLAY === */
+/* === GOLD SHIMMER OVERLAY ACROSS ENTIRE TEXT === */
 .dt-nav-text::before {
   content: "";
   position: absolute;
@@ -190,15 +191,31 @@ body.dt-home .dt-nav-text {
       transparent 100%
   );
   background-size: 300% 100%;
-  animation: goldShine 4.5s linear infinite;  /* slower shimmer */
-  mix-blend-mode: screen;                      /* <- makes it look like real light */
+  animation: goldShine 4.5s linear infinite;
+  mix-blend-mode: screen;   /* makes it feel like real light */
   pointer-events: none;
 }
 
-/* Slower, smoother shimmer */
+/* Slower, smoother shimmer pass */
 @keyframes goldShine {
   0%   { background-position: 200% 0; }
   100% { background-position: -200% 0; }
+}
+
+/* Warm gold pulse JUST on "Touch" */
+@keyframes goldPulse {
+  0% {
+    color: #CDA45A; /* base gold */
+    text-shadow: 0 0 0 rgba(0,0,0,0);
+  }
+  50% {
+    color: #FFD98A; /* brighter highlight gold */
+    text-shadow: 0 0 8px rgba(255,217,138,0.6);
+  }
+  100% {
+    color: #CDA45A;
+    text-shadow: 0 0 0 rgba(0,0,0,0);
+  }
 }
 
 /* Desktop only */
@@ -255,33 +272,40 @@ body.dt-home .dt-nav-text {
   transition: transform .35s ease;
   box-shadow: 4px 0 20px rgba(0,0,0,0.6);
 
-  pointer-events: none;   /* <-- IMPORTANT */
-  opacity: 0;             /* hidden */
+  pointer-events: none;   /* hidden by default */
+  opacity: 0;
 }
 
 .dt-menu-overlay.active {
   transform: translateX(0);
-  pointer-events: auto;   /* <-- clickable when open */
+  pointer-events: auto;   /* clickable when open */
   opacity: 1;
 }
 
-/* Only INNER stays interactive */
+/* Inner content – tightened padding so links sit higher & closer left */
 .dt-menu-inner {
   pointer-events: auto;
-  padding: 28px;
+  padding: 18px 20px 24px;
 }
 
+/* Close button */
 .dt-menu-close {
   font-size: 42px;
   background: none;
   border: none;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
+/* Logo slightly smaller + less gap */
 .dt-menu-logo {
-  height: 48px;
-  margin-bottom: 30px;
+  height: 40px;
+  margin-bottom: 18px;
+}
+
+/* Small top margin before first link for breathing room */
+.dt-menu-links {
+  margin-top: 8px;
 }
 
 .dt-menu-links a {
@@ -289,7 +313,7 @@ body.dt-home .dt-nav-text {
   color: #fff;
   font-family: Cinzel, serif;
   font-size: 30px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   opacity: .85;
   transform: translateY(0) scale(1);
   transition: opacity .25s ease, transform .25s ease, text-shadow .25s ease;
@@ -301,6 +325,7 @@ body.dt-home .dt-nav-text {
   text-shadow: 0 0 10px rgba(230,122,0,0.35),
                0 0 16px rgba(230,122,0,0.20);
 }
+
 
 /* ============================================================
    HERO WRAPPER — REQUIRED FOR STATIC SLIDES
@@ -315,13 +340,14 @@ body.dt-home .dt-nav-text {
   padding-top:72px;   /* nav height */
 }
 
-/* Slightly shorter on bigger screens so it doesn’t feel too huge */
+/* Slightly shorter on bigger screens */
 @media (min-width: 900px) {
   .dt-hero,
   .dt-hero-home {
     height:85vh;
   }
 }
+
 
 /* ============================================================
    HERO SECTION (STATIC SLIDES)
@@ -362,7 +388,7 @@ body.dt-home .dt-nav-text {
   left:20px;
   bottom:32px;
   max-width:480px;
-  z-index:3;     /* ← always above image */
+  z-index:3;     /* above image */
 }
 
 .hero-eyebrow {
@@ -395,6 +421,7 @@ body.dt-home .dt-nav-text {
   font-size:14px;
   font-weight:600;
 }
+
 
 /* ==== FULL-IMAGE JEETER STYLE TILES ==== */
 
@@ -437,6 +464,7 @@ body.dt-home .dt-nav-text {
   }
 }
 
+
 /* ============================================================
    SIMPLE SECTION (FIND US)
 ============================================================ */
@@ -457,6 +485,7 @@ body.dt-home .dt-nav-text {
   color:var(--muted);
   font-size:14px;
 }
+
 
 /* ============================================================
    FOOTER — JEETER STYLE
