@@ -1,5 +1,12 @@
 console.log("HOME SCRIPT LOADED");
 
+// Make sure toggleMenu exists for safety (prevents inline onclick errors)
+function toggleMenu() {
+  const menu = document.getElementById("dt-menu");
+  menu.classList.toggle("active");
+  document.body.classList.toggle("no-scroll");
+}
+
 // ==========================
 // HOME PAGE JS ONLY
 // ==========================
