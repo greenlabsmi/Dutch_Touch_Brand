@@ -63,7 +63,7 @@ a {
    NAV (JEETER STYLE — FIXED • CLEANED • RESPONSIVE)
 ============================================================ */
 
-.dt-nav {
+body.dt-home .dt-nav {
   position: fixed;
   top:0;
   left:0;
@@ -82,7 +82,7 @@ a {
 }
 
 /* Solid on scroll */
-.dt-nav.scrolled {
+body.dt-home .dt-nav.scrolled {
   background:var(--nav-bg-solid);
   backdrop-filter: blur(8px);
   box-shadow:0 2px 14px rgba(0,0,0,0.55);
@@ -100,7 +100,7 @@ a {
 }
 
 /* HAMBURGER */
-.dt-nav-hamburger {
+body.dt-home .dt-nav-hamburger {
   width:32px;
   height:22px;
   display:flex;
@@ -153,7 +153,7 @@ a {
    NAV TEXT LOGO (Solid text + Gold shimmer overlay)
 ============================================ */
 
-.dt-nav-text {
+body.dt-home .dt-nav-text {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -256,7 +256,7 @@ a {
 }
 
 /* FORCE MENU ABOVE NAV */
-#dt-menu {
+body.dt-home #dt-menu {
   position: fixed;            /* ensures its own stacking context */
   z-index: 9999 !important;   /* sits above ALL nav elements */
   top: 0;
