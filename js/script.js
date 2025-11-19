@@ -1,3 +1,5 @@
+console.log("HOME SCRIPT LOADED");
+
 // ==========================
 // HOME PAGE JS ONLY
 // ==========================
