@@ -1,13 +1,15 @@
 // ==========================
-// HOME PAGE NAV ONLY
+// HOME PAGE JS (Fixed + Clean)
 // ==========================
 
-// Make toggleMenu() available globally
+// Make toggleMenu a global function
 let toggleMenu;
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Transparent → Solid scroll
+  // ------------------------------------------------------------
+  // NAV: Transparent → Solid on scroll
+  // ------------------------------------------------------------
   const nav = document.querySelector(".dt-home .dt-nav");
 
   const updateNavOnScroll = () => {
@@ -22,7 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", updateNavOnScroll);
 
 
-  // Slide-out menu
+  // ------------------------------------------------------------
+  // SLIDE-OUT MENU
+  // ------------------------------------------------------------
   const menu = document.getElementById("dt-menu");
   const hamburger = document.querySelector(".dt-home .dt-nav-hamburger");
 
@@ -35,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.addEventListener("click", toggleMenu);
   }
 
-  // Close when clicking outside
+  // Close on outside click
   document.addEventListener("click", (e) => {
     if (!menu.classList.contains("active")) return;
     if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
@@ -43,22 +47,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-});
-
 
   // ------------------------------------------------------------
-  // NAV TEXT LOGO — ACTIVATE SHIMMER
+  // NAV TEXT LOGO — SHIMMER ACTIVATION
   // ------------------------------------------------------------
   const navText = document.querySelector(".dt-nav-text");
-  if (navText) {
-    navText.classList.add("shimmer-active");
-  }
+  if (navText) navText.classList.add("shimmer-active");
 
 
   // ------------------------------------------------------------
   // FADE-IN OBSERVER
   // ------------------------------------------------------------
   const fadeEls = document.querySelectorAll(".fade-in");
+
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
@@ -68,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     },
-    { threshold: 0.2, rootMargin: "0px 0px -40px 0px" }
+    { threshold: 0.2 }
   );
 
   fadeEls.forEach(el => observer.observe(el));
@@ -88,9 +89,10 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.add("is-active");
 
       productCards.forEach(card => {
-        const cat = card.dataset.category;
-        if (filter === "all" || cat === filter) card.classList.remove("is-hidden");
-        else card.classList.add("is-hidden");
+        card.classList.toggle(
+          "is-hidden",
+          filter !== "all" && card.dataset.category !== filter
+        );
       });
     });
   });
@@ -120,35 +122,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // QUICK ADD (placeholder)
   // ------------------------------------------------------------
   document.querySelectorAll(".quick-add").forEach(btn => {
-    btn.addEventListener("click", (e) => {
+    btn.addEventListener("click", e => {
       e.preventDefault();
       const card = btn.closest(".product-card");
-      const name = card.querySelector("h3")?.textContent || "Item";
-      console.log("Quick View:", name);
+      console.log("Quick View:", card.querySelector("h3")?.textContent);
     });
   });
 
+
+  // ------------------------------------------------------------
+  // MOBILE HERO SLIDER (<900px)
+  // ------------------------------------------------------------
+  if (window.innerWidth <= 900) {
+    const slides = document.querySelectorAll(".hero-mobile-slide");
+    if (slides.length > 0) {
+      let index = 0;
+      slides[index].classList.add("active");
+
+      setInterval(() => {
+        slides[index].classList.remove("active");
+        index = (index + 1) % slides.length;
+        slides[index].classList.add("active");
+      }, 3500);
+    }
+  }
+
 }); // END DOMContentLoaded
-
-
-
-// ============================================================
-// MOBILE HERO SLIDER (<900px)
-// ============================================================
-function initMobileHeroSlider() {
-  if (window.innerWidth > 900) return;
-
-  const slides = document.querySelectorAll(".hero-mobile-slide");
-  if (!slides.length) return;
-
-  let index = 0;
-  slides[index].classList.add("active");
-
-  setInterval(() => {
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
-  }, 3500);
-}
-
-document.addEventListener("DOMContentLoaded", initMobileHeroSlider);
