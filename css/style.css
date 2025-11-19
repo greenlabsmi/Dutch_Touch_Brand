@@ -265,9 +265,8 @@ body.dt-home .dt-nav-text {
   opacity: 1;
 }
 
-.dt-menu-overlay,
 .dt-menu-inner {
-  pointer-events: auto;
+  pointer-events: auto;  /* menu inner stays clickable */
 }
 
 .dt-menu-inner {
