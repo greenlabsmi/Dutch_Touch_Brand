@@ -255,53 +255,51 @@ body.dt-home .dt-nav-text {
   transition: transform .35s ease;
   box-shadow: 4px 0 20px rgba(0,0,0,0.6);
 
-  pointer-events: none;     /* <-- ADD THIS */
-  opacity: 0;               /* <-- OPTIONAL: helps hide it fully */
+  pointer-events: none;   /* <-- IMPORTANT */
+  opacity: 0;             /* hidden */
 }
 
 .dt-menu-overlay.active {
   transform: translateX(0);
-  pointer-events: auto;     /* <-- CLICKABLE WHEN OPEN */
+  pointer-events: auto;   /* <-- clickable when open */
   opacity: 1;
 }
 
+/* Only INNER stays interactive */
 .dt-menu-inner {
-  pointer-events: auto;  /* menu inner stays clickable */
-}
-
-.dt-menu-inner {
-  padding:28px;
+  pointer-events: auto;
+  padding: 28px;
 }
 
 .dt-menu-close {
-  font-size:42px;
-  background:none;
-  border:none;
-  color:#fff;
-  margin-bottom:20px;
+  font-size: 42px;
+  background: none;
+  border: none;
+  color: #fff;
+  margin-bottom: 20px;
 }
 
 .dt-menu-logo {
-  height:48px;
-  margin-bottom:30px;
+  height: 48px;
+  margin-bottom: 30px;
 }
 
 .dt-menu-links a {
-  display:block;
-  color:#fff;
-  font-family:Cinzel, serif;
-  font-size:30px;
-  margin-bottom:18px;
-  opacity:.85;
-  transform:translateY(0) scale(1);
-  transition:opacity .25s ease, transform .25s ease, text-shadow .25s ease;
+  display: block;
+  color: #fff;
+  font-family: Cinzel, serif;
+  font-size: 30px;
+  margin-bottom: 18px;
+  opacity: .85;
+  transform: translateY(0) scale(1);
+  transition: opacity .25s ease, transform .25s ease, text-shadow .25s ease;
 }
 
 .dt-menu-links a:hover {
-  opacity:1;
-  transform:translateY(-2px) scale(1.08);
-  text-shadow:0 0 10px rgba(230,122,0,0.35),
-              0 0 16px rgba(230,122,0,0.20);
+  opacity: 1;
+  transform: translateY(-2px) scale(1.08);
+  text-shadow: 0 0 10px rgba(230,122,0,0.35),
+               0 0 16px rgba(230,122,0,0.20);
 }
 
 /* ============================================================
