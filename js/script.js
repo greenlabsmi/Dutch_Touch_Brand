@@ -1,67 +1,49 @@
-// ============================================================
-// DUTCH TOUCH • APPAREL PAGE JS
-// Nav shimmer • Working hamburger menu • Filters • Carousel
-// ============================================================
+// ==========================
+// HOME PAGE NAV ONLY
+// ==========================
 
-// Make toggleMenu available to HTML onclick
+// Make toggleMenu() available globally
 let toggleMenu;
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ------------------------------------------------------------
-  // NAVBAR TRANSPARENT → SOLID ON SCROLL
-  // ------------------------------------------------------------
-  const nav = document.querySelector(".dt-nav");
+  // Transparent → Solid scroll
+  const nav = document.querySelector(".dt-home .dt-nav");
 
-  function handleNavScroll() {
+  const updateNavOnScroll = () => {
     if (window.scrollY > 10) {
       nav.classList.add("scrolled");
     } else {
       nav.classList.remove("scrolled");
     }
-  }
-
-  handleNavScroll();
-  window.addEventListener("scroll", handleNavScroll);
-
-
-  // ------------------------------------------------------------
-  // SLIDE-OUT MENU (LEFT SIDE)
-  // ------------------------------------------------------------
-  const menu = document.getElementById("dt-menu");
-  const body = document.body;
-  const hamburger = document.querySelector(".dt-nav-hamburger");
-  const closeBtn = document.querySelector(".dt-menu-close");
-
-  toggleMenu = function () {
-    menu.classList.toggle("active");
-    body.classList.toggle("no-scroll");
-
-    if (menu.classList.contains("active")) {
-      animateMenuLinks();
-    }
   };
 
-  if (hamburger) hamburger.addEventListener("click", toggleMenu);
-  if (closeBtn) closeBtn.addEventListener("click", toggleMenu);
+  updateNavOnScroll();
+  window.addEventListener("scroll", updateNavOnScroll);
 
-  // Click outside to close
+
+  // Slide-out menu
+  const menu = document.getElementById("dt-menu");
+  const hamburger = document.querySelector(".dt-home .dt-nav-hamburger");
+
+  toggleMenu = () => {
+    menu.classList.toggle("active");
+    document.body.classList.toggle("no-scroll");
+  };
+
+  if (hamburger) {
+    hamburger.addEventListener("click", toggleMenu);
+  }
+
+  // Close when clicking outside
   document.addEventListener("click", (e) => {
     if (!menu.classList.contains("active")) return;
-
-    const insideMenu = menu.contains(e.target);
-    const clickedHamburger = hamburger.contains(e.target);
-
-    if (!insideMenu && !clickedHamburger) toggleMenu();
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      toggleMenu();
+    }
   });
 
-  function animateMenuLinks() {
-    const links = document.querySelectorAll(".dt-menu-links a");
-    links.forEach((link, i) => {
-      link.classList.remove("animate-in");
-      setTimeout(() => link.classList.add("animate-in"), 90 * i);
-    });
-  }
+});
 
 
   // ------------------------------------------------------------
