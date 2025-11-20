@@ -62,8 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // NAV TEXT SHIMMER
   // -----------------------------
   const navText = document.querySelector(".dt-nav-text");
-  if (navText) navText.classList.add("shimmer-active");
-
 
   // -----------------------------
   // MOBILE HERO SLIDER (<900px)
