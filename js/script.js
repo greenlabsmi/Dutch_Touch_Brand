@@ -1,87 +1,112 @@
-console.log("HOME SCRIPT LOADED");
+console.log("DTG SCRIPT LOADED");
 
-// Make sure toggleMenu exists for safety (prevents inline onclick errors)
+// ===================================================================
+// GLOBAL: MENU TOGGLE FUNCTION (used by inline onclick)
+// ===================================================================
 function toggleMenu() {
   const menu = document.getElementById("dt-menu");
-  menu.classList.toggle("active");
-  document.body.classList.toggle("no-scroll");
+  if (!menu) return;
+
+  const isOpen = menu.classList.toggle("active");
+  document.body.classList.toggle("no-scroll", isOpen);
+
+  if (isOpen) {
+    revealMenuLinks();
+  } else {
+    resetMenuLinks();
+  }
 }
 
-// ==========================
-// HOME PAGE JS ONLY
-// ==========================
-
+// ===================================================================
+// DOM LOADED
+// ===================================================================
 document.addEventListener("DOMContentLoaded", () => {
-
   console.log("DOM READY");
 
-  // -----------------------------
-  // NAV SCROLL (Transparent → Solid)
-  // -----------------------------
-  const nav = document.querySelector(".dt-home .dt-nav");
+  const body = document.body;
 
-  function updateNav() {
-    if (!nav) return;
-    if (window.scrollY > 10) nav.classList.add("scrolled");
-    else nav.classList.remove("scrolled");
-  }
+  // ---------------------------------------------------------------
+  // HOMEPAGE ONLY
+  // ---------------------------------------------------------------
+  if (body.classList.contains("dt-home")) {
+    console.log("HOMEPAGE JS ACTIVE");
 
-  updateNav();
-  window.addEventListener("scroll", updateNav);
+    // ============================
+    // NAV SCROLL → SOLID
+    // ============================
+    const nav = document.querySelector(".dt-home .dt-nav");
 
-
-  // -----------------------------
-  // HAMBURGER MENU
-  // -----------------------------
-  const menu = document.getElementById("dt-menu");
-  const hamburger = document.querySelector(".dt-home .dt-nav-hamburger");
-
-  if (!hamburger) {
-    console.warn("Hamburger NOT FOUND");
-  } else {
-    console.log("Hamburger FOUND:", hamburger);
-
-    hamburger.addEventListener("click", () => {
-      menu.classList.toggle("active");
-      document.body.classList.toggle("no-scroll");
-    });
-  }
-
-
-  // CLOSE WHEN CLICKING OUTSIDE
-  document.addEventListener("click", (e) => {
-    if (!menu.classList.contains("active")) return;
-    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
-      menu.classList.remove("active");
-      document.body.classList.remove("no-scroll");
+    function updateNav() {
+      if (!nav) return;
+      if (window.scrollY > 10) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
     }
-  });
 
+    updateNav();
+    window.addEventListener("scroll", updateNav);
 
-  // -----------------------------
-  // NAV TEXT SHIMMER
-  // -----------------------------
-  const navText = document.querySelector(".dt-nav-text");
+    // ============================
+    // HAMBURGER HANDLER
+    // ============================
+    const hamburger = document.querySelector(".dt-home .dt-nav-hamburger");
+    const menu = document.getElementById("dt-menu");
 
-  // -----------------------------
-  // MOBILE HERO SLIDER (<900px)
-  // -----------------------------
-  function initMobileHeroSlider() {
-    if (window.innerWidth > 900) return;
+    if (hamburger) {
+      hamburger.addEventListener("click", () => {
+        toggleMenu();
+      });
+    }
 
-    const slides = document.querySelectorAll(".hero-mobile-slide");
-    if (!slides.length) return;
+    // ============================
+    // CLOSE WHEN CLICKING OUTSIDE
+    // ============================
+    document.addEventListener("click", (e) => {
+      if (!menu) return;
+      if (!menu.classList.contains("active")) return;
 
-    let index = 0;
-    slides[index].classList.add("active");
+      const clickedInsideMenu = menu.contains(e.target);
+      const clickedHamburger = hamburger && hamburger.contains(e.target);
 
-    setInterval(() => {
-      slides[index].classList.remove("active");
-      index = (index + 1) % slides.length;
-      slides[index].classList.add("active");
-    }, 3500);
+      if (!clickedInsideMenu && !clickedHamburger) {
+        toggleMenu();
+      }
+    });
+
+    // ============================
+    // MOBILE HERO SLIDER
+    // ============================
+    if (window.innerWidth <= 900) {
+      const slides = document.querySelectorAll(".hero-mobile-slide");
+      if (slides.length > 0) {
+        let index = 0;
+        slides[index].classList.add("active");
+
+        setInterval(() => {
+          slides[index].classList.remove("active");
+          index = (index + 1) % slides.length;
+          slides[index].classList.add("active");
+        }, 3500);
+      }
+    }
   }
+});
 
-  initMobileHeroSlider();
+// ===================================================================
+// MENU LINK CASCADE ANIMATION
+// ===================================================================
+function revealMenuLinks() {
+  const links = document.querySelectorAll("#dt-menu .dt-menu-links a");
+  if (!links.length) return;
 
-}); // END DOMContentLoaded
+  links.forEach((link, i) => {
+    link.classList.remove("revealed"); // reset fresh
+    setTimeout(() => {
+      link.classList.add("revealed");
+    }, 120 * i); // stagger timing
+  });
+}
+
+function resetMenuLinks() {
+  const links = document.querySelectorAll("#dt-menu .dt-menu-links a");
+  links.forEach((link) => link.classList.remove("revealed"));
+}
