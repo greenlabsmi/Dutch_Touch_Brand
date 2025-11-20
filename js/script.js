@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ============================
     // NAV SCROLL → SOLID
     // ============================
-    const nav = document.querySelector(".dt-home .dt-nav");
+    const nav = document.getElementById("dtNav");
 
     function updateNav() {
       if (!nav) return;
@@ -73,19 +73,58 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ============================
-    // MOBILE HERO SLIDER
+    // HERO CAROUSEL — OPTION A (CROSSFADE)
     // ============================
-    if (window.innerWidth <= 900) {
-      const slides = document.querySelectorAll(".hero-mobile-slide");
-      if (slides.length > 0) {
-        let index = 0;
-        slides[index].classList.add("active");
+    const slides = document.querySelectorAll(".dt-home .hero-slide");
+    if (slides.length > 0) {
+      let current = 0;
 
+      // Ensure only first is active at start
+      slides.forEach((slide, index) => {
+        slide.classList.toggle("active", index === 0);
+      });
+
+      if (slides.length > 1) {
         setInterval(() => {
-          slides[index].classList.remove("active");
-          index = (index + 1) % slides.length;
-          slides[index].classList.add("active");
-        }, 3500);
+          const prev = current;
+          current = (current + 1) % slides.length;
+
+          slides[prev].classList.remove("active");
+          slides[current].classList.add("active");
+        }, 6000); // 6s between slides
+      }
+    }
+
+    // ============================
+    // TILE SCROLL ANIMATION (Strength B, staggered)
+    // ============================
+    const tiles = document.querySelectorAll(".dt-home .dt-grid .dt-tile");
+
+    if (tiles.length > 0) {
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const el = entry.target;
+                const index = Array.from(tiles).indexOf(el);
+                const delay = 0.14 * index; // 140ms stagger
+
+                el.style.transitionDelay = `${delay}s`;
+                el.classList.add("dt-tile-visible");
+                observer.unobserve(el);
+              }
+            });
+          },
+          {
+            threshold: 0.35,
+          }
+        );
+
+        tiles.forEach((tile) => observer.observe(tile));
+      } else {
+        // Fallback: reveal immediately if IntersectionObserver not supported
+        tiles.forEach((tile) => tile.classList.add("dt-tile-visible"));
       }
     }
   }
