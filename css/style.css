@@ -176,7 +176,6 @@ body.dt-home .dt-nav-icons img:hover {
   width:75%;
   max-width:320px;
   height:100%;
-  background:#000;
 
   transform:translateX(-100%);
   opacity:0;
