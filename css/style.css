@@ -458,3 +458,91 @@ body.dt-home .dt-nav-icons img:hover {
   color:var(--muted);
   opacity:.7;
 }
+
+/* ============================================================
+   MOBILE NAV FIXES — ICON SIZE + RIGHT ALIGN
+============================================================ */
+
+@media (max-width: 768px) {
+  body.dt-home .dt-nav-icons {
+    justify-content: flex-end;
+    padding-right: 6px;
+  }
+
+  body.dt-home .dt-nav-icons img {
+    width: 20px;
+    height: 20px;
+  }
+
+  body.dt-home .dt-nav-logo img {
+    height: 26px;
+  }
+
+  body.dt-home .dt-nav-hamburger {
+    width: 30px;
+    height: 20px;
+  }
+
+  body.dt-home .dt-nav-hamburger span {
+    height: 3px;
+  }
+}
+
+/* ============================================================
+   TILE FIX — ENSURE FULL WIDTH ON MOBILE
+============================================================ */
+
+@media (max-width: 768px) {
+  .dt-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dt-tile {
+    width: 100%;
+    height: 240px;
+  }
+}
+
+/* ============================================================
+   PREMIUM GOLD GLOW (MOBILE + DESKTOP)
+============================================================ */
+
+.dt-tile {
+  box-shadow:
+    0 16px 32px rgba(0,0,0,0.55),
+    0 1px 4px rgba(205,164,90,0.28),    /* gold undertone */
+    0 0 18px rgba(205,164,90,0.08);    /* soft halo */
+}
+
+/* Hover effect enhances glow on desktop */
+@media (min-width: 768px) {
+  .dt-tile:hover {
+    box-shadow:
+      0 22px 42px rgba(0,0,0,0.7),
+      0 1px 5px rgba(205,164,90,0.35),
+      0 0 20px rgba(205,164,90,0.12);
+  }
+}
+
+/* ============================================================
+   SLIDE-IN ANIMATION — LUXURY ENTRANCE
+============================================================ */
+
+@keyframes dtTileFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dt-tile {
+  animation: dtTileFadeIn 0.9s ease-out both;
+}
