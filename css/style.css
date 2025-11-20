@@ -191,9 +191,12 @@ body.dt-home .dt-nav-icons img:hover {
   background: #000;
 
   transform: translateX(-100%);
-  transition: transform .45s cubic-bezier(0.25, 0.8, 0.25, 1);
   opacity: 0;
   pointer-events: none;
+
+  /* smooth Jeeter-style slide */
+  transition: transform .45s cubic-bezier(0.25, 0.8, 0.25, 1),
+              opacity .35s ease;
 
   z-index: 3000;
 }
@@ -204,37 +207,59 @@ body.dt-home .dt-nav-icons img:hover {
   pointer-events: auto;
 }
 
+/* Inner container */
 .dt-menu-inner {
-  padding:22px 20px;
+  padding: 22px 20px;
 }
 
+/* Close button */
 .dt-menu-close {
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:42px;
-  margin-bottom:16px;
-  cursor:pointer;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 42px;
+  margin-bottom: 16px;
+  cursor: pointer;
 }
 
+/* Menu logo */
 .dt-menu-logo {
-  height:42px;
-  margin-bottom:20px;
+  height: 42px;
+  margin-bottom: 20px;
 }
+
+/* ============================
+   CASCADING LINK ANIMATION
+============================ */
 
 .dt-menu-links a {
-  display:block;
-  font-family:Cinzel, serif;
-  font-size:30px;
-  color:#fff;
-  margin-bottom:16px;
-  opacity:.85;
-  transition:.25s ease;
+  display: block;
+  font-family: Cinzel, serif;
+  font-size: 30px;
+  color: #fff;
+
+  margin-bottom: 18px;
+
+  /* initial state (hidden + left) */
+  opacity: 0;
+  transform: translateX(-22px);
+
+  /* smooth fade/slide transition */
+  transition:
+    opacity .45s ease,
+    transform .45s ease;
 }
 
+/* When revealed by JS */
+.dt-menu-links a.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hover effect AFTER they’ve animated in */
 .dt-menu-links a:hover {
-  opacity:1;
-  transform:translateX(6px);
+  opacity: 1;
+  transform: translateX(6px);
 }
 
 /* ============================================================
