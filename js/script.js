@@ -1,7 +1,7 @@
 console.log("DTG SCRIPT LOADED");
 
 // ===================================================================
-// GLOBAL: MENU TOGGLE FUNCTION (used by inline onclick)
+// GLOBAL: MENU TOGGLE FUNCTION
 // ===================================================================
 function toggleMenu() {
   const menu = document.getElementById("dt-menu");
@@ -10,142 +10,109 @@ function toggleMenu() {
   const isOpen = menu.classList.toggle("active");
   document.body.classList.toggle("no-scroll", isOpen);
 
-  if (isOpen) {
-    revealMenuLinks();
-  } else {
-    resetMenuLinks();
-  }
+  if (isOpen) revealMenuLinks();
+  else resetMenuLinks();
 }
 
 // ===================================================================
-// DOM LOADED
-// ===================================================================
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM READY");
-
   const body = document.body;
 
-  // ---------------------------------------------------------------
-  // HOMEPAGE ONLY
-  // ---------------------------------------------------------------
-  if (body.classList.contains("dt-home")) {
-    console.log("HOMEPAGE JS ACTIVE");
+  if (!body.classList.contains("dt-home")) return;
 
-    // ============================
-    // NAV SCROLL → SOLID
-    // ============================
-    const nav = document.getElementById("dtNav");
+  // ============================
+  // NAV SCROLL
+  // ============================
+  const nav = document.getElementById("dtNav");
 
-    function updateNav() {
-      if (!nav) return;
-      if (window.scrollY > 10) nav.classList.add("scrolled");
-      else nav.classList.remove("scrolled");
-    }
+  function updateNav() {
+    if (window.scrollY > 10) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+  }
 
-    updateNav();
-    window.addEventListener("scroll", updateNav);
+  updateNav();
+  window.addEventListener("scroll", updateNav);
 
-    // ============================
-    // HAMBURGER HANDLER
-    // ============================
-    const hamburger = document.querySelector(".dt-home .dt-nav-hamburger");
-    const menu = document.getElementById("dt-menu");
+  // ============================
+  // HAMBURGER
+  // ============================
+  const hamburger = document.querySelector(".dt-nav-hamburger");
+  const menu = document.getElementById("dt-menu");
 
-    if (hamburger) {
-      hamburger.addEventListener("click", () => {
-        toggleMenu();
-      });
-    }
+  if (hamburger) {
+    hamburger.addEventListener("click", toggleMenu);
+  }
 
-    // ============================
-    // CLOSE WHEN CLICKING OUTSIDE
-    // ============================
-    document.addEventListener("click", (e) => {
-      if (!menu) return;
-      if (!menu.classList.contains("active")) return;
+  // CLOSE WHEN CLICKING OUTSIDE
+  document.addEventListener("click", (e) => {
+    if (!menu.classList.contains("active")) return;
 
-      const clickedInsideMenu = menu.contains(e.target);
-      const clickedHamburger = hamburger && hamburger.contains(e.target);
+    const inside = menu.contains(e.target);
+    const clickedHam = hamburger.contains(e.target);
 
-      if (!clickedInsideMenu && !clickedHamburger) {
-        toggleMenu();
-      }
-    });
+    if (!inside && !clickedHam) toggleMenu();
+  });
 
-    // ============================
-    // HERO CAROUSEL — OPTION A (CROSSFADE)
-    // ============================
-    const slides = document.querySelectorAll(".dt-home .hero-slide");
-    if (slides.length > 0) {
-      let current = 0;
+  // ============================
+  // HERO CROSSFADE
+  // ============================
+  const slides = document.querySelectorAll(".hero-slide");
+  let index = 0;
 
-      // Ensure only first is active at start
-      slides.forEach((slide, index) => {
-        slide.classList.toggle("active", index === 0);
-      });
+  if (slides.length > 1) {
+    setInterval(() => {
+      slides[index].classList.remove("active");
+      index = (index + 1) % slides.length;
+      slides[index].classList.add("active");
+    }, 6000);
+  }
 
-      if (slides.length > 1) {
-        setInterval(() => {
-          const prev = current;
-          current = (current + 1) % slides.length;
+  // ============================
+  // SCROLL REVEAL — TILES
+  // ============================
+  const tiles = document.querySelectorAll(".dt-grid .dt-tile");
 
-          slides[prev].classList.remove("active");
-          slides[current].classList.add("active");
-        }, 6000); // 6s between slides
-      }
-    }
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const tile = entry.target;
+            const all = Array.from(tiles);
+            const i = all.indexOf(tile);
+            const delay = 0.14 * i;
 
-    // ============================
-    // TILE SCROLL ANIMATION (Strength B, staggered)
-    // ============================
-    const tiles = document.querySelectorAll(".dt-home .dt-grid .dt-tile");
+            tile.style.transitionDelay = `${delay}s`;
+            tile.classList.add("dt-tile-visible");
 
-    if (tiles.length > 0) {
-      if ("IntersectionObserver" in window) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const el = entry.target;
-                const index = Array.from(tiles).indexOf(el);
-                const delay = 0.14 * index; // 140ms stagger
-
-                el.style.transitionDelay = `${delay}s`;
-                el.classList.add("dt-tile-visible");
-                observer.unobserve(el);
-              }
-            });
-          },
-          {
-            threshold: 0.35,
+            observer.unobserve(tile);
           }
-        );
-
-        tiles.forEach((tile) => observer.observe(tile));
-      } else {
-        // Fallback: reveal immediately if IntersectionObserver not supported
-        tiles.forEach((tile) => tile.classList.add("dt-tile-visible"));
+        });
+      },
+      {
+        threshold: 0.05, // trigger much earlier so desktop gets glow
       }
-    }
+    );
+
+    tiles.forEach((t) => observer.observe(t));
+  } else {
+    tiles.forEach((t) => t.classList.add("dt-tile-visible"));
   }
 });
 
 // ===================================================================
-// MENU LINK CASCADE ANIMATION
+// MENU LINK CASCADE
 // ===================================================================
 function revealMenuLinks() {
   const links = document.querySelectorAll("#dt-menu .dt-menu-links a");
-  if (!links.length) return;
-
   links.forEach((link, i) => {
-    link.classList.remove("revealed"); // reset fresh
-    setTimeout(() => {
-      link.classList.add("revealed");
-    }, 120 * i); // stagger timing
+    link.classList.remove("revealed");
+    setTimeout(() => link.classList.add("revealed"), 120 * i);
   });
 }
 
 function resetMenuLinks() {
-  const links = document.querySelectorAll("#dt-menu .dt-menu-links a");
-  links.forEach((link) => link.classList.remove("revealed"));
+  document
+    .querySelectorAll("#dt-menu .dt-menu-links a")
+    .forEach((link) => link.classList.remove("revealed"));
 }
