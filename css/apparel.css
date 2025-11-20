@@ -1,149 +1,130 @@
-/* ======================================================
-   DUTCH TOUCH • APPAREL PAGE STYLES (ISOLATED VERSION)
-   Fully scoped to body.dt-apparel-page
-   No conflicts with homepage or strains
-====================================================== */
+/* ============================================================
+   DUTCH TOUCH • APPAREL PAGE (ISOLATED)
+   CLEAN BUILD — COMPLETELY SCOPED TO body.dt-apparel-page
+============================================================ */
 
 /* -----------------------------
-   COLOR SYSTEM + GLOBAL VARS
+   PAGE VARIABLES (LOCAL ONLY)
 ----------------------------- */
-:root {
-  --dt-bg: #000;
-  --dt-surface: #0d0d0d;
-  --dt-surface-soft: #161616;
-  --dt-line: #2a2a2a;
-  --dt-ink: #f6f6f6;
-  --dt-muted: #9a9a9a;
+body.dt-apparel-page {
+  --bg:#000;
+  --surface:#0d0d0d;
+  --surface-soft:#161616;
+  --line:#2a2a2a;
+  --ink:#f6f6f6;
+  --muted:#9a9a9a;
+  --orange:#c76b24;
+  --gold:#d4b46a;
 
-  --dt-gold: #d4b46a;
-  --dt-orange: #c76b24;
-
-  --dt-radius: 16px;
-  --nav-bg: rgba(0,0,0,0);
-  --nav-bg-solid: rgba(0,0,0,0.95);
-  --nav-transition: background .35s ease;
+  --radius:16px;
+  --nav-bg:rgba(0,0,0,0);
+  --nav-bg-solid:rgba(0,0,0,0.95);
 }
 
 /* -----------------------------
    BASE PAGE SETUP
 ----------------------------- */
 body.dt-apparel-page {
-  background: var(--dt-bg);
-  color: var(--dt-ink);
-  font-family: Inter, sans-serif;
-  margin: 0;
-  padding-top: 64px;
-  overflow-x: hidden;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Inter, sans-serif;
+  padding-top:64px;
+  overflow-x:hidden;
 }
 
-body.dt-apparel-page img {
-  max-width: 100%;
-  display: block;
-}
-
-body.dt-apparel-page a {
-  color: inherit;
-  text-decoration: none;
-}
+body.dt-apparel-page img { max-width:100%; display:block; }
+body.dt-apparel-page a { color:inherit; text-decoration:none; }
 
 /* ============================================================
-   NAV — ISOLATED
+   NAV (ISOLATED VERSION — NO BLEED)
 ============================================================ */
-
 body.dt-apparel-page .dt-nav {
-  position: fixed;
+  position:fixed;
   top:0; left:0; right:0;
   height:64px;
-  padding:0 18px;
 
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
 
-  background: rgba(0,0,0,0);
-  transition: var(--nav-transition);
-
+  padding:0 18px;
+  background:var(--nav-bg);
+  transition:background .35s ease, backdrop-filter .35s ease;
   z-index:3000;
 }
 
 body.dt-apparel-page .dt-nav.scrolled {
-  background: var(--nav-bg-solid);
+  background:var(--nav-bg-solid);
+  backdrop-filter:blur(8px);
 }
 
 /* LOGO */
 body.dt-apparel-page .dt-nav-logo img {
-  height:50px;
+  height:42px;
   width:auto;
 }
 
-/* HAMBURGER OVERRIDE */
+/* HAMBURGER */
 body.dt-apparel-page .dt-nav-hamburger {
-  display:block !important;
-
+  display:flex !important;
+  flex-direction:column;
+  justify-content:space-between;
+  width:32px;
+  height:22px;
   background:none;
   border:none;
-  color:#fff;
   cursor:pointer;
-
-  font-size:32px;
-  line-height:1;
-  padding:6px 10px;
-
-  z-index:5000;
 }
 
 body.dt-apparel-page .dt-nav-hamburger span {
-  display:none !important;
+  height:3px;
+  width:100%;
+  background:#fff;
+  border-radius:3px;
 }
 
-/* NAV TEXT LOGO */
+/* NAV TEXT (CENTERED) */
 body.dt-apparel-page .dt-nav-text {
   position:absolute;
   left:50%;
   transform:translateX(-50%);
-  z-index:4000;
-
   font-family:Cinzel, serif;
-  font-size:28px;
+  font-size:26px;
   font-weight:700;
+  color:var(--orange);
   white-space:nowrap;
-
-  color:var(--dt-orange);
   pointer-events:none;
 }
 
 body.dt-apparel-page .dt-nav-text span {
-  color: var(--dt-gold);
+  color:var(--gold);
 }
 
-/* SHIMMER */
+/* Simple shimmer */
 body.dt-apparel-page .dt-nav-text.shimmer-active {
   background:linear-gradient(
     120deg,
     #ffffff33 0%,
-    var(--dt-gold) 50%,
+    var(--gold) 45%,
     #ffffff33 100%
   );
-  background-size:200% auto;
   -webkit-background-clip:text;
   color:transparent;
-
-  animation:textShimmer 3.5s linear infinite;
+  animation:apparelShimmer 4.5s linear infinite;
+  background-size:200% auto;
 }
 
-@keyframes textShimmer {
+@keyframes apparelShimmer {
   from { background-position:200% center; }
   to   { background-position:-200% center; }
 }
 
 /* ============================================================
-   SLIDE-OUT MENU (LEFT SIDE)
+   SLIDE-OUT MENU (LEFT PANEL)
 ============================================================ */
-
 body.dt-apparel-page .dt-menu-overlay {
   position:fixed;
   top:0; left:0;
-
   width:75%;
   max-width:320px;
   height:100%;
@@ -151,12 +132,16 @@ body.dt-apparel-page .dt-menu-overlay {
   background:#000;
   transform:translateX(-100%);
   transition:transform .35s ease;
-
   z-index:4500;
+
+  opacity:0;
+  pointer-events:none;
 }
 
 body.dt-apparel-page .dt-menu-overlay.active {
   transform:translateX(0);
+  opacity:1;
+  pointer-events:auto;
 }
 
 body.dt-apparel-page .dt-menu-inner {
@@ -165,16 +150,16 @@ body.dt-apparel-page .dt-menu-inner {
 
 body.dt-apparel-page .dt-menu-close {
   font-size:42px;
+  color:#fff;
   background:none;
   border:none;
-  color:#fff;
   cursor:pointer;
   margin-bottom:20px;
 }
 
 body.dt-apparel-page .dt-menu-logo {
   height:48px;
-  margin-bottom:30px;
+  margin-bottom:22px;
 }
 
 body.dt-apparel-page .dt-menu-links a {
@@ -196,52 +181,45 @@ body.dt-apparel-page .dt-menu-links a.animate-in {
 }
 
 /* ============================================================
-   HERO (STATIC DESKTOP + SLIDER MOBILE)
+   HERO SECTION
 ============================================================ */
-
 body.dt-apparel-page .dt-hero {
   position:relative;
   min-height:65vh;
   display:flex;
   align-items:flex-end;
-
   padding:110px 18px 40px;
 }
 
+/* Desktop Image */
 body.dt-apparel-page .hero-desktop {
   position:absolute;
   inset:0;
-
   background-size:cover;
   background-position:center;
 }
 
+/* Gradient */
 body.dt-apparel-page .hero-gradient {
   position:absolute;
   inset:0;
-
   z-index:2;
-  pointer-events:none;
-
   background:linear-gradient(
     to top,
     rgba(0,0,0,0.9) 0%,
-    rgba(0,0,0,0.3) 55%,
+    rgba(0,0,0,0.3) 50%,
     rgba(0,0,0,0) 100%
   );
 }
 
-body.dt-apparel-page .hero-mobile-slider {
-  display:none;
-}
+/* Mobile slider */
+body.dt-apparel-page .hero-mobile-slider { display:none; }
 
 body.dt-apparel-page .hero-mobile-slide {
   position:absolute;
   inset:0;
-
   background-size:cover;
   background-position:center;
-
   opacity:0;
   transition:opacity .9s ease;
 }
@@ -250,7 +228,7 @@ body.dt-apparel-page .hero-mobile-slide.active {
   opacity:1;
 }
 
-@media (max-width:900px) {
+@media(max-width:900px) {
   body.dt-apparel-page .hero-desktop { display:none; }
   body.dt-apparel-page .hero-mobile-slider { display:block; }
 }
@@ -263,7 +241,7 @@ body.dt-apparel-page .dt-hero-inner {
 }
 
 body.dt-apparel-page .hero-eyebrow {
-  color: var(--dt-gold);
+  color:var(--gold);
   text-transform:uppercase;
   letter-spacing:.18em;
   font-size:12px;
@@ -277,22 +255,21 @@ body.dt-apparel-page .hero-title {
 }
 
 body.dt-apparel-page .hero-sub {
-  color: var(--dt-muted);
+  color:var(--muted);
   margin-bottom:14px;
 }
 
 body.dt-apparel-page .btn-primary {
-  background:var(--dt-orange);
-  color:#fff;
+  display:inline-block;
+  background:var(--orange);
   padding:10px 24px;
   border-radius:999px;
-  display:inline-block;
+  color:#fff;
 }
 
 /* ============================================================
-   SECTION HEADERS
+   FILTER SECTION
 ============================================================ */
-
 body.dt-apparel-page .dt-section {
   max-width:1100px;
   margin:0 auto;
@@ -305,10 +282,6 @@ body.dt-apparel-page .dt-section-header h2 {
   margin-bottom:14px;
 }
 
-/* ============================================================
-   FILTER BUTTONS
-============================================================ */
-
 body.dt-apparel-page .dt-filters {
   display:flex;
   flex-wrap:wrap;
@@ -317,45 +290,40 @@ body.dt-apparel-page .dt-filters {
 
 body.dt-apparel-page .filter-btn {
   padding:7px 14px;
+  border-radius:999px;
 
   background:#0c0c0c;
-  border:1px solid var(--dt-line);
+  border:1px solid var(--line);
 
-  color:var(--dt-muted);
+  color:var(--muted);
   font-size:12px;
-
-  border-radius:999px;
   cursor:pointer;
 }
 
 body.dt-apparel-page .filter-btn.is-active {
   background:#161616;
-  border-color:var(--dt-orange);
+  border-color:var(--orange);
   color:#fff;
 }
 
 /* ============================================================
    PRODUCT GRID
 ============================================================ */
-
 body.dt-apparel-page .product-grid {
   display:grid;
-  gap:24px;
   grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+  gap:24px;
 }
 
 body.dt-apparel-page .product-card {
-  background:var(--dt-surface-soft);
-  border-radius:var(--dt-radius);
-
+  background:var(--surface-soft);
+  border-radius:var(--radius);
   padding:14px;
-  position:relative;
-
   box-shadow:0 15px 35px rgba(0,0,0,.55);
   transition:transform .3s ease;
 }
 
-@media (min-width:900px) {
+@media(min-width:900px) {
   body.dt-apparel-page .product-card:hover {
     transform:translateY(-6px);
   }
@@ -370,7 +338,6 @@ body.dt-apparel-page .product-media {
 /* ============================================================
    CAPSULE CAROUSEL
 ============================================================ */
-
 body.dt-apparel-page .dt-carousel {
   display:flex;
   align-items:center;
@@ -384,20 +351,17 @@ body.dt-apparel-page .carousel-track {
   scroll-snap-type:x mandatory;
 }
 
-body.dt-apparel-page .carousel-track::-webkit-scrollbar {
-  display:none;
-}
+body.dt-apparel-page .carousel-track::-webkit-scrollbar { display:none; }
 
 body.dt-apparel-page .carousel-item {
-  position:relative;
   flex:0 0 auto;
   width:220px;
 }
 
 body.dt-apparel-page .carousel-media {
   height:200px;
-  background:var(--dt-surface-soft);
-  border-radius:var(--dt-radius);
+  border-radius:var(--radius);
+  background:var(--surface-soft);
 }
 
 body.dt-apparel-page .carousel-label {
@@ -408,21 +372,18 @@ body.dt-apparel-page .carousel-label {
 /* ============================================================
    FOOTER
 ============================================================ */
-
 body.dt-apparel-page .dt-footer {
   background:#000;
-  border-top:1px solid rgba(255,255,255,0.1);
-
-  margin-top:60px;
   text-align:center;
   padding:50px 20px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  margin-top:60px;
 }
 
 body.dt-apparel-page .dt-footer-divider {
   height:6px;
-  width:100%;
+  background:var(--orange);
   border-radius:3px;
-  background:var(--dt-orange);
   margin-bottom:40px;
 }
 
@@ -434,7 +395,7 @@ body.dt-apparel-page .dt-footer-logo {
 body.dt-apparel-page .dt-footer-social img {
   width:26px;
   opacity:.85;
-  transition:opacity .25s ease, transform .25s ease;
+  transition:.25s ease;
 }
 
 body.dt-apparel-page .dt-footer-social img:hover {
@@ -443,7 +404,7 @@ body.dt-apparel-page .dt-footer-social img:hover {
 }
 
 body.dt-apparel-page .dt-footer-copy {
-  color:var(--dt-muted);
+  color:var(--muted);
   font-size:12px;
   opacity:0.7;
 }
