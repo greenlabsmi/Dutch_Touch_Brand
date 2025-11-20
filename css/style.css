@@ -179,29 +179,29 @@ body.dt-home .dt-nav-icons img:hover {
 }
 
 /* ============================================================
-   FULLSCREEN MENU — MOBILE SLIDE-IN
+   FULLSCREEN MENU — SMOOTH SLIDE-IN + CASCADING LINKS
 ============================================================ */
 
 .dt-menu-overlay {
-  position:fixed;
-  top:0; left:0;
-  width:75%;
-  max-width:320px;
-  height:100%;
-  background:#000;
+  position: fixed;
+  top: 0; left: 0;
+  width: 75%;
+  max-width: 320px;
+  height: 100%;
+  background: #000;
 
-  transform:translateX(-100%);
-  transition:transform .35s ease;
-  opacity:0;
-  pointer-events:none;
+  transform: translateX(-100%);
+  transition: transform .45s cubic-bezier(0.25, 0.8, 0.25, 1);
+  opacity: 0;
+  pointer-events: none;
 
-  z-index:3000;
+  z-index: 3000;
 }
 
 .dt-menu-overlay.active {
-  transform:translateX(0);
-  opacity:1;
-  pointer-events:auto;
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .dt-menu-inner {
