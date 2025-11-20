@@ -152,32 +152,34 @@ body.dt-home .dt-nav-text span {
 
 /* Slow shimmering “wave” across entire text logo */
 body.dt-home .dt-nav-text.shimmer-active::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 
-  background:linear-gradient(
+  background: linear-gradient(
     115deg,
     transparent 0%,
     rgba(255,230,150,0.15) 35%,
-    rgba(255,230,150,0.85) 50%,
+    rgba(255,230,150,0.90) 50%,
     rgba(255,230,150,0.15) 65%,
     transparent 100%
   );
 
-  background-size:280% 100%;
-  animation:shimmerWave 7s ease-in-out infinite;
-  mix-blend-mode:screen;
+  background-size: 320% 100%;
+  animation: shimmerWave 12s ease-in-out infinite;
+  mix-blend-mode: screen;
+  opacity: 0; /* starts invisible */
 }
 
-/* Wave shimmer — slow, watery, pauses */
+/* Wave shimmer — slow, watery, with long pauses */
 @keyframes shimmerWave {
-  0%   { background-position:220% 0; opacity:.0; }
-  10%  { opacity:.9; }
-  50%  { background-position:-120% 0; opacity:.2; }
-  90%  { opacity:.9; }
-  100% { background-position:220% 0; opacity:.0; }
+  0%   { background-position: 220% 0; opacity: 0; }
+  10%  { background-position: 220% 0; opacity: 0.92; }  /* slight brighten before movement */
+  30%  { background-position: -120% 0; opacity: 0.35; } /* slow full sweep */
+  50%  { background-position: -120% 0; opacity: 0; }    /* fades out */
+  80%  { background-position: 220% 0; opacity: 0; }     /* long rest */
+  100% { background-position: 220% 0; opacity: 0; }     /* repeats */
 }
 
 /* Gold pulse for “Touch” */
