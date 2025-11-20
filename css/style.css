@@ -143,6 +143,9 @@ body.dt-home .dt-nav.scrolled {
 
 /* ============================================
    NAV TEXT LOGO — TRUE CENTERED GRID ITEM
+   Dutch / Genetics = orange
+   Touch = gold + subtle pulse
+   Wide, slow shimmer "wave" with pause
 ============================================ */
 
 body.dt-home .dt-nav-text {
@@ -156,9 +159,9 @@ body.dt-home .dt-nav-text {
   letter-spacing: 0.5px;
   white-space: nowrap;
 
-  color: var(--orange);
+  color: var(--orange);          /* base for Dutch / Genetics */
   position: relative;
-  background: none !important;   /* FIXES ANY BOX */
+  background: none !important;
   padding: 0;
   margin: 0;
 
@@ -168,41 +171,77 @@ body.dt-home .dt-nav-text {
 /* TOUCH = warm gold pulse */
 .dt-nav-text span {
   color: var(--gold);
-  animation: goldPulse 3.5s ease-in-out infinite;
+  animation: goldTouchPulse 4.2s ease-in-out infinite;
 }
 
-/* GOLD SHIMMER */
+/* Wide soft shimmer bar over the whole wordmark */
 .dt-nav-text::before {
   content: "";
   position: absolute;
   inset: 0;
 
+  /* Wide, soft bar with low opacity edges */
   background: linear-gradient(
-    110deg,
-    transparent 0%,
-    rgba(255, 215, 130, 0.15) 35%,
-    rgba(255, 230, 150, 0.9) 50%,
-    rgba(255, 215, 130, 0.15) 65%,
-    transparent 100%
+    115deg,
+    rgba(0,0,0,0) 0%,
+    rgba(255, 215, 130, 0.08) 20%,
+    rgba(255, 230, 150, 0.35) 45%,
+    rgba(255, 230, 150, 0.55) 50%,
+    rgba(255, 215, 130, 0.35) 55%,
+    rgba(255, 215, 130, 0.08) 80%,
+    rgba(0,0,0,0) 100%
   );
 
-  background-size: 300% 100%;
-  animation: goldShine 4.8s ease-in-out infinite;
+  background-size: 260% 180%;
+  background-position: 200% 50%;
+
+  animation: goldShineWave 7.8s ease-in-out infinite;
   mix-blend-mode: screen;
   pointer-events: none;
 }
 
-/* shimmer animation */
-@keyframes goldShine {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+/* Shimmer: move, then pause (like slow waves) */
+@keyframes goldShineWave {
+  0% {
+    background-position: 220% 50%;
+    opacity: 0;
+  }
+  18% {
+    background-position: 140% 50%;
+    opacity: 0.45;
+  }
+  40% {
+    background-position: -40% 50%;
+    opacity: 0.45;
+  }
+  55% {
+    background-position: -60% 50%;
+    opacity: 0;
+  }
+  100% {
+    background-position: -60% 50%;
+    opacity: 0;
+  }
 }
 
-/* pulse animation */
-@keyframes goldPulse {
-  0%   { color: #CDA45A; text-shadow: 0 0 0 rgba(255,190,120,0); }
-  50%  { color: #FFD98A; text-shadow: 0 0 8px rgba(255,217,138,0.5); }
-  100% { color: #CDA45A; text-shadow: 0 0 0 rgba(255,190,120,0); }
+/* Subtle pulse on "Touch" only */
+@keyframes goldTouchPulse {
+  0% {
+    color: #CDA45A;
+    text-shadow: 0 0 0 rgba(255,217,138,0);
+  }
+  40% {
+    color: #FFD98A;
+    text-shadow: 0 0 6px rgba(255,217,138,0.45);
+  }
+  80% {
+    color: #CDA45A;
+    text-shadow: 0 0 0 rgba(255,217,138,0);
+  }
+  100% {
+    color: #CDA45A;
+    text-shadow: 0 0 0 rgba(255,217,138,0);
+  }
 }
 
 /* Desktop only */
@@ -211,6 +250,7 @@ body.dt-home .dt-nav-text {
     display: block;
   }
 }
+
 
 /* ============================================================
    RIGHT ICONS
