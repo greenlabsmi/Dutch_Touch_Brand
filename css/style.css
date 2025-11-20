@@ -140,51 +140,77 @@ body.dt-home .dt-nav.scrolled {
   .dt-nav-logo img { height: 36px; }
 }
 
-/* ============================================================
-   CENTER TEXT LOGO — GUARANTEED VISIBLE ON DESKTOP
-============================================================ */
-.dt-nav-text {
-  justify-self: center;
-  display: none;
+/* ============================================
+   NAV TEXT LOGO (Solid + Gold shimmer)
+============================================ */
+
+body.dt-home .dt-nav-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 2000;
 
   font-family: Cinzel, serif;
   font-weight: 700;
-  font-size: 26px;
-
-  white-space: nowrap;
+  font-size: 28px;
   letter-spacing: 0.5px;
+  white-space: nowrap;
+  display: none;
+
+  background: none !important;   /* FIXES THE BOX */
+  padding: 0;
+  margin: 0;
 
   color: var(--orange);
-  position: relative;
 }
 
-/* Touch = gold pulse */
+/* “Touch” = warm gold pulse */
 .dt-nav-text span {
   color: var(--gold);
-  animation: goldPulse 3.2s ease-in-out infinite alternate;
+  animation: goldPulse 3.5s ease-in-out infinite;
 }
 
-/* Gold shimmer pass */
+/* GOLD SHIMMER ACROSS ENTIRE TEXT */
 .dt-nav-text::before {
   content: "";
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
-    120deg,
+    110deg,
     transparent 0%,
-    rgba(205,164,90,0.4) 45%,
-    rgba(255,230,150,0.9) 50%,
-    rgba(205,164,90,0.4) 55%,
+    rgba(255, 215, 130, 0.15) 35%,
+    rgba(255, 230, 150, 0.9) 50%,
+    rgba(255, 215, 130, 0.15) 65%,
     transparent 100%
   );
+
   background-size: 300% 100%;
-  animation: goldShine 4.5s linear infinite;
+  animation: goldShine 4.8s ease-in-out infinite;
   mix-blend-mode: screen;
   pointer-events: none;
 }
 
+/* Shimmer movement */
+@keyframes goldShine {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Subtle pulse on the word "Touch" */
+@keyframes goldPulse {
+  0%   { color: #CDA45A; text-shadow: 0 0 0 rgba(255,190,120,0); }
+  50%  { color: #FFD98A; text-shadow: 0 0 8px rgba(255,217,138,0.5); }
+  100% { color: #CDA45A; text-shadow: 0 0 0 rgba(255,190,120,0); }
+}
+
+/* Desktop only */
 @media (min-width: 768px) {
-  .dt-nav-text { display: block; }
+  .dt-nav-text {
+    display: flex;
+  }
 }
 
 /* ============================================================
