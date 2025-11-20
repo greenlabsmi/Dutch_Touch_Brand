@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css?v=009">
+  <link rel="stylesheet" href="css/style.css?v=010">
 </head>
 
 <body class="dt-home">
@@ -20,7 +20,7 @@
 <header class="dt-nav" id="dtNav">
 
   <div class="dt-nav-left">
-    <button class="dt-nav-hamburger">
+    <button class="dt-nav-hamburger" aria-label="Open menu">
       <span></span>
       <span></span>
       <span></span>
@@ -32,19 +32,19 @@
   </div>
 
   <!-- DESKTOP TEXT LOGO -->
-  <div class="dt-nav-text shimmer-active">
+  <div class="dt-nav-text">
     Dutch <span>Touch</span> Genetics
   </div>
 
   <!-- RIGHT ICONS -->
   <div class="dt-nav-icons">
-    <a href="https://instagram.com/dutchrepublic_" target="_blank">
+    <a href="https://instagram.com/dutchrepublic_" target="_blank" aria-label="Instagram">
       <img src="assets/icons/instagram.svg" alt="Instagram">
     </a>
-    <a href="https://facebook.com" target="_blank">
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook">
       <img src="assets/icons/facebook.svg" alt="Facebook">
     </a>
-    <a href="https://twitter.com" target="_blank">
+    <a href="https://twitter.com" target="_blank" aria-label="Twitter">
       <img src="assets/icons/twitter.svg" alt="Twitter">
     </a>
   </div>
@@ -53,17 +53,17 @@
 
 
 <!-- =========================
-     FULLSCREEN MENU (THIS SHOULD BE OUTSIDE THE HEADER)
+     FULLSCREEN MENU
 ========================= -->
 <div id="dt-menu" class="dt-menu-overlay">
 
   <div class="dt-menu-inner">
 
     <!-- Close Button -->
-    <button class="dt-menu-close" onclick="toggleMenu()">×</button>
+    <button class="dt-menu-close" onclick="toggleMenu()" aria-label="Close menu">×</button>
 
     <!-- Menu Logo -->
-    <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo" alt="Logo">
+    <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo" alt="Dutch Touch Genetics Logo">
 
     <!-- Menu Links -->
     <nav class="dt-menu-links">
@@ -128,25 +128,25 @@
 <section class="dt-grid">
 
   <a href="apparel.html" class="dt-tile">
-    <img src="assets/img/tiles/apparel-tile.jpg" alt="Apparel">
+    <img src="assets/img/tiles/apparel-tile.jpg" alt="Dutch Touch Apparel">
   </a>
 
   <a href="deals.html" class="dt-tile">
-    <img src="assets/img/tiles/deals-tile.jpg" alt="Deals">
+    <img src="assets/img/tiles/deals-tile.jpg" alt="Dutch Touch Deals">
   </a>
 
   <a href="strains.html" class="dt-tile">
-    <img src="assets/img/tiles/strains-tile.jpg" alt="Strains">
+    <img src="assets/img/tiles/strains-tile.jpg" alt="Dutch Touch Strains">
   </a>
 
   <a href="products.html" class="dt-tile">
-    <img src="assets/img/tiles/products-tile.jpg" alt="Products">
+    <img src="assets/img/tiles/products-tile.jpg" alt="Dutch Touch Products">
   </a>
 
 </section>
 
 <!-- =========================
-     FIND US (FULL SECTION)
+     FIND US
 ========================= -->
 <section id="find-us" class="dt-section dt-section-simple">
   <h2 class="section-heading">Find Dutch Touch</h2>
@@ -167,26 +167,24 @@
 
   <!-- LEGAL LINKS -->
   <div class="dt-footer-legal">
-    <a href="#">Terms & Conditions</a>
+    <a href="#">Terms &amp; Conditions</a>
     <a href="#">Privacy Policy</a>
     <a href="#">Accessibility</a>
     <a href="#">CA Cannabis Disclosure</a>
   </div>
 
   <!-- SOCIAL -->
- <div class="dt-footer-social">
-  <a href="https://instagram.com/dutchtouchgenetics" target="_blank">
-    <img src="assets/icons/instagram.svg" alt="Instagram">
-  </a>
-
-  <a href="https://facebook.com" target="_blank">
-    <img src="assets/icons/facebook.svg" alt="Facebook">
-  </a>
-
-  <a href="https://twitter.com" target="_blank">
-    <img src="assets/icons/twitter.svg" alt="Twitter">
-  </a>
-</div>
+  <div class="dt-footer-social">
+    <a href="https://instagram.com/dutchtouchgenetics" target="_blank" aria-label="Instagram">
+      <img src="assets/icons/instagram.svg" alt="Instagram">
+    </a>
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+      <img src="assets/icons/facebook.svg" alt="Facebook">
+    </a>
+    <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+      <img src="assets/icons/twitter.svg" alt="Twitter">
+    </a>
+  </div>
 
   <!-- Copyright -->
   <p class="dt-footer-copy">© 2025 Dutch Touch Genetics. All rights reserved.</p>
@@ -198,11 +196,7 @@
 <!-- =========================
      JS
 ========================= -->
-<script src="js/script.js?v=004"></script>
-
-<script>
-console.log("INLINE JS WORKS");
-</script>
+<script src="js/script.js?v=005"></script>
 
 </body>
 </html>
