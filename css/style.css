@@ -96,6 +96,7 @@ body.dt-home .dt-nav.scrolled {
   align-items: center;
   gap: 12px;
   z-index: 1500;
+  padding-left: 10px;
 }
 
 /* HAMBURGER */
@@ -141,38 +142,36 @@ body.dt-home .dt-nav.scrolled {
 }
 
 /* ============================================
-   NAV TEXT LOGO (Solid + Gold shimmer)
+   NAV TEXT LOGO — TRUE CENTERED GRID ITEM
 ============================================ */
 
 body.dt-home .dt-nav-text {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-  z-index: 2000;
+  grid-column: 2;                /* center column of the grid */
+  justify-self: center;
+  align-self: center;
 
   font-family: Cinzel, serif;
   font-weight: 700;
   font-size: 28px;
   letter-spacing: 0.5px;
   white-space: nowrap;
-  display: none;
 
-  background: none !important;   /* FIXES THE BOX */
+  color: var(--orange);
+  position: relative;
+  background: none !important;   /* FIXES ANY BOX */
   padding: 0;
   margin: 0;
 
-  color: var(--orange);
+  display: none; /* shown only on desktop */
 }
 
-/* “Touch” = warm gold pulse */
+/* TOUCH = warm gold pulse */
 .dt-nav-text span {
   color: var(--gold);
   animation: goldPulse 3.5s ease-in-out infinite;
 }
 
-/* GOLD SHIMMER ACROSS ENTIRE TEXT */
+/* GOLD SHIMMER */
 .dt-nav-text::before {
   content: "";
   position: absolute;
@@ -193,13 +192,13 @@ body.dt-home .dt-nav-text {
   pointer-events: none;
 }
 
-/* Shimmer movement */
+/* shimmer animation */
 @keyframes goldShine {
-  0%   { background-position: 200% 0; }
+  0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
 
-/* Subtle pulse on the word "Touch" */
+/* pulse animation */
 @keyframes goldPulse {
   0%   { color: #CDA45A; text-shadow: 0 0 0 rgba(255,190,120,0); }
   50%  { color: #FFD98A; text-shadow: 0 0 8px rgba(255,217,138,0.5); }
@@ -209,7 +208,7 @@ body.dt-home .dt-nav-text {
 /* Desktop only */
 @media (min-width: 768px) {
   .dt-nav-text {
-    display: flex;
+    display: block;
   }
 }
 
@@ -222,6 +221,7 @@ body.dt-home .dt-nav-text {
   align-items: center;
   gap: 14px;
   z-index: 1500;
+  padding-right: 10px;
 }
 
 .dt-nav-icons img {
