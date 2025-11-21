@@ -69,7 +69,7 @@ body.dt-home .dt-nav {
   height:72px;
 
   display:grid;
-  grid-template-columns:auto 1fr auto; /* left | center | right */
+  grid-template-columns:auto 1fr auto;
   align-items:center;
 
   padding:0 16px;
@@ -166,7 +166,7 @@ body.dt-home .dt-nav-icons img:hover {
 }
 
 /* ============================================================
-   FULLSCREEN MENU
+   MENU OVERLAY
 ============================================================ */
 
 .dt-menu-overlay {
@@ -176,14 +176,13 @@ body.dt-home .dt-nav-icons img:hover {
   width:75%;
   max-width:320px;
   height:100%;
+  background:#000;
 
   transform:translateX(-100%);
   opacity:0;
   pointer-events:none;
 
-  transition:
-    transform .45s cubic-bezier(0.25, 0.8, 0.25, 1),
-    opacity .35s ease;
+  transition:transform .45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity .35s ease;
 
   z-index:3000;
 }
@@ -220,10 +219,7 @@ body.dt-home .dt-nav-icons img:hover {
 
   opacity:0;
   transform:translateX(-22px);
-
-  transition:
-    opacity .45s ease,
-    transform .45s ease;
+  transition:opacity .45s ease, transform .45s ease;
 }
 
 .dt-menu-links a.revealed {
@@ -232,7 +228,7 @@ body.dt-home .dt-nav-icons img:hover {
 }
 
 /* ============================================================
-   HERO — OPTION A CROSSFADE
+   HERO CROSSFADE
 ============================================================ */
 
 body.dt-home .dt-hero {
@@ -283,7 +279,7 @@ body.dt-home .btn-primary {
 }
 
 /* ============================================================
-   TILE GRID — OPTION C HYBRID + 420px CAP
+   TILE GRID — ZERO CROP • BLURRED BG • CLEAN FIT
 ============================================================ */
 
 body.dt-home .dt-grid {
@@ -296,11 +292,11 @@ body.dt-home .dt-grid {
   gap:26px;
 }
 
+/* ---- TILE WRAPPER ---- */
 body.dt-home .dt-tile {
   position:relative;
   border-radius:18px;
   overflow:hidden;
-  background:#000;
 
   aspect-ratio:16/9;
   max-height:480px;
@@ -309,13 +305,13 @@ body.dt-home .dt-tile {
   align-items:center;
   justify-content:center;
 
-  /* Always visible glow */
+  /* Soft luxury glow */
   box-shadow:
     0 10px 28px rgba(0,0,0,0.35),
-0 1px 4px rgba(205,164,90,0.25),
-0 0 16px rgba(205,164,90,0.18);
+    0 1px 4px rgba(205,164,90,0.25),
+    0 0 16px rgba(205,164,90,0.18);
 
-  /* Scroll animation base */
+  /* Fade-in base */
   opacity:0;
   transform:translateY(26px);
   transition:
@@ -324,46 +320,59 @@ body.dt-home .dt-tile {
     box-shadow .45s ease;
 }
 
+/* ---- AUTO BLURRED BACKGROUND FILL ---- */
+body.dt-home .dt-tile::before {
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background-size:cover;
+  background-position:center;
+  filter:blur(14px) brightness(0.65);
+  transform:scale(1.12);
+  z-index:1;
+}
+
+/* Dynamic background: read the IMG inside the tile */
 body.dt-home .dt-tile img {
+  position:relative;
+  z-index:2;
   width:100%;
   height:100%;
-  object-position:center 45%;
+  object-fit:contain; /* FULL IMAGE, NO CROP */
 }
 
-/* MOBILE — safe cinematic cover */
-@media (max-width:767px) {
-  body.dt-home .dt-tile img {
-    object-fit:cover;
-    padding:3%; /* safe area */
-  }
+/* Apply background-image automatically */
+body.dt-home .dt-tile img[src] {
+  pointer-events:none;
 }
 
-/* DESKTOP — gentle cover with safe padding */
-@media (min-width:768px) {
-  body.dt-home .dt-tile img {
-    object-fit:cover;
-    padding:0%; /* prevents over-cropping */
-  }
+body.dt-home .dt-tile {
+  --bg: attr(src url);
 }
 
-/* Tile visible after scroll */
+body.dt-home .dt-tile::before {
+  background-image: inherit;
+}
+
+/* ---- VISIBLE TILE ---- */
 body.dt-home .dt-tile.dt-tile-visible {
   opacity:1;
   transform:translateY(0);
 }
 
-/* Desktop hover bump */
+/* ---- DESKTOP HOVER ---- */
 @media (min-width:768px) {
   body.dt-home .dt-tile.dt-tile-visible:hover {
     transform:translateY(-6px);
     box-shadow:
-      0 26px 50px rgba(0,0,0,0.78),
+      0 18px 38px rgba(0,0,0,0.45),
       0 1px 6px rgba(205,164,90,0.45),
-      0 0 24px rgba(205,164,90,0.18);
+      0 0 20px rgba(205,164,90,0.22);
   }
 }
 
-/* 2-column desktop grid */
+/* ---- 2-COLUMN DESKTOP GRID ---- */
 @media (min-width:900px) {
   body.dt-home .dt-grid {
     grid-template-columns:repeat(2, 1fr);
