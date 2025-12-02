@@ -1,17 +1,19 @@
 // ============================================================
 // DUTCH TOUCH • APPAREL PAGE JS
-// Clean • Conflict-Proof • Slow Shimmer • Working Hamburger
+// Isolated to apparel.html — nav, menu, hero slider, filters,
+// carousel, and simple fade-ins
 // ============================================================
 
-// Make toggleMenu available to inline HTML
-let toggleMenu;
+let toggleMenu; // global so inline HTML could use it later if needed
 
 document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  if (!body.classList.contains("dt-apparel-page")) return;
 
   // ------------------------------------------------------------
   // NAVBAR TRANSPARENT → SOLID ON SCROLL
   // ------------------------------------------------------------
-  const nav = document.querySelector(".dt-nav");
+  const nav = document.getElementById("dtNav");
 
   function updateNavOnScroll() {
     if (window.scrollY > 10) {
@@ -24,79 +26,61 @@ document.addEventListener("DOMContentLoaded", () => {
   updateNavOnScroll();
   window.addEventListener("scroll", updateNavOnScroll);
 
-
   // ------------------------------------------------------------
   // SLIDE-OUT MENU (LEFT SIDE)
   // ------------------------------------------------------------
   const menu = document.getElementById("dt-menu");
-  const body = document.body;
   const hamburger = document.querySelector(".dt-nav-hamburger");
-  const closeBtn = document.querySelector(".dt-menu-close");
 
   toggleMenu = function () {
-    menu.classList.toggle("active");
-    body.classList.toggle("no-scroll");
+    if (!menu) return;
+    const isOpen = menu.classList.toggle("active");
+    body.classList.toggle("no-scroll", isOpen);
 
-    if (menu.classList.contains("active")) {
-      animateMenuLinks();
-    }
+    if (isOpen) revealMenuLinks();
+    else resetMenuLinks();
   };
 
-  if (hamburger) hamburger.addEventListener("click", toggleMenu);
-  if (closeBtn) closeBtn.addEventListener("click", toggleMenu);
+  if (hamburger) {
+    hamburger.addEventListener("click", toggleMenu);
+  }
+
+  const closeBtn = document.querySelector(".dt-menu-close");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", toggleMenu);
+  }
+
+  // Close menu when clicking a menu link
+  document.querySelectorAll("#dt-menu .dt-menu-links a").forEach((link) => {
+    link.addEventListener("click", () => toggleMenu());
+  });
 
   // Click outside to close
   document.addEventListener("click", (e) => {
-    if (!menu.classList.contains("active")) return;
+    if (!menu || !menu.classList.contains("active")) return;
 
     const insideMenu = menu.contains(e.target);
-    const clickedHamburger = hamburger.contains(e.target);
+    const clickedHamburger = hamburger && hamburger.contains(e.target);
 
     if (!insideMenu && !clickedHamburger) toggleMenu();
   });
-
-  function animateMenuLinks() {
-    const links = document.querySelectorAll(".dt-menu-links a");
-    links.forEach((link, i) => {
-      link.classList.remove("animate-in");
-      setTimeout(() => {
-        link.classList.add("animate-in");
-      }, 90 * i);
-    });
-  }
-
-
-  // ------------------------------------------------------------
-  // NAV TEXT LOGO — SLOW SHIMMER
-  // ------------------------------------------------------------
-  const navText = document.querySelector(".dt-nav-text");
-
-  if (navText) {
-    // delay 50ms so shimmer doesn’t snap
-    setTimeout(() => {
-      navText.classList.add("shimmer-active");
-    }, 50);
-  }
-
 
   // ------------------------------------------------------------
   // FADE-IN OBSERVER
   // ------------------------------------------------------------
   const fadeEls = document.querySelectorAll(".fade-in");
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
+  const fadeObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+          fadeObserver.unobserve(entry.target);
         }
       });
     },
     { threshold: 0.2, rootMargin: "0px 0px -40px 0px" }
   );
-
-  fadeEls.forEach(el => observer.observe(el));
-
+  fadeEls.forEach((el) => fadeObserver.observe(el));
 
   // ------------------------------------------------------------
   // PRODUCT FILTERS
@@ -104,14 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterBtns = document.querySelectorAll(".filter-btn");
   const productCards = document.querySelectorAll(".product-card");
 
-  filterBtns.forEach(btn => {
+  filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const filter = btn.dataset.filter;
 
-      filterBtns.forEach(b => b.classList.remove("is-active"));
+      filterBtns.forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
 
-      productCards.forEach(card => {
+      productCards.forEach((card) => {
         const cat = card.dataset.category;
         if (filter === "all" || cat === filter) {
           card.classList.remove("is-hidden");
@@ -121,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-
 
   // ------------------------------------------------------------
   // CAPSULE CAROUSEL
@@ -145,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------------------------------------
   // QUICK ADD (placeholder)
   // ------------------------------------------------------------
-  document.querySelectorAll(".quick-add").forEach(btn => {
+  document.querySelectorAll(".quick-add").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       const card = btn.closest(".product-card");
@@ -153,10 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Quick View:", name);
     });
   });
-
-}); // END DOMContentLoaded
-
-
+});
 
 // ============================================================
 // MOBILE HERO SLIDER (<900px)
@@ -178,3 +158,20 @@ function initMobileHeroSlider() {
 }
 
 document.addEventListener("DOMContentLoaded", initMobileHeroSlider);
+
+// ============================================================
+// MENU LINK CASCADE HELPERS (for apparel menu)
+// ============================================================
+function revealMenuLinks() {
+  const links = document.querySelectorAll("#dt-menu .dt-menu-links a");
+  links.forEach((link, i) => {
+    link.classList.remove("revealed");
+    setTimeout(() => link.classList.add("revealed"), 120 * i);
+  });
+}
+
+function resetMenuLinks() {
+  document
+    .querySelectorAll("#dt-menu .dt-menu-links a")
+    .forEach((link) => link.classList.remove("revealed"));
+}
