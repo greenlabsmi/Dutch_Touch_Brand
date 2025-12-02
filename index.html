@@ -1,21 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dutch Touch Genetics • Apparel</title>
-
-  <!-- APPAREL-ONLY STYLES -->
-  <link rel="stylesheet" href="css/apparel.css?v=006">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dutch Touch Genetics • Premium Cannabis & Apparel</title>
 
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css?v=011">
 </head>
 
-<body class="dt-apparel-page">
+<body class="dt-home">
 
 <!-- =========================
-     NAV (MATCHES HOMEPAGE)
+     NAV (JEETER STYLE)
 ========================= -->
 <header class="dt-nav" id="dtNav">
 
@@ -31,14 +31,14 @@
     </a>
   </div>
 
-  <!-- CENTER TEXT LOGO -->
+  <!-- DESKTOP TEXT LOGO -->
   <div class="dt-nav-text">
     Dutch <span>Touch</span> Genetics
   </div>
 
   <!-- RIGHT ICONS -->
   <div class="dt-nav-icons">
-    <a href="https://instagram.com/dutchtouchgenetics" target="_blank" aria-label="Instagram">
+    <a href="https://instagram.com/dutchrepublic_" target="_blank" aria-label="Instagram">
       <img src="assets/icons/instagram.svg" alt="Instagram">
     </a>
     <a href="https://facebook.com" target="_blank" aria-label="Facebook">
@@ -53,28 +53,28 @@
 
 
 <!-- =========================
-     SLIDE-OUT MENU (MATCHES HOME)
+     FULLSCREEN MENU
 ========================= -->
 <div id="dt-menu" class="dt-menu-overlay">
 
   <div class="dt-menu-inner">
 
     <!-- Close Button -->
-    <button class="dt-menu-close" aria-label="Close menu">×</button>
+    <button class="dt-menu-close" onclick="toggleMenu()" aria-label="Close menu">×</button>
 
     <!-- Menu Logo -->
     <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo" alt="Dutch Touch Genetics Logo">
 
     <!-- Menu Links -->
     <nav class="dt-menu-links">
-      <a href="index.html">Home</a>
-      <a href="apparel.html">Apparel</a>
-      <a href="strains.html">Strains</a>
-      <a href="products.html">Products</a>
-      <a href="deals.html">Deals</a>
-      <a href="stores.html">Stores</a>
-      <a href="about.html">About Us</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="apparel.html" onclick="toggleMenu()">Apparel</a>
+      <a href="strains.html" onclick="toggleMenu()">Strains</a>
+      <a href="products.html" onclick="toggleMenu()">Products</a>
+      <a href="deals.html" onclick="toggleMenu()">Deals</a>
+      <a href="stores.html" onclick="toggleMenu()">Stores</a>
+      <a href="about.html" onclick="toggleMenu()">About Us</a>
+      <a href="#contact" onclick="toggleMenu()">Contact</a>
     </nav>
 
   </div>
@@ -82,161 +82,88 @@
 </div>
 
 <!-- =========================
-     HERO (Desktop Static / Mobile Slider)
+     HERO CAROUSEL
 ========================= -->
+<section class="dt-hero dt-hero-home">
 
-<section class="dt-hero dt-hero-apparel">
-
-  <!-- DESKTOP STATIC IMAGE -->
-  <div class="hero-desktop"
-       style="background-image:url('assets/img/banners/hero-model-02.JPG');">
+  <!-- Slide 1 -->
+  <div class="hero-slide active" style="background-image:url('assets/img/banners/hero-model-02.JPG');">
+    <div class="hero-gradient"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Dutch Touch Genetics</p>
+      <h1 class="hero-title">Keep It Dutch.</h1>
+      <p class="hero-sub">Detroit-bred genetics. Michigan-made heat.</p>
+      <a href="apparel.html" class="btn-primary">Shop Apparel</a>
+    </div>
   </div>
 
-  <!-- MOBILE SLIDER -->
-  <div class="hero-mobile-slider">
-
-    <div class="hero-mobile-slide"
-         style="background-image:url('assets/img/banners/hero-model-mobile-01.png');"></div>
-
-    <div class="hero-mobile-slide"
-         style="background-image:url('assets/img/banners/hero-model-mobile-02.png');"></div>
-
-    <div class="hero-mobile-slide"
-         style="background-image:url('assets/img/banners/hero-model-mobile-03.png');"></div>
-
+  <!-- Slide 2 -->
+  <div class="hero-slide" style="background-image:url('assets/img/banners/hero-model-02.JPG');">
+    <div class="hero-gradient"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Award Winning</p>
+      <h1 class="hero-title">4x Cup Champions</h1>
+      <p class="hero-sub">Lemon Wookie • Space Hippy • Mr. Clean • Lilac Diesel</p>
+      <a href="strains.html" class="btn-primary">Explore Strains</a>
+    </div>
   </div>
 
-  <!-- GRADIENT OVERLAY (matches homepage vibe) -->
-  <div class="hero-gradient"></div>
-
-  <!-- HERO TEXT -->
-  <div class="dt-hero-inner fade-in">
-    <p class="hero-eyebrow">Dutch Touch Genetics</p>
-    <h1 class="hero-title">Keep It Dutch.</h1>
-    <p class="hero-sub">Detroit-bred genetics. Michigan-made heat. Limited apparel capsule.</p>
-    <a href="#new-arrivals" class="btn-primary">Shop Apparel</a>
+  <!-- Slide 3 -->
+  <div class="hero-slide" style="background-image:url('assets/img/banners/hero-accessories-01.png');">
+    <div class="hero-gradient"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Find Dutch Touch</p>
+      <h1 class="hero-title">Statewide Access</h1>
+      <p class="hero-sub">Stores across Michigan.</p>
+      <a href="#find-us" class="btn-primary">View Locations</a>
+    </div>
   </div>
 
 </section>
 
+
 <!-- =========================
-     NEW ARRIVALS
+     4-TILE GRID
 ========================= -->
-<main>
-  <section id="new-arrivals" class="dt-section dt-section-new">
+<section class="dt-grid">
 
-    <div class="dt-section-header">
-      <h2>New Arrivals</h2>
+  <a href="apparel.html" class="dt-tile">
+    <img src="assets/img/tiles/apparel-tile.jpg" alt="Dutch Touch Apparel">
+  </a>
 
-      <div class="dt-filters">
-        <button class="filter-btn is-active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="hoodie">Hoodies</button>
-        <button class="filter-btn" data-filter="shirt">Shirts</button>
-        <button class="filter-btn" data-filter="sweats">Sweats</button>
-        <button class="filter-btn" data-filter="hat">Hats</button>
-        <button class="filter-btn" data-filter="accessory">Accessories</button>
-      </div>
-    </div>
+  <a href="deals.html" class="dt-tile">
+    <img src="assets/img/tiles/deals-tile.jpg" alt="Dutch Touch Deals">
+  </a>
 
-    <!-- PRODUCT GRID -->
-    <div class="product-grid">
+  <a href="strains.html" class="dt-tile">
+    <img src="assets/img/tiles/strains-tile.jpg" alt="Dutch Touch Strains">
+  </a>
 
-      <article class="product-card fade-in" data-category="hoodie">
-        <div class="product-media placeholder-hoodie"></div>
-        <button class="quick-add" aria-label="View hoodie">+</button>
-        <h3>Dutch Touch Hoodie</h3>
-        <p class="product-type">Hoodie</p>
-        <p class="product-price">$49</p>
-      </article>
+  <a href="products.html" class="dt-tile">
+    <img src="assets/img/tiles/products-tile.jpg" alt="Dutch Touch Products">
+  </a>
 
-      <article class="product-card fade-in" data-category="sweats">
-        <div class="product-media placeholder-sweats"></div>
-        <button class="quick-add" aria-label="View sweatpants">+</button>
-        <h3>Dutch Touch Sweatpants</h3>
-        <p class="product-type">Sweatpants</p>
-        <p class="product-price">$45</p>
-      </article>
-
-      <article class="product-card fade-in" data-category="shirt">
-        <div class="product-media placeholder-shirt"></div>
-        <button class="quick-add" aria-label="View t-shirt">+</button>
-        <h3>Dutch Touch T-Shirt</h3>
-        <p class="product-type">T-Shirt</p>
-        <p class="product-price">$30</p>
-      </article>
-
-      <article class="product-card fade-in" data-category="hat">
-        <div class="product-media placeholder-beanie"></div>
-        <button class="quick-add" aria-label="View beanie">+</button>
-        <h3>Dutch Touch Beanie</h3>
-        <p class="product-type">Beanie</p>
-        <p class="product-price">$25</p>
-      </article>
-
-      <article class="product-card fade-in" data-category="hat">
-        <div class="product-media placeholder-hat"></div>
-        <button class="quick-add" aria-label="View hat">+</button>
-        <h3>Dutch Touch Hat</h3>
-        <p class="product-type">Hat</p>
-        <p class="product-price">$25</p>
-      </article>
-
-    </div>
-  </section>
-
-
-  <!-- =========================
-       CAPSULE CAROUSEL
-  ========================= -->
-  <section class="dt-section dt-section-carousel">
-    <div class="dt-section-header">
-      <h2>Capsule Highlights</h2>
-    </div>
-
-    <div class="dt-carousel">
-      <button class="carousel-btn carousel-btn-prev" aria-label="Previous">‹</button>
-
-      <div class="carousel-track">
-        <div class="carousel-item">
-          <div class="carousel-media"></div>
-          <p class="carousel-label">Classic Lion Set</p>
-        </div>
-
-        <div class="carousel-item">
-          <div class="carousel-media"></div>
-          <p class="carousel-label">Black &amp; Gold Pack</p>
-        </div>
-
-        <div class="carousel-item">
-          <div class="carousel-media"></div>
-          <p class="carousel-label">Beanies &amp; Lids</p>
-        </div>
-
-        <div class="carousel-item">
-          <div class="carousel-media"></div>
-          <p class="carousel-label">Cozy Mornings</p>
-        </div>
-      </div>
-
-      <button class="carousel-btn carousel-btn-next" aria-label="Next">›</button>
-    </div>
-  </section>
-
-</main>
+</section>
 
 
 <!-- =========================
-     FOOTER (MATCHES HOMEPAGE)
+     FIND US
+========================= -->
+<section id="find-us" class="dt-section dt-section-simple">
+  <h2 class="section-heading">Find Dutch Touch</h2>
+  <p class="section-copy">Store locator coming soon.</p>
+</section>
+
+
+<!-- =========================
+     FOOTER
 ========================= -->
 <footer class="dt-footer">
   
-  <!-- gold divider -->
   <div class="dt-footer-divider"></div>
 
-  <!-- DTG text logo -->
   <img src="assets/img/logo/dtg-font-logo.png" class="dt-footer-logo" alt="Dutch Touch Genetics">
 
-  <!-- LEGAL LINKS -->
   <div class="dt-footer-legal">
     <a href="#">Terms &amp; Conditions</a>
     <a href="#">Privacy Policy</a>
@@ -244,7 +171,6 @@
     <a href="#">CA Cannabis Disclosure</a>
   </div>
 
-  <!-- SOCIAL -->
   <div class="dt-footer-social">
     <a href="https://instagram.com/dutchtouchgenetics" target="_blank" aria-label="Instagram">
       <img src="assets/icons/instagram.svg" alt="Instagram">
@@ -257,14 +183,11 @@
     </a>
   </div>
 
-  <!-- Copyright -->
   <p class="dt-footer-copy">© 2025 Dutch Touch Genetics. All rights reserved.</p>
 
 </footer>
 
-<!-- =========================
-     JS
-========================= -->
-<script src="js/apparel.js?v=003"></script>
+
+<script src="js/script.js?v=005"></script>
 </body>
 </html>
