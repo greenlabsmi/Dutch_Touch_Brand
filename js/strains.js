@@ -1,14 +1,16 @@
 // ============================================================
 // DUTCH TOUCH • STRAINS PAGE JS
-// Nav scroll + shimmer • Menu • Filters • Modal w/ terps
+// Nav scroll • Menu • Filters • Modal w/ terps + QR support
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
   if (!body.classList.contains("dt-strains-page")) return;
 
+  let modal = null; // declare up front so we can safely reference in functions
+
   // ------------------------------------------------------------
-  // NAV: SCROLL BACKGROUND + SHIMMER TEXT
+  // NAV: SCROLL BACKGROUND (MATCHES HOME/APPAREL)
   // ------------------------------------------------------------
   const nav = document.querySelector(".dt-nav");
 
@@ -20,13 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateNavOnScroll();
   window.addEventListener("scroll", updateNavOnScroll);
-
-  const navText = document.querySelector(".dt-nav-text");
-  if (navText) {
-    setTimeout(() => {
-      navText.classList.add("shimmer-active");
-    }, 60);
-  }
 
   // ------------------------------------------------------------
   // SLIDE-OUT MENU (MATCHES HOME/APPAREL FEEL)
@@ -61,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       resetMenuLinks();
       // Only remove no-scroll if modal isn't open
-      if (!modal.classList.contains("open")) {
+      if (!modal || !modal.classList.contains("open")) {
         body.classList.remove("no-scroll");
       }
     }
@@ -164,7 +159,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------------------------------------
   // MODAL DETAILS — IMAGE + LINEAGE + TERPS + QUOTE
   // ------------------------------------------------------------
-  let modal = document.createElement("div");
+
+  modal = document.createElement("div");
   modal.className = "strain-modal";
   modal.id = "strainModal";
 
@@ -319,8 +315,8 @@ document.addEventListener("DOMContentLoaded", () => {
     modalAccolades.style.display = acc ? "block" : "none";
 
     // Lineage + parents
-    const mother = card.dataset.mother || "";
-    const father = card.dataset.father || "";
+    const mother = card.dataset.mom || card.dataset.mother || "";
+    const father = card.dataset.dad || card.dataset.father || "";
     const lineage = card.dataset.lineage || "";
 
     modalMother.textContent = mother;
@@ -331,8 +327,8 @@ document.addEventListener("DOMContentLoaded", () => {
     modalFlavor.textContent = card.dataset.flavor || "";
     modalEffects.textContent = card.dataset.effects || "";
 
-    // Quote
-    const quote = card.dataset.quote || "";
+    // Quote (what customers say)
+    const quote = card.dataset.review || card.dataset.quote || "";
     if (quote) {
       modalQuote.textContent = quote;
       modalQuoteSection.style.display = "block";
@@ -341,15 +337,17 @@ document.addEventListener("DOMContentLoaded", () => {
       modalQuoteSection.style.display = "none";
     }
 
-    // Terps (blank but ready)
+    // Terps (blank but ready) – if you add:
+    // data-terp1="Limonene" data-terp1pct="2.1"
+    // they will show automatically.
     fillTerpRow(1, card);
     fillTerpRow(2, card);
     fillTerpRow(3, card);
 
-    // If all rows hidden, hide whole section
     const anyTerpVisible = Array.from(
       modalTerpsSection.querySelectorAll(".terp-row")
     ).some((row) => row.style.display !== "none");
+
     modalTerpsSection.style.display = anyTerpVisible ? "block" : "none";
 
     // Open modal
@@ -393,18 +391,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ------------------------------------------------------------
-  // OPTIONAL: Open from URL hash for QR (e.g. #lilac-diesel)
+  // QR SUPPORT: open a strain from the URL hash (e.g. #lilac-diesel)
   // ------------------------------------------------------------
   const hash = window.location.hash.replace("#", "").trim();
   if (hash) {
-    const bySlug = cards.find(
-      (c) =>
-        (c.dataset.slug || "").toLowerCase() === hash.toLowerCase() ||
-        (c.dataset.name || "").toLowerCase().replace(/\s+/g, "-") ===
-          hash.toLowerCase()
-    );
+    const bySlug = cards.find((c) => {
+      const slug = (c.dataset.slug || "").toLowerCase();
+      const nameSlug = (c.dataset.name || "")
+        .toLowerCase()
+        .replace(/\s+/g, "-");
+      const target = hash.toLowerCase();
+      return slug === target || nameSlug === target;
+    });
+
     if (bySlug) {
-      // Scroll into view then open
       bySlug.scrollIntoView({ behavior: "smooth", block: "center" });
       setTimeout(() => openModalForCard(bySlug), 500);
     }
