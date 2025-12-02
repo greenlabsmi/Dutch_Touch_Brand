@@ -1,76 +1,94 @@
 /* ============================================================
    DUTCH TOUCH • APPAREL PAGE (ISOLATED)
-   CLEAN BUILD — COMPLETELY SCOPED TO body.dt-apparel-page
+   Matches homepage NAV + FOOTER, page-only hero/grid/carousel
 ============================================================ */
 
 /* -----------------------------
    PAGE VARIABLES (LOCAL ONLY)
 ----------------------------- */
 body.dt-apparel-page {
-  --bg:#000;
+  --bg:#050505;
   --surface:#0d0d0d;
   --surface-soft:#161616;
   --line:#2a2a2a;
-  --ink:#f6f6f6;
-  --muted:#9a9a9a;
-  --orange:#c76b24;
-  --gold:#d4b46a;
+  --ink:#F7F3E9;
+  --muted:#AAA7A0;
+  --orange:#E67A00;
+  --gold:#CDA45A;
 
-  --radius:16px;
-  --nav-bg:rgba(0,0,0,0);
-  --nav-bg-solid:rgba(0,0,0,0.95);
+  --radius:18px;
+  --container:1080px;
+
+  --nav-bg: rgba(0,0,0,0);
+  --nav-bg-solid: rgba(0,0,0,0.92);
 }
 
 /* -----------------------------
    BASE PAGE SETUP
 ----------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing:border-box;
+}
+
 body.dt-apparel-page {
+  margin:0;
   background:var(--bg);
   color:var(--ink);
-  font-family:Inter, sans-serif;
-  padding-top:64px;
-  overflow-x:hidden;
+  font-family:Inter, system-ui, sans-serif;
+  -webkit-font-smoothing:antialiased;
 }
 
 body.dt-apparel-page img { max-width:100%; display:block; }
 body.dt-apparel-page a { color:inherit; text-decoration:none; }
 
+.no-scroll {
+  overflow:hidden;
+}
+
 /* ============================================================
-   NAV (ISOLATED VERSION — NO BLEED)
+   NAV BAR — MATCHES HOMEPAGE
 ============================================================ */
+
 body.dt-apparel-page .dt-nav {
   position:fixed;
-  top:0; left:0; right:0;
-  height:64px;
+  top:0;
+  left:0;
+  right:0;
+  height:72px;
 
-  display:flex;
-  justify-content:space-between;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
   align-items:center;
 
-  padding:0 18px;
+  padding:0 16px;
+
   background:var(--nav-bg);
-  transition:background .35s ease, backdrop-filter .35s ease;
-  z-index:3000;
+  backdrop-filter:none;
+  transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+
+  z-index:1100;
 }
 
 body.dt-apparel-page .dt-nav.scrolled {
   background:var(--nav-bg-solid);
   backdrop-filter:blur(8px);
+  box-shadow:0 3px 16px rgba(0,0,0,0.55);
 }
 
-/* LOGO */
-body.dt-apparel-page .dt-nav-logo img {
-  height:42px;
-  width:auto;
+body.dt-apparel-page .dt-nav-left {
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-/* HAMBURGER */
 body.dt-apparel-page .dt-nav-hamburger {
-  display:flex !important;
-  flex-direction:column;
-  justify-content:space-between;
   width:32px;
   height:22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
   background:none;
   border:none;
   cursor:pointer;
@@ -79,63 +97,84 @@ body.dt-apparel-page .dt-nav-hamburger {
 body.dt-apparel-page .dt-nav-hamburger span {
   height:3px;
   width:100%;
-  background:#fff;
-  border-radius:3px;
+  background:var(--ink);
+  border-radius:4px;
 }
 
-/* NAV TEXT (CENTERED) */
+body.dt-apparel-page .dt-nav-logo img {
+  height:28px;
+}
+
 body.dt-apparel-page .dt-nav-text {
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
+  justify-self:center;
   font-family:Cinzel, serif;
-  font-size:26px;
   font-weight:700;
-  color:var(--orange);
+  font-size:28px;
   white-space:nowrap;
-  pointer-events:none;
+  color:var(--orange);
+  display:none;
 }
 
 body.dt-apparel-page .dt-nav-text span {
   color:var(--gold);
+  animation:touchPulseApparel 3.8s ease-in-out infinite alternate;
 }
 
-/* Simple shimmer */
-body.dt-apparel-page .dt-nav-text.shimmer-active {
-  background:linear-gradient(
-    120deg,
-    #ffffff33 0%,
-    var(--gold) 45%,
-    #ffffff33 100%
-  );
-  -webkit-background-clip:text;
-  color:transparent;
-  animation:apparelShimmer 4.5s linear infinite;
-  background-size:200% auto;
+@keyframes touchPulseApparel {
+  0%   { color:#CDA45A; text-shadow:0 0 0 rgba(255,200,120,0); }
+  50%  { color:#FFE7A8; text-shadow:0 0 10px rgba(255,217,138,0.6); }
+  100% { color:#CDA45A; text-shadow:0 0 0 rgba(255,200,120,0); }
 }
 
-@keyframes apparelShimmer {
-  from { background-position:200% center; }
-  to   { background-position:-200% center; }
+body.dt-apparel-page .dt-nav-icons {
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:14px;
+}
+
+body.dt-apparel-page .dt-nav-icons img {
+  width:24px;
+  height:24px;
+  transition:transform .25s ease;
+}
+
+body.dt-apparel-page .dt-nav-icons img:hover {
+  transform:translateY(-2px) scale(1.12);
+}
+
+@media (min-width:768px) {
+  body.dt-apparel-page .dt-nav-text { display:block; }
+  body.dt-apparel-page .dt-nav-hamburger { width:36px; height:26px; }
+  body.dt-apparel-page .dt-nav-hamburger span { width:30px; }
+  body.dt-apparel-page .dt-nav-logo img { height:36px; }
+}
+
+@media (max-width:767px) {
+  body.dt-apparel-page .dt-nav-icons img { width:20px; height:20px; }
+  body.dt-apparel-page .dt-nav-hamburger { width:30px; height:20px; }
 }
 
 /* ============================================================
-   SLIDE-OUT MENU (LEFT PANEL)
+   MENU OVERLAY — MATCHES HOMEPAGE
 ============================================================ */
+
 body.dt-apparel-page .dt-menu-overlay {
   position:fixed;
-  top:0; left:0;
+  top:0;
+  left:0;
   width:75%;
   max-width:320px;
   height:100%;
-
   background:#000;
-  transform:translateX(-100%);
-  transition:transform .35s ease;
-  z-index:4500;
 
+  transform:translateX(-100%);
   opacity:0;
   pointer-events:none;
+
+  transition:transform .45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity .35s ease;
+
+  z-index:3000;
 }
 
 body.dt-apparel-page .dt-menu-overlay.active {
@@ -145,37 +184,35 @@ body.dt-apparel-page .dt-menu-overlay.active {
 }
 
 body.dt-apparel-page .dt-menu-inner {
-  padding:28px;
+  padding:22px 20px;
 }
 
 body.dt-apparel-page .dt-menu-close {
-  font-size:42px;
-  color:#fff;
   background:none;
   border:none;
+  color:#fff;
+  font-size:42px;
+  margin-bottom:16px;
   cursor:pointer;
-  margin-bottom:20px;
 }
 
 body.dt-apparel-page .dt-menu-logo {
-  height:48px;
-  margin-bottom:22px;
+  height:42px;
+  margin-bottom:20px;
 }
 
 body.dt-apparel-page .dt-menu-links a {
   display:block;
   font-family:Cinzel, serif;
   font-size:30px;
-  color:#fff;
-
-  opacity:0;
-  transform:translateX(-20px);
   margin-bottom:18px;
 
-  transition:opacity .35s ease, transform .35s ease;
+  opacity:0;
+  transform:translateX(-22px);
+  transition:opacity .45s ease, transform .45s ease;
 }
 
-body.dt-apparel-page .dt-menu-links a.animate-in {
+body.dt-apparel-page .dt-menu-links a.revealed {
   opacity:1;
   transform:translateX(0);
 }
@@ -183,15 +220,20 @@ body.dt-apparel-page .dt-menu-links a.animate-in {
 /* ============================================================
    HERO SECTION
 ============================================================ */
+
 body.dt-apparel-page .dt-hero {
   position:relative;
-  min-height:65vh;
+  min-height:70vh;
+  max-height:820px;
+  padding-top:72px; /* same top offset as home hero */
   display:flex;
   align-items:flex-end;
-  padding:110px 18px 40px;
+  padding-left:18px;
+  padding-right:18px;
+  padding-bottom:40px;
+  overflow:hidden;
 }
 
-/* Desktop Image */
 body.dt-apparel-page .hero-desktop {
   position:absolute;
   inset:0;
@@ -265,15 +307,29 @@ body.dt-apparel-page .btn-primary {
   padding:10px 24px;
   border-radius:999px;
   color:#fff;
+  font-weight:600;
+}
+
+/* Fade-in utility */
+body.dt-apparel-page .fade-in {
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .45s ease, transform .45s ease;
+}
+
+body.dt-apparel-page .fade-in.is-visible {
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* ============================================================
-   FILTER SECTION
+   SECTION WRAPPER
 ============================================================ */
+
 body.dt-apparel-page .dt-section {
-  max-width:1100px;
-  margin:0 auto;
-  padding:40px 18px 50px;
+  max-width:var(--container);
+  margin:40px auto;
+  padding:0 18px 40px;
 }
 
 body.dt-apparel-page .dt-section-header h2 {
@@ -281,6 +337,10 @@ body.dt-apparel-page .dt-section-header h2 {
   font-size:26px;
   margin-bottom:14px;
 }
+
+/* ============================================================
+   FILTERS
+============================================================ */
 
 body.dt-apparel-page .dt-filters {
   display:flex;
@@ -309,6 +369,7 @@ body.dt-apparel-page .filter-btn.is-active {
 /* ============================================================
    PRODUCT GRID
 ============================================================ */
+
 body.dt-apparel-page .product-grid {
   display:grid;
   grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
@@ -316,11 +377,16 @@ body.dt-apparel-page .product-grid {
 }
 
 body.dt-apparel-page .product-card {
+  position:relative;
   background:var(--surface-soft);
   border-radius:var(--radius);
   padding:14px;
   box-shadow:0 15px 35px rgba(0,0,0,.55);
   transition:transform .3s ease;
+}
+
+body.dt-apparel-page .product-card.is-hidden {
+  display:none;
 }
 
 @media(min-width:900px) {
@@ -335,13 +401,52 @@ body.dt-apparel-page .product-media {
   background:linear-gradient(180deg,#eee,#ccc);
 }
 
+body.dt-apparel-page .quick-add {
+  position:absolute;
+  top:18px;
+  right:18px;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:none;
+  background:rgba(0,0,0,0.8);
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+}
+
+body.dt-apparel-page .product-type {
+  color:var(--muted);
+  font-size:13px;
+}
+
+body.dt-apparel-page .product-price {
+  margin-top:4px;
+  font-weight:600;
+}
+
 /* ============================================================
    CAPSULE CAROUSEL
 ============================================================ */
+
+body.dt-apparel-page .dt-section-carousel {
+  padding-top:20px;
+}
+
 body.dt-apparel-page .dt-carousel {
   display:flex;
   align-items:center;
   gap:12px;
+}
+
+body.dt-apparel-page .carousel-btn {
+  border:none;
+  background:#111;
+  color:#fff;
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  cursor:pointer;
 }
 
 body.dt-apparel-page .carousel-track {
@@ -349,6 +454,7 @@ body.dt-apparel-page .carousel-track {
   gap:14px;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
+  padding:6px 4px;
 }
 
 body.dt-apparel-page .carousel-track::-webkit-scrollbar { display:none; }
@@ -356,6 +462,7 @@ body.dt-apparel-page .carousel-track::-webkit-scrollbar { display:none; }
 body.dt-apparel-page .carousel-item {
   flex:0 0 auto;
   width:220px;
+  scroll-snap-align:start;
 }
 
 body.dt-apparel-page .carousel-media {
@@ -370,26 +477,34 @@ body.dt-apparel-page .carousel-label {
 }
 
 /* ============================================================
-   FOOTER
+   FOOTER — MATCHES HOMEPAGE
 ============================================================ */
+
 body.dt-apparel-page .dt-footer {
   background:#000;
-  text-align:center;
-  padding:50px 20px;
-  border-top:1px solid rgba(255,255,255,0.1);
+  padding:40px 20px 50px;
   margin-top:60px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  text-align:center;
 }
 
 body.dt-apparel-page .dt-footer-divider {
   height:6px;
-  background:var(--orange);
   border-radius:3px;
+  background:var(--orange);
   margin-bottom:40px;
 }
 
 body.dt-apparel-page .dt-footer-logo {
   height:48px;
   margin-bottom:26px;
+}
+
+body.dt-apparel-page .dt-footer-social {
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  margin-bottom:30px;
 }
 
 body.dt-apparel-page .dt-footer-social img {
@@ -403,8 +518,25 @@ body.dt-apparel-page .dt-footer-social img:hover {
   transform:scale(1.08);
 }
 
-body.dt-apparel-page .dt-footer-copy {
+body.dt-apparel-page .dt-footer-legal {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:32px;
+}
+
+body.dt-apparel-page .dt-footer-legal a {
+  font-size:14px;
   color:var(--muted);
+  text-transform:uppercase;
+}
+
+body.dt-apparel-page .dt-footer-legal a:hover {
+  color:var(--orange);
+}
+
+body.dt-apparel-page .dt-footer-copy {
   font-size:12px;
-  opacity:0.7;
+  color:var(--muted);
+  opacity:.7;
 }
