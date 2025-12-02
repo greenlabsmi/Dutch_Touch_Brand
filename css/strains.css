@@ -1,6 +1,6 @@
 /* ============================================================
    DUTCH TOUCH • STRAINS PAGE (ISOLATED)
-   CLEAN STRUCTURE — NO GLOBAL BLEED
+   CLEAN STRUCTURE — NAV + FOOTER MATCH HOME/APPAREL
    Scoped to: body.dt-strains-page
 ============================================================ */
 
@@ -17,6 +17,9 @@ body.dt-strains-page {
   --gold:#cda45a;
   --orange:#e67a00;
   --radius:18px;
+
+  --nav-bg:rgba(0,0,0,0);
+  --nav-bg-solid:rgba(0,0,0,0.92);
 }
 
 /* -----------------------------
@@ -26,7 +29,7 @@ body.dt-strains-page {
   background:var(--bg);
   color:var(--ink);
   font-family:Inter, sans-serif;
-  padding-top:72px; /* match home nav */
+  padding-top:72px; /* match nav height */
   overflow-x:hidden;
 }
 
@@ -34,9 +37,192 @@ body.dt-strains-page img { max-width:100%; display:block; }
 body.dt-strains-page a { color:inherit; text-decoration:none; }
 
 /* ============================================================
-   NAV (INHERITS HOMEPAGE NAV — NO OVERRIDES NEEDED)
+   NAV (MATCHES HOME/APPAREL VISUALLY)
 ============================================================ */
-/* no nav overrides — strains uses homepage nav rules exactly */
+
+body.dt-strains-page .dt-nav {
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:72px;
+
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+
+  padding:0 16px;
+
+  background:var(--nav-bg);
+  backdrop-filter:none;
+  transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+
+  z-index:1100;
+}
+
+body.dt-strains-page .dt-nav.scrolled {
+  background:var(--nav-bg-solid);
+  backdrop-filter:blur(8px);
+  box-shadow:0 3px 16px rgba(0,0,0,0.55);
+}
+
+body.dt-strains-page .dt-nav-left {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* Hamburger */
+body.dt-strains-page .dt-nav-hamburger {
+  width:32px;
+  height:22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+
+body.dt-strains-page .dt-nav-hamburger span {
+  height:3px;
+  width:100%;
+  background:var(--ink);
+  border-radius:4px;
+}
+
+/* Logo */
+body.dt-strains-page .dt-nav-logo img {
+  height:28px;
+}
+
+/* Center text logo */
+body.dt-strains-page .dt-nav-text {
+  justify-self:center;
+  font-family:Cinzel, serif;
+  font-weight:700;
+  font-size:28px;
+  white-space:nowrap;
+  color:var(--orange);
+  display:none; /* mobile hidden, desktop shows */
+}
+
+/* Shimmer span */
+body.dt-strains-page .dt-nav-text span {
+  color:var(--gold);
+}
+
+/* Shimmer active */
+body.dt-strains-page .dt-nav-text.shimmer-active {
+  background:linear-gradient(
+    120deg,
+    rgba(255,255,255,0.2) 0%,
+    var(--gold) 45%,
+    rgba(255,255,255,0.2) 100%
+  );
+  -webkit-background-clip:text;
+  color:transparent;
+  background-size:220% auto;
+  animation:strainNavShimmer 4.5s linear infinite;
+}
+
+@keyframes strainNavShimmer {
+  from { background-position:200% center; }
+  to   { background-position:-200% center; }
+}
+
+/* Right icons */
+body.dt-strains-page .dt-nav-icons {
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:14px;
+}
+
+body.dt-strains-page .dt-nav-icons img {
+  width:24px;
+  height:24px;
+  transition:transform .25s ease;
+}
+
+body.dt-strains-page .dt-nav-icons img:hover {
+  transform:translateY(-2px) scale(1.12);
+}
+
+/* Responsive nav tweaks */
+@media (min-width:768px) {
+  body.dt-strains-page .dt-nav-text { display:block; }
+  body.dt-strains-page .dt-nav-hamburger { width:36px; height:26px; }
+  body.dt-strains-page .dt-nav-hamburger span { width:30px; }
+  body.dt-strains-page .dt-nav-logo img { height:36px; }
+}
+
+@media (max-width:767px) {
+  body.dt-strains-page .dt-nav-icons img { width:20px; height:20px; }
+  body.dt-strains-page .dt-nav-hamburger { width:30px; height:20px; }
+}
+
+/* ============================================================
+   SLIDE-OUT MENU (SAME FEEL AS HOME)
+============================================================ */
+
+body.dt-strains-page .dt-menu-overlay {
+  position:fixed;
+  top:0;
+  left:0;
+  width:75%;
+  max-width:320px;
+  height:100%;
+  background:#000;
+
+  transform:translateX(-100%);
+  opacity:0;
+  pointer-events:none;
+
+  transition:transform .45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity .35s ease;
+
+  z-index:3000;
+}
+
+body.dt-strains-page .dt-menu-overlay.active {
+  transform:translateX(0);
+  opacity:1;
+  pointer-events:auto;
+}
+
+body.dt-strains-page .dt-menu-inner {
+  padding:22px 20px;
+}
+
+body.dt-strains-page .dt-menu-close {
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:42px;
+  margin-bottom:16px;
+  cursor:pointer;
+}
+
+body.dt-strains-page .dt-menu-logo {
+  height:42px;
+  margin-bottom:20px;
+}
+
+body.dt-strains-page .dt-menu-links a {
+  display:block;
+  font-family:Cinzel, serif;
+  font-size:30px;
+  margin-bottom:18px;
+
+  opacity:0;
+  transform:translateX(-22px);
+  transition:opacity .45s ease, transform .45s ease;
+}
+
+body.dt-strains-page .dt-menu-links a.revealed {
+  opacity:1;
+  transform:translateX(0);
+}
 
 /* ============================================================
    HERO SECTION
@@ -53,6 +239,14 @@ body.dt-strains-page .dt-strains-hero {
 
 body.dt-strains-page .dt-strains-hero-inner {
   max-width:620px;
+}
+
+body.dt-strains-page .hero-eyebrow {
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:12px;
+  margin-bottom:6px;
 }
 
 body.dt-strains-page .strains-title {
@@ -135,13 +329,15 @@ body.dt-strains-page .strain-card {
   cursor:pointer;
 
   box-shadow:0 14px 32px rgba(0,0,0,0.65);
-  transition:transform .28s ease, box-shadow .28s ease;
+  transition:transform .28s ease, box-shadow .28s ease, border .28s ease;
+  border:1px solid rgba(255,255,255,0.03);
 }
 
 @media(min-width:900px) {
   body.dt-strains-page .strain-card:hover {
     transform:translateY(-5px);
     box-shadow:0 22px 45px rgba(0,0,0,0.8);
+    border-color:rgba(230,122,0,0.4);
   }
 }
 
@@ -151,7 +347,7 @@ body.dt-strains-page .strain-card-inner {
   gap:12px;
 }
 
-/* TEMP STRAIN IMAGE BLOCK */
+/* TEMP STRAIN IMAGE BLOCK (CARD THUMB) */
 body.dt-strains-page .strain-image {
   width:34%;
   min-width:120px;
@@ -230,35 +426,54 @@ body.dt-strains-page .dt-strains-findus p {
 }
 
 /* ============================================================
-   STRAIN MODAL
+   STRAIN MODAL — GLOWY DETAIL WINDOW
 ============================================================ */
 body.dt-strains-page .strain-modal {
   position:fixed;
   inset:0;
-  display:none;
-
+  display:flex;
   align-items:center;
   justify-content:center;
 
-  background:rgba(0,0,0,0.75);
+  background:rgba(0,0,0,0.78);
   z-index:3000;
+
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .28s ease;
 }
 
 body.dt-strains-page .strain-modal.open {
-  display:flex;
+  opacity:1;
+  pointer-events:auto;
 }
 
 body.dt-strains-page .strain-modal-dialog {
-  width:90%;
-  max-width:480px;
+  width:92%;
+  max-width:840px;
+  max-height:82vh;
+  overflow-y:auto;
 
-  background:#101010;
-  border-radius:20px;
+  background:#0c0c0c;
+  border-radius:22px;
+  padding:20px 20px 18px;
 
-  padding:20px 18px 18px;
-  box-shadow:0 24px 60px rgba(0,0,0,0.9);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.9),
+    0 0 0 1px rgba(205,164,90,0.15);
+
+  transform:translateY(16px);
+  opacity:0;
+  transition:transform .28s ease, opacity .28s ease;
 }
 
+/* Animate dialog when modal is open */
+body.dt-strains-page .strain-modal.open .strain-modal-dialog {
+  transform:translateY(0);
+  opacity:1;
+}
+
+/* Close button */
 body.dt-strains-page .strain-modal-close {
   background:none;
   border:none;
@@ -266,12 +481,17 @@ body.dt-strains-page .strain-modal-close {
   font-size:26px;
   cursor:pointer;
   float:right;
-  margin-bottom:4px;
+  margin-left:12px;
+}
+
+/* Header */
+body.dt-strains-page .strain-modal-header {
+  margin-bottom:10px;
 }
 
 body.dt-strains-page .strain-modal-name {
   font-family:Cinzel, serif;
-  font-size:20px;
+  font-size:22px;
   margin:0 0 4px;
 }
 
@@ -280,20 +500,149 @@ body.dt-strains-page .strain-modal-meta {
   text-transform:uppercase;
   letter-spacing:.16em;
   color:var(--muted);
+}
+
+/* Layout: image + text */
+body.dt-strains-page .strain-modal-layout {
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  margin-top:10px;
+}
+
+@media(min-width:800px) {
+  body.dt-strains-page .strain-modal-layout {
+    flex-direction:row;
+  }
+}
+
+/* Left: image */
+body.dt-strains-page .strain-modal-media {
+  flex:0 0 280px;
+}
+
+body.dt-strains-page .strain-modal-image-frame {
+  border-radius:20px;
+  padding:4px;
+  background:linear-gradient(135deg, rgba(205,164,90,0.5), rgba(230,122,0,0.2));
   margin-bottom:10px;
 }
 
-body.dt-strains-page .strain-modal-section {
-  font-size:13px;
-  margin-bottom:6px;
+body.dt-strains-page .strain-modal-image-frame img {
+  width:100%;
+  display:block;
+  border-radius:16px;
+  object-fit:cover;
+  aspect-ratio:4/5; /* card-like jar shot */
+  background:#111;
 }
 
-body.dt-strains-page .strain-modal-section span {
+body.dt-strains-page .strain-modal-tagline {
+  font-size:12px;
   color:var(--muted);
 }
 
-/* ================= FOOTER ALIGN FIX ================= */
-body.dt-strains-page .dt-footer-inner {
-  max-width:1080px;
-  margin:0 auto;
+/* Right: body content */
+body.dt-strains-page .strain-modal-body {
+  flex:1;
+}
+
+/* Sections */
+body.dt-strains-page .strain-modal-section {
+  margin-bottom:12px;
+  font-size:13px;
+}
+
+body.dt-strains-page .strain-modal-section h4 {
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:var(--gold);
+  margin-bottom:4px;
+}
+
+body.dt-strains-page .strain-modal-section p {
+  font-size:13px;
+  color:var(--ink);
+}
+
+body.dt-strains-page .strain-modal-section span.label {
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:11px;
+  display:inline-block;
+  margin-right:4px;
+}
+
+/* Quote styling */
+body.dt-strains-page .strain-modal-quote {
+  font-style:italic;
+  color:var(--ink);
+  border-left:2px solid rgba(205,164,90,0.6);
+  padding-left:10px;
+}
+
+/* ============================================================
+   FOOTER (MATCHES HOME/APPAREL)
+============================================================ */
+body.dt-strains-page .dt-footer {
+  background:#000;
+  padding:40px 20px 50px;
+  margin-top:60px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  text-align:center;
+}
+
+body.dt-strains-page .dt-footer-divider {
+  height:6px;
+  border-radius:3px;
+  background:var(--orange);
+  margin-bottom:40px;
+}
+
+body.dt-strains-page .dt-footer-logo {
+  height:48px;
+  margin-bottom:26px;
+}
+
+body.dt-strains-page .dt-footer-social {
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  margin-bottom:30px;
+}
+
+body.dt-strains-page .dt-footer-social img {
+  width:26px;
+  opacity:.85;
+  transition:.25s ease;
+}
+
+body.dt-strains-page .dt-footer-social img:hover {
+  opacity:1;
+  transform:scale(1.08);
+}
+
+body.dt-strains-page .dt-footer-legal {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:32px;
+}
+
+body.dt-strains-page .dt-footer-legal a {
+  font-size:14px;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+body.dt-strains-page .dt-footer-legal a:hover {
+  color:var(--orange);
+}
+
+body.dt-strains-page .dt-footer-copy {
+  font-size:12px;
+  color:var(--muted);
+  opacity:.7;
 }
