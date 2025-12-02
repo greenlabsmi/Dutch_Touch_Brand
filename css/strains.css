@@ -1,4 +1,17 @@
 /* ============================================================
+   STRAINS PAGE NAV PROTECTION LAYER
+============================================================ */
+
+body.dt-strains-page .dt-nav,
+body.dt-strains-page .dt-nav *,
+body.dt-strains-page .dt-menu-overlay,
+body.dt-strains-page .dt-menu-overlay * {
+  animation: none !important;
+  text-shadow: none !important;
+  color: inherit !important;
+  background-image: none !important;
+}
+/* ============================================================
    DUTCH TOUCH • STRAINS PAGE (ISOLATED)
    CLEAN STRUCTURE — NAV + FOOTER MATCH HOME/APPAREL
    Scoped to: body.dt-strains-page
