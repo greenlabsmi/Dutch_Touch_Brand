@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dutch Touch Genetics • Strains</title>
 
-  <!-- Global styles + Strains page styles -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/strains.css">
+  <!-- Global + Strains styles -->
+  <link rel="stylesheet" href="css/style.css?v=011">
+  <link rel="stylesheet" href="css/strains.css?v=002">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,31 +15,58 @@
 
 <body class="dt-strains-page">
 
-  <!-- ================= NAV (same pattern as home/apparel) ================= -->
-  <header class="dt-nav">
-    <button class="dt-nav-hamburger" aria-label="Open menu">☰</button>
+  <!-- =========================
+       NAV (MATCHES HOME/APPAREL)
+  ========================== -->
+  <header class="dt-nav" id="dtNav">
 
-    <a href="index.html" class="dt-nav-logo">
-      <img src="assets/img/logo/dtg-font-logo.png" alt="Dutch Touch Genetics">
-    </a>
+    <div class="dt-nav-left">
+      <button class="dt-nav-hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    <div class="dt-nav-icons">
-      <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt=""></a>
-      <a href="#" aria-label="Search"><img src="assets/icons/search.svg" alt=""></a>
-      <a href="#" aria-label="Cart"><img src="assets/icons/cart.svg" alt=""></a>
+      <a href="index.html" class="dt-nav-logo">
+        <img src="assets/img/logo/dtg-logo-orange.png" alt="Dutch Touch Lion">
+      </a>
     </div>
+
+    <!-- CENTER TEXT LOGO -->
+    <div class="dt-nav-text">
+      Dutch <span>Touch</span> Genetics
+    </div>
+
+    <!-- RIGHT ICONS (same as homepage) -->
+    <div class="dt-nav-icons">
+      <a href="https://instagram.com/dutchtouchgenetics" target="_blank" aria-label="Instagram">
+        <img src="assets/icons/instagram.svg" alt="Instagram">
+      </a>
+      <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+        <img src="assets/icons/facebook.svg" alt="Facebook">
+      </a>
+      <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+        <img src="assets/icons/twitter.svg" alt="Twitter">
+      </a>
+    </div>
+
   </header>
 
-  <!-- Slide-out menu (75% width, same as others) -->
+  <!-- =========================
+       SLIDE-OUT MENU (MATCHES HOME/APPAREL)
+  ========================== -->
   <div id="dt-menu" class="dt-menu-overlay">
     <div class="dt-menu-inner">
       <button class="dt-menu-close" aria-label="Close menu">×</button>
-      <img src="assets/img/logo/dtg-font-logo.png" class="dt-menu-logo" alt="Dutch Touch Genetics">
+
+      <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo" alt="Dutch Touch Genetics Logo">
 
       <nav class="dt-menu-links">
         <a href="index.html">Home</a>
         <a href="apparel.html">Apparel</a>
         <a href="strains.html">Strains</a>
+        <a href="products.html">Products</a>
+        <a href="deals.html">Deals</a>
         <a href="stores.html">Stores</a>
         <a href="about.html">About Us</a>
         <a href="#contact">Contact</a>
@@ -47,7 +74,9 @@
     </div>
   </div>
 
-  <!-- ================= HERO ================= -->
+  <!-- =========================
+       HERO
+  ========================== -->
   <section class="dt-strains-hero">
     <div class="dt-strains-hero-inner">
       <p class="hero-eyebrow">Dutch Touch Genetics</p>
@@ -60,7 +89,9 @@
 
   <main class="dt-strains-main">
 
-    <!-- ================= FILTERS ================= -->
+    <!-- =========================
+         FILTERS
+    ========================== -->
     <section class="dt-strains-section">
       <div class="dt-strains-header">
         <h2>Browse Strains</h2>
@@ -76,7 +107,9 @@
         <button class="strain-filter" data-filter="indica">Indica</button>
       </div>
 
-      <!-- ================= STRAIN GRID ================= -->
+      <!-- =========================
+           STRAIN GRID
+      ========================== -->
       <div class="strain-grid">
 
         <!-- ===== AWARD WINNERS FIRST ===== -->
@@ -87,8 +120,13 @@
           data-type="sativa"
           data-award="true"
           data-lineage="Lemon Skunk x Wookie"
-          data-flavor="Sweet lemon, diesel, bright citrus peel"
-          data-effects="Uplifting, focused, creative">
+          data-flavor="Sweet lemon, diesel, bright citrus peel."
+          data-effects="Uplifting, focused, creative daytime energy."
+          data-mom="Lemon Skunk"
+          data-dad="Wookie"
+          data-accolades="Cup-winning sativa cut, loved for its loud citrus profile."
+          data-review="&quot;My go-to daytime smoke when I still want to get things done.&quot;"
+          data-image="assets/img/strains/lemon-wookie-4.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -108,9 +146,14 @@
           data-name="Lilac Diesel"
           data-type="sativa"
           data-award="true"
-          data-lineage="Silver Lemon Haze x Forbidden Fruit x NYCD"
-          data-flavor="Floral, fuel, citrus rind"
-          data-effects="Euphoric, social, clear-headed">
+          data-lineage="Silver Lemon Haze x Forbidden Fruit x NYC Diesel"
+          data-flavor="Floral, fuel, citrus rind."
+          data-effects="Euphoric, social, clear-headed with a gentle body buzz."
+          data-mom="Silver Lemon Haze"
+          data-dad="Forbidden Fruit x NYC Diesel"
+          data-accolades="High Times Cup winner and Dutch Touch fan favorite."
+          data-review="&quot;Flower that smells like a jar of purple gas — and smokes even better.&quot;"
+          data-image="assets/img/strains/lilac-diesel.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -131,8 +174,13 @@
           data-type="sativa"
           data-award="true"
           data-lineage="Lime Skunk x The Cube"
-          data-flavor="Citrus, pine, fresh cleaner"
-          data-effects="Energetic, focused, motivating">
+          data-flavor="Citrus, pine, fresh cleaner."
+          data-effects="Energetic, focused, motivating and task-friendly."
+          data-mom="Lime Skunk"
+          data-dad="The Cube"
+          data-accolades="Cup-winning medical sativa, legendary at Dutch Touch."
+          data-review="&quot;The only thing I want to do after smoking this is crush my to-do list.&quot;"
+          data-image="assets/img/strains/mr-clean.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -152,9 +200,14 @@
           data-name="Space Hippy"
           data-type="hybrid"
           data-award="true"
-          data-lineage="Hybrid lineage"
-          data-flavor="Fruity funk, earthy gas"
-          data-effects="Balanced, relaxed, spacey">
+          data-lineage="Fruity hybrid lineage"
+          data-flavor="Fruity funk, earthy gas."
+          data-effects="Balanced, relaxed, spacey head high with a soft body melt."
+          data-mom="Fruity hybrid mom"
+          data-dad="Gassy, earthy hybrid dad"
+          data-accolades="Cup-winning hybrid, a staple in Dutch Touch jars."
+          data-review="&quot;Perfect for music, movies, and losing track of time in the best way.&quot;"
+          data-image="assets/img/strains/space-hippy.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -174,9 +227,14 @@
           data-name="Death By Funk"
           data-type="hybrid"
           data-award="true"
-          data-lineage="Heavy gas lineage"
-          data-flavor="Deep funk, gas, earthy kush"
-          data-effects="Sedating, heavy, couch-lock">
+          data-lineage="Gas-heavy indica hybrid"
+          data-flavor="Deep funk, gas, earthy kush."
+          data-effects="Sedating, heavy, couch-lock with a thunderous head change."
+          data-mom="Heavy gas mom"
+          data-dad="Kush-leaning hybrid father"
+          data-accolades="Awarded for its nose and knockout power."
+          data-review="&quot;The name is not a joke. This is lights-out funk.&quot;"
+          data-image="assets/img/strains/death-by-funk.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -197,8 +255,13 @@
           data-type="indica"
           data-award="true"
           data-lineage="Forbidden Fruit cross"
-          data-flavor="Berry jam, grape, tropical fruit"
-          data-effects="Relaxing, dreamy, end-of-day calm">
+          data-flavor="Berry jam, grape, tropical fruit."
+          data-effects="Relaxing, dreamy, end-of-day calm."
+          data-mom="Forbidden Fruit"
+          data-dad="Gelato-leaning dessert cut"
+          data-accolades="Cup-winning dessert indica with serious bag appeal."
+          data-review="&quot;Looks like candy, smells like jam, hits like an indica should.&quot;"
+          data-image="assets/img/strains/forbidden-jelly.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -221,8 +284,13 @@
           data-type="indica"
           data-award="false"
           data-lineage="Sensi Star x Sour Diesel"
-          data-flavor="Diesel, earthy, skunky"
-          data-effects="Powerful, heavy, night-time">
+          data-flavor="Diesel, earthy, skunky."
+          data-effects="Powerful, heavy, night-time."
+          data-mom="Sensi Star"
+          data-dad="Sour Diesel"
+          data-accolades="Classic heavy hitter for nighttime rotation."
+          data-review="&quot;One of those strains that makes the room go quiet in a good way.&quot;"
+          data-image="assets/img/strains/death-star.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -242,8 +310,13 @@
           data-type="hybrid"
           data-award="false"
           data-lineage="Old-school hybrid"
-          data-flavor="Hashy, earthy, gas"
-          data-effects="Nostalgic, balanced, chill">
+          data-flavor="Hashy, earthy, gas."
+          data-effects="Nostalgic, balanced, chill."
+          data-mom="Old-school hash plant"
+          data-dad="Gas-heavy hybrid"
+          data-accolades="A throwback jar for old heads and new fans."
+          data-review="&quot;Smells like the early 2000s in the best possible way.&quot;"
+          data-image="assets/img/strains/clusterfunk.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -263,8 +336,13 @@
           data-type="sativa"
           data-award="false"
           data-lineage="Tropical hybrid"
-          data-flavor="Pineapple, citrus, candy"
-          data-effects="Bright, social, mood-lifting">
+          data-flavor="Pineapple, citrus, candy."
+          data-effects="Bright, social, mood-lifting."
+          data-mom="Tropical sativa mom"
+          data-dad="Candy-forward hybrid dad"
+          data-accolades="Perfect warm-weather and vacation strain."
+          data-review="&quot;Tastes like pineapple gummies and makes everything more fun.&quot;"
+          data-image="assets/img/strains/pina-rita.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -284,8 +362,13 @@
           data-type="indica"
           data-award="false"
           data-lineage="High-THC indica"
-          data-flavor="Dank, earthy, loud"
-          data-effects="Potent, heavy, long-lasting">
+          data-flavor="Dank, earthy, loud."
+          data-effects="Potent, heavy, long-lasting."
+          data-mom="High-THC indica mom"
+          data-dad="Gas-heavy kush dad"
+          data-accolades="For experienced consumers only."
+          data-review="&quot;Two hits and I was exactly where I wanted to be.&quot;"
+          data-image="assets/img/strains/10k.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -305,8 +388,13 @@
           data-type="hybrid"
           data-award="false"
           data-lineage="Dessert hybrid"
-          data-flavor="Fruit candy, creamy, sweet"
-          data-effects="Happy, relaxed, snacky">
+          data-flavor="Fruit candy, creamy, sweet."
+          data-effects="Happy, relaxed, snacky."
+          data-mom="Dessert-leaning hybrid mom"
+          data-dad="Fruity sativa hybrid dad"
+          data-accolades="Perfect munchies and movie strain."
+          data-review="&quot;Makes everything taste better and puts a grin on my face.&quot;"
+          data-image="assets/img/strains/fruit-brute.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -326,8 +414,13 @@
           data-type="indica"
           data-award="false"
           data-lineage="Glue lineage hybrid"
-          data-flavor="Glue, gas, earth"
-          data-effects="Sticky, heavy, deep relaxation">
+          data-flavor="Glue, gas, earth."
+          data-effects="Sticky, heavy, deep relaxation."
+          data-mom="Glue-leaning hybrid"
+          data-dad="Earthy indica dad"
+          data-accolades="Sticky, resinous jars for couch-lock fans."
+          data-review="&quot;One of the best sleepytime jars in my stash.&quot;"
+          data-image="assets/img/strains/glue-bert.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -347,8 +440,13 @@
           data-type="hybrid"
           data-award="false"
           data-lineage="Hybrid dessert lineage"
-          data-flavor="Creamy, berry, vanilla"
-          data-effects="Smooth, floaty, chill">
+          data-flavor="Creamy, berry, vanilla."
+          data-effects="Smooth, floaty, chill."
+          data-mom="Dessert hybrid mom"
+          data-dad="Berry-forward dad"
+          data-accolades="Comfort strain for evenings and slow weekends."
+          data-review="&quot;It’s like a berry milkshake in flower form.&quot;"
+          data-image="assets/img/strains/big-smooth.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -368,8 +466,13 @@
           data-type="sativa"
           data-award="false"
           data-lineage="Gas-heavy sativa"
-          data-flavor="Sharp gas, pine, citrus rind"
-          data-effects="Alert, energized, heady">
+          data-flavor="Sharp gas, pine, citrus rind."
+          data-effects="Alert, energized, heady."
+          data-mom="Loud gas sativa mom"
+          data-dad="Piney hybrid dad"
+          data-accolades="For people who like straight gas in the morning."
+          data-review="&quot;Feels like a strong coffee with extra flavor.&quot;"
+          data-image="assets/img/strains/angelica.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -389,8 +492,13 @@
           data-type="indica"
           data-award="false"
           data-lineage="Widow-style indica"
-          data-flavor="Spicy, herbal, earthy"
-          data-effects="Sedating, classic, couchy">
+          data-flavor="Spicy, herbal, earthy."
+          data-effects="Sedating, classic, couchy."
+          data-mom="Classic widow mom"
+          data-dad="Earthy indica dad"
+          data-accolades="Old-school nighttime jar for heavy relaxation."
+          data-review="&quot;Tucks me into the couch every single time.&quot;"
+          data-image="assets/img/strains/old-widow.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -410,8 +518,13 @@
           data-type="hybrid"
           data-award="false"
           data-lineage="Mystery hybrid"
-          data-flavor="Rich gas, spice, forest"
-          data-effects="Layered, thoughtful, balanced">
+          data-flavor="Rich gas, spice, forest."
+          data-effects="Layered, thoughtful, balanced."
+          data-mom="Mystery hybrid mom"
+          data-dad="Gassy, spicy hybrid dad"
+          data-accolades="Cult-favorite jar for people who like depth."
+          data-review="&quot;Every bowl feels a little different in a good way.&quot;"
+          data-image="assets/img/strains/secret-chief.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -431,8 +544,13 @@
           data-type="hybrid"
           data-award="false"
           data-lineage="Dessert cross"
-          data-flavor="Chocolate, marshmallow, cream"
-          data-effects="Cozy, comforting, relaxed">
+          data-flavor="Chocolate, marshmallow, cream."
+          data-effects="Cozy, comforting, relaxed."
+          data-mom="Chocolate-leaning hybrid"
+          data-dad="Marshmallow dessert dad"
+          data-accolades="Fireplace-session approved dessert jar."
+          data-review="&quot;The perfect strain for hoodies, blankets, and snacks.&quot;"
+          data-image="assets/img/strains/chocolate-marshmallow.png">
 
           <div class="strain-card-inner">
             <div class="strain-image"></div>
@@ -449,7 +567,7 @@
       </div> <!-- /strain-grid -->
     </section>
 
-    <!-- FIND US CTA (optional simple section) -->
+    <!-- FIND US CTA -->
     <section class="dt-strains-findus">
       <h2>Find Dutch Touch Near You</h2>
       <p>Coming soon: a full locator for partner stores across Michigan.</p>
@@ -457,15 +575,37 @@
 
   </main>
 
-  <!-- FOOTER (simple, pointing to global contact anchor if needed) -->
-  <footer id="contact" class="dt-footer">
-    <div class="dt-footer-inner">
-      <p>© 2025 Dutch Touch Genetics • All Rights Reserved</p>
+  <!-- =========================
+       FOOTER (MATCHES HOME/APPAREL)
+  ========================== -->
+  <footer class="dt-footer">
+    <div class="dt-footer-divider"></div>
+
+    <img src="assets/img/logo/dtg-font-logo.png" class="dt-footer-logo" alt="Dutch Touch Genetics">
+
+    <div class="dt-footer-legal">
+      <a href="#">Terms &amp; Conditions</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Accessibility</a>
+      <a href="#">CA Cannabis Disclosure</a>
     </div>
+
+    <div class="dt-footer-social">
+      <a href="https://instagram.com/dutchtouchgenetics" target="_blank" aria-label="Instagram">
+        <img src="assets/icons/instagram.svg" alt="Instagram">
+      </a>
+      <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+        <img src="assets/icons/facebook.svg" alt="Facebook">
+      </a>
+      <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+        <img src="assets/icons/twitter.svg" alt="Twitter">
+      </a>
+    </div>
+
+    <p class="dt-footer-copy">© 2025 Dutch Touch Genetics. All rights reserved.</p>
   </footer>
 
   <!-- JS -->
-  <script src="js/strains.js"></script>
+  <script src="js/strains.js?v=002"></script>
 </body>
 </html>
-
