@@ -1,5 +1,6 @@
 // ============================================================
 // DUTCH TOUCH • STRAINS PAGE JS
+// Nav scroll • Menu • Filters • Search • Modal • QR
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuClose = document.querySelector(".dt-menu-close");
 
   function revealMenuLinks() {
+    if (!menu) return;
     const links = menu.querySelectorAll(".dt-menu-links a");
     links.forEach((link, i) => {
       link.classList.remove("revealed");
@@ -38,11 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function resetMenuLinks() {
+    if (!menu) return;
     const links = menu.querySelectorAll(".dt-menu-links a");
     links.forEach((link) => link.classList.remove("revealed"));
   }
 
   function toggleMenu() {
+    if (!menu) return;
     const willOpen = !menu.classList.contains("active");
     menu.classList.toggle("active");
 
@@ -87,10 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const originalOrder = [...cards];
 
   function restoreOriginalOrder() {
+    if (!grid) return;
     originalOrder.forEach((card) => grid.appendChild(card));
   }
 
   function applyFilter(filter) {
+    if (!grid) return;
+
+    // reset visibility, search will layer on top
     cards.forEach((c) => c.classList.remove("is-hidden"));
 
     if (filter === "award") {
@@ -114,7 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (["sativa", "hybrid", "indica"].includes(filter)) {
       restoreOriginalOrder();
       cards.forEach((c) => {
-        if ((c.dataset.type || "").toLowerCase() !== filter) {
+        const type = (c.dataset.type || "").toLowerCase();
+        if (type !== filter) {
           c.classList.add("is-hidden");
         }
       });
@@ -131,32 +140,64 @@ document.addEventListener("DOMContentLoaded", () => {
       filterButtons.forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
       applyFilter(btn.dataset.filter);
+      // re-apply search if user has a query
+      if (searchInput && searchInput.value.trim() !== "") {
+        runSearch(searchInput.value);
+      }
     });
   });
 
   // ------------------------------------------------------------
-// SEARCH BAR
-// ------------------------------------------------------------
-const searchInput = document.getElementById("strainSearch");
+  // SEARCH BAR (NAME / TYPE / FLAVOR / EFFECTS / TERPS)
+  // ------------------------------------------------------------
+  const searchInput = document.getElementById("strainSearch");
 
-if (searchInput) {
-  searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase().trim();
+  function runSearch(rawValue) {
+    const query = rawValue.toLowerCase().trim();
 
     cards.forEach((card) => {
-      const name = (card.dataset.name || "").toLowerCase();
-      const notes = (card.dataset.notes || "").toLowerCase();
-      const type = (card.dataset.type || "").toLowerCase();
+      // If it's already hidden by filter, keep it hidden and just bail
+      const filterHidden = card.classList.contains("is-hidden");
 
-      const match =
+      if (!query) {
+        // if no query and filter had hidden it, leave as-is
+        return;
+      }
+
+      const name = (card.dataset.name || "").toLowerCase();
+      const type = (card.dataset.type || "").toLowerCase();
+      const flavor = (card.dataset.flavor || "").toLowerCase();
+      const effects = (card.dataset.effects || "").toLowerCase();
+      const terps = (card.dataset.terps || "").toLowerCase();
+
+      const matches =
         name.includes(query) ||
         type.includes(query) ||
-        notes.includes(query);
+        flavor.includes(query) ||
+        effects.includes(query) ||
+        terps.includes(query);
 
-      card.classList.toggle("is-hidden", !match);
+      // Only override visibility if filter didn't already hide it
+      if (!filterHidden) {
+        card.classList.toggle("is-hidden", !matches);
+      } else if (filterHidden && matches === false) {
+        // if both filter + search disagree, it's still hidden
+        card.classList.add("is-hidden");
+      }
     });
-  });
-}
+
+    // If query is empty: restore filter behavior only
+    if (!query) {
+      const activeFilter = document.querySelector(".strain-filter.is-active");
+      if (activeFilter) applyFilter(activeFilter.dataset.filter || "all");
+    }
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      runSearch(searchInput.value);
+    });
+  }
 
   // ------------------------------------------------------------
   // MODAL SETUP
@@ -202,25 +243,8 @@ if (searchInput) {
           </div>
 
           <div class="strain-modal-section" id="modalTerpsSection">
-            <h4>Top 3 Terps</h4>
-
-            <div class="terp-row" data-terp-row="1">
-              <div class="terp-label" id="modalTerp1Name"></div>
-              <div class="terp-bar"><div class="terp-bar-fill" id="modalTerp1Bar"></div></div>
-              <div class="terp-percent" id="modalTerp1Pct"></div>
-            </div>
-
-            <div class="terp-row" data-terp-row="2">
-              <div class="terp-label" id="modalTerp2Name"></div>
-              <div class="terp-bar"><div class="terp-bar-fill" id="modalTerp2Bar"></div></div>
-              <div class="terp-percent" id="modalTerp2Pct"></div>
-            </div>
-
-            <div class="terp-row" data-terp-row="3">
-              <div class="terp-label" id="modalTerp3Name"></div>
-              <div class="terp-bar"><div class="terp-bar-fill" id="modalTerp3Bar"></div></div>
-              <div class="terp-percent" id="modalTerp3Pct"></div>
-            </div>
+            <h4>Top Terpenes</h4>
+            <p id="modalTerpsText"></p>
           </div>
 
           <div class="strain-modal-section" id="modalQuoteSection">
@@ -251,33 +275,7 @@ if (searchInput) {
   const modalQuote = modal.querySelector("#modalStrainQuote");
   const modalQuoteSection = modal.querySelector("#modalQuoteSection");
   const modalTerpsSection = modal.querySelector("#modalTerpsSection");
-
-  // ------------------------------------------------------------
-  // TERP SYSTEM
-  // ------------------------------------------------------------
-  function fillTerpRow(index, card) {
-    const row = modal.querySelector(`[data-terp-row="${index}"]`);
-    if (!row) return;
-
-    const name = card.dataset[`terp${index}`];
-    const pct = card.dataset[`terp${index}pct`];
-
-    const label = row.querySelector(".terp-label");
-    const percent = row.querySelector(".terp-percent");
-    const bar = row.querySelector(".terp-bar-fill");
-
-    if (!name && !pct) {
-      row.style.display = "none";
-      return;
-    }
-
-    row.style.display = "flex";
-    label.textContent = name || "";
-    percent.textContent = pct ? `${pct}%` : "";
-
-    const numeric = parseFloat(pct);
-    bar.style.width = !isNaN(numeric) ? `${numeric}%` : "0%";
-  }
+  const modalTerpsText = modal.querySelector("#modalTerpsText");
 
   // ------------------------------------------------------------
   // OPEN MODAL
@@ -290,8 +288,11 @@ if (searchInput) {
     modalType.textContent = `${type}${award}`;
 
     modalImage.src = card.dataset.image || "assets/img/strains/placeholder.png";
-    modalAcc.textContent = card.dataset.accolades || "";
-    modalAcc.style.display = modalAcc.textContent ? "block" : "none";
+    modalImage.alt = card.dataset.name || "Strain";
+
+    const acc = card.dataset.accolades || "";
+    modalAcc.textContent = acc;
+    modalAcc.style.display = acc ? "block" : "none";
 
     modalMother.textContent = card.dataset.mom || "";
     modalFather.textContent = card.dataset.dad || "";
@@ -305,17 +306,19 @@ if (searchInput) {
       modalQuote.textContent = quote;
       modalQuoteSection.style.display = "block";
     } else {
+      modalQuote.textContent = "";
       modalQuoteSection.style.display = "none";
     }
 
-    fillTerpRow(1, card);
-    fillTerpRow(2, card);
-    fillTerpRow(3, card);
-
-    const anyTerps = [...modalTerpsSection.querySelectorAll(".terp-row")]
-      .some((row) => row.style.display !== "none");
-
-    modalTerpsSection.style.display = anyTerps ? "block" : "none";
+    // Top terpenes (simple text line)
+    const terps = card.dataset.terps || "";
+    if (terps) {
+      modalTerpsText.textContent = terps;
+      modalTerpsSection.style.display = "block";
+    } else {
+      modalTerpsText.textContent = "";
+      modalTerpsSection.style.display = "none";
+    }
 
     modal.classList.add("open");
     body.classList.add("no-scroll");
@@ -328,10 +331,14 @@ if (searchInput) {
   // CLOSE MODAL
   function closeModal() {
     modal.classList.remove("open");
-    if (!menu.classList.contains("active")) body.classList.remove("no-scroll");
+    if (!menu || !menu.classList.contains("active")) {
+      body.classList.remove("no-scroll");
+    }
   }
 
-  modalCloseBtn.addEventListener("click", closeModal);
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener("click", closeModal);
+  }
 
   modal.addEventListener("click", (e) => {
     if (!modalDialog.contains(e.target)) closeModal();
@@ -345,6 +352,7 @@ if (searchInput) {
 
   // ------------------------------------------------------------
   // QR HASH → OPEN SPECIFIC STRAIN
+  // e.g. /strains.html#lilac-diesel or #mr-clean
   // ------------------------------------------------------------
   const hash = window.location.hash.replace("#", "").trim();
   if (hash) {
@@ -352,7 +360,9 @@ if (searchInput) {
 
     const match = cards.find((c) => {
       const slug = (c.dataset.slug || "").toLowerCase();
-      const nameSlug = (c.dataset.name || "").toLowerCase().replace(/\s+/g, "-");
+      const nameSlug = (c.dataset.name || "")
+        .toLowerCase()
+        .replace(/\s+/g, "-");
       return slug === target || nameSlug === target;
     });
 
