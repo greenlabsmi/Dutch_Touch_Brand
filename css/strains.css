@@ -336,6 +336,35 @@
   color: #ccc;
   font-size: 0.85rem;
 }
+/* ============================
+   SEARCH BAR
+============================= */
+
+.strain-search-wrap {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.strain-search-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #0d0d0d;
+  color: #eee;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.2s;
+}
+
+.strain-search-input::placeholder {
+  color: #666;
+}
+
+.strain-search-input:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 2px rgba(212,175,55,0.25);
+}
 
 /* -------------------------
    QUOTE
