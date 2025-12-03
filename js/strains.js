@@ -135,6 +135,30 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ------------------------------------------------------------
+// SEARCH BAR
+// ------------------------------------------------------------
+const searchInput = document.getElementById("strainSearch");
+
+if (searchInput) {
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase().trim();
+
+    cards.forEach((card) => {
+      const name = (card.dataset.name || "").toLowerCase();
+      const notes = (card.dataset.notes || "").toLowerCase();
+      const type = (card.dataset.type || "").toLowerCase();
+
+      const match =
+        name.includes(query) ||
+        type.includes(query) ||
+        notes.includes(query);
+
+      card.classList.toggle("is-hidden", !match);
+    });
+  });
+}
+
+  // ------------------------------------------------------------
   // MODAL SETUP
   // ------------------------------------------------------------
   modal = document.createElement("div");
