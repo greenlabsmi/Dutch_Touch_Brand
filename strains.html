@@ -7,7 +7,7 @@
 
   <!-- Global + Strains styles -->
   <link rel="stylesheet" href="css/style.css?v=011">
-  <link rel="stylesheet" href="css/strains.css?v=002">
+  <link rel="stylesheet" href="css/strains.css?v=003">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -37,13 +37,13 @@
     </div>
 
     <div class="dt-nav-icons">
-      <a href="https://instagram.com/dutchtouchgenetics" target="_blank">
+      <a href="https://instagram.com/dutchtouchgenetics" target="_blank" aria-label="Instagram">
         <img src="assets/icons/instagram.svg" alt="">
       </a>
-      <a href="https://facebook.com" target="_blank">
+      <a href="https://facebook.com" target="_blank" aria-label="Facebook">
         <img src="assets/icons/facebook.svg" alt="">
       </a>
-      <a href="https://twitter.com" target="_blank">
+      <a href="https://twitter.com" target="_blank" aria-label="Twitter">
         <img src="assets/icons/twitter.svg" alt="">
       </a>
     </div>
@@ -55,9 +55,9 @@
   ========================== -->
   <div id="dt-menu" class="dt-menu-overlay">
     <div class="dt-menu-inner">
-      <button class="dt-menu-close">×</button>
+      <button class="dt-menu-close" aria-label="Close menu">×</button>
 
-      <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo">
+      <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo" alt="Dutch Touch Genetics Logo">
 
       <nav class="dt-menu-links">
         <a href="index.html">Home</a>
@@ -88,24 +88,26 @@
   <main class="dt-strains-main">
 
     <!-- =========================
-         FILTERS
+         FILTERS + SEARCH
     ========================== -->
     <section class="dt-strains-section">
       <div class="dt-strains-header">
         <h2>Browse Strains</h2>
-        <p>Filter by award winners or effect type. Tap a strain card to see more details.</p>
+        <p>Filter by award winners, type, or search by name, flavor, or terpene.</p>
       </div>
 
+      <!-- Search -->
       <div class="strain-search-wrap">
-  <input 
-    type="text" 
-    id="strainSearch" 
-    class="strain-search-input" 
-    placeholder="Search strains..."
-    autocomplete="off"
-  >
-</div>
+        <input 
+          type="text" 
+          id="strainSearch" 
+          class="strain-search-input" 
+          placeholder="Search by name, flavor, or terpene..."
+          autocomplete="off"
+        >
+      </div>
 
+      <!-- Filters -->
       <div class="strain-filters">
         <button class="strain-filter is-active" data-filter="all">All</button>
         <button class="strain-filter" data-filter="award">Award Winning</button>
@@ -137,6 +139,7 @@
           data-dad="Wookie"
           data-accolades="Cup-winning sativa cut, loved for its loud citrus profile."
           data-review="&quot;My go-to daytime smoke when I still want to get things done.&quot;"
+          data-terps="Limonene, Terpinolene, Caryophyllene"
           data-image="assets/img/strains/lemon-wookie-4.png">
 
           <div class="strain-card-inner">
@@ -165,6 +168,7 @@
           data-dad="Forbidden Fruit x NYC Diesel"
           data-accolades="High Times Cup winner and Dutch Touch fan favorite."
           data-review="&quot;Flower that smells like a jar of purple gas — and smokes even better.&quot;"
+          data-terps="Terpinolene, Limonene, Ocimene"
           data-image="assets/img/strains/lilac-diesel.png">
 
           <div class="strain-card-inner">
@@ -193,6 +197,7 @@
           data-dad="The Cube"
           data-accolades="Cup-winning medical sativa, legendary at Dutch Touch."
           data-review="&quot;The only thing I want to do after smoking this is crush my to-do list.&quot;"
+          data-terps="Limonene, Pinene, Terpinolene"
           data-image="assets/img/strains/mr-clean.png">
 
           <div class="strain-card-inner">
@@ -221,6 +226,7 @@
           data-dad="Gassy hybrid dad"
           data-accolades="Cup-winning hybrid, a staple in Dutch Touch jars."
           data-review="&quot;Perfect for music, movies, and losing track of time in the best way.&quot;"
+          data-terps="Myrcene, Limonene, Caryophyllene"
           data-image="assets/img/strains/space-hippy.png">
 
           <div class="strain-card-inner">
@@ -249,6 +255,7 @@
           data-dad="Kush hybrid dad"
           data-accolades="Awarded for its nose and knockout power."
           data-review="&quot;The name is not a joke. This is lights-out funk.&quot;"
+          data-terps="Myrcene, Caryophyllene, Humulene"
           data-image="assets/img/strains/death-by-funk.png">
 
           <div class="strain-card-inner">
@@ -277,6 +284,7 @@
           data-dad="Gelato dessert cut"
           data-accolades="Cup-winning dessert indica with serious bag appeal."
           data-review="&quot;Looks like candy, smells like jam, hits like an indica should.&quot;"
+          data-terps="Myrcene, Limonene, Linalool"
           data-image="assets/img/strains/forbidden-jelly.png">
 
           <div class="strain-card-inner">
@@ -293,7 +301,7 @@
         </article>
 
         <!-- ===========================================
-             CORE LINEUP (IN ORDER YOU TYPED THEM)
+             CORE LINEUP (IN ORDER YOU TYPED)
         ============================================ -->
 
         <!-- Death Star -->
@@ -309,6 +317,7 @@
           data-dad="Sour Diesel"
           data-accolades="Classic heavy hitter for nighttime sessions."
           data-review="&quot;One of those strains that makes the room go quiet in a good way.&quot;"
+          data-terps="Myrcene, Caryophyllene, Limonene"
           data-image="assets/img/strains/death-star.png">
 
           <div class="strain-card-inner">
@@ -336,6 +345,7 @@
           data-dad="Gas hybrid"
           data-accolades="A throwback jar for old heads and new fans."
           data-review="&quot;Smells like the early 2000s in the best possible way.&quot;"
+          data-terps="Myrcene, Humulene, Caryophyllene"
           data-image="assets/img/strains/clusterfunk.png">
 
           <div class="strain-card-inner">
@@ -363,6 +373,7 @@
           data-dad="Candy hybrid dad"
           data-accolades="Perfect warm-weather and vacation strain."
           data-review="&quot;Tastes like pineapple gummies and makes everything more fun.&quot;"
+          data-terps="Limonene, Ocimene, Myrcene"
           data-image="assets/img/strains/pina-rita.png">
 
           <div class="strain-card-inner">
@@ -390,6 +401,7 @@
           data-dad="Gas-heavy indica dad"
           data-accolades="For experienced consumers only."
           data-review="&quot;Two hits and I was exactly where I wanted to be.&quot;"
+          data-terps="Terpinolene, Limonene, Pinene"
           data-image="assets/img/strains/10k.png">
 
           <div class="strain-card-inner">
@@ -417,6 +429,7 @@
           data-dad="Fruity sativa hybrid"
           data-accolades="Perfect munchies and movie strain."
           data-review="&quot;Makes everything taste better and puts a grin on my face.&quot;"
+          data-terps="Myrcene, Limonene, Caryophyllene"
           data-image="assets/img/strains/fruit-brute.png">
 
           <div class="strain-card-inner">
@@ -444,6 +457,7 @@
           data-dad="Berry-forward dad"
           data-accolades="Comfort strain for evenings and slow weekends."
           data-review="&quot;It’s like a berry milkshake in flower form.&quot;"
+          data-terps="Myrcene, Limonene, Linalool"
           data-image="assets/img/strains/big-smooth.png">
 
           <div class="strain-card-inner">
@@ -471,6 +485,7 @@
           data-dad="Piney hybrid"
           data-accolades="For people who like straight gas in the morning."
           data-review="&quot;Feels like a strong coffee with extra flavor.&quot;"
+          data-terps="Caryophyllene, Limonene, Myrcene"
           data-image="assets/img/strains/angelica.png">
 
           <div class="strain-card-inner">
@@ -498,6 +513,7 @@
           data-dad="Earthy indica"
           data-accolades="Old-school nighttime jar for heavy relaxation."
           data-review="&quot;Tucks me into the couch every single time.&quot;"
+          data-terps="Myrcene, Caryophyllene, Humulene"
           data-image="assets/img/strains/old-widow.png">
 
           <div class="strain-card-inner">
@@ -525,6 +541,7 @@
           data-dad="Gassy hybrid dad"
           data-accolades="Cult-favorite jar for people who like depth."
           data-review="&quot;Every bowl feels a little different in a good way.&quot;"
+          data-terps="Caryophyllene, Myrcene, Limonene"
           data-image="assets/img/strains/secret-chief.png">
 
           <div class="strain-card-inner">
@@ -552,6 +569,7 @@
           data-dad="Marshmallow hybrid"
           data-accolades="Fireplace-session approved dessert jar."
           data-review="&quot;The perfect strain for hoodies, blankets, and snacks.&quot;"
+          data-terps="Myrcene, Limonene, Linalool"
           data-image="assets/img/strains/chocolate-marshmallow.png">
 
           <div class="strain-card-inner">
@@ -583,6 +601,7 @@
           data-dad=""
           data-accolades=""
           data-review=""
+          data-terps="Myrcene, Caryophyllene, Humulene"
           data-image="assets/img/strains/white-wampa.png">
 
           <div class="strain-card-inner">
@@ -610,6 +629,7 @@
           data-dad=""
           data-accolades=""
           data-review=""
+          data-terps="Limonene, Myrcene, Linalool"
           data-image="assets/img/strains/purple-lambo.png">
 
           <div class="strain-card-inner">
@@ -637,6 +657,7 @@
           data-dad=""
           data-accolades=""
           data-review=""
+          data-terps="Terpinolene, Limonene, Caryophyllene"
           data-image="assets/img/strains/illudium.png">
 
           <div class="strain-card-inner">
@@ -664,6 +685,7 @@
           data-dad=""
           data-accolades=""
           data-review=""
+          data-terps="Limonene, Pinene, Terpinolene"
           data-image="assets/img/strains/apollo.png">
 
           <div class="strain-card-inner">
@@ -691,6 +713,7 @@
           data-dad=""
           data-accolades=""
           data-review=""
+          data-terps="Myrcene, Limonene, Caryophyllene"
           data-image="assets/img/strains/sin-city-grapes.png">
 
           <div class="strain-card-inner">
@@ -718,6 +741,7 @@
           data-dad=""
           data-accolades=""
           data-review=""
+          data-terps="Caryophyllene, Myrcene, Humulene"
           data-image="assets/img/strains/double-d.png">
 
           <div class="strain-card-inner">
@@ -748,23 +772,23 @@
   <footer class="dt-footer">
     <div class="dt-footer-divider"></div>
 
-    <img src="assets/img/logo/dtg-font-logo.png" class="dt-footer-logo">
+    <img src="assets/img/logo/dtg-font-logo.png" class="dt-footer-logo" alt="Dutch Touch Genetics">
 
     <div class="dt-footer-legal">
-      <a href="#">Terms & Conditions</a>
+      <a href="#">Terms &amp; Conditions</a>
       <a href="#">Privacy Policy</a>
       <a href="#">Accessibility</a>
       <a href="#">CA Cannabis Disclosure</a>
     </div>
 
     <div class="dt-footer-social">
-      <a href="https://instagram.com/dutchtouchgenetics" target="_blank">
+      <a href="https://instagram.com/dutchtouchgenetics" target="_blank" aria-label="Instagram">
         <img src="assets/icons/instagram.svg" alt="">
       </a>
-      <a href="https://facebook.com" target="_blank">
+      <a href="https://facebook.com" target="_blank" aria-label="Facebook">
         <img src="assets/icons/facebook.svg" alt="">
       </a>
-      <a href="https://twitter.com" target="_blank">
+      <a href="https://twitter.com" target="_blank" aria-label="Twitter">
         <img src="assets/icons/twitter.svg" alt="">
       </a>
     </div>
@@ -772,6 +796,6 @@
     <p class="dt-footer-copy">© 2025 Dutch Touch Genetics. All rights reserved.</p>
   </footer>
 
-  <script src="js/strains.js?v=002"></script>
+  <script src="js/strains.js?v=003"></script>
 </body>
 </html>
