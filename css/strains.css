@@ -1,7 +1,7 @@
 /* ============================================================
    DUTCH TOUCH • STRAINS PAGE CSS (PART 1)
    Layout, grid, cards, hero
-   ============================================================ */
+============================================================ */
 
 /* -------------------------
    HERO
@@ -51,6 +51,35 @@
 .dt-strains-header p {
   color: #999;
   margin-bottom: 2rem;
+}
+
+/* -------------------------
+   SEARCH BAR
+------------------------- */
+.strain-search-wrap {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.strain-search-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #0d0d0d;
+  color: #eee;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.2s;
+}
+
+.strain-search-input::placeholder {
+  color: #666;
+}
+
+.strain-search-input:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 2px rgba(212,175,55,0.25);
 }
 
 /* -------------------------
@@ -184,9 +213,10 @@
 .dt-strains-findus p {
   color: #aaa;
 }
+
 /* ============================================================
    DUTCH TOUCH • STRAINS PAGE CSS (PART 2)
-   Modal, terp bars, responsiveness
+   Modal & responsiveness
 ============================================================ */
 
 /* -------------------------
@@ -211,6 +241,7 @@
    MODAL DIALOG
 ------------------------- */
 .strain-modal-dialog {
+  position: relative;
   background: #0f0f0f;
   border-radius: 16px;
   padding: 2rem;
@@ -299,71 +330,10 @@
   display: inline-block;
 }
 
-/* -------------------------
-   TERP ROWS
-------------------------- */
-.terp-row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.6rem;
-}
-
-.terp-label {
-  width: 90px;
+/* Simple terp text line */
+#modalTerpsText {
   color: #eee;
-  font-size: 0.9rem;
-}
-
-.terp-bar {
-  flex: 1;
-  height: 8px;
-  background: #222;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.terp-bar-fill {
-  height: 100%;
-  background: #d4af37;
-  width: 0%;
-  transition: width 0.4s ease;
-}
-
-.terp-percent {
-  width: 40px;
-  text-align: right;
-  color: #ccc;
-  font-size: 0.85rem;
-}
-/* ============================
-   SEARCH BAR
-============================= */
-
-.strain-search-wrap {
-  margin-bottom: 1.5rem;
-  width: 100%;
-}
-
-.strain-search-input {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background: #0d0d0d;
-  color: #eee;
-  font-size: 1rem;
-  outline: none;
-  transition: 0.2s;
-}
-
-.strain-search-input::placeholder {
-  color: #666;
-}
-
-.strain-search-input:focus {
-  border-color: #d4af37;
-  box-shadow: 0 0 0 2px rgba(212,175,55,0.25);
+  font-size: 0.95rem;
 }
 
 /* -------------------------
