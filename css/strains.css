@@ -1,676 +1,365 @@
 /* ============================================================
-   DUTCH TOUCH • STRAINS PAGE (ISOLATED)
-   CLEAN STRUCTURE — NAV + FOOTER MATCH HOME/APPAREL
-   Scoped to: body.dt-strains-page
-============================================================ */
+   DUTCH TOUCH • STRAINS PAGE CSS (PART 1)
+   Layout, grid, cards, hero
+   ============================================================ */
 
-/* -----------------------------
-   PAGE VARIABLES
------------------------------ */
-body.dt-strains-page {
-  --bg:#050505;
-  --surface:#101010;
-  --surface-soft:#161616;
-  --line:#262626;
-  --ink:#f7f3e9;
-  --muted:#a6a3a0;
-  --gold:#cda45a;
-  --orange:#e67a00;
-  --radius:18px;
-
-  --nav-bg:rgba(0,0,0,0);
-  --nav-bg-solid:rgba(0,0,0,0.92);
+/* -------------------------
+   HERO
+------------------------- */
+.dt-strains-hero {
+  background: #000;
+  padding: 6rem 2rem 5rem;
+  text-align: center;
 }
 
-/* -----------------------------
-   BASE PAGE
------------------------------ */
-body.dt-strains-page {
-  background:var(--bg);
-  color:var(--ink);
-  font-family:Inter, sans-serif;
-  padding-top:72px; /* match nav height */
-  overflow-x:hidden;
+.dt-strains-hero-inner .hero-eyebrow {
+  color: #d4af37;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
 }
 
-body.dt-strains-page img { max-width:100%; display:block; }
-body.dt-strains-page a { color:inherit; text-decoration:none; }
+.strains-title {
+  font-family: "Cinzel", serif;
+  font-size: 3rem;
+  color: #fff;
+  margin: 0.3rem 0 0.7rem 0;
+}
 
+.strains-subtitle {
+  color: #bbb;
+  max-width: 580px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* -------------------------
+   MAIN SECTION
+------------------------- */
+.dt-strains-section {
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dt-strains-header h2 {
+  font-family: "Cinzel", serif;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.dt-strains-header p {
+  color: #999;
+  margin-bottom: 2rem;
+}
+
+/* -------------------------
+   FILTERS
+------------------------- */
+.strain-filters {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.strain-filter {
+  background: #111;
+  border: 1px solid #333;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.strain-filter:hover {
+  border-color: #d4af37;
+  color: #fff;
+}
+
+.strain-filter.is-active {
+  background: #d4af37;
+  border-color: #d4af37;
+  color: #000;
+}
+
+/* -------------------------
+   GRID
+------------------------- */
+.strain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.7rem;
+}
+
+/* -------------------------
+   CARDS
+------------------------- */
+.strain-card {
+  background: #0a0a0a;
+  border-radius: 14px;
+  border: 1px solid #1a1a1a;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.strain-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+}
+
+.strain-card-inner {
+  padding: 1.2rem;
+}
+
+.strain-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 180px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background-color: #111;
+}
+
+.strain-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.strain-name {
+  color: #fff;
+  font-family: "Cinzel", serif;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.strain-badge {
+  background: #d4af37;
+  color: #000;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.strain-meta {
+  color: #bbb;
+  font-size: 0.95rem;
+  margin: 0.4rem 0;
+}
+
+.strain-notes {
+  color: #888;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* Hidden card during filtering */
+.strain-card.is-hidden {
+  display: none;
+}
+
+/* -------------------------
+   FIND US SECTION
+------------------------- */
+.dt-strains-findus {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #000;
+  border-top: 1px solid #222;
+}
+
+.dt-strains-findus h2 {
+  font-family: "Cinzel", serif;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.dt-strains-findus p {
+  color: #aaa;
+}
 /* ============================================================
-   NAV (MATCHES HOME/APPAREL VISUALLY)
+   DUTCH TOUCH • STRAINS PAGE CSS (PART 2)
+   Modal, terp bars, responsiveness
 ============================================================ */
 
-body.dt-strains-page .dt-nav {
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  height:72px;
-
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  align-items:center;
-
-  padding:0 16px;
-
-  background:var(--nav-bg);
-  backdrop-filter:none;
-  transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
-
-  z-index:1100;
+/* -------------------------
+   MODAL OVERLAY
+------------------------- */
+.strain-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s ease;
+  z-index: 9999;
 }
 
-body.dt-strains-page .dt-nav.scrolled {
-  background:var(--nav-bg-solid);
-  backdrop-filter:blur(8px);
-  box-shadow:0 3px 16px rgba(0,0,0,0.55);
+.strain-modal.open {
+  opacity: 1;
+  visibility: visible;
 }
 
-body.dt-strains-page .dt-nav-left {
-  display:flex;
-  align-items:center;
-  gap:12px;
+/* -------------------------
+   MODAL DIALOG
+------------------------- */
+.strain-modal-dialog {
+  background: #0f0f0f;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 900px;
+  margin: 60px auto;
+  max-height: 85vh;
+  overflow-y: auto;
+  border: 1px solid #333;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
 }
 
-/* Hamburger */
-body.dt-strains-page .dt-nav-hamburger {
-  width:32px;
-  height:22px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  background:none;
-  border:none;
-  cursor:pointer;
+.strain-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 2.2rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
 }
 
-body.dt-strains-page .dt-nav-hamburger span {
-  height:3px;
-  width:100%;
-  background:var(--ink);
-  border-radius:4px;
+.strain-modal-header h3 {
+  font-family: "Cinzel", serif;
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 0.2rem;
 }
 
-/* Logo */
-body.dt-strains-page .dt-nav-logo img {
-  height:28px;
+.strain-modal-header p {
+  color: #d4af37;
+  font-size: 1rem;
 }
 
-/* Center text logo */
-body.dt-strains-page .dt-nav-text {
-  justify-self:center;
-  font-family:Cinzel, serif;
-  font-weight:700;
-  font-size:28px;
-  white-space:nowrap;
-  color:var(--orange);
-  display:none; /* mobile hidden, desktop shows */
+/* -------------------------
+   MODAL LAYOUT
+------------------------- */
+.strain-modal-layout {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
 }
 
-/* Exact match to home/apparel shimmer on "Touch" */
-body.dt-strains-page .dt-nav-text span {
-  color:var(--gold);
-  animation:touchPulse 3.8s ease-in-out infinite alternate;
+.strain-modal-media {
+  width: 40%;
 }
 
-/* Re-use global keyframes from style.css; safe if defined twice */
-@keyframes touchPulse {
-  0%   { color:#CDA45A; text-shadow:0 0 0 rgba(255,200,120,0); }
-  50%  { color:#FFE7A8; text-shadow:0 0 10px rgba(255,217,138,0.6); }
-  100% { color:#CDA45A; text-shadow:0 0 0 rgba(255,200,120,0); }
+.strain-modal-image-frame img {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #222;
 }
 
-/* Right icons */
-body.dt-strains-page .dt-nav-icons {
-  display:flex;
-  justify-content:flex-end;
-  align-items:center;
-  gap:14px;
+.strain-modal-tagline {
+  color: #aaa;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
 }
 
-body.dt-strains-page .dt-nav-icons img {
-  width:24px;
-  height:24px;
-  transition:transform .25s ease;
+.strain-modal-body {
+  width: 60%;
 }
 
-body.dt-strains-page .dt-nav-icons img:hover {
-  transform:translateY(-2px) scale(1.12);
+/* -------------------------
+   MODAL SECTIONS
+------------------------- */
+.strain-modal-section {
+  margin-bottom: 1.6rem;
 }
 
-/* Responsive nav tweaks */
-@media (min-width:768px) {
-  body.dt-strains-page .dt-nav-text { display:block; }
-  body.dt-strains-page .dt-nav-hamburger { width:36px; height:26px; }
-  body.dt-strains-page .dt-nav-hamburger span { width:30px; }
-  body.dt-strains-page .dt-nav-logo img { height:36px; }
+.strain-modal-section h4 {
+  font-family: "Cinzel", serif;
+  color: #fff;
+  margin-bottom: 0.4rem;
 }
 
-@media (max-width:767px) {
-  body.dt-strains-page .dt-nav-icons img { width:20px; height:20px; }
-  body.dt-strains-page .dt-nav-hamburger { width:30px; height:20px; }
+.strain-modal-section p {
+  color: #ccc;
+  line-height: 1.4;
 }
 
-/* ============================================================
-   SLIDE-OUT MENU (SAME FEEL AS HOME)
-============================================================ */
-
-body.dt-strains-page .dt-menu-overlay {
-  position:fixed;
-  top:0;
-  left:0;
-  width:75%;
-  max-width:320px;
-  height:100%;
-  background:#000;
-
-  transform:translateX(-100%);
-  opacity:0;
-  pointer-events:none;
-
-  transition:transform .45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity .35s ease;
-
-  z-index:3000;
+.label {
+  color: #d4af37;
+  width: 90px;
+  display: inline-block;
 }
 
-body.dt-strains-page .dt-menu-overlay.active {
-  transform:translateX(0);
-  opacity:1;
-  pointer-events:auto;
+/* -------------------------
+   TERP ROWS
+------------------------- */
+.terp-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
 }
 
-body.dt-strains-page .dt-menu-inner {
-  padding:22px 20px;
+.terp-label {
+  width: 90px;
+  color: #eee;
+  font-size: 0.9rem;
 }
 
-body.dt-strains-page .dt-menu-close {
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:42px;
-  margin-bottom:16px;
-  cursor:pointer;
+.terp-bar {
+  flex: 1;
+  height: 8px;
+  background: #222;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-body.dt-strains-page .dt-menu-logo {
-  height:42px;
-  margin-bottom:20px;
+.terp-bar-fill {
+  height: 100%;
+  background: #d4af37;
+  width: 0%;
+  transition: width 0.4s ease;
 }
 
-body.dt-strains-page .dt-menu-links a {
-  display:block;
-  font-family:Cinzel, serif;
-  font-size:30px;
-  margin-bottom:18px;
-
-  opacity:0;
-  transform:translateX(-22px);
-  transition:opacity .45s ease, transform .45s ease;
+.terp-percent {
+  width: 40px;
+  text-align: right;
+  color: #ccc;
+  font-size: 0.85rem;
 }
 
-body.dt-strains-page .dt-menu-links a.revealed {
-  opacity:1;
-  transform:translateX(0);
+/* -------------------------
+   QUOTE
+------------------------- */
+.strain-modal-quote {
+  color: #bbb;
+  font-style: italic;
 }
 
-/* ============================================================
-   HERO SECTION
-============================================================ */
-body.dt-strains-page .dt-strains-hero {
-  padding:110px 18px 40px;
-  max-width:1080px;
-  margin:0 auto;
-
-  background:
-    radial-gradient(circle at top left, rgba(230,122,0,0.35), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(205,164,90,0.25), transparent 55%);
-}
-
-body.dt-strains-page .dt-strains-hero-inner {
-  max-width:620px;
-}
-
-body.dt-strains-page .hero-eyebrow {
-  color:var(--gold);
-  text-transform:uppercase;
-  letter-spacing:.18em;
-  font-size:12px;
-  margin-bottom:6px;
-}
-
-body.dt-strains-page .strains-title {
-  font-family:Cinzel, serif;
-  font-size:34px;
-  margin-bottom:8px;
-}
-
-body.dt-strains-page .strains-subtitle {
-  font-size:14px;
-  color:var(--muted);
-  max-width:460px;
-}
-
-/* ============================================================
-   MAIN WRAPPER
-============================================================ */
-body.dt-strains-page .dt-strains-main {
-  max-width:1080px;
-  margin:0 auto 50px;
-  padding:0 18px 40px;
-}
-
-/* ============================================================
-   HEADER + FILTERS
-============================================================ */
-body.dt-strains-page .dt-strains-header {
-  margin-bottom:16px;
-}
-
-body.dt-strains-page .dt-strains-header h2 {
-  font-family:Cinzel, serif;
-  font-size:24px;
-  margin-bottom:6px;
-}
-
-body.dt-strains-page .dt-strains-header p {
-  font-size:13px;
-  color:var(--muted);
-}
-
-/* FILTER BUTTONS */
-body.dt-strains-page .strain-filters {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:18px;
-}
-
-body.dt-strains-page .strain-filter {
-  border-radius:999px;
-  border:1px solid var(--line);
-  background:#0b0b0b;
-  color:var(--muted);
-  font-size:12px;
-  padding:7px 13px;
-  cursor:pointer;
-}
-
-body.dt-strains-page .strain-filter.is-active {
-  background:#161616;
-  border-color:var(--orange);
-  color:var(--ink);
-}
-
-/* ============================================================
-   STRAIN GRID
-============================================================ */
-body.dt-strains-page .strain-grid {
-  display:grid;
-  grid-template-columns:1fr;
-  gap:18px;
-}
-
-/* CARD */
-body.dt-strains-page .strain-card {
-  background:var(--surface-soft);
-  border-radius:var(--radius);
-  padding:10px;
-  cursor:pointer;
-
-  box-shadow:0 14px 32px rgba(0,0,0,0.65);
-  transition:transform .28s ease, box-shadow .28s ease, border .28s ease;
-  border:1px solid rgba(255,255,255,0.03);
-}
-
-@media(min-width:900px) {
-  body.dt-strains-page .strain-card:hover {
-    transform:translateY(-5px);
-    box-shadow:0 22px 45px rgba(0,0,0,0.8);
-    border-color:rgba(230,122,0,0.4);
+/* -------------------------
+   RESPONSIVE
+------------------------- */
+@media (max-width: 800px) {
+  .strain-modal-layout {
+    flex-direction: column;
   }
-}
 
-/* CARD INNER LAYOUT */
-body.dt-strains-page .strain-card-inner {
-  display:flex;
-  gap:12px;
-}
-
-/* TEMP STRAIN IMAGE BLOCK (CARD THUMB) */
-body.dt-strains-page .strain-image {
-  width:34%;
-  min-width:120px;
-  height:130px;
-  border-radius:14px;
-  background:radial-gradient(circle at top, #f4e1c8, #c17837);
-  background-size:cover;
-  background-position:center;
-}
-
-/* CONTENT */
-body.dt-strains-page .strain-content { flex:1; }
-
-body.dt-strains-page .strain-top {
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:8px;
-  margin-bottom:4px;
-}
-
-body.dt-strains-page .strain-name {
-  font-family:Cinzel, serif;
-  font-size:16px;
-}
-
-body.dt-strains-page .strain-badge {
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:.16em;
-  padding:4px 8px;
-  border-radius:999px;
-
-  border:1px solid rgba(205,164,90,0.8);
-  color:var(--gold);
-}
-
-body.dt-strains-page .strain-meta {
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.16em;
-  color:var(--muted);
-  margin-bottom:6px;
-}
-
-body.dt-strains-page .strain-notes {
-  font-size:13px;
-  color:var(--ink);
-}
-
-/* Hidden by filters */
-body.dt-strains-page .strain-card.is-hidden {
-  display:none;
-}
-
-/* ============================================================
-   FIND US CTA BOX
-============================================================ */
-body.dt-strains-page .dt-strains-findus {
-  margin-top:28px;
-  padding:22px 16px;
-  background:#0d0d0d;
-  border-radius:var(--radius);
-  text-align:left;
-}
-
-body.dt-strains-page .dt-strains-findus h2 {
-  font-family:Cinzel, serif;
-  font-size:20px;
-  margin-bottom:6px;
-}
-
-body.dt-strains-page .dt-strains-findus p {
-  font-size:13px;
-  color:var(--muted);
-}
-
-/* ============================================================
-   STRAIN MODAL — GLOWY DETAIL WINDOW
-============================================================ */
-body.dt-strains-page .strain-modal {
-  position:fixed;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:rgba(0,0,0,0.78);
-  z-index:3000;
-
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .28s ease;
-}
-
-body.dt-strains-page .strain-modal.open {
-  opacity:1;
-  pointer-events:auto;
-}
-
-body.dt-strains-page .strain-modal-dialog {
-  width:92%;
-  max-width:840px;
-  max-height:82vh;
-  overflow-y:auto;
-
-  background:#0c0c0c;
-  border-radius:22px;
-  padding:20px 20px 18px;
-
-  box-shadow:
-    0 24px 60px rgba(0,0,0,0.9),
-    0 0 0 1px rgba(205,164,90,0.15);
-
-  transform:translateY(16px);
-  opacity:0;
-  transition:transform .28s ease, opacity .28s ease;
-}
-
-/* Animate dialog when modal is open */
-body.dt-strains-page .strain-modal.open .strain-modal-dialog {
-  transform:translateY(0);
-  opacity:1;
-}
-
-/* Close button */
-body.dt-strains-page .strain-modal-close {
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:26px;
-  cursor:pointer;
-  float:right;
-  margin-left:12px;
-}
-
-/* Header */
-body.dt-strains-page .strain-modal-header {
-  margin-bottom:10px;
-}
-
-body.dt-strains-page .strain-modal-name {
-  font-family:Cinzel, serif;
-  font-size:22px;
-  margin:0 0 4px;
-}
-
-body.dt-strains-page .strain-modal-meta {
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:.16em;
-  color:var(--muted);
-}
-
-/* Layout: image + text */
-body.dt-strains-page .strain-modal-layout {
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-  margin-top:10px;
-}
-
-@media(min-width:800px) {
-  body.dt-strains-page .strain-modal-layout {
-    flex-direction:row;
+  .strain-modal-media,
+  .strain-modal-body {
+    width: 100%;
   }
-}
 
-/* Left: image */
-body.dt-strains-page .strain-modal-media {
-  flex:0 0 280px;
-}
-
-body.dt-strains-page .strain-modal-image-frame {
-  border-radius:20px;
-  padding:4px;
-  background:linear-gradient(135deg, rgba(205,164,90,0.5), rgba(230,122,0,0.2));
-  margin-bottom:10px;
-}
-
-body.dt-strains-page .strain-modal-image-frame img {
-  width:100%;
-  display:block;
-  border-radius:16px;
-  object-fit:cover;
-  aspect-ratio:4/5; /* card-like jar shot */
-  background:#111;
-}
-
-body.dt-strains-page .strain-modal-tagline {
-  font-size:12px;
-  color:var(--muted);
-}
-
-/* Right: body content */
-body.dt-strains-page .strain-modal-body {
-  flex:1;
-}
-
-/* Sections */
-body.dt-strains-page .strain-modal-section {
-  margin-bottom:12px;
-  font-size:13px;
-}
-
-body.dt-strains-page .strain-modal-section h4 {
-  font-size:13px;
-  text-transform:uppercase;
-  letter-spacing:.16em;
-  color:var(--gold);
-  margin-bottom:4px;
-}
-
-body.dt-strains-page .strain-modal-section p {
-  font-size:13px;
-  color:var(--ink);
-}
-
-body.dt-strains-page .strain-modal-section span.label {
-  color:var(--muted);
-  text-transform:uppercase;
-  letter-spacing:.14em;
-  font-size:11px;
-  display:inline-block;
-  margin-right:4px;
-}
-
-/* Quote styling */
-body.dt-strains-page .strain-modal-quote {
-  font-style:italic;
-  color:var(--ink);
-  border-left:2px solid rgba(205,164,90,0.6);
-  padding-left:10px;
-}
-
-/* ============================================================
-   TERP ROWS (BLANK BUT READY)
-============================================================ */
-body.dt-strains-page .terp-row {
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-bottom:6px;
-}
-
-body.dt-strains-page .terp-label {
-  width:90px;
-  font-size:12px;
-  color:var(--muted);
-  text-transform:capitalize;
-}
-
-body.dt-strains-page .terp-bar {
-  flex:1;
-  height:6px;
-  border-radius:999px;
-  background:rgba(255,255,255,0.06);
-  overflow:hidden;
-}
-
-body.dt-strains-page .terp-bar-fill {
-  height:100%;
-  width:0;
-  background:linear-gradient(90deg, var(--orange), var(--gold));
-  transition:width .3s ease;
-}
-
-body.dt-strains-page .terp-percent {
-  width:42px;
-  font-size:12px;
-  text-align:right;
-  color:var(--ink);
-}
-
-/* ============================================================
-   FOOTER (MATCHES HOME/APPAREL)
-============================================================ */
-body.dt-strains-page .dt-footer {
-  background:#000;
-  padding:40px 20px 50px;
-  margin-top:60px;
-  border-top:1px solid rgba(255,255,255,0.1);
-  text-align:center;
-}
-
-body.dt-strains-page .dt-footer-divider {
-  height:6px;
-  border-radius:3px;
-  background:var(--orange);
-  margin-bottom:40px;
-}
-
-body.dt-strains-page .dt-footer-logo {
-  height:48px;
-  margin-bottom:26px;
-}
-
-body.dt-strains-page .dt-footer-social {
-  display:flex;
-  justify-content:center;
-  gap:22px;
-  margin-bottom:30px;
-}
-
-body.dt-strains-page .dt-footer-social img {
-  width:26px;
-  opacity:.85;
-  transition:.25s ease;
-}
-
-body.dt-strains-page .dt-footer-social img:hover {
-  opacity:1;
-  transform:scale(1.08);
-}
-
-body.dt-strains-page .dt-footer-legal {
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  margin-bottom:32px;
-}
-
-body.dt-strains-page .dt-footer-legal a {
-  font-size:14px;
-  color:var(--muted);
-  text-transform:uppercase;
-}
-
-body.dt-strains-page .dt-footer-legal a:hover {
-  color:var(--orange);
-}
-
-body.dt-strains-page .dt-footer-copy {
-  font-size:12px;
-  color:var(--muted);
-  opacity:.7;
+  .strain-modal-dialog {
+    margin: 20px auto;
+    padding: 1.5rem;
+  }
 }
