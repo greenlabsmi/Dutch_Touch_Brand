@@ -90,6 +90,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = Array.from(document.querySelectorAll(".strain-card"));
   const originalOrder = [...cards];
 
+  // >>> THUMBNAIL IMAGE APPLY
+cards.forEach(card => {
+  const img = card.dataset.image;
+  const thumb = card.querySelector(".strain-image");
+  if (img && thumb) {
+    thumb.style.backgroundImage = `url(${img})`;
+  }
+});
+  
   function restoreOriginalOrder() {
     if (!grid) return;
     originalOrder.forEach((card) => grid.appendChild(card));
