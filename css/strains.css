@@ -205,6 +205,20 @@ max-height: 620px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+    margin-bottom: 4rem;
+   position:relative;
+
+}
+
+.dt-strains-hero::after {
+  content:"";
+  position:absolute;
+  bottom:-1px;
+  left:0;
+  right:0;
+  height:140px;
+  background:linear-gradient(to bottom, rgba(0,0,0,0), #000);
+  pointer-events:none;
 }
 
 /* Text styles remain the same */
