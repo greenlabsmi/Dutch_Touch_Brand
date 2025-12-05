@@ -12,16 +12,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------------------------------------
   // NAV SCROLL
   // ------------------------------------------------------------
-  const nav = document.querySelector(".dt-nav");
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  if (!body.classList.contains("dt-strains-page")) return;
 
-  function updateNavOnScroll() {
-    if (!nav) return;
+  const nav = document.getElementById("dtNav");
+
+  function updateNav() {
     if (window.scrollY > 10) nav.classList.add("scrolled");
     else nav.classList.remove("scrolled");
   }
 
-  updateNavOnScroll();
-  window.addEventListener("scroll", updateNavOnScroll);
+  updateNav();
+  window.addEventListener("scroll", updateNav);
+});
+
 
   // ------------------------------------------------------------
   // SLIDE-OUT MENU
