@@ -187,9 +187,9 @@ body.dt-strains-page .dt-menu-links a.revealed {
 
 .dt-strains-hero {
   background: url('../assets/img/strains/strains-hero.png') center/cover no-repeat;
-  height: 40vh;
-  min-height: 300px;
-  max-height: 420px;
+  height: 58vh;
+min-height: 450px;
+max-height: 620px;
   text-align: center;
   margin-top: 72px; /* keep below nav */
   padding: 3.5rem 1rem 2.5rem;
@@ -221,14 +221,14 @@ body.dt-strains-page .dt-menu-links a.revealed {
 }
 
 /* Mobile adjustments */
-@media(max-width: 768px) {
-  .dt-strains-hero {
-    height: 32vh;
-    min-height: 220px;
-    max-height: 300px;
-    padding: 2.5rem 1rem;
-    background-position: center 18%;
+@media(max-width:768px){
+  .dt-strains-hero{
+    height: 50vh;
+    min-height: 360px;
+    max-height: 520px;
+    background-position: center 22%;
   }
+}
 
   .strains-title {
     font-size: 2.4rem;
