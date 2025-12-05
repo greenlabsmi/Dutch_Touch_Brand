@@ -8,7 +8,6 @@
 /* ============================================================
    GLOBAL NAV (MATCHES HOMEPAGE NAV)
 ============================================================ */
-
 body.dt-strains-page .dt-nav {
   position:fixed;
   top:0;
@@ -19,18 +18,16 @@ body.dt-strains-page .dt-nav {
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
-
   padding:0 16px;
 
-  background:rgba(0,0,0,0);
+  background:var(--nav-bg);
   backdrop-filter:none;
   transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
-
   z-index:1100;
 }
 
 body.dt-strains-page .dt-nav.scrolled {
-  background:rgba(0,0,0,0.92);
+  background:var(--nav-bg-solid);
   backdrop-filter:blur(8px);
   box-shadow:0 3px 16px rgba(0,0,0,0.55);
 }
