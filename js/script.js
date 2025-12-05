@@ -25,10 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // ============================
   const nav = document.getElementById("dtNav");
 
-  function updateNav() {
-    if (window.scrollY > 10) nav.classList.add("scrolled");
-    else nav.classList.remove("scrolled");
+ function updateNav() {
+  const nav = document.getElementById("dtNav");
+  if (window.scrollY <= 10) {
+    nav.classList.remove("scrolled");
+  } else {
+    nav.classList.add("scrolled");
   }
+}
 
   updateNav();
   window.addEventListener("scroll", updateNav);
