@@ -118,6 +118,15 @@ body.dt-strains-page .dt-nav-icons img:hover {
   body.dt-strains-page .dt-nav-hamburger { width:30px; height:20px; }
 }
 
+.navbar {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  transition: background 0.3s ease;
+}
 
 /* ============================================================
    MENU OVERLAY — SLIDE OUT (MATCHES HOMEPAGE)
