@@ -405,6 +405,69 @@ body.dt-strains-page .dt-menu-links a.revealed {
   color:#aaa;
 }
 
+/* ============================================================
+   FOOTER — STRAINS PAGE ONLY (No global bleed)
+============================================================ */
+
+.dt-strains-page .dt-strains-footer {
+  background:#000;
+  padding:40px 20px 60px;
+  margin-top:60px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.dt-strains-page .dt-strains-footer-divider {
+  height:6px;
+  border-radius:3px;
+  background:#d4af37;
+  width:80px;
+  margin:0 auto 34px;
+}
+
+.dt-strains-page .dt-strains-footer-social {
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  margin-bottom:30px;
+}
+
+.dt-strains-page .dt-strains-footer-social img {
+  width:26px;
+  opacity:.85;
+  transition:.25s ease;
+}
+
+.dt-strains-page .dt-strains-footer-social img:hover {
+  opacity:1;
+  transform:scale(1.1);
+}
+
+.dt-strains-page .dt-strains-footer-legal {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:26px;
+}
+
+.dt-strains-page .dt-strains-footer-legal a {
+  font-size:14px;
+  color:#aaa;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  transition:0.25s;
+}
+
+.dt-strains-page .dt-strains-footer-legal a:hover {
+  color:#d4af37;
+}
+
+.dt-strains-page .dt-strains-footer-copy {
+  font-size:12px;
+  color:#666;
+  margin-top:10px;
+}
+
 
 /* ============================================================
    STRAIN MODAL
