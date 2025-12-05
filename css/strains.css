@@ -186,7 +186,7 @@ body.dt-strains-page .dt-menu-links a.revealed {
 ============================================================ */
 
 .dt-strains-hero {
-  background: url('../assets/img/strains-hero.png') center/cover no-repeat;
+  background: url('../assets/img/strains/strains-hero.png') center/cover no-repeat;
   height: 40vh;
   min-height: 300px;
   max-height: 420px;
