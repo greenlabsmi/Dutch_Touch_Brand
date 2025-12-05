@@ -194,12 +194,13 @@ body.dt-strains-page .dt-menu-links a.revealed {
 .dt-strains-hero {
   /* image */
   background: url('../assets/img/strains/strains-hero.png')
-    center 35% / cover no-repeat;
+    center 42% / cover no-repeat;
+  /* ↑ 42% = lower crop = we see more plants and shoulders */
 
   /* height control */
-  height: 56vh;
-  min-height: 460px;
-  max-height: 600px;
+  height: 60vh;
+  min-height: 500px;
+  max-height: 720px;
 
   /* layout */
   margin-top: 72px; /* sits under nav */
@@ -208,8 +209,10 @@ body.dt-strains-page .dt-menu-links a.revealed {
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* push title up */
-  padding: 7rem 1rem 2rem;     /* top lift */
+  justify-content: flex-start;
+
+  /* ↓ text sits lower into the frame */
+  padding: 10rem 1rem 2rem;
 
   position: relative;
 }
@@ -222,13 +225,11 @@ body.dt-strains-page .dt-menu-links a.revealed {
   left: 0;
   right: 0;
   height: 150px;
-
   background: linear-gradient(
     to bottom,
     rgba(0,0,0,0),
     #000
   );
-
   pointer-events: none;
 }
 
@@ -236,21 +237,13 @@ body.dt-strains-page .dt-menu-links a.revealed {
    HERO TEXT — TITLE + SUBTITLE
 ============================================================ */
 
-/* eyebrow removed on purpose (cleaner hero)
-   (delete the HTML element completely for best practice)
-*/
-
 .strains-title {
   font-family: "Cinzel", serif;
   font-size: 4.1rem;
   font-weight: 700;
   line-height: 1.03;
-
   color: #f9f5e8;
   margin: 0 auto 0.7rem;
-
-  letter-spacing: 0.5px;
-
   text-shadow:
     0 4px 18px rgba(0,0,0,0.55),
     0 0 3px rgba(0,0,0,0.45);
@@ -263,35 +256,36 @@ body.dt-strains-page .dt-menu-links a.revealed {
   font-size: 1.15rem;
   font-weight: 400;
   line-height: 1.38;
-
   text-shadow:
     0 2px 8px rgba(0,0,0,0.55);
-
   opacity: 0.92;
 }
 
 /* ============================================================
-   MOBILE — higher crop + smaller text
+   MOBILE — wider crop + smaller text
 ============================================================ */
 @media (max-width: 768px) {
+
   .dt-strains-hero {
+    /* zoom OUT and slide down */
+    background-position: center 55%;
+
+    /* little shorter so more crop visible */
     height: 52vh;
-    min-height: 400px;
-    max-height: 520px;
+    min-height: 420px;
+    max-height: 580px;
 
-    /* zoom out + higher framing */
-    background-position: center 19%;
-
-    /* lift text slightly */
-    padding-top: 6rem;
+    /* lower title into shoulder line */
+    padding-top: 8.5rem;
   }
 
   .strains-title {
-    font-size: 2.7rem;
+    font-size: 2.9rem;
+    line-height: 1.05;
   }
 
   .strains-subtitle {
-    font-size: 1rem;
+    font-size: 1.05rem;
     max-width: 90%;
   }
 }
