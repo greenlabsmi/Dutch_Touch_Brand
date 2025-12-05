@@ -202,11 +202,10 @@ max-height: 620px;
   text-align: center;
   margin-top: 72px; /* keep below nav */
   padding: 3.5rem 1rem 2.5rem;
-  display: flex;
-  flex-direction: column;
-justify-content: flex-end;
-padding-bottom: 5rem;
-  justify-content: center;
+  display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding-bottom:5rem;
     margin-bottom: 4rem;
    position:relative;
 
@@ -261,26 +260,17 @@ padding-bottom: 5rem;
 
 /* Mobile adjustments */
 @media(max-width:768px){
+  .dt-strains-hero{
+    height:50vh;
+    min-height:360px;
+    max-height:520px;
+    background-position:center 22%;
+  }
+
   .strains-title { font-size:2.8rem; }
   .strains-subtitle { font-size:1rem; max-width:90%; }
 }
-  .dt-strains-hero{
-    height: 50vh;
-    min-height: 360px;
-    max-height: 520px;
-    background-position: center 22%;
-  }
-}
 
-  .strains-title {
-    font-size: 2.4rem;
-  }
-
-  .strains-subtitle {
-    font-size: 1rem;
-    max-width: 90%;
-  }
-}
 
 /* ============================================================
    MAIN SECTION
