@@ -12,20 +12,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------------------------------------
   // NAV SCROLL
   // ------------------------------------------------------------
-document.addEventListener("DOMContentLoaded", () => {
-  const body = document.body;
-  if (!body.classList.contains("dt-strains-page")) return;
-
   const nav = document.getElementById("dtNav");
 
   function updateNav() {
-    if (window.scrollY > 10) nav.classList.add("scrolled");
-    else nav.classList.remove("scrolled");
+    if (window.scrollY > 10) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
   }
 
   updateNav();
   window.addEventListener("scroll", updateNav);
-});
 
 
   // ------------------------------------------------------------
@@ -166,39 +164,34 @@ cards.forEach(card => {
   // ------------------------------------------------------------
   const searchInput = document.getElementById("strainSearch");
 
-  function runSearch(rawValue) {
-    const query = rawValue.toLowerCase().trim();
+ function runSearch(rawValue) {
+  const query = rawValue.toLowerCase().trim();
 
-    cards.forEach((card) => {
-      // If it's already hidden by filter, keep it hidden and just bail
-      const filterHidden = card.classList.contains("is-hidden");
+  // no search → restore filter logic
+  if (!query) {
+    const activeFilter = document.querySelector(".strain-filter.is-active");
+    if (activeFilter) applyFilter(activeFilter.dataset.filter || "all");
+    return;
+  }
 
-      if (!query) {
-        // if no query and filter had hidden it, leave as-is
-        return;
-      }
+  // while typing → ignore filters completely
+  cards.forEach((card) => {
+    const name = (card.dataset.name || "").toLowerCase();
+    const type = (card.dataset.type || "").toLowerCase();
+    const flavor = (card.dataset.flavor || "").toLowerCase();
+    const effects = (card.dataset.effects || "").toLowerCase();
+    const terps = (card.dataset.terps || "").toLowerCase();
 
-      const name = (card.dataset.name || "").toLowerCase();
-      const type = (card.dataset.type || "").toLowerCase();
-      const flavor = (card.dataset.flavor || "").toLowerCase();
-      const effects = (card.dataset.effects || "").toLowerCase();
-      const terps = (card.dataset.terps || "").toLowerCase();
+    const matches =
+      name.includes(query) ||
+      type.includes(query) ||
+      flavor.includes(query) ||
+      effects.includes(query) ||
+      terps.includes(query);
 
-      const matches =
-        name.includes(query) ||
-        type.includes(query) ||
-        flavor.includes(query) ||
-        effects.includes(query) ||
-        terps.includes(query);
-
-      // Only override visibility if filter didn't already hide it
-      if (!filterHidden) {
-        card.classList.toggle("is-hidden", !matches);
-      } else if (filterHidden && matches === false) {
-        // if both filter + search disagree, it's still hidden
-        card.classList.add("is-hidden");
-      }
-    });
+    card.classList.toggle("is-hidden", !matches);
+  });
+}
 
     // If query is empty: restore filter behavior only
     if (!query) {
@@ -207,11 +200,17 @@ cards.forEach(card => {
     }
   }
 
-  if (searchInput) {
-    searchInput.addEventListener("input", () => {
-      runSearch(searchInput.value);
-    });
-  }
+// SEARCH INPUT HANDLER
+if (searchInput) {
+  searchInput.addEventListener("input", () => {
+
+    // When typing, visually deactivate filter buttons
+    filterButtons.forEach(btn => btn.classList.remove("is-active"));
+
+    // Run search normally
+    runSearch(searchInput.value);
+  });
+}
 
   // ------------------------------------------------------------
   // MODAL SETUP
