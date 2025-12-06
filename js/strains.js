@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updateNav();
   window.addEventListener("scroll", updateNav);
 
-
   // ------------------------------------------------------------
   // SLIDE-OUT MENU
   // ------------------------------------------------------------
@@ -93,15 +92,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = Array.from(document.querySelectorAll(".strain-card"));
   const originalOrder = [...cards];
 
-  // >>> THUMBNAIL IMAGE APPLY
-cards.forEach(card => {
-  const img = card.dataset.image;
-  const thumb = card.querySelector(".strain-image");
-  if (img && thumb) {
-    thumb.style.backgroundImage = `url(${img})`;
-  }
-});
-  
+  // Thumbnail image binding
+  cards.forEach((card) => {
+    const img = card.dataset.image;
+    const thumb = card.querySelector(".strain-image");
+    if (img && thumb) {
+      thumb.style.backgroundImage = `url(${img})`;
+    }
+  });
+
   function restoreOriginalOrder() {
     if (!grid) return;
     originalOrder.forEach((card) => grid.appendChild(card));
@@ -109,10 +108,9 @@ cards.forEach(card => {
 
   function applyFilter(filter) {
     if (!grid) return;
-
-    // reset visibility, search will layer on top
     cards.forEach((c) => c.classList.remove("is-hidden"));
 
+    // Award Winners
     if (filter === "award") {
       restoreOriginalOrder();
       cards.forEach((c) => {
@@ -121,6 +119,7 @@ cards.forEach(card => {
       return;
     }
 
+    // Alphabetical
     if (filter === "az") {
       const sorted = [...cards].sort((a, b) => {
         const A = (a.dataset.name || "").toLowerCase();
@@ -131,17 +130,17 @@ cards.forEach(card => {
       return;
     }
 
+    // Type filters
     if (["sativa", "hybrid", "indica"].includes(filter)) {
       restoreOriginalOrder();
       cards.forEach((c) => {
         const type = (c.dataset.type || "").toLowerCase();
-        if (type !== filter) {
-          c.classList.add("is-hidden");
-        }
+        if (type !== filter) c.classList.add("is-hidden");
       });
       return;
     }
 
+    // All strains
     if (filter === "all") {
       restoreOriginalOrder();
     }
@@ -151,8 +150,10 @@ cards.forEach(card => {
     btn.addEventListener("click", () => {
       filterButtons.forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
+
       applyFilter(btn.dataset.filter);
-      // re-apply search if user has a query
+
+      // If a search query exists, layer search after filter
       if (searchInput && searchInput.value.trim() !== "") {
         runSearch(searchInput.value);
       }
@@ -164,53 +165,44 @@ cards.forEach(card => {
   // ------------------------------------------------------------
   const searchInput = document.getElementById("strainSearch");
 
- function runSearch(rawValue) {
-  const query = rawValue.toLowerCase().trim();
+  function runSearch(rawValue) {
+    const query = rawValue.toLowerCase().trim();
 
-  // no search → restore filter logic
-  if (!query) {
-    const activeFilter = document.querySelector(".strain-filter.is-active");
-    if (activeFilter) applyFilter(activeFilter.dataset.filter || "all");
-    return;
-  }
-
-  // while typing → ignore filters completely
-  cards.forEach((card) => {
-    const name = (card.dataset.name || "").toLowerCase();
-    const type = (card.dataset.type || "").toLowerCase();
-    const flavor = (card.dataset.flavor || "").toLowerCase();
-    const effects = (card.dataset.effects || "").toLowerCase();
-    const terps = (card.dataset.terps || "").toLowerCase();
-
-    const matches =
-      name.includes(query) ||
-      type.includes(query) ||
-      flavor.includes(query) ||
-      effects.includes(query) ||
-      terps.includes(query);
-
-    card.classList.toggle("is-hidden", !matches);
-  });
-}
-
-    // If query is empty: restore filter behavior only
+    // No query → restore active filter
     if (!query) {
       const activeFilter = document.querySelector(".strain-filter.is-active");
       if (activeFilter) applyFilter(activeFilter.dataset.filter || "all");
+      return;
     }
+
+    // While typing → ignore filter restrictions
+    cards.forEach((card) => {
+      const name = (card.dataset.name || "").toLowerCase();
+      const type = (card.dataset.type || "").toLowerCase();
+      const flavor = (card.dataset.flavor || "").toLowerCase();
+      const effects = (card.dataset.effects || "").toLowerCase();
+      const terps = (card.dataset.terps || "").toLowerCase();
+
+      const matches =
+        name.includes(query) ||
+        type.includes(query) ||
+        flavor.includes(query) ||
+        effects.includes(query) ||
+        terps.includes(query);
+
+      card.classList.toggle("is-hidden", !matches);
+    });
   }
 
-// SEARCH INPUT HANDLER
-if (searchInput) {
-  searchInput.addEventListener("input", () => {
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      // In search mode: remove visual filter state
+      filterButtons.forEach((btn) => btn.classList.remove("is-active"));
 
-    // When typing, visually deactivate filter buttons
-    filterButtons.forEach(btn => btn.classList.remove("is-active"));
-
-    // Run search normally
-    runSearch(searchInput.value);
-  });
-}
+      // Run search
+      runSearch(searchInput.value);
+    });
+  }
 
   // ------------------------------------------------------------
   // MODAL SETUP
@@ -323,7 +315,6 @@ if (searchInput) {
       modalQuoteSection.style.display = "none";
     }
 
-    // Top terpenes (simple text line)
     const terps = card.dataset.terps || "";
     if (terps) {
       modalTerpsText.textContent = terps;
@@ -341,7 +332,9 @@ if (searchInput) {
     card.addEventListener("click", () => openModal(card));
   });
 
+  // ------------------------------------------------------------
   // CLOSE MODAL
+  // ------------------------------------------------------------
   function closeModal() {
     modal.classList.remove("open");
     if (!menu || !menu.classList.contains("active")) {
