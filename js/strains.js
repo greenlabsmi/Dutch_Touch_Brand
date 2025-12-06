@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = Array.from(document.querySelectorAll(".strain-card"));
   const originalOrder = [...cards];
 
-  // Thumbnail image binding
+  // Thumbnail images
   cards.forEach((card) => {
     const img = card.dataset.image;
     const thumb = card.querySelector(".strain-image");
@@ -108,9 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyFilter(filter) {
     if (!grid) return;
+
+    // reset base visibility
     cards.forEach((c) => c.classList.remove("is-hidden"));
 
-    // Award Winners
+    // AWARD
     if (filter === "award") {
       restoreOriginalOrder();
       cards.forEach((c) => {
@@ -119,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Alphabetical
+    // A-Z
     if (filter === "az") {
       const sorted = [...cards].sort((a, b) => {
         const A = (a.dataset.name || "").toLowerCase();
@@ -130,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Type filters
+    // TYPE
     if (["sativa", "hybrid", "indica"].includes(filter)) {
       restoreOriginalOrder();
       cards.forEach((c) => {
@@ -140,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // All strains
+    // ALL
     if (filter === "all") {
       restoreOriginalOrder();
     }
@@ -150,32 +152,33 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => {
       filterButtons.forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
-
       applyFilter(btn.dataset.filter);
 
-      // If a search query exists, layer search after filter
-      if (searchInput && searchInput.value.trim() !== "") {
+      // layer search on top if query active
+      if (searchInput && searchInput.value.trim()) {
         runSearch(searchInput.value);
       }
     });
   });
 
   // ------------------------------------------------------------
-  // SEARCH BAR (NAME / TYPE / FLAVOR / EFFECTS / TERPS)
+  // SEARCH BAR
   // ------------------------------------------------------------
   const searchInput = document.getElementById("strainSearch");
 
   function runSearch(rawValue) {
     const query = rawValue.toLowerCase().trim();
 
-    // No query → restore active filter
+    // EMPTY → restore active filter
     if (!query) {
       const activeFilter = document.querySelector(".strain-filter.is-active");
-      if (activeFilter) applyFilter(activeFilter.dataset.filter || "all");
+      if (activeFilter) {
+        applyFilter(activeFilter.dataset.filter || "all");
+      }
       return;
     }
 
-    // While typing → ignore filter restrictions
+    // SEARCH → bypass filters
     cards.forEach((card) => {
       const name = (card.dataset.name || "").toLowerCase();
       const type = (card.dataset.type || "").toLowerCase();
@@ -196,10 +199,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (searchInput) {
     searchInput.addEventListener("input", () => {
-      // In search mode: remove visual filter state
+      // visually reset filters while typing
       filterButtons.forEach((btn) => btn.classList.remove("is-active"));
-
-      // Run search
       runSearch(searchInput.value);
     });
   }
@@ -264,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.body.appendChild(modal);
 
-  // Modal element refs
+  // Modal refs
   const modalDialog = modal.querySelector(".strain-modal-dialog");
   const modalCloseBtn = modal.querySelector(".strain-modal-close");
 
@@ -357,8 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ------------------------------------------------------------
-  // QR HASH → OPEN SPECIFIC STRAIN
-  // e.g. /strains.html#lilac-diesel or #mr-clean
+  // QR HASH LINK
   // ------------------------------------------------------------
   const hash = window.location.hash.replace("#", "").trim();
   if (hash) {
@@ -366,9 +366,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const match = cards.find((c) => {
       const slug = (c.dataset.slug || "").toLowerCase();
-      const nameSlug = (c.dataset.name || "")
-        .toLowerCase()
-        .replace(/\s+/g, "-");
+      const nameSlug =
+        (c.dataset.name || "").toLowerCase().replace(/\s+/g, "-");
       return slug === target || nameSlug === target;
     });
 
