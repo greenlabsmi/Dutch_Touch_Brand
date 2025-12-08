@@ -1,84 +1,324 @@
 /* ============================================================
    DUTCH TOUCH GENETICS
-   STORES PAGE — SCOPED
+   STORES PAGE — FULL FILE
    Scoped to: body.dt-stores-page
 ============================================================ */
 
-/* PAGE HERO */
-body.dt-stores-page .dt-stores-hero {
-  background: url('../assets/img/stores/stores-hero.jpg') center/cover no-repeat;
-  margin-top:72px;
-  padding:7rem 1rem 4rem;
-  text-align:center;
-  position:relative;
+
+/* ============================================================
+   GLOBAL NAV (COPY FROM STRAINS)
+============================================================ */
+
+body.dt-stores-page .dt-nav {
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:72px;
+
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  padding:0 16px;
+
+  background:var(--nav-bg);
+  backdrop-filter:none;
+  transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+  z-index:1100;
 }
 
-body.dt-stores-page .stores-title {
+body.dt-stores-page .dt-nav.scrolled {
+  background:var(--nav-bg-solid);
+  backdrop-filter:blur(8px);
+  box-shadow:0 3px 16px rgba(0,0,0,0.55);
+}
+
+/* LEFT */
+body.dt-stores-page .dt-nav-left {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+body.dt-stores-page .dt-nav-hamburger {
+  width:32px;
+  height:22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+
+body.dt-stores-page .dt-nav-hamburger span {
+  height:3px;
+  width:100%;
+  background:#F7F3E9;
+  border-radius:4px;
+}
+
+/* LOGO */
+body.dt-stores-page .dt-nav-logo img {
+  height:28px;
+}
+
+/* CENTER TEXT */
+body.dt-stores-page .dt-nav-text {
+  justify-self:center;
+  font-family:Cinzel, serif;
+  font-weight:700;
+  font-size:28px;
+  white-space:nowrap;
+  color:#E67A00;
+  display:none;
+}
+
+body.dt-stores-page .dt-nav-text span {
+  color:#CDA45A;
+}
+
+/* SOCIAL ICONS */
+body.dt-stores-page .dt-nav-icons {
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:14px;
+}
+
+body.dt-stores-page .dt-nav-icons img {
+  width:24px;
+  height:24px;
+}
+
+@media (min-width:768px) {
+  body.dt-stores-page .dt-nav-text { display:block; }
+}
+
+/* ============================================================
+   MENU OVERLAY
+============================================================ */
+body.dt-stores-page .dt-menu-overlay {
+  position:fixed;
+  top:0;
+  left:0;
+  width:75%;
+  max-width:320px;
+  height:100%;
+  background:#000;
+
+  transform:translateX(-100%);
+  opacity:0;
+  pointer-events:none;
+
+  transition:transform .45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity .35s ease;
+
+  z-index:3000;
+}
+
+body.dt-stores-page .dt-menu-overlay.active {
+  transform:translateX(0);
+  opacity:1;
+  pointer-events:auto;
+}
+
+body.dt-stores-page .dt-menu-inner {
+  padding:22px 20px;
+}
+
+body.dt-stores-page .dt-menu-close {
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:42px;
+  margin-bottom:16px;
+  cursor:pointer;
+}
+
+body.dt-stores-page .dt-menu-logo {
+  height:42px;
+  margin-bottom:20px;
+}
+
+body.dt-stores-page .dt-menu-links a {
+  display:block;
+  font-family:Cinzel, serif;
+  font-size:30px;
+  margin-bottom:18px;
+  opacity:0;
+  transform:translateX(-22px);
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.dt-stores-hero {
+  height:45vh;
+  min-height:380px;
+
+  background:url('../assets/img/strains/strains-hero.png') center/cover no-repeat;
+  padding-top:72px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+
+  margin-bottom:4rem;
+}
+
+.stores-title {
   font-family:"Cinzel", serif;
   font-size:3.6rem;
-  font-weight:700;
-  color:#F7F2E8;
+  color:#fff;
+  margin-bottom:0.5rem;
+}
+
+.stores-subtitle {
+  color:#ccc;
+  font-size:1.2rem;
+}
+
+/* ============================================================
+   STORES GRID
+============================================================ */
+
+.dt-stores-section {
+  max-width:1400px;
+  margin:0 auto;
+  padding:3rem 2rem;
+}
+
+.dt-stores-header h2 {
+  font-family:"Cinzel", serif;
+  color:#fff;
+  margin-bottom:0.4rem;
+}
+
+.dt-stores-header p {
+  color:#999;
+  margin-bottom:2rem;
+}
+
+.stores-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(360px, 1fr));
+  gap:1.7rem;
+}
+
+.store-card {
+  background:#0a0a0a;
+  border-radius:14px;
+  border:1px solid #1a1a1a;
+  overflow:hidden;
+  box-shadow:0 0 18px rgba(212,175,55,0.15);
+}
+
+.store-image {
+  height:210px;
+  background:#000;
+}
+
+.store-content {
+  padding:1.3rem;
+}
+
+.store-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   margin-bottom:0.6rem;
 }
 
-body.dt-stores-page .stores-subtitle {
-  font-size:1.15rem;
-  color:#E4D7BC;
-}
-
-
-/* LIST SECTION */
-body.dt-stores-page .stores-list-section {
-  max-width:900px;
-  margin:0 auto;
-  padding:4rem 1.5rem;
-  display:flex;
-  flex-direction:column;
-  gap:2rem;
-}
-
-/* STORE CARD */
-body.dt-stores-page .store-card {
-  background:#0a0a0a;
-  border:1px solid #222;
-  border-radius:14px;
-  padding:1.6rem;
-}
-
-body.dt-stores-page .store-name {
-  font-family:"Cinzel", serif;
+.store-name {
   color:#fff;
-  font-size:1.8rem;
-  margin-bottom:0.2rem;
+  font-family:"Cinzel", serif;
+  font-size:1.4rem;
 }
 
-body.dt-stores-page .store-city {
-  color:#CDA45A;
-  font-size:1rem;
+.store-tag {
+  background:#d4af37;
+  color:#000;
+  padding:0.25rem 0.6rem;
+  border-radius:5px;
+  font-size:0.7rem;
+  font-weight:700;
+}
+
+.store-desc {
+  color:#aaa;
+  font-size:0.9rem;
   margin-bottom:1rem;
 }
 
-body.dt-stores-page .store-notes {
-  color:#aaa;
-  line-height:1.45;
-  margin-bottom:1.2rem;
+.store-location p {
+  color:#ccc;
+  margin:0;
+  font-size:0.85rem;
+  line-height:1.35;
 }
 
-body.dt-stores-page .store-links {
-  display:flex;
-  gap:1.4rem;
-}
-
-body.dt-stores-page .store-link,
-body.dt-stores-page .store-map {
+.store-link {
+  display:inline-block;
+  margin-top:1rem;
   color:#d4af37;
+  font-weight:600;
+  text-decoration:none;
   font-size:0.95rem;
-  text-transform:uppercase;
-  letter-spacing:0.8px;
-  transition:color .25s ease;
 }
 
-body.dt-stores-page .store-link:hover,
-body.dt-stores-page .store-map:hover {
-  color:#fff;
+.store-link:hover {
+  text-decoration:underline;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+body.dt-stores-page .dt-footer {
+  background:#000;
+  padding:75px 20px 80px;
+  margin-top:80px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+body.dt-stores-page .dt-footer-divider {
+  width:100%;
+  height:2px;
+  background:#d4af37;
+  margin:0 auto 28px auto;
+}
+
+body.dt-stores-page .dt-footer-legal {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:28px;
+}
+
+body.dt-stores-page .dt-footer-legal a {
+  color:#eee;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+}
+
+body.dt-stores-page .dt-footer-social {
+  display:flex;
+  justify-content:center;
+  gap:28px;
+  margin-bottom:26px;
+}
+
+body.dt-stores-page .dt-footer-social img {
+  width:26px;
+  height:26px;
+}
+
+body.dt-stores-page .dt-footer-copy {
+  color:#777;
+  font-size:13px;
 }
