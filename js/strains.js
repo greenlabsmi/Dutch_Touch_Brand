@@ -5,7 +5,10 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
-  if (!body.classList.contains("dt-strains-page")) return;
+  
+  const isStrains = body.classList.contains("dt-strains-page");
+const isAbout = body.classList.contains("dt-about-page");
+if (!isStrains && !isAbout) return;
 
   let modal = null;
 
