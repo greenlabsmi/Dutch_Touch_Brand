@@ -8,26 +8,53 @@ body.dt-about-page {
   font-family: Inter, sans-serif;
 }
 
-/* NAV (Simple clone from home) */
+/* Reset spacing */
+* { box-sizing: border-box; }
+
+/* LINK STATE RESET */
+a { text-decoration: none; }
+
+
+/* ============================================================
+   NAV (Exact match of Stores page)
+============================================================ */
 .dt-nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 72px;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  z-index: 1000;
-  background: rgba(0,0,0,0.15);
+  padding: 0 16px;
+  z-index: 1100;
+  background: var(--nav-bg, rgba(0,0,0,0.15));
   backdrop-filter: blur(8px);
+  transition: background .35s ease, box-shadow .35s ease;
 }
-.dt-nav-links a {
-  margin-left: 20px;
+
+.dt-nav.scrolled {
+  background: rgba(0, 0, 0, 0.65);
+  box-shadow: 0 3px 16px rgba(0,0,0,0.55);
+}
+
+/* Left Logo */
+.dt-nav-logo {
+  font-family: Cinzel, serif;
+  font-size: 1.65rem;
   color: #fff;
-  text-decoration: none;
 }
-.dt-nav-links a:hover,
-.dt-nav-links a.active {
+
+/* Menu Links */
+.dt-menu-links a {
+  color: #fff;
+  margin: 0 16px;
+  font-size: 1.05rem;
+  opacity: 0.95;
+  transition: 0.25s ease;
+}
+
+.dt-menu-links a:hover,
+.dt-menu-links a.active {
   color: #D4AF37;
 }
 
@@ -37,64 +64,65 @@ body.dt-about-page {
 .dt-hero {
   position: relative;
   height: 80vh;
-  min-height: 550px;
+  min-height: 520px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 72px; /* below nav */
+  margin-top: 72px;
   overflow: hidden;
 }
 
 .dt-hero-video {
   position: absolute;
   top: 50%; left: 50%;
-  height: 100%;
-  width: auto;
   min-width: 100%;
   min-height: 100%;
+  width: auto;
+  height: auto;
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
 
+/* Gradient Overlay */
 .dt-hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
     rgba(0,0,0,0.25),
-    rgba(0,0,0,0.75)
+    rgba(0,0,0,0.85)
   );
 }
 
+/* Content Layer */
 .dt-hero-content {
   position: relative;
-  text-align: center;
   z-index: 2;
-  max-width: 700px;
+  text-align: center;
   padding: 1rem;
+  max-width: 640px;
 }
 
 .dt-hero-title {
-  font-size: 3.6rem;
   font-family: Cinzel, serif;
-  margin: 0 0 .5rem;
+  font-size: 3.8rem;
   color: #D4AF37;
+  margin: 0 0 .5rem;
 }
 
 .dt-hero-tagline {
-  font-size: 1.4rem;
-  opacity: .85;
-  margin-bottom: 1rem;
+  font-size: 1.45rem;
+  opacity: 0.85;
+  margin-bottom: 1.2rem;
 }
 
 .dt-hero-button {
   display: inline-block;
-  padding: .75rem 2rem;
+  padding: 0.8rem 2.2rem;
   border: 1px solid #D4AF37;
   color: #D4AF37;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: .25s ease;
+  font-size: 1.05rem;
+  transition: 0.25s ease;
 }
 
 .dt-hero-button:hover {
@@ -108,18 +136,23 @@ body.dt-about-page {
 .dt-about {
   padding: 4rem 1rem;
 }
+
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
 }
+
 .dt-about h2 {
   font-family: Cinzel, serif;
-  font-size: 2.8rem;
+  font-size: 3rem;
   color: #D4AF37;
-  margin-bottom: 1rem;
+  margin-bottom: 1.4rem;
 }
+
 .dt-about p {
   font-size: 1.25rem;
-  line-height: 1.6;
-  max-width: 800px;
+  line-height: 1.65;
+  max-width: 850px;
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
 }
