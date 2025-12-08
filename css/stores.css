@@ -326,3 +326,6 @@ body.dt-stores-page .dt-footer-copy {
 body.dt-stores-page .dt-menu-links a {
   color: #fff !important;
 }
+body.dt-stores-page .dt-menu-links a:hover {
+  color: #d4af37 !important;
+}
