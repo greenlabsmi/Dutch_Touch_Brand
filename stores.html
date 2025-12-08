@@ -6,10 +6,8 @@
 
   <title>Dutch Touch Genetics • Stores</title>
 
-  <!-- BRAND SYSTEM (nav, footer, colors, fonts) -->
+  <!-- Global + Stores styles -->
   <link rel="stylesheet" href="css/style.css?v=011">
-
-  <!-- PAGE-ONLY STYLES -->
   <link rel="stylesheet" href="css/stores.css?v=001">
 
   <!-- Fonts -->
@@ -19,13 +17,15 @@
 <body class="dt-stores-page">
 
   <!-- =========================
-       NAV (same as strains)
+       NAV
   ========================== -->
   <header class="dt-nav" id="dtNav">
 
     <div class="dt-nav-left">
       <button class="dt-nav-hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
 
       <a href="index.html" class="dt-nav-logo">
@@ -38,12 +38,18 @@
     </div>
 
     <div class="dt-nav-icons">
-      <a href="https://instagram.com/dutchtouchgenetics" target="_blank"><img src="assets/icons/instagram.svg"></a>
-      <a href="https://facebook.com" target="_blank"><img src="assets/icons/facebook.svg"></a>
-      <a href="https://twitter.com" target="_blank"><img src="assets/icons/twitter.svg"></a>
+      <a href="https://instagram.com/dutchtouchgenetics" target="_blank" aria-label="Instagram">
+        <img src="assets/icons/instagram.svg" alt="">
+      </a>
+      <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+        <img src="assets/icons/facebook.svg" alt="">
+      </a>
+      <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+        <img src="assets/icons/twitter.svg" alt="">
+      </a>
     </div>
-  </header>
 
+  </header>
 
   <!-- =========================
        SLIDE-OUT MENU
@@ -52,7 +58,7 @@
     <div class="dt-menu-inner">
       <button class="dt-menu-close" aria-label="Close menu">×</button>
 
-      <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo">
+      <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo" alt="Dutch Touch Genetics Logo">
 
       <nav class="dt-menu-links">
         <a href="index.html">Home</a>
@@ -67,65 +73,80 @@
     </div>
   </div>
 
-
   <!-- =========================
        HERO
   ========================== -->
   <section class="dt-stores-hero">
-    <div class="stores-hero-inner">
-      <h1 class="stores-title">Find Dutch Touch</h1>
-      <p class="stores-subtitle">Our award-winning products are available at these verified partners.</p>
-    </div>
+    <h1 class="stores-title">Visit Us</h1>
+    <p class="stores-subtitle">Our flagship retail partners</p>
   </section>
 
-
   <!-- =========================
-       STORES LIST
+       STORES GRID
   ========================== -->
   <main class="dt-stores-main">
 
-    <section class="stores-list-section">
-
-      <div class="store-card">
-        <div class="store-card-inner">
-          <h3 class="store-name">Green Labs Provisions</h3>
-          <p class="store-city">Luna Pier, MI</p>
-
-          <p class="store-notes">
-            Waterfront dispensary near the Ohio border. Browse award-winning Dutch Touch genetics, concentrates, RSO gummies and distillate disposables.
-          </p>
-
-          <div class="store-links">
-            <a class="store-link" href="https://greenlabsmi.com" target="_blank">greenlabsmi.com</a>
-            <a class="store-map" href="https://maps.google.com/?q=Green+Labs+Luna+Pier" target="_blank">Map</a>
-          </div>
-        </div>
+    <section class="dt-stores-section">
+      <div class="dt-stores-header">
+        <h2>Flagship Locations</h2>
+        <p>Shop Dutch Touch Genetics at our trusted retail stores.</p>
       </div>
 
+      <div class="stores-grid">
 
-      <div class="store-card">
-        <div class="store-card-inner">
-          <h3 class="store-name">Dutch Republic</h3>
-          <p class="store-city">Douglas, MI</p>
+        <!-- Green Labs -->
+        <article class="store-card">
+          <div class="store-image"></div>
 
-          <p class="store-notes">
-            A neighborhood dispensary in scenic West Michigan offering premium Dutch Touch flower, concentrates, and RSO products with a curated local vibe.
-          </p>
+          <div class="store-content">
+            <div class="store-top">
+              <h3 class="store-name">Green Labs Provisions</h3>
+              <span class="store-tag">Partner</span>
+            </div>
 
-          <div class="store-links">
-            <a class="store-link" href="https://dutchrepublic.org" target="_blank">dutchrepublic.org</a>
-            <a class="store-map" href="https://maps.google.com/?q=Dutch+Republic+Douglas+MI" target="_blank">Map</a>
+            <p class="store-desc">
+              Border town dispensary near Toledo, Ohio — easy access for travelers.
+            </p>
+
+            <div class="store-location">
+              <p>1130 S Main St</p>
+              <p>Luna Pier, MI</p>
+            </div>
+
+            <a href="https://greenlabsmi.com" target="_blank" class="store-link">Visit Website</a>
           </div>
-        </div>
-      </div>
+        </article>
 
+        <!-- Dutch Republic -->
+        <article class="store-card">
+          <div class="store-image"></div>
+
+          <div class="store-content">
+            <div class="store-top">
+              <h3 class="store-name">Dutch Republic</h3>
+              <span class="store-tag">Partner</span>
+            </div>
+
+            <p class="store-desc">
+              Lakeside dispensary in Douglas, MI — a staple for locals and summer travelers.
+            </p>
+
+            <div class="store-location">
+              <p>307 W Center St</p>
+              <p>Douglas, MI</p>
+            </div>
+
+            <a href="https://dutchrepublic.org" target="_blank" class="store-link">Visit Website</a>
+          </div>
+        </article>
+
+      </div>
     </section>
 
   </main>
 
-
   <!-- =========================
-       FOOTER (same as strains)
+       FOOTER
   ========================== -->
   <footer class="dt-footer">
     <div class="dt-footer-divider"></div>
@@ -138,9 +159,15 @@
     </div>
 
     <div class="dt-footer-social">
-      <a href="https://instagram.com/dutchtouchgenetics" target="_blank"><img src="assets/icons/instagram.svg"></a>
-      <a href="https://facebook.com" target="_blank"><img src="assets/icons/facebook.svg"></a>
-      <a href="https://twitter.com" target="_blank"><img src="assets/icons/twitter.svg"></a>
+      <a href="https://instagram.com/dutchtouchgenetics" target="_blank">
+        <img src="assets/icons/instagram.svg" alt="Instagram">
+      </a>
+      <a href="https://facebook.com" target="_blank">
+        <img src="assets/icons/facebook.svg" alt="Facebook">
+      </a>
+      <a href="https://twitter.com" target="_blank">
+        <img src="assets/icons/twitter.svg" alt="Twitter">
+      </a>
     </div>
 
     <p class="dt-footer-copy">
@@ -148,11 +175,6 @@
     </p>
   </footer>
 
-
-  <!-- =========================
-       PAGE JS (isolated)
-  ========================== -->
   <script src="js/stores.js?v=001"></script>
-
 </body>
 </html>
