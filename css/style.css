@@ -464,3 +464,42 @@ body.dt-home .dt-footer-copy {
   color:var(--muted);
   opacity:.7;
 }
+
+/* ============================================================
+   VIDEO HERO — About Page
+============================================================ */
+body.dt-about-page .dt-hero-video-block {
+  position: relative;
+  height: 60vh;
+  min-height: 500px;
+  max-height: 720px;
+  margin-top: 72px;
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+
+body.dt-about-page .dt-hero-video {
+  position: absolute;
+  top: 50%; left: 50%;
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+body.dt-about-page .dt-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.85)
+  );
+}
+
+body.dt-about-page .dt-hero-content {
+  position: relative;
+  text-align: center;
+  padding: 10rem 1rem 2rem;
+  z-index: 2;
+}
