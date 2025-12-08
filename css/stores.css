@@ -149,6 +149,19 @@ body.dt-stores-page .dt-menu-links a {
   transform:translateX(-22px);
 }
 
+/* Reveal animation when .revealed is applied */
+body.dt-stores-page .dt-menu-links a.revealed {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+/* Gold hover shimmer */
+body.dt-stores-page .dt-menu-links a:hover {
+  color: #d4af37;
+  transition: color .25s ease;
+}
+
 
 /* ============================================================
    HERO
@@ -322,18 +335,3 @@ body.dt-stores-page .dt-footer-copy {
   color:#777;
   font-size:13px;
 }
-
-/* ============================================================
-   MENU LINK FIX — Stores Page
-   Make links visible without JS animation
-============================================================ */
-body.dt-stores-page .dt-menu-links a {
-  color: #fff !important;
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-body.dt-stores-page .dt-menu-links a:hover {
-  color: #d4af37 !important;
-}
-
