@@ -4,29 +4,45 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Dutch Touch – About Us</title>
+  <title>Dutch Touch — About Us</title>
 
+  <!-- About Page CSS -->
   <link rel="stylesheet" href="about.css?v=001">
+
+  <!-- Global Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
+
 <body class="dt-about-page">
 
-  <!-- NAV -->
-  <nav class="dt-nav">
-    <a href="index.html" class="dt-logo">Dutch Touch</a>
-    <div class="dt-nav-links">
+  <!-- ============================================================
+       NAV — Same layout and animation as Stores Page
+  ============================================================ -->
+  <nav id="dtNav" class="dt-nav">
+    <div class="dt-nav-left">
+      <a href="index.html" class="dt-nav-logo">Dutch Touch</a>
+    </div>
+
+    <div class="dt-menu-links">
       <a href="strains.html">Strains</a>
       <a href="stores.html">Stores</a>
       <a href="about.html" class="active">About</a>
     </div>
+
+    <div class="dt-nav-right"></div>
   </nav>
 
 
-  <!-- VIDEO HERO -->
+  <!-- ============================================================
+       HERO — Video Background
+  ============================================================ -->
   <section class="dt-hero">
+
     <video class="dt-hero-video"
       autoplay
-      playsinline
       muted
+      playsinline
       loop
       preload="auto"
       poster="assets/hero-fallback.jpg">
@@ -40,21 +56,28 @@
       <p class="dt-hero-tagline">Premium Craft Cannabis from Michigan</p>
       <a href="strains.html" class="dt-hero-button">Explore Strains</a>
     </div>
+
   </section>
 
 
-  <!-- ABOUT CONTENT -->
+  <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
   <section class="dt-about">
     <div class="container">
       <h2>About Dutch Touch</h2>
       <p>
         Dutch Touch Genetics is a Michigan-based craft cannabis brand focused on award-winning flower,
-        sustainable cultivation, and uncompromising quality. With multiple High Times Cannabis Cup awards,
-        we believe world-class product only happens with discipline, precision, and love for the plant.
+        sustainable cultivation, and uncompromising quality. With multiple High Times Cannabis Cup wins,
+        we believe world-class cannabis only happens with discipline, precision, and love for the plant.
+      </p>
+
+      <p>
+        Every cultivar is guided by terpene-driven selection, clean growing practices,
+        and the Dutch heritage that inspired our name. Welcome to Dutch Touch Genetics.
       </p>
     </div>
   </section>
-
 
 </body>
 </html>
