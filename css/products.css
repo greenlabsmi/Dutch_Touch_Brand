@@ -1,0 +1,535 @@
+/* ============================================================
+   DUTCH TOUCH GENETICS
+   PRODUCTS PAGE — FULL FILE (NAV + LAYOUT)
+   Scoped to: body.dt-products-page
+============================================================ */
+
+
+/* ============================================================
+   GLOBAL NAV (MATCHES STRAINS / HOMEPAGE)
+============================================================ */
+body.dt-products-page .dt-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 0 16px;
+
+  background: var(--nav-bg);
+  backdrop-filter: none;
+  transition: background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+  z-index: 1100;
+}
+
+body.dt-products-page .dt-nav.scrolled {
+  background: var(--nav-bg-solid);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 3px 16px rgba(0,0,0,0.55);
+}
+
+/* LEFT */
+body.dt-products-page .dt-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+body.dt-products-page .dt-nav-hamburger {
+  width: 32px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+body.dt-products-page .dt-nav-hamburger span {
+  height: 3px;
+  width: 100%;
+  background: #F7F3E9;
+  border-radius: 4px;
+}
+
+/* LOGO */
+body.dt-products-page .dt-nav-logo img {
+  height: 28px;
+}
+
+/* CENTER TEXT */
+body.dt-products-page .dt-nav-text {
+  justify-self: center;
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: 28px;
+  white-space: nowrap;
+  color: #E67A00;
+  display: none;
+}
+
+body.dt-products-page .dt-nav-text span {
+  color: #CDA45A;
+  animation: touchPulseProducts 3.8s ease-in-out infinite alternate;
+}
+
+@keyframes touchPulseProducts {
+  0%   { color:#CDA45A; text-shadow:0 0 0 rgba(255,200,120,0); }
+  50%  { color:#FFE7A8; text-shadow:0 0 10px rgba(255,217,138,0.6); }
+  100% { color:#CDA45A; text-shadow:0 0 0 rgba(255,200,120,0); }
+}
+
+/* SOCIAL ICONS */
+body.dt-products-page .dt-nav-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+}
+
+body.dt-products-page .dt-nav-icons img {
+  width: 24px;
+  height: 24px;
+  transition: transform .25s ease;
+}
+
+body.dt-products-page .dt-nav-icons img:hover {
+  transform: translateY(-2px) scale(1.12);
+}
+
+/* DESKTOP BREAKPOINT */
+@media (min-width:768px) {
+  body.dt-products-page .dt-nav-text { display:block; }
+  body.dt-products-page .dt-nav-hamburger { width:36px; height:26px; }
+  body.dt-products-page .dt-nav-hamburger span { width:30px; }
+  body.dt-products-page .dt-nav-logo img { height:36px; }
+}
+
+@media (max-width:767px) {
+  body.dt-products-page .dt-nav-icons img { width:20px; height:20px; }
+  body.dt-products-page .dt-nav-hamburger { width:30px; height:20px; }
+}
+
+/* ============================================================
+   MENU OVERLAY — SLIDE OUT
+============================================================ */
+
+body.dt-products-page .dt-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 75%;
+  max-width: 320px;
+  height: 100%;
+  background: #000;
+
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: transform .45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity .35s ease;
+
+  z-index: 3000;
+}
+
+body.dt-products-page .dt-menu-overlay.active {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.dt-products-page .dt-menu-inner {
+  padding: 22px 20px;
+}
+
+body.dt-products-page .dt-menu-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 42px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+body.dt-products-page .dt-menu-logo {
+  height: 42px;
+  margin-bottom: 20px;
+}
+
+body.dt-products-page .dt-menu-links a {
+  display: block;
+  font-family: Cinzel, serif;
+  font-size: 30px;
+  margin-bottom: 18px;
+
+  opacity: 0;
+  transform: translateX(-22px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+body.dt-products-page .dt-menu-links a.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   HERO — compact, responsive, image-based
+============================================================ */
+
+.dt-products-hero {
+  background: url('../assets/img/products/products-hero.png')
+    center 42% / cover no-repeat;
+
+  height: 60vh;
+  min-height: 500px;
+  max-height: 720px;
+
+  margin-top: 72px;
+  margin-bottom: 4rem;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  padding: 10rem 1rem 2rem;
+
+  position: relative;
+}
+
+/* bottom fade into content */
+.dt-products-hero::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0),
+    #000
+  );
+  pointer-events: none;
+}
+
+/* ============================================================
+   HERO TEXT — TITLE + SUBTITLE
+============================================================ */
+
+.products-title {
+  font-family: "Cinzel", serif;
+  font-size: 4.1rem;
+  font-weight: 700;
+  line-height: 1.03;
+  color: #F7F2E8;
+  margin: 0 auto 0.7rem;
+  text-shadow:
+    0 4px 18px rgba(0,0,0,0.55),
+    0 0 3px rgba(0,0,0,0.45);
+}
+
+.products-subtitle {
+  color: #E4D7BC;
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.38;
+  text-shadow:
+    0 2px 8px rgba(0,0,0,0.55);
+  opacity: 0.92;
+}
+
+/* ============================================================
+   MOBILE — wider crop + smaller text
+============================================================ */
+@media (max-width: 768px) {
+
+  .dt-products-hero {
+    background-position: center 55%;
+
+    height: 52vh;
+    min-height: 420px;
+    max-height: 580px;
+
+    padding-top: 8.5rem;
+  }
+
+  .products-title {
+    font-size: 2.9rem;
+    line-height: 1.05;
+  }
+
+  .products-subtitle {
+    font-size: 1.05rem;
+    max-width: 90%;
+  }
+}
+
+/* ============================================================
+   MAIN SECTION
+============================================================ */
+
+.dt-products-section {
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dt-products-header h2 {
+  font-family: "Cinzel", serif;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.dt-products-header p {
+  color: #999;
+  margin-bottom: 2rem;
+}
+
+/* ============================================================
+   SEARCH BAR
+============================================================ */
+
+.product-search-wrap {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.product-search-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #0d0d0d;
+  color: #eee;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.2s;
+}
+
+.product-search-input::placeholder {
+  color: #666;
+}
+
+.product-search-input:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 2px rgba(212,175,55,0.25);
+}
+
+/* ============================================================
+   FILTERS
+============================================================ */
+
+.product-filters {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.product-filter {
+  background: #111;
+  border: 1px solid #333;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.product-filter:hover {
+  border-color: #d4af37;
+  color: #fff;
+}
+
+.product-filter.is-active {
+  background: #d4af37;
+  border-color: #d4af37;
+  color: #000;
+}
+
+/* ============================================================
+   GRID
+============================================================ */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.7rem;
+}
+
+/* ============================================================
+   CARD TILE
+============================================================ */
+
+.product-card {
+  background: #0a0a0a;
+  border-radius: 14px;
+  border: 1px solid #1a1a1a;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(212,175,55,0.25);
+}
+
+.product-card-inner {
+  padding: 1.2rem;
+}
+
+.product-image {
+  height: 200px;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+
+  background-color: #000;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  padding: 8px;
+  box-shadow: inset 0 0 25px rgba(0,0,0,0.7);
+}
+
+.product-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.product-name {
+  color: #fff;
+  font-family: "Cinzel", serif;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.product-badge {
+  background: #d4af37;
+  color: #000;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.product-meta {
+  color: #bbb;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0;
+}
+
+/* hidden state for JS filtering (if needed) */
+.product-card.is-hidden {
+  display: none;
+}
+
+/* ============================================================
+   FIND US
+============================================================ */
+
+.dt-products-findus {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #000;
+  border-top: 1px solid #222;
+}
+
+.dt-products-findus h2 {
+  font-family: "Cinzel", serif;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.dt-products-findus p {
+  color: #aaa;
+}
+
+/* ============================================================
+   FOOTER — MATCH STRAINS (Products Page Only)
+============================================================ */
+
+body.dt-products-page .dt-footer {
+  background: #000;
+  padding: 75px 20px 80px;
+  margin-top: 80px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Divider line */
+body.dt-products-page .dt-footer-divider {
+  width: 100%;
+  height: 2px;
+  background: #d4af37;
+  margin: 0 auto 28px auto;
+}
+
+/* Legal links */
+body.dt-products-page .dt-footer-legal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+body.dt-products-page .dt-footer-legal a {
+  color: #eee;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  transition: color .25s ease;
+}
+
+body.dt-products-page .dt-footer-legal a:hover {
+  color: #d4af37;
+}
+
+/* Social icons */
+body.dt-products-page .dt-footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 26px;
+}
+
+body.dt-products-page .dt-footer-social img {
+  width: 26px;
+  height: 26px;
+  opacity: 0.85;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+body.dt-products-page .dt-footer-social img:hover {
+  transform: translateY(-2px) scale(1.1);
+  opacity: 1;
+}
+
+/* Copyright */
+body.dt-products-page .dt-footer-copy {
+  color: #777;
+  font-size: 13px;
+}
+
+/* ============================================================
+   RESPONSIVE TWEAKS
+============================================================ */
+
+@media (max-width: 800px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
