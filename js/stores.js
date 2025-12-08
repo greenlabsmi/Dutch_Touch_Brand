@@ -1,16 +1,15 @@
 // ============================================================
 // DUTCH TOUCH • STORES PAGE JS
-// Nav scroll • Slide-out Menu
-// Scoped to: body.dt-stores-page
+// Nav scroll • Menu
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
   if (!body.classList.contains("dt-stores-page")) return;
 
-  // -------------------------------
+  // ------------------------------------------------------------
   // NAV SCROLL
-  // -------------------------------
+  // ------------------------------------------------------------
   const nav = document.getElementById("dtNav");
 
   function updateNav() {
@@ -24,9 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
   updateNav();
   window.addEventListener("scroll", updateNav);
 
-  // -------------------------------
+  // ------------------------------------------------------------
   // SLIDE-OUT MENU
-  // -------------------------------
+  // ------------------------------------------------------------
   const menu = document.getElementById("dt-menu");
   const hamburger = document.querySelector(".dt-nav-hamburger");
   const menuClose = document.querySelector(".dt-menu-close");
@@ -60,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Open menu
   if (hamburger) {
     hamburger.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -68,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Close button
   if (menuClose) {
     menuClose.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -76,19 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Click outside close
   document.addEventListener("click", (e) => {
     if (!menu || !menu.classList.contains("active")) return;
-
     const insideMenu = menu.contains(e.target);
     const onHamburger = hamburger && hamburger.contains(e.target);
     if (!insideMenu && !onHamburger) toggleMenu();
-  });
-
-  // ESC close
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && menu && menu.classList.contains("active")) {
-      toggleMenu();
-    }
   });
 });
