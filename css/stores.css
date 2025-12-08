@@ -1,204 +1,84 @@
 /* ============================================================
    DUTCH TOUCH GENETICS
-   STORES PAGE — FULL FILE
+   STORES PAGE — SCOPED
    Scoped to: body.dt-stores-page
 ============================================================ */
 
-/* ------------------------------------------------------------
-   NAV (inherit styles, scope page)
------------------------------------------------------------- */
-body.dt-stores-page .dt-nav {
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  height:72px;
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  align-items:center;
-  padding:0 16px;
-  background:var(--nav-bg);
-  transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
-  z-index:1100;
-}
-
-body.dt-stores-page .dt-nav.scrolled {
-  background:var(--nav-bg-solid);
-  backdrop-filter:blur(8px);
-  box-shadow:0 3px 16px rgba(0,0,0,0.55);
-}
-
-/* ------------------------------------------------------------
-   HERO — identical to strains/products
------------------------------------------------------------- */
-.dt-stores-hero {
-  background: url('../assets/img/stores/stores-hero.png') center/cover no-repeat;
-  height: 60vh;
-  min-height: 500px;
-  max-height: 720px;
-  margin-top: 72px;
-  margin-bottom: 4rem;
-  text-align: center;
-  display:flex;
-  flex-direction: column;
-  justify-content:center;
-  padding: 4rem 1rem 2rem;
+/* PAGE HERO */
+body.dt-stores-page .dt-stores-hero {
+  background: url('../assets/img/stores/stores-hero.jpg') center/cover no-repeat;
+  margin-top:72px;
+  padding:7rem 1rem 4rem;
+  text-align:center;
   position:relative;
 }
 
-/* bottom fade */
-.dt-stores-hero::after {
-  content:"";
-  position:absolute;
-  bottom:-1px;
-  left:0;
-  right:0;
-  height:140px;
-  background:linear-gradient(to bottom, rgba(0,0,0,0), #000);
-  pointer-events:none;
-}
-
-.stores-title {
+body.dt-stores-page .stores-title {
   font-family:"Cinzel", serif;
-  font-size:4rem;
+  font-size:3.6rem;
   font-weight:700;
   color:#F7F2E8;
-  margin:0 auto 0.7rem;
-  text-shadow:0 4px 18px rgba(0,0,0,0.55);
+  margin-bottom:0.6rem;
 }
 
-.stores-subtitle {
+body.dt-stores-page .stores-subtitle {
+  font-size:1.15rem;
   color:#E4D7BC;
-  max-width:560px;
+}
+
+
+/* LIST SECTION */
+body.dt-stores-page .stores-list-section {
+  max-width:900px;
   margin:0 auto;
-  font-size:1.2rem;
-  line-height:1.38;
-  opacity:0.92;
-  text-shadow:0 2px 8px rgba(0,0,0,0.55);
+  padding:4rem 1.5rem;
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
 }
 
-/* ------------------------------------------------------------
-   MAIN SECTION
------------------------------------------------------------- */
-.dt-stores-section {
-  padding:4rem 2rem;
-  max-width:1400px;
-  margin:0 auto;
-}
-
-.dt-stores-header h2 {
-  font-family:"Cinzel", serif;
-  color:#fff;
-  margin-bottom:0.3rem;
-}
-
-.dt-stores-header p {
-  color:#999;
-  margin-bottom:2rem;
-}
-
-/* ------------------------------------------------------------
-   GRID
------------------------------------------------------------- */
-.stores-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(380px, 1fr));
-  gap:1.7rem;
-}
-
-/* ------------------------------------------------------------
-   CARD STYLE
------------------------------------------------------------- */
-.store-card {
+/* STORE CARD */
+body.dt-stores-page .store-card {
   background:#0a0a0a;
-  border:1px solid #1a1a1a;
-  border-radius:16px;
-  overflow:hidden;
-  cursor:pointer;
-  transition:.25s ease;
-}
-
-.store-card:hover {
-  transform:translateY(-4px);
-  box-shadow:0 0 22px rgba(212,175,55,0.25);
-}
-
-.store-card-inner {
+  border:1px solid #222;
+  border-radius:14px;
   padding:1.6rem;
 }
 
-.store-image {
-  height: 220px;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  background:#000;
-  background-size:cover;
-  background-position:center;
-  padding:10px;
-  box-shadow:inset 0 0 22px rgba(0,0,0,0.7);
-  background-image:url('../assets/img/stores/store-placeholder.png');
-}
-
-.store-top {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.store-name {
-  color:#fff;
+body.dt-stores-page .store-name {
   font-family:"Cinzel", serif;
-  font-size:1.6rem;
-  margin:0;
+  color:#fff;
+  font-size:1.8rem;
+  margin-bottom:0.2rem;
 }
 
-.store-badge {
-  background:#d4af37;
-  color:#000;
-  padding:0.25rem 0.55rem;
-  border-radius:6px;
-  font-size:0.75rem;
-  font-weight:600;
-}
-
-.store-meta {
-  color:#bbb;
+body.dt-stores-page .store-city {
+  color:#CDA45A;
   font-size:1rem;
-  margin:0.4rem 0;
+  margin-bottom:1rem;
 }
 
-.store-notes {
-  color:#888;
-  font-size:0.9rem;
+body.dt-stores-page .store-notes {
+  color:#aaa;
   line-height:1.45;
-  margin-bottom:1.4rem;
+  margin-bottom:1.2rem;
 }
 
-.store-btn {
-  display:inline-block;
-  margin-top:0.2rem;
-  background:#d4af37;
-  color:#000;
-  padding:0.55rem 1.2rem;
-  border-radius:8px;
-  font-size:0.9rem;
-  font-weight:600;
-  transition:.25s ease;
-  text-decoration:none;
+body.dt-stores-page .store-links {
+  display:flex;
+  gap:1.4rem;
 }
 
-.store-btn:hover {
-  background:#e3c87f;
-  color:#000;
+body.dt-stores-page .store-link,
+body.dt-stores-page .store-map {
+  color:#d4af37;
+  font-size:0.95rem;
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  transition:color .25s ease;
 }
 
-/* ------------------------------------------------------------
-   FOOTER
------------------------------------------------------------- */
-body.dt-stores-page .dt-footer {
-  background:#000;
-  padding:75px 20px 80px;
-  margin-top:80px;
-  text-align:center;
-  border-top:1px solid rgba(255,255,255,0.08);
+body.dt-stores-page .store-link:hover,
+body.dt-stores-page .store-map:hover {
+  color:#fff;
 }
