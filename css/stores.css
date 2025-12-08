@@ -322,10 +322,18 @@ body.dt-stores-page .dt-footer-copy {
   color:#777;
   font-size:13px;
 }
-/* Force white text in slide-out menu for Stores page */
+
+/* ============================================================
+   MENU LINK FIX — Stores Page
+   Make links visible without JS animation
+============================================================ */
 body.dt-stores-page .dt-menu-links a {
   color: #fff !important;
+  opacity: 1 !important;
+  transform: none !important;
 }
+
 body.dt-stores-page .dt-menu-links a:hover {
   color: #d4af37 !important;
 }
+
