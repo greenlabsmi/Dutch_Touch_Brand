@@ -4,80 +4,124 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Dutch Touch — About Us</title>
+  <title>Dutch Touch Genetics • About Us</title>
 
-  <!-- About Page CSS -->
-  <link rel="stylesheet" href="css/about.css?v=001">
+  <!-- Global + Strains style system -->
+  <link rel="stylesheet" href="css/style.css?v=011">
+  <link rel="stylesheet" href="css/strains.css?v=003">
 
-  <!-- Global Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="dt-about-page">
 
-  <!-- ============================================================
-       NAV — Same layout and animation as Stores Page
-  ============================================================ -->
-  <nav id="dtNav" class="dt-nav">
+  <!-- ========================= NAV ========================== -->
+  <header class="dt-nav" id="dtNav">
     <div class="dt-nav-left">
-      <a href="index.html" class="dt-nav-logo">Dutch Touch</a>
+      <button class="dt-nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="index.html" class="dt-nav-logo">
+        <img src="assets/img/logo/dtg-logo-orange.png" alt="Dutch Touch Lion">
+      </a>
     </div>
 
-    <div class="dt-menu-links">
-      <a href="strains.html">Strains</a>
-      <a href="stores.html">Stores</a>
-      <a href="about.html" class="active">About</a>
+    <div class="dt-nav-text">
+      Dutch <span>Touch</span> Genetics
     </div>
 
-    <div class="dt-nav-right"></div>
-  </nav>
+    <div class="dt-nav-icons">
+      <a href="https://instagram.com/dutchtouchgenetics" target="_blank"><img src="assets/icons/instagram.svg" alt=""></a>
+      <a href="https://facebook.com" target="_blank"><img src="assets/icons/facebook.svg" alt=""></a>
+      <a href="https://twitter.com" target="_blank"><img src="assets/icons/twitter.svg" alt=""></a>
+    </div>
+  </header>
 
 
-  <!-- ============================================================
-       HERO — Video Background
-  ============================================================ -->
-  <section class="dt-hero">
+  <!-- ========================= SLIDE-OUT MENU ========================== -->
+  <div id="dt-menu" class="dt-menu-overlay">
+    <div class="dt-menu-inner">
+      <button class="dt-menu-close" aria-label="Close menu">×</button>
+      <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo" alt="Dutch Touch Genetics Logo">
+      <nav class="dt-menu-links">
+        <a href="index.html">Home</a>
+        <a href="apparel.html">Apparel</a>
+        <a href="strains.html">Strains</a>
+        <a href="products.html">Products</a>
+        <a href="deals.html">Deals</a>
+        <a href="stores.html">Stores</a>
+        <a href="about.html" class="active">About Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
 
+
+  <!-- ========================= HERO — VIDEO ========================== -->
+  <section class="dt-hero-video-block">
     <video class="dt-hero-video"
       autoplay
       muted
-      playsinline
       loop
+      playsinline
       preload="auto"
-      poster="assets/hero-fallback.jpg">
-      <source src="assets/dutch-hero.mp4" type="video/mp4">
+      poster="assets/img/hero-fallback.jpg">
+      <source src="assets/video/dutch-hero.mp4" type="video/mp4">
     </video>
 
     <div class="dt-hero-overlay"></div>
 
     <div class="dt-hero-content">
-      <h1 class="dt-hero-title">Dutch Touch Genetics</h1>
-      <p class="dt-hero-tagline">Premium Craft Cannabis from Michigan</p>
-      <a href="strains.html" class="dt-hero-button">Explore Strains</a>
-    </div>
-
-  </section>
-
-
-  <!-- ============================================================
-       ABOUT SECTION
-  ============================================================ -->
-  <section class="dt-about">
-    <div class="container">
-      <h2>About Dutch Touch</h2>
-      <p>
-        Dutch Touch Genetics is a Michigan-based craft cannabis brand focused on award-winning flower,
-        sustainable cultivation, and uncompromising quality. With multiple High Times Cannabis Cup wins,
-        we believe world-class cannabis only happens with discipline, precision, and love for the plant.
-      </p>
-
-      <p>
-        Every cultivar is guided by terpene-driven selection, clean growing practices,
-        and the Dutch heritage that inspired our name. Welcome to Dutch Touch Genetics.
-      </p>
+      <h1 class="strains-title">Dutch Touch Genetics</h1>
+      <p class="strains-subtitle">Premium Craft Cannabis from Michigan</p>
     </div>
   </section>
 
+
+  <!-- ========================= ABOUT CONTENT ========================== -->
+  <main class="dt-about-main">
+
+    <section class="dt-strains-section">
+      <div class="dt-strains-header">
+        <h2>About Us</h2>
+        <p>
+          Dutch Touch Genetics is a Michigan-based craft cannabis brand focused on award-winning flower,
+          sustainable cultivation, and uncompromising quality. With multiple High Times Cannabis Cup wins,
+          we believe world-class cannabis only happens with discipline, precision, and love for the plant.
+        </p>
+
+        <p>
+          Every cultivar is guided by terpene-driven selection, clean growing practices,
+          and the Dutch heritage that inspired our name. Welcome to Dutch Touch Genetics.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ========================= FOOTER ========================== -->
+  <footer class="dt-footer">
+    <div class="dt-footer-divider"></div>
+
+    <div class="dt-footer-legal">
+      <a href="#">Terms &amp; Conditions</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Accessibility</a>
+      <a href="#">CA Cannabis Disclosure</a>
+    </div>
+
+    <div class="dt-footer-social">
+      <a href="https://instagram.com/dutchtouchgenetics" target="_blank"><img src="assets/icons/instagram.svg" alt=""></a>
+      <a href="https://facebook.com" target="_blank"><img src="assets/icons/facebook.svg" alt=""></a>
+      <a href="https://twitter.com" target="_blank"><img src="assets/icons/twitter.svg" alt=""></a>
+    </div>
+
+    <p class="dt-footer-copy">© 2025 Dutch Touch Genetics. All rights reserved.</p>
+  </footer>
+
+  <!-- Reuse strains behavior (nav scroll + menu toggle) -->
+  <script src="js/strains.js?v=004"></script>
 </body>
 </html>
