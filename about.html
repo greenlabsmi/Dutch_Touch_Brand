@@ -10,14 +10,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html,body { background:#000; font-family: Inter, sans-serif; color:#fff; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body {
+  background:#000;
+  font-family:Inter, sans-serif;
+  color:#fff;
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+}
 
-/* ============================= NAV ============================= */
+/* ===== GLOBAL ANIMATIONS ===== */
+@keyframes fadeUp {
+  0% { opacity:0; transform:translateY(30px); }
+  100% { opacity:1; transform:translateY(0); }
+}
+.fade-up { animation:fadeUp 1.2s ease forwards; }
+
+/* ===== NAV ===== */
 header.dt-nav {
   position:fixed;
-  top:0; left:0; right:0;
+  inset:0 0 auto 0;
   height:72px;
   display:grid;
   grid-template-columns:auto 1fr auto;
@@ -29,62 +41,95 @@ header.dt-nav {
 }
 header.dt-nav.scrolled {
   background:rgba(0,0,0,0.85);
-  backdrop-filter:blur(8px);
+  backdrop-filter:blur(6px);
 }
 .dt-nav-left { display:flex; align-items:center; gap:12px; }
 .dt-nav-hamburger {
-  display:flex; flex-direction:column; gap:5px; cursor:pointer;
+  display:flex; flex-direction:column; gap:5px;
+  cursor:pointer;
   background:none; border:none;
+  transition:.25s;
 }
-.dt-nav-hamburger span { width:22px; height:2px; background:#fff; }
+.dt-nav-hamburger span {
+  width:22px; height:2px;
+  background:#fff;
+  transition:.3s;
+}
+
+/* Hamburger hover shimmer */
+.dt-nav-hamburger:hover span {
+  background:linear-gradient(90deg,#fff,#D4AF37,#fff);
+  background-size:200% 100%;
+  animation:shimmer .8s linear infinite;
+}
+@keyframes shimmer {
+  0%{background-position:0%}
+  100%{background-position:100%}
+}
 
 .dt-nav-logo img { height:36px; }
 .dt-nav-text {
-  text-align:center;
   font-family:Cinzel, serif;
+  text-align:center;
   font-size:1.35rem;
+  letter-spacing:.5px;
+  opacity:0; animation:fadeUp 1s .4s forwards;
 }
 .dt-nav-text span { color:#D4AF37; }
-.dt-nav-icons img { height:18px; opacity:.85; }
+.dt-nav-icons img {
+  height:18px;
+  opacity:.85;
+  transition:.2s;
+}
 .dt-nav-icons img:hover { opacity:1; }
 
-/* ========================== MENU ========================== */
+/* ===== MENU OVERLAY ===== */
 #dt-menu {
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.92);
-  opacity:0; visibility:hidden;
+  z-index:2000;
+  background:rgba(0,0,0,0.93);
   display:flex; flex-direction:column;
   align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity .35s ease;
   padding:2rem;
-  z-index:2000;
-  transition:opacity .35s, visibility .35s;
 }
-#dt-menu.open { opacity:1; visibility:visible; }
+#dt-menu.open {
+  opacity:1;
+  pointer-events:auto;
+}
 
 .dt-menu-close {
   position:absolute;
-  top:22px; right:28px;
-  font-size:3rem; color:#fff;
-  background:none; border:none; cursor:pointer;
+  top:18px; right:24px;
+  font-size:3.2rem;
+  color:#fff;
+  background:none; border:none;
+  cursor:pointer;
+  transition:.3s;
 }
+.dt-menu-close:hover {
+  color:#D4AF37;
+}
+
 .dt-menu-logo {
-  display:block;
   height:140px;
   margin-bottom:3rem;
+  opacity:0; animation:fadeUp 1s .2s forwards;
 }
 
 .dt-menu-links {
-  display:flex;
-  flex-direction:column;
+  display:flex; flex-direction:column;
   gap:1.4rem;
   text-align:center;
 }
 .dt-menu-links a {
   font-family:Cinzel, serif;
   font-size:1.6rem;
-  text-decoration:none;
   color:#fff;
+  text-decoration:none;
+  position:relative;
   transition:.25s;
 }
 .dt-menu-links a:hover,
@@ -92,7 +137,16 @@ header.dt-nav.scrolled {
   color:#D4AF37;
 }
 
-/* ========================== HERO VIDEO ========================== */
+/* ===== TEXT SHIMMER ===== */
+.dt-menu-links a:hover {
+  background:linear-gradient(90deg,#fff,#D4AF37,#fff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-size:200% 100%;
+  animation:shimmer 1.2s linear infinite;
+}
+
+/* ===== HERO VIDEO ===== */
 .dt-hero-video-block {
   position:relative;
   height:65vh;
@@ -109,15 +163,22 @@ header.dt-nav.scrolled {
   transform:translate(-50%,-50%);
   object-fit:cover;
   object-position:center 25%;
+  transition:filter .4s;
 }
+/* Darken video slightly on scroll */
+body.scrolled .dt-hero-video {
+  filter:brightness(.85);
+}
+
 .dt-hero-overlay {
   position:absolute;
   inset:0;
   background:linear-gradient(to bottom,
-    rgba(0,0,0,0.05),
+    rgba(0,0,0,0),
     rgba(0,0,0,0.85)
   );
 }
+
 .dt-hero-content {
   position:relative;
   z-index:2;
@@ -130,7 +191,13 @@ header.dt-nav.scrolled {
 }
 .dt-hero-content p { font-size:1.3rem; opacity:.9; }
 
-/* ========================== ABOUT ========================== */
+/* Fade hero text */
+.dt-hero-content > * {
+  opacity:0;
+  animation:fadeUp .9s .5s forwards;
+}
+
+/* ===== ABOUT ===== */
 .dt-about-section {
   max-width:1100px;
   padding:4rem 1rem;
@@ -149,7 +216,7 @@ header.dt-nav.scrolled {
   margin-bottom:1.4rem;
 }
 
-/* ========================== FOOTER ========================== */
+/* ===== FOOTER ===== */
 .dt-footer {
   padding:3rem 1rem;
   text-align:center;
@@ -158,28 +225,23 @@ header.dt-nav.scrolled {
 }
 .dt-footer-legal,
 .dt-footer-social {
-  display:flex;
-  justify-content:center;
-  gap:1rem;
-  margin-bottom:1.2rem;
+  display:flex; justify-content:center;
+  gap:1rem; margin-bottom:1.2rem;
 }
 .dt-footer-legal a {
-  color:#ddd;
-  font-size:.9rem;
+  color:#ddd; font-size:.9rem;
   text-decoration:none;
+  transition:.2s;
 }
 .dt-footer-legal a:hover { color:#fff; }
 .dt-footer-social img { height:18px; }
-.dt-footer-copy {
-  font-size:.85rem; opacity:.65;
-}
+.dt-footer-copy { font-size:.85rem; opacity:.65; }
 
 </style>
 </head>
 
 <body>
 
-<!-- ================= NAV ================= -->
 <header class="dt-nav" id="dtNav">
   <div class="dt-nav-left">
     <button class="dt-nav-hamburger" id="menuOpen">
@@ -201,10 +263,9 @@ header.dt-nav.scrolled {
   </div>
 </header>
 
-<!-- ================= MENU ================= -->
+
 <div id="dt-menu">
   <button class="dt-menu-close" id="menuClose">×</button>
-
   <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo">
 
   <nav class="dt-menu-links">
@@ -218,7 +279,7 @@ header.dt-nav.scrolled {
   </nav>
 </div>
 
-<!-- ================= HERO ================= -->
+
 <section class="dt-hero-video-block">
   <video class="dt-hero-video"
     autoplay muted loop playsinline
@@ -234,9 +295,9 @@ header.dt-nav.scrolled {
   </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
+
 <main class="dt-about-section">
-  <div class="dt-about-header">
+  <div class="dt-about-header fade-up">
     <h2>About Us</h2>
     <p> Dutch Touch Genetics is a Michigan-based craft cannabis brand focused on award-winning flower,
       sustainable cultivation, and uncompromising quality.
@@ -247,7 +308,7 @@ header.dt-nav.scrolled {
   </div>
 </main>
 
-<!-- ================= FOOTER ================= -->
+
 <footer class="dt-footer">
   <div class="dt-footer-legal">
     <a href="#">Terms</a>
@@ -264,20 +325,34 @@ header.dt-nav.scrolled {
   <p class="dt-footer-copy">© 2025 Dutch Touch Genetics</p>
 </footer>
 
-<!-- ================= JS ================= -->
+
 <script>
-// nav scroll
+// scroll state
 window.addEventListener('scroll', ()=>{
   const nav = document.getElementById('dtNav');
-  if(window.scrollY > 10) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
+  if(window.scrollY > 10){
+    nav.classList.add('scrolled');
+    document.body.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+    document.body.classList.remove('scrolled');
+  }
 });
 
-// menu
-document.getElementById('menuOpen').onclick = () =>
-  document.getElementById('dt-menu').classList.add('open');
-document.getElementById('menuClose').onclick = () =>
-  document.getElementById('dt-menu').classList.remove('open');
+// open / close menu
+const menu = document.getElementById('dt-menu');
+document.getElementById('menuOpen').onclick = ()=> menu.classList.add('open');
+document.getElementById('menuClose').onclick = ()=> menu.classList.remove('open');
+
+// click outside to close
+menu.addEventListener('click', e=>{
+  if(e.target.id === 'dt-menu') menu.classList.remove('open');
+});
+
+// Esc key
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape') menu.classList.remove('open');
+});
 </script>
 
 </body>
