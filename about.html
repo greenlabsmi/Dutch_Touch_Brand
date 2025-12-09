@@ -10,249 +10,176 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html,body { background:#000; font-family: Inter, sans-serif; color:#fff; }
 
-/* ============================================================
-   GLOBAL RESET (local only)
-============================================================ */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  font-family: Inter, sans-serif;
-  background: #000;
-  color: #fff;
-}
-
-/* ============================================================
-   NAVIGATION
-============================================================ */
+/* ============================= NAV ============================= */
 header.dt-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 72px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  padding: 0 16px;
-  z-index: 1100;
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(8px);
-  transition: background .35s ease;
+  position:fixed;
+  top:0; left:0; right:0;
+  height:72px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  padding:0 16px;
+  z-index:1100;
+  background:rgba(0,0,0,0);
+  transition:background .35s, backdrop-filter .35s;
 }
-
 header.dt-nav.scrolled {
-  background: rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);
 }
-
-.dt-nav-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
+.dt-nav-left { display:flex; align-items:center; gap:12px; }
 .dt-nav-hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
+  display:flex; flex-direction:column; gap:5px; cursor:pointer;
+  background:none; border:none;
 }
-.dt-nav-hamburger span {
-  width: 22px;
-  height: 2px;
-  background: #fff;
-  transition: .3s;
-}
+.dt-nav-hamburger span { width:22px; height:2px; background:#fff; }
 
-.dt-nav-logo img {
-  height: 36px;
-}
-
+.dt-nav-logo img { height:36px; }
 .dt-nav-text {
-  text-align: center;
-  font-family: Cinzel, serif;
-  font-size: 1.35rem;
-  letter-spacing: .5px;
+  text-align:center;
+  font-family:Cinzel, serif;
+  font-size:1.35rem;
 }
-.dt-nav-text span { color: #D4AF37; }
+.dt-nav-text span { color:#D4AF37; }
+.dt-nav-icons img { height:18px; opacity:.85; }
+.dt-nav-icons img:hover { opacity:1; }
 
-.dt-nav-icons img {
-  height: 18px;
-  opacity: .85;
-  transition: .2s;
-}
-.dt-nav-icons img:hover {
-  opacity: 1;
-}
-
-/* ============================================================
-   MENU OVERLAY
-============================================================ */
+/* ========================== MENU ========================== */
 #dt-menu {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  display: none;
-  z-index: 2000;
-  padding: 4rem 2rem;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.92);
+  opacity:0; visibility:hidden;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:2rem;
+  z-index:2000;
+  transition:opacity .35s, visibility .35s;
 }
-
-#dt-menu.open { display: block; }
-
-.dt-menu-logo {
-  display: block;
-  margin: 0 auto 2rem;
-  height: 110px;
-}
+#dt-menu.open { opacity:1; visibility:visible; }
 
 .dt-menu-close {
-  position: absolute;
-  top: 12px; right: 16px;
-  font-size: 2.3rem;
-  color: #fff;
-  background: none;
-  border: none;
-  cursor: pointer;
+  position:absolute;
+  top:22px; right:28px;
+  font-size:3rem; color:#fff;
+  background:none; border:none; cursor:pointer;
+}
+.dt-menu-logo {
+  display:block;
+  height:140px;
+  margin-bottom:3rem;
 }
 
 .dt-menu-links {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+  display:flex;
+  flex-direction:column;
+  gap:1.4rem;
+  text-align:center;
 }
-
 .dt-menu-links a {
-  font-family: Cinzel, serif;
-  font-size: 1.4rem;
-  color: #fff;
-  text-decoration: none;
-  transition: .25s;
+  font-family:Cinzel, serif;
+  font-size:1.6rem;
+  text-decoration:none;
+  color:#fff;
+  transition:.25s;
 }
 .dt-menu-links a:hover,
 .dt-menu-links a.active {
-  color: #D4AF37;
+  color:#D4AF37;
 }
 
-/* ============================================================
-   HERO VIDEO
-============================================================ */
+/* ========================== HERO VIDEO ========================== */
 .dt-hero-video-block {
-  position: relative;
-  height: 65vh;
-  min-height: 500px;
-  max-height: 820px;
-  margin-top: 72px;
-  overflow: hidden;
+  position:relative;
+  height:65vh;
+  min-height:500px;
+  max-height:820px;
+  margin-top:72px;
+  overflow:hidden;
 }
-
 .dt-hero-video {
-  position: absolute;
-  top: 50%; left: 50%;
-  min-width: 100%; min-height: 100%;
-  width: auto; height: auto;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
+  position:absolute;
+  top:50%; left:50%;
+  min-width:100%; min-height:100%;
+  width:auto; height:auto;
+  transform:translate(-50%,-50%);
+  object-fit:cover;
+  object-position:center 25%;
 }
-
 .dt-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,
     rgba(0,0,0,0.05),
     rgba(0,0,0,0.85)
   );
 }
-
 .dt-hero-content {
-  position: relative;
-  text-align: center;
-  z-index: 2;
-  padding: 15rem 1rem 2rem;
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:15rem 1rem 2rem;
 }
-
 .dt-hero-content h1 {
-  font-family: Cinzel, serif;
-  font-weight: 700;
-  font-size: 4rem;
-  color: #fff;
-  margin-bottom: .5rem;
+  font-family:Cinzel, serif;
+  font-size:4rem; font-weight:700;
 }
-.dt-hero-content p {
-  font-size: 1.3rem;
-  opacity: .9;
-}
+.dt-hero-content p { font-size:1.3rem; opacity:.9; }
 
-/* ============================================================
-   ABOUT SECTION
-============================================================ */
+/* ========================== ABOUT ========================== */
 .dt-about-section {
-  padding: 4rem 1rem;
-  max-width: 1100px;
-  margin: 0 auto;
+  max-width:1100px;
+  padding:4rem 1rem;
+  margin:0 auto;
 }
-
 .dt-about-header h2 {
-  font-family: Cinzel, serif;
-  font-size: 2.8rem;
-  margin-bottom: 1.3rem;
-  color: #D4AF37;
+  font-family:Cinzel, serif;
+  font-size:2.8rem;
+  margin-bottom:1.3rem;
+  color:#D4AF37;
 }
-
 .dt-about-header p {
-  font-size: 1.15rem;
-  line-height: 1.6;
-  opacity: .92;
-  margin-bottom: 1.4rem;
+  font-size:1.1rem;
+  line-height:1.6;
+  opacity:.92;
+  margin-bottom:1.4rem;
 }
 
-/* ============================================================
-   FOOTER
-============================================================ */
+/* ========================== FOOTER ========================== */
 .dt-footer {
-  padding: 3rem 1rem;
-  text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  margin-top: 4rem;
+  padding:3rem 1rem;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,0.1);
+  margin-top:4rem;
 }
-
 .dt-footer-legal,
 .dt-footer-social {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1.2rem;
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  margin-bottom:1.2rem;
 }
-
 .dt-footer-legal a {
-  color: #ddd;
-  font-size: .9rem;
-  text-decoration: none;
+  color:#ddd;
+  font-size:.9rem;
+  text-decoration:none;
 }
-.dt-footer-legal a:hover {
-  color: #fff;
-}
-
-.dt-footer-social img {
-  height: 18px;
-}
-
+.dt-footer-legal a:hover { color:#fff; }
+.dt-footer-social img { height:18px; }
 .dt-footer-copy {
-  font-size: .85rem;
-  opacity: .65;
+  font-size:.85rem; opacity:.65;
 }
-</style>
 
+</style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<!-- ================= NAV ================= -->
 <header class="dt-nav" id="dtNav">
   <div class="dt-nav-left">
     <button class="dt-nav-hamburger" id="menuOpen">
@@ -268,15 +195,16 @@ header.dt-nav.scrolled {
   </div>
 
   <div class="dt-nav-icons">
-    <a href="https://instagram.com" target="_blank"><img src="assets/icons/instagram.svg"></a>
+    <a href="https://instagram.com/dutchtouchgenetics" target="_blank"><img src="assets/icons/instagram.svg"></a>
     <a href="https://facebook.com" target="_blank"><img src="assets/icons/facebook.svg"></a>
     <a href="https://twitter.com" target="_blank"><img src="assets/icons/twitter.svg"></a>
   </div>
 </header>
 
-<!-- MENU -->
+<!-- ================= MENU ================= -->
 <div id="dt-menu">
   <button class="dt-menu-close" id="menuClose">×</button>
+
   <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo">
 
   <nav class="dt-menu-links">
@@ -290,7 +218,7 @@ header.dt-nav.scrolled {
   </nav>
 </div>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="dt-hero-video-block">
   <video class="dt-hero-video"
     autoplay muted loop playsinline
@@ -306,7 +234,7 @@ header.dt-nav.scrolled {
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
 <main class="dt-about-section">
   <div class="dt-about-header">
     <h2>About Us</h2>
@@ -319,7 +247,7 @@ header.dt-nav.scrolled {
   </div>
 </main>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <footer class="dt-footer">
   <div class="dt-footer-legal">
     <a href="#">Terms</a>
@@ -336,18 +264,18 @@ header.dt-nav.scrolled {
   <p class="dt-footer-copy">© 2025 Dutch Touch Genetics</p>
 </footer>
 
+<!-- ================= JS ================= -->
 <script>
 // nav scroll
-window.addEventListener('scroll', function(){
-  let nav = document.getElementById('dtNav');
-  if (window.scrollY > 10) nav.classList.add('scrolled');
+window.addEventListener('scroll', ()=>{
+  const nav = document.getElementById('dtNav');
+  if(window.scrollY > 10) nav.classList.add('scrolled');
   else nav.classList.remove('scrolled');
 });
 
-// menu toggle
+// menu
 document.getElementById('menuOpen').onclick = () =>
   document.getElementById('dt-menu').classList.add('open');
-
 document.getElementById('menuClose').onclick = () =>
   document.getElementById('dt-menu').classList.remove('open');
 </script>
