@@ -12,7 +12,7 @@
 <style>
 
 /* ============================================================
-   COLOR SYSTEM — Matches Homepage
+   COLOR SYSTEM + GLOBAL VARS (copied from homepage)
 ============================================================ */
 :root {
   --bg:#050505;
@@ -33,11 +33,17 @@
 /* ============================================================
    RESET + BASE
 ============================================================ */
-* { box-sizing:border-box; margin:0; padding:0; }
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-html, body { height:100%; }
+html, body {
+  height:100%;
+}
 
-body.dt-about {
+body {
   background:var(--bg);
   color:var(--ink);
   font-family:Inter, system-ui, sans-serif;
@@ -50,35 +56,41 @@ a { text-decoration:none; color:inherit; }
 .no-scroll { overflow:hidden; }
 
 /* ============================================================
-   NAVBAR — Transparent, fades to solid on scroll
+   NAV BAR — ABOUT PAGE (mirrors homepage)
 ============================================================ */
 body.dt-about .dt-nav {
   position:fixed;
-  inset:0 0 auto 0;
+  top:0;
+  left:0;
+  right:0;
   height:72px;
+
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
+
   padding:0 16px;
-  background:rgba(0,0,0,0);
-  transition:background .35s ease, backdrop-filter .35s ease;
+
+  background:var(--nav-bg);
+  backdrop-filter:none;
+  transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+
   z-index:1100;
 }
 
 body.dt-about.scrolled .dt-nav {
   background:var(--nav-bg-solid);
   backdrop-filter:blur(8px);
+  box-shadow:0 3px 16px rgba(0,0,0,0.55);
 }
 
-/* Left Section */
 body.dt-about .dt-nav-left {
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:12px;
 }
 
-/* Hamburger */
-.dt-nav-hamburger {
+body.dt-about .dt-nav-hamburger {
   width:32px;
   height:22px;
   display:flex;
@@ -88,26 +100,19 @@ body.dt-about .dt-nav-left {
   border:none;
   cursor:pointer;
 }
-.dt-nav-hamburger span {
+
+body.dt-about .dt-nav-hamburger span {
   height:3px;
   width:100%;
   background:var(--ink);
   border-radius:4px;
-  transition:.3s;
 }
 
-/* Shimmer on hover */
-.dt-nav-hamburger:hover span {
-  background:linear-gradient(90deg,#fff,#D4AF37,#fff);
-  background-size:200% 100%;
-  animation:shimmer .8s linear infinite;
+body.dt-about .dt-nav-logo img {
+  height:28px;
 }
 
-/* Logo */
-.dt-nav-logo img { height:28px; }
-
-/* Brand Text */
-.dt-nav-text {
+body.dt-about .dt-nav-text {
   justify-self:center;
   font-family:Cinzel, serif;
   font-weight:700;
@@ -116,38 +121,49 @@ body.dt-about .dt-nav-left {
   color:var(--orange);
   display:none;
 }
-.dt-nav-text span {
+
+body.dt-about .dt-nav-text span {
   color:var(--gold);
   animation:touchPulse 3.8s ease-in-out infinite alternate;
 }
 
 @keyframes touchPulse {
-  50% {
-    color:#FFE7A8;
-    text-shadow:0 0 10px rgba(255,217,138,0.6);
-  }
+  0%   { color:#CDA45A; text-shadow:0 0 0 rgba(255,200,120,0); }
+  50%  { color:#FFE7A8; text-shadow:0 0 10px rgba(255,217,138,0.6); }
+  100% { color:#CDA45A; text-shadow:0 0 0 rgba(255,200,120,0); }
 }
 
 body.dt-about .dt-nav-icons {
   display:flex;
+  justify-content:flex-end;
   align-items:center;
   gap:14px;
 }
+
 body.dt-about .dt-nav-icons img {
   width:24px;
+  height:24px;
   transition:transform .25s ease;
 }
+
 body.dt-about .dt-nav-icons img:hover {
   transform:translateY(-2px) scale(1.12);
 }
 
-/* Brand text visible on desktop */
 @media (min-width:768px) {
-  .dt-nav-text { display:block; }
+  body.dt-about .dt-nav-text { display:block; }
+  body.dt-about .dt-nav-hamburger { width:36px; height:26px; }
+  body.dt-about .dt-nav-hamburger span { width:30px; }
+  body.dt-about .dt-nav-logo img { height:36px; }
+}
+
+@media (max-width:767px) {
+  body.dt-about .dt-nav-icons img { width:20px; height:20px; }
+  body.dt-about .dt-nav-hamburger { width:30px; height:20px; }
 }
 
 /* ============================================================
-   MOBILE MENU — Slide in like homepage
+   MENU OVERLAY — (copied exactly)
 ============================================================ */
 .dt-menu-overlay {
   position:fixed;
@@ -157,10 +173,13 @@ body.dt-about .dt-nav-icons img:hover {
   max-width:320px;
   height:100%;
   background:#000;
+
   transform:translateX(-100%);
   opacity:0;
   pointer-events:none;
-  transition:transform .45s cubic-bezier(.25,.8,.25,1), opacity .35s ease;
+
+  transition:transform .45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity .35s ease;
+
   z-index:3000;
 }
 
@@ -184,77 +203,53 @@ body.dt-about .dt-nav-icons img:hover {
 }
 
 .dt-menu-logo {
-  height:46px;
-  margin-bottom:24px;
+  height:42px;
+  margin-bottom:20px;
 }
 
-/* Animated Menu Links */
 .dt-menu-links a {
   display:block;
   font-family:Cinzel, serif;
   font-size:30px;
   margin-bottom:18px;
+
   opacity:0;
   transform:translateX(-22px);
   transition:opacity .45s ease, transform .45s ease;
 }
 
-/* enter reveal */
 .dt-menu-links a.revealed {
   opacity:1;
   transform:translateX(0);
 }
 
-/* Shimmer on hover */
-.dt-menu-links a:hover {
-  background:linear-gradient(90deg,#fff,#D4AF37,#fff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-size:200% 100%;
-  animation:shimmer 1.2s linear infinite;
-}
-
-@keyframes shimmer {
-  0% {background-position:0%}
-  100%{background-position:100%}
-}
-
 /* ============================================================
-   HERO VIDEO — Responsive, no cutoff
+   HERO VIDEO (replaces carousel)
 ============================================================ */
-/* TRUE VIDEO RATIO: 1100/2560 = 0.429 */
 .dt-hero-video-block {
   position:relative;
-  width:100%;
-  height:calc(100vw * 0.429);
+  height:90vh;
   max-height:820px;
-  margin-top:72px;
+  padding-top:72px;
   overflow:hidden;
 }
 
-/* Clean scaling */
 .dt-hero-video {
   position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  top:50%; left:50%;
+  min-width:100%; min-height:100%;
+  width:auto; height:auto;
+  transform:translate(-50%,-50%);
   object-fit:cover;
-  object-position:center 35%;
+  object-position:center 10%;
 }
 
-/* Light gradient for text contrast */
 .dt-hero-gradient {
   position:absolute;
   inset:0;
-  background:linear-gradient(to top,
-    rgba(0,0,0,0.85),
-    rgba(0,0,0,0.25),
-    transparent
-  );
+  background:linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2), transparent);
 }
 
-/* Text block same style as homepage */
 .dt-hero-content {
   position:absolute;
   left:20px;
@@ -262,24 +257,17 @@ body.dt-about .dt-nav-icons img:hover {
   z-index:3;
   max-width:480px;
 }
+
 .dt-hero-eyebrow { color:var(--gold); margin-bottom:6px; }
 .dt-hero-title { font-family:Cinzel, serif; font-size:36px; }
 .dt-hero-sub { color:var(--muted); margin-bottom:14px; }
 
-/* Button */
 .btn-primary {
   background:var(--orange);
   color:#fff;
   padding:10px 24px;
   border-radius:999px;
   font-weight:600;
-}
-
-/* Mobile: taller cinematic hero */
-@media (max-width:768px) {
-  .dt-hero-video-block { height:60vh; }
-  .dt-hero-content { left:16px; bottom:24px; max-width:420px; }
-  .dt-hero-title { font-size:32px; }
 }
 
 /* ============================================================
@@ -290,12 +278,14 @@ body.dt-about .dt-nav-icons img:hover {
   padding:4rem 1rem;
   margin:0 auto;
 }
+
 .dt-about-section h2 {
   font-family:Cinzel, serif;
   font-size:2.8rem;
   margin-bottom:1.3rem;
   color:var(--gold);
 }
+
 .dt-about-section p {
   font-size:1.1rem;
   line-height:1.6;
@@ -312,19 +302,19 @@ body.dt-about .dt-nav-icons img:hover {
   border-top:1px solid rgba(255,255,255,0.1);
   margin-top:4rem;
 }
+
 .dt-footer-legal,
 .dt-footer-social {
-  display:flex;
-  justify-content:center;
-  gap:1rem;
-  margin-bottom:1.2rem;
+  display:flex; justify-content:center;
+  gap:1rem; margin-bottom:1.2rem;
 }
+
 .dt-footer-legal a {
-  color:#ddd;
-  font-size:.9rem;
+  color:#ddd; font-size:.9rem;
   text-decoration:none;
   transition:.2s;
 }
+
 .dt-footer-legal a:hover { color:#fff; }
 .dt-footer-social img { height:18px; }
 .dt-footer-copy { font-size:.85rem; opacity:.65; }
@@ -334,16 +324,14 @@ body.dt-about .dt-nav-icons img:hover {
 
 <body class="dt-about">
 
-<!-- ============================================================
-   NAV
-============================================================ -->
+<!-- ========================= NAV ========================== -->
 <header class="dt-nav" id="dtNav">
   <div class="dt-nav-left">
     <button class="dt-nav-hamburger" id="menuOpen">
       <span></span><span></span><span></span>
     </button>
     <a href="index.html" class="dt-nav-logo">
-      <img src="assets/img/logo/dtg-logo-orange.png" alt="">
+      <img src="assets/img/logo/dtg-logo-orange.png">
     </a>
   </div>
 
@@ -352,25 +340,18 @@ body.dt-about .dt-nav-icons img:hover {
   </div>
 
   <div class="dt-nav-icons">
-    <a href="https://instagram.com/dutchtouchgenetics" target="_blank">
-      <img src="assets/icons/instagram.svg">
-    </a>
-    <a href="https://facebook.com" target="_blank">
-      <img src="assets/icons/facebook.svg">
-    </a>
-    <a href="https://twitter.com" target="_blank">
-      <img src="assets/icons/twitter.svg">
-    </a>
+    <a href="https://instagram.com/dutchtouchgenetics" target="_blank"><img src="assets/icons/instagram.svg"></a>
+    <a href="https://facebook.com" target="_blank"><img src="assets/icons/facebook.svg"></a>
+    <a href="https://twitter.com" target="_blank"><img src="assets/icons/twitter.svg"></a>
   </div>
 </header>
 
-<!-- ============================================================
-   MENU
-============================================================ -->
+<!-- ========================= MENU ========================== -->
 <div class="dt-menu-overlay" id="dtMenu">
   <div class="dt-menu-inner">
     <button class="dt-menu-close" id="menuClose">×</button>
-    <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo" alt="">
+
+    <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo">
 
     <nav class="dt-menu-links">
       <a href="index.html">Home</a>
@@ -384,13 +365,10 @@ body.dt-about .dt-nav-icons img:hover {
   </div>
 </div>
 
-<!-- ============================================================
-   HERO VIDEO
-============================================================ -->
+<!-- ========================= HERO VIDEO ========================== -->
 <section class="dt-hero-video-block">
-  <video class="dt-hero-video"
-    autoplay muted loop playsinline
-    poster="assets/video/dutch-hero-poster.jpg">
+  <video class="dt-hero-video" autoplay muted loop playsinline
+     poster="assets/video/dutch-hero-poster.jpg">
     <source src="assets/video/dutch-hero.mp4" type="video/mp4">
   </video>
 
@@ -404,9 +382,7 @@ body.dt-about .dt-nav-icons img:hover {
   </div>
 </section>
 
-<!-- ============================================================
-   ABOUT CONTENT
-============================================================ -->
+<!-- ========================= ABOUT SECTION ========================== -->
 <main class="dt-about-section">
   <h2>About Us</h2>
   <p>
@@ -415,13 +391,11 @@ body.dt-about .dt-nav-icons img:hover {
   </p>
   <p>
     Every cultivar is guided by terpene-driven selection, clean growing practices,
-    and the Dutch heritage that inspired our name.
+    and the Dutch heritage that inspired our name. Welcome to Dutch Touch Genetics.
   </p>
 </main>
 
-<!-- ============================================================
-   FOOTER
-============================================================ -->
+<!-- ========================= FOOTER ========================== -->
 <footer class="dt-footer">
   <div class="dt-footer-legal">
     <a href="#">Terms</a>
@@ -438,9 +412,7 @@ body.dt-about .dt-nav-icons img:hover {
   <p class="dt-footer-copy">© 2025 Dutch Touch Genetics</p>
 </footer>
 
-<!-- ============================================================
-   JS — scroll detect + menu animation
-============================================================ -->
+<!-- ========================= JS ========================== -->
 <script>
 const body = document.body;
 const nav = document.getElementById('dtNav');
@@ -457,15 +429,15 @@ window.addEventListener('scroll', ()=>{
 
 document.getElementById('menuOpen').onclick = ()=>{
   menu.classList.add('active');
-  menuLinks.forEach((link, i)=>{
-    setTimeout(()=>link.classList.add('revealed'), 120 * i);
-  });
 };
 
 document.getElementById('menuClose').onclick = ()=>{
   menu.classList.remove('active');
-  menuLinks.forEach(l=>l.classList.remove('revealed'));
 };
+
+menuLinks.forEach((link, i)=>{
+  setTimeout(()=> link.classList.add('revealed'), 120 * i);
+});
 </script>
 
 </body>
