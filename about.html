@@ -10,151 +10,230 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-html,body {
-  background:#000;
-  font-family:Inter, sans-serif;
-  color:#fff;
-  scroll-behavior:smooth;
-  overflow-x:hidden;
+
+/* ============================================================
+   COLOR SYSTEM + GLOBAL VARS (copied from homepage)
+============================================================ */
+:root {
+  --bg:#050505;
+  --ink:#F7F3E9;
+  --muted:#AAA7A0;
+  --gold:#CDA45A;
+  --orange:#E67A00;
+  --cream:#F5EFE7;
+  --line:#1A1A1A;
+
+  --radius:18px;
+  --container:1080px;
+
+  --nav-bg: rgba(0,0,0,0);
+  --nav-bg-solid: rgba(0,0,0,0.92);
 }
 
-/* ===== GLOBAL ANIMATIONS ===== */
-@keyframes fadeUp {
-  0% { opacity:0; transform:translateY(30px); }
-  100% { opacity:1; transform:translateY(0); }
+/* ============================================================
+   RESET + BASE
+============================================================ */
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
-.fade-up { animation:fadeUp 1.2s ease forwards; }
 
-/* ===== NAV ===== */
-header.dt-nav {
+html, body {
+  height:100%;
+}
+
+body {
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Inter, system-ui, sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+img { max-width:100%; display:block; }
+a { text-decoration:none; color:inherit; }
+
+.no-scroll { overflow:hidden; }
+
+/* ============================================================
+   NAV BAR — ABOUT PAGE (mirrors homepage)
+============================================================ */
+body.dt-about .dt-nav {
   position:fixed;
-  inset:0 0 auto 0;
+  top:0;
+  left:0;
+  right:0;
   height:72px;
+
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
+
   padding:0 16px;
+
+  background:var(--nav-bg);
+  backdrop-filter:none;
+  transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+
   z-index:1100;
-  background:rgba(0,0,0,0);
-  transition:background .35s, backdrop-filter .35s;
 }
-header.dt-nav.scrolled {
-  background:rgba(0,0,0,0.85);
-  backdrop-filter:blur(6px);
+
+body.dt-about.scrolled .dt-nav {
+  background:var(--nav-bg-solid);
+  backdrop-filter:blur(8px);
+  box-shadow:0 3px 16px rgba(0,0,0,0.55);
 }
-.dt-nav-left { display:flex; align-items:center; gap:12px; }
-.dt-nav-hamburger {
-  display:flex; flex-direction:column; gap:5px;
+
+body.dt-about .dt-nav-left {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+body.dt-about .dt-nav-hamburger {
+  width:32px;
+  height:22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  background:none;
+  border:none;
   cursor:pointer;
-  background:none; border:none;
-  transition:.25s;
-}
-.dt-nav-hamburger span {
-  width:22px; height:2px;
-  background:#fff;
-  transition:.3s;
 }
 
-/* Hamburger hover shimmer */
-.dt-nav-hamburger:hover span {
-  background:linear-gradient(90deg,#fff,#D4AF37,#fff);
-  background-size:200% 100%;
-  animation:shimmer .8s linear infinite;
-}
-@keyframes shimmer {
-  0%{background-position:0%}
-  100%{background-position:100%}
+body.dt-about .dt-nav-hamburger span {
+  height:3px;
+  width:100%;
+  background:var(--ink);
+  border-radius:4px;
 }
 
-.dt-nav-logo img { height:36px; }
-.dt-nav-text {
+body.dt-about .dt-nav-logo img {
+  height:28px;
+}
+
+body.dt-about .dt-nav-text {
+  justify-self:center;
   font-family:Cinzel, serif;
-  text-align:center;
-  font-size:1.35rem;
-  letter-spacing:.5px;
-  opacity:0; animation:fadeUp 1s .4s forwards;
+  font-weight:700;
+  font-size:28px;
+  white-space:nowrap;
+  color:var(--orange);
+  display:none;
 }
-.dt-nav-text span { color:#D4AF37; }
-.dt-nav-icons img {
-  height:18px;
-  opacity:.85;
-  transition:.2s;
-}
-.dt-nav-icons img:hover { opacity:1; }
 
-/* ===== MENU OVERLAY ===== */
-#dt-menu {
-  position:fixed;
-  inset:0;
-  z-index:2000;
-  background:rgba(0,0,0,0.93);
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  opacity:0; pointer-events:none;
-  transition:opacity .35s ease;
-  padding:2rem;
+body.dt-about .dt-nav-text span {
+  color:var(--gold);
+  animation:touchPulse 3.8s ease-in-out infinite alternate;
 }
-#dt-menu.open {
+
+@keyframes touchPulse {
+  0%   { color:#CDA45A; text-shadow:0 0 0 rgba(255,200,120,0); }
+  50%  { color:#FFE7A8; text-shadow:0 0 10px rgba(255,217,138,0.6); }
+  100% { color:#CDA45A; text-shadow:0 0 0 rgba(255,200,120,0); }
+}
+
+body.dt-about .dt-nav-icons {
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:14px;
+}
+
+body.dt-about .dt-nav-icons img {
+  width:24px;
+  height:24px;
+  transition:transform .25s ease;
+}
+
+body.dt-about .dt-nav-icons img:hover {
+  transform:translateY(-2px) scale(1.12);
+}
+
+@media (min-width:768px) {
+  body.dt-about .dt-nav-text { display:block; }
+  body.dt-about .dt-nav-hamburger { width:36px; height:26px; }
+  body.dt-about .dt-nav-hamburger span { width:30px; }
+  body.dt-about .dt-nav-logo img { height:36px; }
+}
+
+@media (max-width:767px) {
+  body.dt-about .dt-nav-icons img { width:20px; height:20px; }
+  body.dt-about .dt-nav-hamburger { width:30px; height:20px; }
+}
+
+/* ============================================================
+   MENU OVERLAY — (copied exactly)
+============================================================ */
+.dt-menu-overlay {
+  position:fixed;
+  top:0;
+  left:0;
+  width:75%;
+  max-width:320px;
+  height:100%;
+  background:#000;
+
+  transform:translateX(-100%);
+  opacity:0;
+  pointer-events:none;
+
+  transition:transform .45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity .35s ease;
+
+  z-index:3000;
+}
+
+.dt-menu-overlay.active {
+  transform:translateX(0);
   opacity:1;
   pointer-events:auto;
 }
 
-.dt-menu-close {
-  position:absolute;
-  top:18px; right:24px;
-  font-size:3.2rem;
-  color:#fff;
-  background:none; border:none;
-  cursor:pointer;
-  transition:.3s;
+.dt-menu-inner {
+  padding:22px 20px;
 }
-.dt-menu-close:hover {
-  color:#D4AF37;
+
+.dt-menu-close {
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:42px;
+  margin-bottom:16px;
+  cursor:pointer;
 }
 
 .dt-menu-logo {
-  height:140px;
-  margin-bottom:3rem;
-  opacity:0; animation:fadeUp 1s .2s forwards;
+  height:42px;
+  margin-bottom:20px;
 }
 
-.dt-menu-links {
-  display:flex; flex-direction:column;
-  gap:1.4rem;
-  text-align:center;
-}
 .dt-menu-links a {
+  display:block;
   font-family:Cinzel, serif;
-  font-size:1.6rem;
-  color:#fff;
-  text-decoration:none;
-  position:relative;
-  transition:.25s;
-}
-.dt-menu-links a:hover,
-.dt-menu-links a.active {
-  color:#D4AF37;
+  font-size:30px;
+  margin-bottom:18px;
+
+  opacity:0;
+  transform:translateX(-22px);
+  transition:opacity .45s ease, transform .45s ease;
 }
 
-/* ===== TEXT SHIMMER ===== */
-.dt-menu-links a:hover {
-  background:linear-gradient(90deg,#fff,#D4AF37,#fff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-size:200% 100%;
-  animation:shimmer 1.2s linear infinite;
+.dt-menu-links a.revealed {
+  opacity:1;
+  transform:translateX(0);
 }
 
-/* ===== HERO VIDEO ===== */
+/* ============================================================
+   HERO VIDEO (replaces carousel)
+============================================================ */
 .dt-hero-video-block {
   position:relative;
-  height:65vh;
-  min-height:500px;
+  height:90vh;
   max-height:820px;
-  margin-top:72px;
+  padding-top:72px;
   overflow:hidden;
 }
+
 .dt-hero-video {
   position:absolute;
   top:50%; left:50%;
@@ -163,76 +242,79 @@ header.dt-nav.scrolled {
   transform:translate(-50%,-50%);
   object-fit:cover;
   object-position:center 25%;
-  transition:filter .4s;
-}
-/* Darken video slightly on scroll */
-body.scrolled .dt-hero-video {
-  filter:brightness(.85);
 }
 
-.dt-hero-overlay {
+.dt-hero-gradient {
   position:absolute;
   inset:0;
-  background:linear-gradient(to bottom,
-    rgba(0,0,0,0),
-    rgba(0,0,0,0.85)
-  );
+  background:linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2), transparent);
 }
 
 .dt-hero-content {
-  position:relative;
-  z-index:2;
-  text-align:center;
-  padding:15rem 1rem 2rem;
-}
-.dt-hero-content h1 {
-  font-family:Cinzel, serif;
-  font-size:4rem; font-weight:700;
-}
-.dt-hero-content p { font-size:1.3rem; opacity:.9; }
-
-/* Fade hero text */
-.dt-hero-content > * {
-  opacity:0;
-  animation:fadeUp .9s .5s forwards;
+  position:absolute;
+  left:20px;
+  bottom:32px;
+  z-index:3;
+  max-width:480px;
 }
 
-/* ===== ABOUT ===== */
+.dt-hero-eyebrow { color:var(--gold); margin-bottom:6px; }
+.dt-hero-title { font-family:Cinzel, serif; font-size:36px; }
+.dt-hero-sub { color:var(--muted); margin-bottom:14px; }
+
+.btn-primary {
+  background:var(--orange);
+  color:#fff;
+  padding:10px 24px;
+  border-radius:999px;
+  font-weight:600;
+}
+
+/* ============================================================
+   ABOUT CONTENT
+============================================================ */
 .dt-about-section {
-  max-width:1100px;
+  max-width:var(--container);
   padding:4rem 1rem;
   margin:0 auto;
 }
-.dt-about-header h2 {
+
+.dt-about-section h2 {
   font-family:Cinzel, serif;
   font-size:2.8rem;
   margin-bottom:1.3rem;
-  color:#D4AF37;
+  color:var(--gold);
 }
-.dt-about-header p {
+
+.dt-about-section p {
   font-size:1.1rem;
   line-height:1.6;
   opacity:.92;
   margin-bottom:1.4rem;
 }
 
-/* ===== FOOTER ===== */
+/* ============================================================
+   FOOTER
+============================================================ */
 .dt-footer {
   padding:3rem 1rem;
   text-align:center;
   border-top:1px solid rgba(255,255,255,0.1);
   margin-top:4rem;
 }
+
 .dt-footer-legal,
 .dt-footer-social {
   display:flex; justify-content:center;
   gap:1rem; margin-bottom:1.2rem;
 }
+
 .dt-footer-legal a {
   color:#ddd; font-size:.9rem;
   text-decoration:none;
   transition:.2s;
 }
+
 .dt-footer-legal a:hover { color:#fff; }
 .dt-footer-social img { height:18px; }
 .dt-footer-copy { font-size:.85rem; opacity:.65; }
@@ -240,8 +322,9 @@ body.scrolled .dt-hero-video {
 </style>
 </head>
 
-<body>
+<body class="dt-about">
 
+<!-- ========================= NAV ========================== -->
 <header class="dt-nav" id="dtNav">
   <div class="dt-nav-left">
     <button class="dt-nav-hamburger" id="menuOpen">
@@ -253,7 +336,7 @@ body.scrolled .dt-hero-video {
   </div>
 
   <div class="dt-nav-text">
-    Dutch <span>Touch</span> Genetics
+    Dutch <span>Touch</span>
   </div>
 
   <div class="dt-nav-icons">
@@ -263,52 +346,56 @@ body.scrolled .dt-hero-video {
   </div>
 </header>
 
+<!-- ========================= MENU ========================== -->
+<div class="dt-menu-overlay" id="dtMenu">
+  <div class="dt-menu-inner">
+    <button class="dt-menu-close" id="menuClose">×</button>
 
-<div id="dt-menu">
-  <button class="dt-menu-close" id="menuClose">×</button>
-  <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo">
+    <img src="assets/img/logo/dtg-logo-orange.png" class="dt-menu-logo">
 
-  <nav class="dt-menu-links">
-    <a href="index.html">Home</a>
-    <a href="apparel.html">Apparel</a>
-    <a href="strains.html">Strains</a>
-    <a href="products.html">Products</a>
-    <a href="deals.html">Deals</a>
-    <a href="stores.html">Stores</a>
-    <a href="about.html" class="active">About</a>
-  </nav>
+    <nav class="dt-menu-links">
+      <a href="index.html">Home</a>
+      <a href="apparel.html">Apparel</a>
+      <a href="strains.html">Strains</a>
+      <a href="products.html">Products</a>
+      <a href="deals.html">Deals</a>
+      <a href="stores.html">Stores</a>
+      <a href="about.html" class="active">About</a>
+    </nav>
+  </div>
 </div>
 
-
+<!-- ========================= HERO VIDEO ========================== -->
 <section class="dt-hero-video-block">
-  <video class="dt-hero-video"
-    autoplay muted loop playsinline
-    poster="assets/img/strains/strains-hero.png">
+  <video class="dt-hero-video" autoplay muted loop playsinline
+    poster="assets/img/banners/hero-model-02.JPG">
     <source src="assets/video/dutch-hero.mp4" type="video/mp4">
   </video>
 
-  <div class="dt-hero-overlay"></div>
+  <div class="dt-hero-gradient"></div>
 
   <div class="dt-hero-content">
-    <h1>Dutch Touch Genetics</h1>
-    <p>Premium Craft Cannabis from Michigan</p>
+    <p class="dt-hero-eyebrow">Dutch Touch Genetics</p>
+    <h1 class="dt-hero-title">Keep It Dutch.</h1>
+    <p class="dt-hero-sub">Michigan-made craft cannabis.</p>
+    <a href="strains.html" class="btn-primary">Explore Strains</a>
   </div>
 </section>
 
-
+<!-- ========================= ABOUT SECTION ========================== -->
 <main class="dt-about-section">
-  <div class="dt-about-header fade-up">
-    <h2>About Us</h2>
-    <p> Dutch Touch Genetics is a Michigan-based craft cannabis brand focused on award-winning flower,
-      sustainable cultivation, and uncompromising quality.
-    </p>
-    <p>Every cultivar is guided by terpene-driven selection, clean growing practices,
-      and the Dutch heritage that inspired our name. Welcome to Dutch Touch Genetics.
-    </p>
-  </div>
+  <h2>About Us</h2>
+  <p>
+    Dutch Touch Genetics is a Michigan-based craft cannabis brand focused on award-winning flower,
+    sustainable cultivation, and uncompromising quality.
+  </p>
+  <p>
+    Every cultivar is guided by terpene-driven selection, clean growing practices,
+    and the Dutch heritage that inspired our name. Welcome to Dutch Touch Genetics.
+  </p>
 </main>
 
-
+<!-- ========================= FOOTER ========================== -->
 <footer class="dt-footer">
   <div class="dt-footer-legal">
     <a href="#">Terms</a>
@@ -325,33 +412,31 @@ body.scrolled .dt-hero-video {
   <p class="dt-footer-copy">© 2025 Dutch Touch Genetics</p>
 </footer>
 
-
+<!-- ========================= JS ========================== -->
 <script>
-// scroll state
+const body = document.body;
+const nav = document.getElementById('dtNav');
+const menu = document.getElementById('dtMenu');
+const menuLinks = document.querySelectorAll('.dt-menu-links a');
+
 window.addEventListener('scroll', ()=>{
-  const nav = document.getElementById('dtNav');
   if(window.scrollY > 10){
-    nav.classList.add('scrolled');
-    document.body.classList.add('scrolled');
+    body.classList.add('scrolled');
   } else {
-    nav.classList.remove('scrolled');
-    document.body.classList.remove('scrolled');
+    body.classList.remove('scrolled');
   }
 });
 
-// open / close menu
-const menu = document.getElementById('dt-menu');
-document.getElementById('menuOpen').onclick = ()=> menu.classList.add('open');
-document.getElementById('menuClose').onclick = ()=> menu.classList.remove('open');
+document.getElementById('menuOpen').onclick = ()=>{
+  menu.classList.add('active');
+};
 
-// click outside to close
-menu.addEventListener('click', e=>{
-  if(e.target.id === 'dt-menu') menu.classList.remove('open');
-});
+document.getElementById('menuClose').onclick = ()=>{
+  menu.classList.remove('active');
+};
 
-// Esc key
-document.addEventListener('keydown', e=>{
-  if(e.key === 'Escape') menu.classList.remove('open');
+menuLinks.forEach((link, i)=>{
+  setTimeout(()=> link.classList.add('revealed'), 120 * i);
 });
 </script>
 
