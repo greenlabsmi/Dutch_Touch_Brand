@@ -523,3 +523,238 @@ body.dt-about-page .dt-about-header p {
   max-width: 800px;
   margin-bottom: 1.4rem;
 }
+
+/* ============================================================
+   ABOUT PAGE • REUSE NAV + MENU + FOOTER STYLE
+   (Matches Strains / Stores look)
+============================================================ */
+
+/* NAV BAR */
+body.dt-about-page .dt-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 0 16px;
+  background: var(--nav-bg);
+  backdrop-filter: none;
+  transition: background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+  z-index: 1100;
+}
+
+body.dt-about-page .dt-nav.scrolled {
+  background: var(--nav-bg-solid);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 3px 16px rgba(0,0,0,0.55);
+}
+
+/* LEFT GROUP (hamburger + logo) */
+body.dt-about-page .dt-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+body.dt-about-page .dt-nav-hamburger {
+  width: 32px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+body.dt-about-page .dt-nav-hamburger span {
+  height: 3px;
+  width: 100%;
+  background: #F7F3E9;
+  border-radius: 4px;
+}
+
+/* LOGO */
+body.dt-about-page .dt-nav-logo img {
+  height: 28px;
+}
+
+/* CENTER TEXT */
+body.dt-about-page .dt-nav-text {
+  justify-self: center;
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: 28px;
+  white-space: nowrap;
+  color: #E67A00;
+  display: none;
+}
+
+body.dt-about-page .dt-nav-text span {
+  color: #CDA45A;
+  animation: touchPulse 3.8s ease-in-out infinite alternate;
+}
+
+/* RIGHT ICONS */
+body.dt-about-page .dt-nav-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+}
+
+body.dt-about-page .dt-nav-icons img {
+  width: 24px;
+  height: 24px;
+  transition: transform .25s ease;
+}
+
+body.dt-about-page .dt-nav-icons img:hover {
+  transform: translateY(-2px) scale(1.12);
+}
+
+/* DESKTOP BREAKPOINT */
+@media (min-width: 768px) {
+  body.dt-about-page .dt-nav-text {
+    display: block;
+  }
+  body.dt-about-page .dt-nav-hamburger {
+    width: 36px;
+    height: 26px;
+  }
+  body.dt-about-page .dt-nav-hamburger span {
+    width: 30px;
+  }
+  body.dt-about-page .dt-nav-logo img {
+    height: 36px;
+  }
+}
+
+/* MOBILE NAV TWEAKS */
+@media (max-width: 767px) {
+  body.dt-about-page .dt-nav-icons img {
+    width: 20px;
+    height: 20px;
+  }
+  body.dt-about-page .dt-nav-hamburger {
+    width: 30px;
+    height: 20px;
+  }
+}
+
+/* SLIDE-OUT MENU */
+body.dt-about-page .dt-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 75%;
+  max-width: 320px;
+  height: 100%;
+  background: #000;
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity .35s ease;
+  z-index: 3000;
+}
+
+body.dt-about-page .dt-menu-overlay.active {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.dt-about-page .dt-menu-inner {
+  padding: 22px 20px;
+}
+
+body.dt-about-page .dt-menu-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 42px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+body.dt-about-page .dt-menu-logo {
+  height: 42px;
+  margin-bottom: 20px;
+}
+
+body.dt-about-page .dt-menu-links a {
+  display: block;
+  font-family: Cinzel, serif;
+  font-size: 30px;
+  margin-bottom: 18px;
+  opacity: 0;
+  transform: translateX(-22px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+body.dt-about-page .dt-menu-links a.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* FOOTER */
+body.dt-about-page .dt-footer {
+  background: #000;
+  padding: 75px 20px 80px;
+  margin-top: 80px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+body.dt-about-page .dt-footer-divider {
+  width: 100%;
+  height: 2px;
+  background: #d4af37;
+  margin: 0 auto 28px auto;
+}
+
+body.dt-about-page .dt-footer-legal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+body.dt-about-page .dt-footer-legal a {
+  color: #eee;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  transition: color .25s ease;
+}
+
+body.dt-about-page .dt-footer-legal a:hover {
+  color: #d4af37;
+}
+
+body.dt-about-page .dt-footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 26px;
+}
+
+body.dt-about-page .dt-footer-social img {
+  width: 26px;
+  height: 26px;
+  opacity: 0.85;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+body.dt-about-page .dt-footer-social img:hover {
+  transform: translateY(-2px) scale(1.1);
+  opacity: 1;
+}
+
+body.dt-about-page .dt-footer-copy {
+  color: #777;
+  font-size: 13px;
+}
