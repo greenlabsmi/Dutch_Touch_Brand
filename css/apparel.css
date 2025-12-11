@@ -399,6 +399,8 @@ body.dt-apparel-page .product-media {
   height:240px;
   border-radius:12px;
   background:linear-gradient(180deg,#eee,#ccc);
+  background-size:cover;
+  background-position:center;
 }
 
 body.dt-apparel-page .quick-add {
@@ -474,6 +476,111 @@ body.dt-apparel-page .carousel-media {
 body.dt-apparel-page .carousel-label {
   text-align:center;
   margin-top:10px;
+}
+
+/* ============================================================
+   PRODUCT MODAL (QUICK VIEW)
+============================================================ */
+
+body.dt-apparel-page .product-modal-overlay {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease;
+  z-index:3200;
+}
+
+body.dt-apparel-page .product-modal-overlay.is-open {
+  opacity:1;
+  pointer-events:auto;
+}
+
+body.dt-apparel-page .product-modal {
+  background:var(--surface-soft);
+  border-radius:var(--radius);
+  box-shadow:0 24px 60px rgba(0,0,0,0.75);
+  max-width:420px;
+  width:100%;
+  padding:18px 18px 20px;
+  position:relative;
+}
+
+body.dt-apparel-page .product-modal-close {
+  position:absolute;
+  top:10px;
+  right:12px;
+  border:none;
+  background:transparent;
+  color:#fff;
+  font-size:26px;
+  cursor:pointer;
+}
+
+body.dt-apparel-page .product-modal-media {
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:14px;
+}
+
+body.dt-apparel-page .product-modal-media img {
+  width:100%;
+  display:block;
+}
+
+body.dt-apparel-page .product-modal-body h3 {
+  margin:0 0 4px;
+  font-size:18px;
+}
+
+body.dt-apparel-page .product-modal-price {
+  margin:0 0 14px;
+  font-weight:600;
+  color:var(--gold);
+}
+
+body.dt-apparel-page .product-modal-sizes {
+  margin-top:4px;
+}
+
+body.dt-apparel-page .sizes-label {
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+
+body.dt-apparel-page .size-options {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+body.dt-apparel-page .size-btn {
+  min-width:40px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#121212;
+  color:var(--muted);
+  font-size:13px;
+  cursor:pointer;
+  transition:background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+body.dt-apparel-page .size-btn:hover {
+  transform:translateY(-1px);
+}
+
+body.dt-apparel-page .size-btn.is-selected {
+  background:var(--orange);
+  border-color:var(--orange);
+  color:#fff;
 }
 
 /* ============================================================
