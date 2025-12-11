@@ -1,7 +1,7 @@
 // ============================================================
 // DUTCH TOUCH • APPAREL PAGE JS
 // Isolated to apparel.html — nav, menu, hero slider, filters,
-// carousel, and simple fade-ins
+// carousel, fade-ins, and product quick-view modal
 // ============================================================
 
 let toggleMenu; // global so inline HTML could use it later if needed
@@ -126,14 +126,109 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ------------------------------------------------------------
-  // QUICK ADD (placeholder)
+  // PRODUCT QUICK VIEW MODAL
   // ------------------------------------------------------------
-  document.querySelectorAll(".quick-add").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
+  const modalOverlay = document.getElementById("productModal");
+  const modalImage = document.getElementById("productModalImage");
+  const modalTitle = document.getElementById("productModalTitle");
+  const modalPrice = document.getElementById("productModalPrice");
+  const sizeButtons = document.querySelectorAll(".size-btn");
+  const modalCloseBtn = document.querySelector(".product-modal-close");
+
+  let selectedSize = null;
+
+  function openModalFromCard(card) {
+    if (!modalOverlay || !card) return;
+
+    const name =
+      card.querySelector("h3")?.textContent?.trim() || "Item";
+    const priceText =
+      card.querySelector(".product-price")?.textContent?.trim() || "";
+
+    const imagePath = card.dataset.productImage || "";
+
+    modalTitle.textContent = name;
+    modalPrice.textContent = priceText;
+
+    if (imagePath) {
+      modalImage.src = imagePath;
+      modalImage.alt = name;
+    } else {
+      modalImage.removeAttribute("src");
+      modalImage.alt = "";
+    }
+
+    // reset size selection
+    selectedSize = null;
+    sizeButtons.forEach((btn) => btn.classList.remove("is-selected"));
+
+    modalOverlay.classList.add("is-open");
+    body.classList.add("no-scroll");
+    modalOverlay.setAttribute("aria-hidden", "false");
+  }
+
+  function closeModal() {
+    if (!modalOverlay) return;
+    modalOverlay.classList.remove("is-open");
+    modalOverlay.setAttribute("aria-hidden", "true");
+
+    // Only remove no-scroll if menu isn't open
+    const menuOpen = menu && menu.classList.contains("active");
+    if (!menuOpen) {
+      body.classList.remove("no-scroll");
+    }
+  }
+
+  // Attach to quick-add buttons AND clicking the product card
+  document.querySelectorAll(".product-card").forEach((card) => {
+    const quickBtn = card.querySelector(".quick-add");
+    if (quickBtn) {
+      quickBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openModalFromCard(card);
+      });
+    }
+
+    // Optional: clicking anywhere on the card (except links/buttons) opens modal
+    card.addEventListener("click", (e) => {
+      // avoid double-triggering when clicking the quick-add button
+      if (e.target.closest(".quick-add")) return;
+      openModalFromCard(card);
+    });
+  });
+
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      const card = btn.closest(".product-card");
-      const name = card.querySelector("h3")?.textContent || "Item";
-      console.log("Quick View:", name);
+      closeModal();
+    });
+  }
+
+  if (modalOverlay) {
+    // Click on backdrop to close
+    modalOverlay.addEventListener("click", (e) => {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+  }
+
+  // ESC key closes modal
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modalOverlay && modalOverlay.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+
+  // Size selection
+  sizeButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      sizeButtons.forEach((b) => b.classList.remove("is-selected"));
+      btn.classList.add("is-selected");
+      selectedSize = btn.dataset.size || null;
+      // you could console.log or hook into a real cart here later
+      console.log("Selected size:", selectedSize);
     });
   });
 });
