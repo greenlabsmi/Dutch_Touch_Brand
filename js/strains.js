@@ -1,272 +1,248 @@
-// ============================================================
-// DUTCH TOUCH • APPAREL PAGE JS
-// Isolated to apparel.html — nav, menu, hero slider, filters,
-// carousel, fade-ins, and product quick-view modal
-// ============================================================
-
-let toggleMenu; // global so inline HTML could use it later if needed
+/* ============================================================
+   DUTCH TOUCH GENETICS
+   STRAINS PAGE — FULL JS REPLACEMENT
+   Handles: Nav, Menu, Filters, Search, Modal
+   Scoped strictly to: body.dt-strains-page
+============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
-  if (!body.classList.contains("dt-apparel-page")) return;
+  if (!body.classList.contains("dt-strains-page")) return;
 
-  // ------------------------------------------------------------
-  // NAVBAR TRANSPARENT → SOLID ON SCROLL
-  // ------------------------------------------------------------
+  /* ============================================================
+     NAV SCROLL
+  ============================================================ */
   const nav = document.getElementById("dtNav");
 
-  function updateNavOnScroll() {
-    if (window.scrollY > 10) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-    }
+  function updateNav() {
+    if (window.scrollY > 10) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
   }
 
-  updateNavOnScroll();
-  window.addEventListener("scroll", updateNavOnScroll);
+  updateNav();
+  window.addEventListener("scroll", updateNav);
 
-  // ------------------------------------------------------------
-  // SLIDE-OUT MENU (LEFT SIDE)
-  // ------------------------------------------------------------
+
+  /* ============================================================
+     SLIDE-OUT MENU
+  ============================================================ */
   const menu = document.getElementById("dt-menu");
+  const menuLinks = document.querySelectorAll(".dt-menu-links a");
   const hamburger = document.querySelector(".dt-nav-hamburger");
+  const menuClose = document.querySelector(".dt-menu-close");
 
-  toggleMenu = function () {
-    if (!menu) return;
-    const isOpen = menu.classList.toggle("active");
-    body.classList.toggle("no-scroll", isOpen);
+  hamburger.addEventListener("click", () => {
+    menu.classList.add("active");
 
-    if (isOpen) revealMenuLinks();
-    else resetMenuLinks();
-  };
-
-  if (hamburger) {
-    hamburger.addEventListener("click", toggleMenu);
-  }
-
-  const closeBtn = document.querySelector(".dt-menu-close");
-  if (closeBtn) {
-    closeBtn.addEventListener("click", toggleMenu);
-  }
-
-  // Close menu when clicking a menu link
-  document.querySelectorAll("#dt-menu .dt-menu-links a").forEach((link) => {
-    link.addEventListener("click", () => toggleMenu());
+    // Animate links with delay
+    menuLinks.forEach((link, i) => {
+      setTimeout(() => link.classList.add("revealed"), 120 + i * 80);
+    });
   });
 
-  // Click outside to close
-  document.addEventListener("click", (e) => {
-    if (!menu || !menu.classList.contains("active")) return;
-
-    const insideMenu = menu.contains(e.target);
-    const clickedHamburger = hamburger && hamburger.contains(e.target);
-
-    if (!insideMenu && !clickedHamburger) toggleMenu();
+  menuClose.addEventListener("click", () => {
+    menu.classList.remove("active");
+    menuLinks.forEach(link => link.classList.remove("revealed"));
   });
 
-  // ------------------------------------------------------------
-  // FADE-IN OBSERVER
-  // ------------------------------------------------------------
-  const fadeEls = document.querySelectorAll(".fade-in");
-  const fadeObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          fadeObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.2, rootMargin: "0px 0px -40px 0px" }
-  );
-  fadeEls.forEach((el) => fadeObserver.observe(el));
 
-  // ------------------------------------------------------------
-  // PRODUCT FILTERS
-  // ------------------------------------------------------------
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const productCards = document.querySelectorAll(".product-card");
+  /* ============================================================
+     LOAD STRAIN CARD IMAGES INTO .strain-image DIVS
+  ============================================================ */
+  const strainCards = document.querySelectorAll(".strain-card");
 
-  filterBtns.forEach((btn) => {
+  strainCards.forEach(card => {
+    const imgPath = card.dataset.image;
+    const imgDiv = card.querySelector(".strain-image");
+    if (imgDiv && imgPath) {
+      imgDiv.style.backgroundImage = `url('${imgPath}')`;
+    }
+  });
+
+
+  /* ============================================================
+     FILTERS
+  ============================================================ */
+  const filterButtons = document.querySelectorAll(".strain-filter");
+
+  filterButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-      const filter = btn.dataset.filter;
-
-      filterBtns.forEach((b) => b.classList.remove("is-active"));
+      // Highlight active filter
+      filterButtons.forEach(b => b.classList.remove("is-active"));
       btn.classList.add("is-active");
 
-      productCards.forEach((card) => {
-        const cat = card.dataset.category;
-        if (filter === "all" || cat === filter) {
-          card.classList.remove("is-hidden");
-        } else {
-          card.classList.add("is-hidden");
-        }
-      });
+      applyFilters();
     });
   });
 
-  // ------------------------------------------------------------
-  // CAPSULE CAROUSEL
-  // ------------------------------------------------------------
-  const track = document.querySelector(".carousel-track");
-  const prevBtn = document.querySelector(".carousel-btn-prev");
-  const nextBtn = document.querySelector(".carousel-btn-next");
 
-  if (track && prevBtn && nextBtn) {
-    const scrollAmount = () => track.clientWidth * 0.8;
+  /* ============================================================
+     SEARCH
+     Matches: name, flavor, terpene list, type, lineage
+  ============================================================ */
+  const searchInput = document.getElementById("strainSearch");
 
-    prevBtn.addEventListener("click", () => {
-      track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+  searchInput.addEventListener("input", () => {
+    applyFilters();
+  });
+
+
+  /* ============================================================
+     COMBINED FILTER FUNCTION
+  ============================================================ */
+  function applyFilters() {
+    const activeFilter = document.querySelector(".strain-filter.is-active").dataset.filter;
+    const searchValue = searchInput.value.toLowerCase().trim();
+
+    strainCards.forEach(card => {
+      let isVisible = true;
+
+      // ---------- FILTER LOGIC ----------
+      const type = card.dataset.type.toLowerCase();
+      const award = card.dataset.award === "true";
+      const name = card.dataset.name.toLowerCase();
+      const flavor = (card.dataset.flavor || "").toLowerCase();
+      const lineage = (card.dataset.lineage || "").toLowerCase();
+      const terps = (card.dataset.terps || "").toLowerCase();
+
+      // FILTER by type/award/A-Z
+      if (activeFilter === "award" && !award) isVisible = false;
+      if (activeFilter === "sativa" && type !== "sativa") isVisible = false;
+      if (activeFilter === "hybrid" && type !== "hybrid") isVisible = false;
+      if (activeFilter === "indica" && type !== "indica") isVisible = false;
+
+      if (activeFilter === "az") {
+        // Force alphabetical sorting (implemented below)
+      }
+
+      // SEARCH
+      if (searchValue.length > 0) {
+        const haystack =
+          name +
+          flavor +
+          lineage +
+          terps +
+          type;
+
+        if (!haystack.includes(searchValue)) {
+          isVisible = false;
+        }
+      }
+
+      // APPLY VISIBILITY
+      if (isVisible) card.classList.remove("is-hidden");
+      else card.classList.add("is-hidden");
     });
 
-    nextBtn.addEventListener("click", () => {
-      track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
-    });
+    // A–Z SORTING
+    if (activeFilter === "az") sortAZ();
   }
 
-  // ------------------------------------------------------------
-  // PRODUCT QUICK VIEW MODAL
-  // ------------------------------------------------------------
-  const modalOverlay = document.getElementById("productModal");
-  const modalImage = document.getElementById("productModalImage");
-  const modalTitle = document.getElementById("productModalTitle");
-  const modalPrice = document.getElementById("productModalPrice");
-  const sizeButtons = document.querySelectorAll(".size-btn");
-  const modalCloseBtn = document.querySelector(".product-modal-close");
 
-  let selectedSize = null;
+  /* ============================================================
+     SORT A–Z (moves DOM elements)
+  ============================================================ */
+  function sortAZ() {
+    const grid = document.querySelector(".strain-grid");
+    const cardsArr = Array.from(strainCards);
 
-  function openModalFromCard(card) {
-    if (!modalOverlay || !card) return;
+    cardsArr.sort((a, b) => {
+      const nameA = a.dataset.name.toLowerCase();
+      const nameB = b.dataset.name.toLowerCase();
+      return nameA.localeCompare(nameB);
+    });
 
-    const name =
-      card.querySelector("h3")?.textContent?.trim() || "Item";
-    const priceText =
-      card.querySelector(".product-price")?.textContent?.trim() || "";
+    cardsArr.forEach(card => grid.appendChild(card));
+  }
 
-    const imagePath = card.dataset.productImage || "";
 
-    modalTitle.textContent = name;
-    modalPrice.textContent = priceText;
+  /* ============================================================
+     MODAL — Builds content from data attributes
+  ============================================================ */
+  let modal = null;
 
-    if (imagePath) {
-      modalImage.src = imagePath;
-      modalImage.alt = name;
-    } else {
-      modalImage.removeAttribute("src");
-      modalImage.alt = "";
-    }
+  function buildModal(card) {
+    if (modal) modal.remove();
 
-    // reset size selection
-    selectedSize = null;
-    sizeButtons.forEach((btn) => btn.classList.remove("is-selected"));
+    modal = document.createElement("div");
+    modal.classList.add("strain-modal");
 
-    modalOverlay.classList.add("is-open");
-    body.classList.add("no-scroll");
-    modalOverlay.setAttribute("aria-hidden", "false");
+    modal.innerHTML = `
+      <div class="strain-modal-dialog">
+        <button class="strain-modal-close">&times;</button>
+
+        <div class="strain-modal-header">
+          <h3>${card.dataset.name}</h3>
+          <p>${card.dataset.type}</p>
+        </div>
+
+        <div class="strain-modal-layout">
+
+          <div class="strain-modal-media">
+            <div class="strain-modal-image-frame">
+              <img src="${card.dataset.image}" alt="${card.dataset.name}">
+            </div>
+            <div class="strain-modal-tagline">
+              ${card.dataset.flavor || ""}
+            </div>
+          </div>
+
+          <div class="strain-modal-body">
+
+            <div class="strain-modal-section">
+              <h4>Lineage</h4>
+              <p><span class="label">Mom:</span> ${card.dataset.mom || "Unknown"}<br>
+                 <span class="label">Dad:</span> ${card.dataset.dad || "Unknown"}</p>
+            </div>
+
+            <div class="strain-modal-section">
+              <h4>Effects</h4>
+              <p>${card.dataset.effects || ""}</p>
+            </div>
+
+            <div class="strain-modal-section">
+              <h4>Accolades</h4>
+              <p>${card.dataset.accolades || "—"}</p>
+            </div>
+
+            <div class="strain-modal-section">
+              <h4>Top Terpenes</h4>
+              <p>${card.dataset.terps || ""}</p>
+            </div>
+
+            <div class="strain-modal-section">
+              <h4>Review</h4>
+              <p class="strain-modal-quote">${card.dataset.review || ""}</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    modal.classList.add("open");
+
+    // Close events
+    modal.querySelector(".strain-modal-close").addEventListener("click", closeModal);
+    modal.addEventListener("click", e => {
+      if (e.target === modal) closeModal();
+    });
   }
 
   function closeModal() {
-    if (!modalOverlay) return;
-    modalOverlay.classList.remove("is-open");
-    modalOverlay.setAttribute("aria-hidden", "true");
-
-    // Only remove no-scroll if menu isn't open
-    const menuOpen = menu && menu.classList.contains("active");
-    if (!menuOpen) {
-      body.classList.remove("no-scroll");
-    }
+    if (!modal) return;
+    modal.classList.remove("open");
+    setTimeout(() => modal.remove(), 200);
   }
 
-  // Attach to quick-add buttons AND clicking the product card
-  document.querySelectorAll(".product-card").forEach((card) => {
-    const quickBtn = card.querySelector(".quick-add");
-    if (quickBtn) {
-      quickBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        openModalFromCard(card);
-      });
-    }
 
-    // Optional: clicking anywhere on the card (except links/buttons) opens modal
-    card.addEventListener("click", (e) => {
-      // avoid double-triggering when clicking the quick-add button
-      if (e.target.closest(".quick-add")) return;
-      openModalFromCard(card);
-    });
+  /* ============================================================
+     OPEN MODAL ON CARD CLICK
+  ============================================================ */
+  strainCards.forEach(card => {
+    card.addEventListener("click", () => buildModal(card));
   });
 
-  if (modalCloseBtn) {
-    modalCloseBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      closeModal();
-    });
-  }
-
-  if (modalOverlay) {
-    // Click on backdrop to close
-    modalOverlay.addEventListener("click", (e) => {
-      if (e.target === modalOverlay) {
-        closeModal();
-      }
-    });
-  }
-
-  // ESC key closes modal
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modalOverlay && modalOverlay.classList.contains("is-open")) {
-      closeModal();
-    }
-  });
-
-  // Size selection
-  sizeButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      sizeButtons.forEach((b) => b.classList.remove("is-selected"));
-      btn.classList.add("is-selected");
-      selectedSize = btn.dataset.size || null;
-      // you could console.log or hook into a real cart here later
-      console.log("Selected size:", selectedSize);
-    });
-  });
 });
-
-// ============================================================
-// MOBILE HERO SLIDER (<900px)
-// ============================================================
-function initMobileHeroSlider() {
-  if (window.innerWidth > 900) return;
-
-  const slides = document.querySelectorAll(".hero-mobile-slide");
-  if (!slides.length) return;
-
-  let index = 0;
-  slides[index].classList.add("active");
-
-  setInterval(() => {
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
-  }, 3500);
-}
-
-document.addEventListener("DOMContentLoaded", initMobileHeroSlider);
-
-// ============================================================
-// MENU LINK CASCADE HELPERS (for apparel menu)
-// ============================================================
-function revealMenuLinks() {
-  const links = document.querySelectorAll("#dt-menu .dt-menu-links a");
-  links.forEach((link, i) => {
-    link.classList.remove("revealed");
-    setTimeout(() => link.classList.add("revealed"), 120 * i);
-  });
-}
-
-function resetMenuLinks() {
-  document
-    .querySelectorAll("#dt-menu .dt-menu-links a")
-    .forEach((link) => link.classList.remove("revealed"));
-}
