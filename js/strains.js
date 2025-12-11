@@ -1,23 +1,21 @@
 // ============================================================
-// DUTCH TOUCH • STRAINS PAGE JS
-// Nav scroll • Menu • Filters • Search • Modal • QR
+// DUTCH TOUCH • APPAREL PAGE JS
+// Isolated to apparel.html — nav, menu, hero slider, filters,
+// carousel, fade-ins, and product quick-view modal
 // ============================================================
+
+let toggleMenu; // global so inline HTML could use it later if needed
 
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
-  
-  const isStrains = body.classList.contains("dt-strains-page");
-const isAbout = body.classList.contains("dt-about-page");
-if (!isStrains && !isAbout) return;
-
-  let modal = null;
+  if (!body.classList.contains("dt-apparel-page")) return;
 
   // ------------------------------------------------------------
-  // NAV SCROLL
+  // NAVBAR TRANSPARENT → SOLID ON SCROLL
   // ------------------------------------------------------------
   const nav = document.getElementById("dtNav");
 
-  function updateNav() {
+  function updateNavOnScroll() {
     if (window.scrollY > 10) {
       nav.classList.add("scrolled");
     } else {
@@ -25,358 +23,250 @@ if (!isStrains && !isAbout) return;
     }
   }
 
-  updateNav();
-  window.addEventListener("scroll", updateNav);
+  updateNavOnScroll();
+  window.addEventListener("scroll", updateNavOnScroll);
 
   // ------------------------------------------------------------
-  // SLIDE-OUT MENU
+  // SLIDE-OUT MENU (LEFT SIDE)
   // ------------------------------------------------------------
   const menu = document.getElementById("dt-menu");
   const hamburger = document.querySelector(".dt-nav-hamburger");
-  const menuClose = document.querySelector(".dt-menu-close");
 
-  function revealMenuLinks() {
+  toggleMenu = function () {
     if (!menu) return;
-    const links = menu.querySelectorAll(".dt-menu-links a");
-    links.forEach((link, i) => {
-      link.classList.remove("revealed");
-      setTimeout(() => link.classList.add("revealed"), 120 * i);
-    });
-  }
+    const isOpen = menu.classList.toggle("active");
+    body.classList.toggle("no-scroll", isOpen);
 
-  function resetMenuLinks() {
-    if (!menu) return;
-    const links = menu.querySelectorAll(".dt-menu-links a");
-    links.forEach((link) => link.classList.remove("revealed"));
-  }
-
-  function toggleMenu() {
-    if (!menu) return;
-    const willOpen = !menu.classList.contains("active");
-    menu.classList.toggle("active");
-
-    if (willOpen) {
-      body.classList.add("no-scroll");
-      revealMenuLinks();
-    } else {
-      resetMenuLinks();
-      if (!modal || !modal.classList.contains("open")) {
-        body.classList.remove("no-scroll");
-      }
-    }
-  }
+    if (isOpen) revealMenuLinks();
+    else resetMenuLinks();
+  };
 
   if (hamburger) {
-    hamburger.addEventListener("click", (e) => {
-      e.stopPropagation();
-      toggleMenu();
-    });
+    hamburger.addEventListener("click", toggleMenu);
   }
 
-  if (menuClose) {
-    menuClose.addEventListener("click", (e) => {
-      e.stopPropagation();
-      toggleMenu();
-    });
+  const closeBtn = document.querySelector(".dt-menu-close");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", toggleMenu);
   }
 
+  // Close menu when clicking a menu link
+  document.querySelectorAll("#dt-menu .dt-menu-links a").forEach((link) => {
+    link.addEventListener("click", () => toggleMenu());
+  });
+
+  // Click outside to close
   document.addEventListener("click", (e) => {
     if (!menu || !menu.classList.contains("active")) return;
+
     const insideMenu = menu.contains(e.target);
-    const onHamburger = hamburger && hamburger.contains(e.target);
-    if (!insideMenu && !onHamburger) toggleMenu();
+    const clickedHamburger = hamburger && hamburger.contains(e.target);
+
+    if (!insideMenu && !clickedHamburger) toggleMenu();
   });
 
   // ------------------------------------------------------------
-  // FILTERS
+  // FADE-IN OBSERVER
   // ------------------------------------------------------------
-  const filterButtons = document.querySelectorAll(".strain-filter");
-  const grid = document.querySelector(".strain-grid");
-  const cards = Array.from(document.querySelectorAll(".strain-card"));
-  const originalOrder = [...cards];
-
-  // Thumbnail images
-  cards.forEach((card) => {
-    const img = card.dataset.image;
-    const thumb = card.querySelector(".strain-image");
-    if (img && thumb) {
-      thumb.style.backgroundImage = `url(${img})`;
-    }
-  });
-
-  function restoreOriginalOrder() {
-    if (!grid) return;
-    originalOrder.forEach((card) => grid.appendChild(card));
-  }
-
-  function applyFilter(filter) {
-    if (!grid) return;
-
-    // reset base visibility
-    cards.forEach((c) => c.classList.remove("is-hidden"));
-
-    // AWARD
-    if (filter === "award") {
-      restoreOriginalOrder();
-      cards.forEach((c) => {
-        if (c.dataset.award !== "true") c.classList.add("is-hidden");
+  const fadeEls = document.querySelectorAll(".fade-in");
+  const fadeObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          fadeObserver.unobserve(entry.target);
+        }
       });
-      return;
-    }
+    },
+    { threshold: 0.2, rootMargin: "0px 0px -40px 0px" }
+  );
+  fadeEls.forEach((el) => fadeObserver.observe(el));
 
-    // A-Z
-    if (filter === "az") {
-      const sorted = [...cards].sort((a, b) => {
-        const A = (a.dataset.name || "").toLowerCase();
-        const B = (b.dataset.name || "").toLowerCase();
-        return A.localeCompare(B);
-      });
-      sorted.forEach((card) => grid.appendChild(card));
-      return;
-    }
+  // ------------------------------------------------------------
+  // PRODUCT FILTERS
+  // ------------------------------------------------------------
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const productCards = document.querySelectorAll(".product-card");
 
-    // TYPE
-    if (["sativa", "hybrid", "indica"].includes(filter)) {
-      restoreOriginalOrder();
-      cards.forEach((c) => {
-        const type = (c.dataset.type || "").toLowerCase();
-        if (type !== filter) c.classList.add("is-hidden");
-      });
-      return;
-    }
-
-    // ALL
-    if (filter === "all") {
-      restoreOriginalOrder();
-    }
-  }
-
-  filterButtons.forEach((btn) => {
+  filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      filterButtons.forEach((b) => b.classList.remove("is-active"));
+      const filter = btn.dataset.filter;
+
+      filterBtns.forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
-      applyFilter(btn.dataset.filter);
 
-      // layer search on top if query active
-      if (searchInput && searchInput.value.trim()) {
-        runSearch(searchInput.value);
-      }
+      productCards.forEach((card) => {
+        const cat = card.dataset.category;
+        if (filter === "all" || cat === filter) {
+          card.classList.remove("is-hidden");
+        } else {
+          card.classList.add("is-hidden");
+        }
+      });
     });
   });
 
   // ------------------------------------------------------------
-  // SEARCH BAR
+  // CAPSULE CAROUSEL
   // ------------------------------------------------------------
-  const searchInput = document.getElementById("strainSearch");
+  const track = document.querySelector(".carousel-track");
+  const prevBtn = document.querySelector(".carousel-btn-prev");
+  const nextBtn = document.querySelector(".carousel-btn-next");
 
-  function runSearch(rawValue) {
-    const query = rawValue.toLowerCase().trim();
+  if (track && prevBtn && nextBtn) {
+    const scrollAmount = () => track.clientWidth * 0.8;
 
-    // EMPTY → restore active filter
-    if (!query) {
-      const activeFilter = document.querySelector(".strain-filter.is-active");
-      if (activeFilter) {
-        applyFilter(activeFilter.dataset.filter || "all");
-      }
-      return;
-    }
-
-    // SEARCH → bypass filters
-    cards.forEach((card) => {
-      const name = (card.dataset.name || "").toLowerCase();
-      const type = (card.dataset.type || "").toLowerCase();
-      const flavor = (card.dataset.flavor || "").toLowerCase();
-      const effects = (card.dataset.effects || "").toLowerCase();
-      const terps = (card.dataset.terps || "").toLowerCase();
-
-      const matches =
-        name.includes(query) ||
-        type.includes(query) ||
-        flavor.includes(query) ||
-        effects.includes(query) ||
-        terps.includes(query);
-
-      card.classList.toggle("is-hidden", !matches);
+    prevBtn.addEventListener("click", () => {
+      track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
     });
-  }
 
-  if (searchInput) {
-    searchInput.addEventListener("input", () => {
-      // visually reset filters while typing
-      filterButtons.forEach((btn) => btn.classList.remove("is-active"));
-      runSearch(searchInput.value);
+    nextBtn.addEventListener("click", () => {
+      track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
     });
   }
 
   // ------------------------------------------------------------
-  // MODAL SETUP
+  // PRODUCT QUICK VIEW MODAL
   // ------------------------------------------------------------
-  modal = document.createElement("div");
-  modal.className = "strain-modal";
-  modal.id = "strainModal";
+  const modalOverlay = document.getElementById("productModal");
+  const modalImage = document.getElementById("productModalImage");
+  const modalTitle = document.getElementById("productModalTitle");
+  const modalPrice = document.getElementById("productModalPrice");
+  const sizeButtons = document.querySelectorAll(".size-btn");
+  const modalCloseBtn = document.querySelector(".product-modal-close");
 
-  modal.innerHTML = `
-    <div class="strain-modal-dialog">
-      <button class="strain-modal-close" aria-label="Close">×</button>
+  let selectedSize = null;
 
-      <div class="strain-modal-header">
-        <h3 id="modalStrainName"></h3>
-        <p id="modalStrainType"></p>
-      </div>
+  function openModalFromCard(card) {
+    if (!modalOverlay || !card) return;
 
-      <div class="strain-modal-layout">
-        <aside class="strain-modal-media">
-          <div class="strain-modal-image-frame">
-            <img id="modalStrainImage" src="" alt="">
-          </div>
-          <p id="modalStrainAccolades" class="strain-modal-tagline"></p>
-        </aside>
+    const name =
+      card.querySelector("h3")?.textContent?.trim() || "Item";
+    const priceText =
+      card.querySelector(".product-price")?.textContent?.trim() || "";
 
-        <section class="strain-modal-body">
+    const imagePath = card.dataset.productImage || "";
 
-          <div class="strain-modal-section">
-            <h4>Lineage</h4>
-            <p><span class="label">Mother</span><span id="modalStrainMother"></span></p>
-            <p><span class="label">Father</span><span id="modalStrainFather"></span></p>
-            <p><span class="label">Overview</span><span id="modalStrainLineage"></span></p>
-          </div>
+    modalTitle.textContent = name;
+    modalPrice.textContent = priceText;
 
-          <div class="strain-modal-section">
-            <h4>Flavor</h4>
-            <p id="modalStrainFlavor"></p>
-          </div>
-
-          <div class="strain-modal-section">
-            <h4>Effects</h4>
-            <p id="modalStrainEffects"></p>
-          </div>
-
-          <div class="strain-modal-section" id="modalTerpsSection">
-            <h4>Top Terpenes</h4>
-            <p id="modalTerpsText"></p>
-          </div>
-
-          <div class="strain-modal-section" id="modalQuoteSection">
-            <h4>What People Say</h4>
-            <p id="modalStrainQuote" class="strain-modal-quote"></p>
-          </div>
-
-        </section>
-      </div>
-    </div>
-  `;
-
-  document.body.appendChild(modal);
-
-  // Modal refs
-  const modalDialog = modal.querySelector(".strain-modal-dialog");
-  const modalCloseBtn = modal.querySelector(".strain-modal-close");
-
-  const modalName = modal.querySelector("#modalStrainName");
-  const modalType = modal.querySelector("#modalStrainType");
-  const modalImage = modal.querySelector("#modalStrainImage");
-  const modalAcc = modal.querySelector("#modalStrainAccolades");
-  const modalMother = modal.querySelector("#modalStrainMother");
-  const modalFather = modal.querySelector("#modalStrainFather");
-  const modalLineage = modal.querySelector("#modalStrainLineage");
-  const modalFlavor = modal.querySelector("#modalStrainFlavor");
-  const modalEffects = modal.querySelector("#modalStrainEffects");
-  const modalQuote = modal.querySelector("#modalStrainQuote");
-  const modalQuoteSection = modal.querySelector("#modalQuoteSection");
-  const modalTerpsSection = modal.querySelector("#modalTerpsSection");
-  const modalTerpsText = modal.querySelector("#modalTerpsText");
-
-  // ------------------------------------------------------------
-  // OPEN MODAL
-  // ------------------------------------------------------------
-  function openModal(card) {
-    modalName.textContent = card.dataset.name || "";
-
-    const type = (card.dataset.type || "").toUpperCase();
-    const award = card.dataset.award === "true" ? " • Award Winner" : "";
-    modalType.textContent = `${type}${award}`;
-
-    modalImage.src = card.dataset.image || "assets/img/strains/placeholder.png";
-    modalImage.alt = card.dataset.name || "Strain";
-
-    const acc = card.dataset.accolades || "";
-    modalAcc.textContent = acc;
-    modalAcc.style.display = acc ? "block" : "none";
-
-    modalMother.textContent = card.dataset.mom || "";
-    modalFather.textContent = card.dataset.dad || "";
-    modalLineage.textContent = card.dataset.lineage || "";
-
-    modalFlavor.textContent = card.dataset.flavor || "";
-    modalEffects.textContent = card.dataset.effects || "";
-
-    const quote = card.dataset.review || "";
-    if (quote) {
-      modalQuote.textContent = quote;
-      modalQuoteSection.style.display = "block";
+    if (imagePath) {
+      modalImage.src = imagePath;
+      modalImage.alt = name;
     } else {
-      modalQuote.textContent = "";
-      modalQuoteSection.style.display = "none";
+      modalImage.removeAttribute("src");
+      modalImage.alt = "";
     }
 
-    const terps = card.dataset.terps || "";
-    if (terps) {
-      modalTerpsText.textContent = terps;
-      modalTerpsSection.style.display = "block";
-    } else {
-      modalTerpsText.textContent = "";
-      modalTerpsSection.style.display = "none";
-    }
+    // reset size selection
+    selectedSize = null;
+    sizeButtons.forEach((btn) => btn.classList.remove("is-selected"));
 
-    modal.classList.add("open");
+    modalOverlay.classList.add("is-open");
     body.classList.add("no-scroll");
+    modalOverlay.setAttribute("aria-hidden", "false");
   }
 
-  cards.forEach((card) => {
-    card.addEventListener("click", () => openModal(card));
-  });
-
-  // ------------------------------------------------------------
-  // CLOSE MODAL
-  // ------------------------------------------------------------
   function closeModal() {
-    modal.classList.remove("open");
-    if (!menu || !menu.classList.contains("active")) {
+    if (!modalOverlay) return;
+    modalOverlay.classList.remove("is-open");
+    modalOverlay.setAttribute("aria-hidden", "true");
+
+    // Only remove no-scroll if menu isn't open
+    const menuOpen = menu && menu.classList.contains("active");
+    if (!menuOpen) {
       body.classList.remove("no-scroll");
     }
   }
 
-  if (modalCloseBtn) {
-    modalCloseBtn.addEventListener("click", closeModal);
-  }
+  // Attach to quick-add buttons AND clicking the product card
+  document.querySelectorAll(".product-card").forEach((card) => {
+    const quickBtn = card.querySelector(".quick-add");
+    if (quickBtn) {
+      quickBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openModalFromCard(card);
+      });
+    }
 
-  modal.addEventListener("click", (e) => {
-    if (!modalDialog.contains(e.target)) closeModal();
+    // Optional: clicking anywhere on the card (except links/buttons) opens modal
+    card.addEventListener("click", (e) => {
+      // avoid double-triggering when clicking the quick-add button
+      if (e.target.closest(".quick-add")) return;
+      openModalFromCard(card);
+    });
   });
 
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeModal();
+    });
+  }
+
+  if (modalOverlay) {
+    // Click on backdrop to close
+    modalOverlay.addEventListener("click", (e) => {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+  }
+
+  // ESC key closes modal
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("open")) {
+    if (e.key === "Escape" && modalOverlay && modalOverlay.classList.contains("is-open")) {
       closeModal();
     }
   });
 
-  // ------------------------------------------------------------
-  // QR HASH LINK
-  // ------------------------------------------------------------
-  const hash = window.location.hash.replace("#", "").trim();
-  if (hash) {
-    const target = hash.toLowerCase();
-
-    const match = cards.find((c) => {
-      const slug = (c.dataset.slug || "").toLowerCase();
-      const nameSlug =
-        (c.dataset.name || "").toLowerCase().replace(/\s+/g, "-");
-      return slug === target || nameSlug === target;
+  // Size selection
+  sizeButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      sizeButtons.forEach((b) => b.classList.remove("is-selected"));
+      btn.classList.add("is-selected");
+      selectedSize = btn.dataset.size || null;
+      // you could console.log or hook into a real cart here later
+      console.log("Selected size:", selectedSize);
     });
-
-    if (match) {
-      match.scrollIntoView({ behavior: "smooth", block: "center" });
-      setTimeout(() => openModal(match), 500);
-    }
-  }
+  });
 });
+
+// ============================================================
+// MOBILE HERO SLIDER (<900px)
+// ============================================================
+function initMobileHeroSlider() {
+  if (window.innerWidth > 900) return;
+
+  const slides = document.querySelectorAll(".hero-mobile-slide");
+  if (!slides.length) return;
+
+  let index = 0;
+  slides[index].classList.add("active");
+
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 3500);
+}
+
+document.addEventListener("DOMContentLoaded", initMobileHeroSlider);
+
+// ============================================================
+// MENU LINK CASCADE HELPERS (for apparel menu)
+// ============================================================
+function revealMenuLinks() {
+  const links = document.querySelectorAll("#dt-menu .dt-menu-links a");
+  links.forEach((link, i) => {
+    link.classList.remove("revealed");
+    setTimeout(() => link.classList.add("revealed"), 120 * i);
+  });
+}
+
+function resetMenuLinks() {
+  document
+    .querySelectorAll("#dt-menu .dt-menu-links a")
+    .forEach((link) => link.classList.remove("revealed"));
+}
