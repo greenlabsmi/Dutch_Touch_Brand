@@ -26,14 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // ============================
   const nav = document.getElementById("dtNav");
 
- function updateNav() {
-  const nav = document.getElementById("dtNav");
-  if (window.scrollY <= 10) {
-    nav.classList.remove("scrolled");
-  } else {
-    nav.classList.add("scrolled");
+  function updateNav() {
+    if (window.scrollY <= 10) {
+      nav.classList.remove("scrolled");
+    } else {
+      nav.classList.add("scrolled");
+    }
   }
-}
 
   updateNav();
   window.addEventListener("scroll", updateNav);
@@ -95,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       },
       {
-        threshold: 0.05, // trigger much earlier so desktop gets glow
+        threshold: 0.05,
       }
     );
 
