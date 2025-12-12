@@ -1,3 +1,4 @@
+===== style.css =====
 /* ============================================================
    DUTCH TOUCH • GLOBAL STYLES
    Homepage + Nav + Menu + Hero + Tiles
@@ -324,7 +325,9 @@ body.dt-home .dt-tile {
 body.dt-home .dt-tile::before {
   content:"";
   position:absolute;
-  inset:0;
+
+  /* FIX: extend blurred bg beyond edges so no top/bottom "dead strip" shows */
+  inset:-12px;
 
   background-size:cover;
   background-position:center;
@@ -347,13 +350,20 @@ body.dt-home .dt-tile img[src] {
   pointer-events:none;
 }
 
+/* (kept as-is for preservation; not relied on for bg assignment) */
 body.dt-home .dt-tile {
   --bg: attr(src url);
 }
 
-body.dt-home .dt-tile::before {
-  background-image: inherit;
-}
+/* FIX: explicitly map each known tile image to the blurred background (CSS-only) */
+body.dt-home .dt-tile { --tile-bg: none; }
+body.dt-home .dt-tile::before { background-image: var(--tile-bg); }
+
+/* Map tile images -> background blur (keeps object-fit:contain, no crop, removes black bars) */
+body.dt-home .dt-tile:has(img[src*="assets/img/tiles/apparel-tile.jpg"])  { --tile-bg: url("../assets/img/tiles/apparel-tile.jpg"); }
+body.dt-home .dt-tile:has(img[src*="assets/img/tiles/strains-tile.jpg"])  { --tile-bg: url("../assets/img/tiles/strains-tile.jpg"); }
+body.dt-home .dt-tile:has(img[src*="assets/img/tiles/products-tile.jpg"]) { --tile-bg: url("../assets/img/tiles/products-tile.jpg"); }
+body.dt-home .dt-tile:has(img[src*="assets/img/tiles/deals-tile.jpg"])    { --tile-bg: url("../assets/img/tiles/deals-tile.jpg"); }
 
 /* ---- VISIBLE TILE ---- */
 body.dt-home .dt-tile.dt-tile-visible {
