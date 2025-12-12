@@ -1,4 +1,3 @@
-===== script.js =====
 console.log("DTG SCRIPT LOADED");
 
 // ===================================================================
@@ -27,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.getElementById("dtNav");
 
   function updateNav() {
+    const nav = document.getElementById("dtNav");
     if (window.scrollY <= 10) {
       nav.classList.remove("scrolled");
     } else {
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       },
       {
-        threshold: 0.05,
+        threshold: 0.05, // trigger much earlier so desktop gets glow
       }
     );
 
