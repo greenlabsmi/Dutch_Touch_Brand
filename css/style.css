@@ -68,17 +68,13 @@ body.dt-home .dt-nav {
   left:0;
   right:0;
   height:72px;
-
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
-
   padding:0 16px;
-
   background:var(--nav-bg);
   backdrop-filter:none;
   transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
-
   z-index:1100;
 }
 
@@ -178,13 +174,10 @@ body.dt-home .dt-nav-icons img:hover {
   max-width:320px;
   height:100%;
   background:#000;
-
   transform:translateX(-100%);
   opacity:0;
   pointer-events:none;
-
   transition:transform .45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity .35s ease;
-
   z-index:3000;
 }
 
@@ -217,7 +210,6 @@ body.dt-home .dt-nav-icons img:hover {
   font-family:Cinzel, serif;
   font-size:30px;
   margin-bottom:18px;
-
   opacity:0;
   transform:translateX(-22px);
   transition:opacity .45s ease, transform .45s ease;
@@ -256,7 +248,12 @@ body.dt-home .hero-slide.active {
 body.dt-home .hero-gradient {
   position:absolute;
   inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2), transparent);
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.9),
+    rgba(0,0,0,0.2),
+    transparent
+  );
 }
 
 body.dt-home .hero-inner {
@@ -287,7 +284,6 @@ body.dt-home .dt-grid {
   max-width:var(--container);
   margin:40px auto;
   padding:0 18px;
-
   display:grid;
   grid-template-columns:1fr;
   gap:26px;
@@ -298,21 +294,17 @@ body.dt-home .dt-tile {
   position:relative;
   border-radius:18px;
   overflow:hidden;
-
   aspect-ratio:16/9;
   max-height:480px;
-
   display:flex;
   align-items:center;
   justify-content:center;
 
-  /* Soft luxury glow */
   box-shadow:
     0 10px 28px rgba(0,0,0,0.35),
     0 1px 4px rgba(205,164,90,0.25),
     0 0 16px rgba(205,164,90,0.18);
 
-  /* Fade-in base */
   opacity:0;
   transform:translateY(26px);
   transition:
@@ -325,10 +317,7 @@ body.dt-home .dt-tile {
 body.dt-home .dt-tile::before {
   content:"";
   position:absolute;
-
-  /* FIX: extend blurred bg beyond edges so no top/bottom "dead strip" shows */
-  inset:-12px;
-
+  inset:0;
   background-size:cover;
   background-position:center;
   filter:blur(14px) brightness(0.65);
@@ -342,28 +331,20 @@ body.dt-home .dt-tile img {
   z-index:2;
   width:100%;
   height:100%;
-  object-fit:contain; /* FULL IMAGE, NO CROP */
+  object-fit:contain;
 }
 
-/* Apply background-image automatically */
 body.dt-home .dt-tile img[src] {
   pointer-events:none;
 }
 
-/* (kept as-is for preservation; not relied on for bg assignment) */
 body.dt-home .dt-tile {
   --bg: attr(src url);
 }
 
-/* FIX: explicitly map each known tile image to the blurred background (CSS-only) */
-body.dt-home .dt-tile { --tile-bg: none; }
-body.dt-home .dt-tile::before { background-image: var(--tile-bg); }
-
-/* Map tile images -> background blur (keeps object-fit:contain, no crop, removes black bars) */
-body.dt-home .dt-tile:has(img[src*="assets/img/tiles/apparel-tile.jpg"])  { --tile-bg: url("../assets/img/tiles/apparel-tile.jpg"); }
-body.dt-home .dt-tile:has(img[src*="assets/img/tiles/strains-tile.jpg"])  { --tile-bg: url("../assets/img/tiles/strains-tile.jpg"); }
-body.dt-home .dt-tile:has(img[src*="assets/img/tiles/products-tile.jpg"]) { --tile-bg: url("../assets/img/tiles/products-tile.jpg"); }
-body.dt-home .dt-tile:has(img[src*="assets/img/tiles/deals-tile.jpg"])    { --tile-bg: url("../assets/img/tiles/deals-tile.jpg"); }
+body.dt-home .dt-tile::before {
+  background-image: inherit;
+}
 
 /* ---- VISIBLE TILE ---- */
 body.dt-home .dt-tile.dt-tile-visible {
