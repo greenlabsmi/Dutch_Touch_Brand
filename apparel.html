@@ -119,41 +119,109 @@
 
 </section>
 
-<!-- =========================
-     SPOTLIGHT DROP
-========================= -->
-<section class="dt-section dt-spotlight">
-
-  <div class="dt-section-header">
-    <h2>Spotlight Drop</h2>
-    <p class="hero-sub">The current DTG uniform. Limited run.</p>
-  </div>
-
-  <div class="spotlight-grid">
-
-    <!-- Spotlight Hoodie -->
-    <div class="spotlight-item">
-      <div class="spotlight-media"
-        style="background-image:url('assets/img/apparel/dtg-hoodie-beige-front.png');"></div>
-      <h3>DTG Lion Hoodie — Sand</h3>
-      <p>$70</p>
-    </div>
-
-    <!-- Spotlight Sweats -->
-    <div class="spotlight-item">
-      <div class="spotlight-media"
-        style="background-image:url('assets/img/apparel/dtg-sweats-beige.png');"></div>
-      <h3>DTG Sweatpants — Sand</h3>
-      <p>$65</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- =========================
-     NEW ARRIVALS
-========================= -->
 <main>
+
+  <!-- =========================
+       SPOTLIGHT DROP (FEATURED)
+  ========================= -->
+  <section id="spotlight-drop" class="dt-section dt-section-spotlight">
+
+    <div class="dt-section-header">
+      <h2>Spotlight Drop</h2>
+      <p class="dt-section-sub">The current DTG uniform. Limited run.</p>
+    </div>
+
+    <div class="product-grid product-grid-spotlight">
+
+      <!-- SPOTLIGHT: Keep It Dutch Hoodie (Sand) — hover swaps to back -->
+      <article
+        class="product-card product-card-spotlight fade-in"
+        data-category="hoodie"
+        data-product-image="assets/img/apparel/keep-it-dutch-hoodie-beige.png"
+        data-hover-image="assets/img/apparel/keep-it-dutch-hoodie-back-beige.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/keep-it-dutch-hoodie-beige.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>Keep It Dutch Hoodie — Sand</h3>
+        <p class="product-type">Hoodie</p>
+        <p class="product-price">$70</p>
+      </article>
+
+      <!-- SPOTLIGHT: DTG Sweatpants (Sand) -->
+      <article
+        class="product-card product-card-spotlight fade-in"
+        data-category="sweats"
+        data-product-image="assets/img/apparel/dtg-sweats-beige.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/dtg-sweats-beige.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>DTG Sweatpants — Sand</h3>
+        <p class="product-type">Sweats</p>
+        <p class="product-price">$65</p>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- =========================
+       HOT / POPULAR
+  ========================= -->
+  <section id="hot-popular" class="dt-section dt-section-hot">
+
+    <div class="dt-section-header">
+      <h2>Hot / Popular</h2>
+      <p class="dt-section-sub">Fan favorites. Always moving.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- DTG Lion Hoodie (black) -->
+      <article
+        class="product-card fade-in"
+        data-category="hoodie"
+        data-product-image="assets/img/apparel/dtg-hoodie.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/dtg-hoodie.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>DTG Lion Hoodie — Black</h3>
+        <p class="product-type">Hoodie</p>
+        <p class="product-price">$70</p>
+      </article>
+
+      <!-- DTG Sweatpants (black) -->
+      <article
+        class="product-card fade-in"
+        data-category="sweats"
+        data-product-image="assets/img/apparel/dtg-sweats-black.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/dtg-sweats-black.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>DTG Sweatpants — Black</h3>
+        <p class="product-type">Sweats</p>
+        <p class="product-price">$65</p>
+      </article>
+
+      <!-- DTG Lion Tee (white) -->
+      <article
+        class="product-card fade-in"
+        data-category="shirt"
+        data-product-image="assets/img/apparel/dtg-shirt-white.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/dtg-shirt-white.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>DTG Lion Tee — White</h3>
+        <p class="product-type">Shirt</p>
+        <p class="product-price">$35</p>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- =========================
+       NEW ARRIVALS (FILTERABLE)
+  ========================= -->
   <section id="new-arrivals" class="dt-section dt-section-new">
 
     <div class="dt-section-header">
@@ -169,117 +237,134 @@
       </div>
     </div>
 
-    <!-- PRODUCT GRID -->
     <div class="product-grid">
 
-  <!-- DTG Lion Hoodie — Black -->
-  <article class="product-card fade-in" data-category="hoodie"
-    data-product-image="assets/img/apparel/dtg-hoodie.png">
-    <div class="product-media"
-      style="background-image:url('assets/img/apparel/dtg-hoodie.png');"></div>
-    <button class="quick-add" aria-label="View hoodie">+</button>
-    <h3>DTG Lion Hoodie — Black</h3>
-    <p class="product-type">Hoodie</p>
-    <p class="product-price">$70</p>
-  </article>
+      <!-- DTG Lion Hoodie (sand) -->
+      <article
+        class="product-card fade-in"
+        data-category="hoodie"
+        data-product-image="assets/img/apparel/dtg-hoodie-beige.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/dtg-hoodie-beige.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>DTG Lion Hoodie — Sand</h3>
+        <p class="product-type">Hoodie</p>
+        <p class="product-price">$70</p>
+      </article>
 
-  <!-- DTG Lion Tee — White -->
-  <article class="product-card fade-in" data-category="shirt"
-    data-product-image="assets/img/apparel/dtg-shirt-white.png">
-    <div class="product-media"
-      style="background-image:url('assets/img/apparel/dtg-shirt-white.png');"></div>
-    <button class="quick-add" aria-label="View shirt">+</button>
-    <h3>DTG Lion Tee — White</h3>
-    <p class="product-type">Shirt</p>
-    <p class="product-price">$35</p>
-  </article>
+      <!-- Keep It Dutch Tee (black) -->
+      <article
+        class="product-card fade-in"
+        data-category="shirt"
+        data-product-image="assets/img/apparel/keep-it-dutch-shirt.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/keep-it-dutch-shirt.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>Keep It Dutch Tee — Black</h3>
+        <p class="product-type">Shirt</p>
+        <p class="product-price">$35</p>
+      </article>
 
-  <!-- DTG Lion Hoodie — Sand (hover swap ready) -->
-  <article class="product-card fade-in" data-category="hoodie"
-    data-product-image="assets/img/apparel/dtg-hoodie-beige-front.png">
-    <div class="product-media has-hover"
-      style="background-image:url('assets/img/apparel/dtg-hoodie-beige-front.png');"
-      data-hover="assets/img/apparel/dtg-hoodie-beige-back.png">
+      <!-- Keep It Dutch Hoodie (sand) -->
+      <article
+        class="product-card fade-in"
+        data-category="hoodie"
+        data-product-image="assets/img/apparel/keep-it-dutch-hoodie.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/keep-it-dutch-hoodie.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>Keep It Dutch Hoodie</h3>
+        <p class="product-type">Hoodie</p>
+        <p class="product-price">$70</p>
+      </article>
+
     </div>
-    <button class="quick-add" aria-label="View hoodie">+</button>
-    <h3>DTG Lion Hoodie — Sand</h3>
-    <p class="product-type">Hoodie</p>
-    <p class="product-price">$70</p>
-  </article>
-
-  <!-- Lilac Diesel Tee — Black -->
-  <article class="product-card fade-in" data-category="shirt"
-    data-product-image="assets/img/apparel/fueled-by-shirt-black.png">
-    <div class="product-media"
-      style="background-image:url('assets/img/apparel/fueled-by-shirt-black.png');"></div>
-    <button class="quick-add" aria-label="View shirt">+</button>
-    <h3>Lilac Diesel Tee — Black</h3>
-    <p class="product-type">Shirt</p>
-    <p class="product-price">$35</p>
-  </article>
-
-  <!-- Lilac Diesel Tee — White -->
-  <article class="product-card fade-in" data-category="shirt"
-    data-product-image="assets/img/apparel/fueled-by-shirt-white.png">
-    <div class="product-media"
-      style="background-image:url('assets/img/apparel/fueled-by-shirt-white.png');"></div>
-    <button class="quick-add" aria-label="View shirt">+</button>
-    <h3>Lilac Diesel Tee — White</h3>
-    <p class="product-type">Shirt</p>
-    <p class="product-price">$35</p>
-  </article>
-
-  <!-- Keep It Dutch Hoodie -->
-  <article class="product-card fade-in" data-category="hoodie"
-    data-product-image="assets/img/apparel/keep-it-dutch-hoodie.png">
-    <div class="product-media"
-      style="background-image:url('assets/img/apparel/keep-it-dutch-hoodie.png');"></div>
-    <button class="quick-add" aria-label="View hoodie">+</button>
-    <h3>Keep It Dutch Hoodie</h3>
-    <p class="product-type">Hoodie</p>
-    <p class="product-price">$70</p>
-  </article>
-
-  <!-- Keep It Dutch Tee -->
-  <article class="product-card fade-in" data-category="shirt"
-    data-product-image="assets/img/apparel/keep-it-dutch-shirt.png">
-    <div class="product-media"
-      style="background-image:url('assets/img/apparel/keep-it-dutch-shirt.png');"></div>
-    <button class="quick-add" aria-label="View shirt">+</button>
-    <h3>Keep It Dutch Tee</h3>
-    <p class="product-type">Shirt</p>
-    <p class="product-price">$35</p>
-  </article>
-
-  <!-- Lemon Wookie Hoodie -->
-  <article class="product-card fade-in" data-category="hoodie"
-    data-product-image="assets/img/apparel/lemon-wookie-hoodie-anime-black.png">
-    <div class="product-media"
-      style="background-image:url('assets/img/apparel/lemon-wookie-hoodie-anime-black.png');"></div>
-    <button class="quick-add" aria-label="View hoodie">+</button>
-    <h3>Lemon Wookie Hoodie</h3>
-    <p class="product-type">Hoodie</p>
-    <p class="product-price">$75</p>
-  </article>
-
-  <!-- Space Hippy Tee -->
-  <article class="product-card fade-in" data-category="shirt"
-    data-product-image="assets/img/apparel/space-hippy-shirt.png">
-    <div class="product-media"
-      style="background-image:url('assets/img/apparel/space-hippy-shirt.png');"></div>
-    <button class="quick-add" aria-label="View shirt">+</button>
-    <h3>Space Hippy Tee</h3>
-    <p class="product-type">Shirt</p>
-    <p class="product-price">$35</p>
-  </article>
-
-</div>
-
   </section>
 
 
   <!-- =========================
-       CAPSULE CAROUSEL
+       GRAPHIC TEES / ART DROPS
+  ========================= -->
+  <section id="graphics" class="dt-section dt-section-graphics">
+
+    <div class="dt-section-header">
+      <h2>Graphic Tees &amp; Art Drops</h2>
+      <p class="dt-section-sub">Limited-run characters, strain art, and collab vibes.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- Lilac Diesel Tee (black) -->
+      <article
+        class="product-card fade-in"
+        data-category="shirt"
+        data-product-image="assets/img/apparel/fueled-by-shirt-black.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/fueled-by-shirt-black.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>Lilac Diesel Tee — Black</h3>
+        <p class="product-type">Shirt</p>
+        <p class="product-price">$35</p>
+      </article>
+
+      <!-- Lilac Diesel Tee (white) -->
+      <article
+        class="product-card fade-in"
+        data-category="shirt"
+        data-product-image="assets/img/apparel/fueled-by-shirt-white.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/fueled-by-shirt-white.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>Lilac Diesel Tee — White</h3>
+        <p class="product-type">Shirt</p>
+        <p class="product-price">$35</p>
+      </article>
+
+      <!-- Space Hippy Tee -->
+      <article
+        class="product-card fade-in"
+        data-category="shirt"
+        data-product-image="assets/img/apparel/space-hippy-shirt.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/space-hippy-shirt.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>Space Hippy Tee</h3>
+        <p class="product-type">Shirt</p>
+        <p class="product-price">$35</p>
+      </article>
+
+      <!-- Lemon Wookie Hoodie (anime black) — FIXED filename (no space) -->
+      <article
+        class="product-card fade-in"
+        data-category="hoodie"
+        data-product-image="assets/img/apparel/lemon-wookie-hoodie-anime-black.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/lemon-wookie-hoodie-anime-black.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>Lemon Wookie Hoodie — Black</h3>
+        <p class="product-type">Hoodie</p>
+        <p class="product-price">$75</p>
+      </article>
+
+      <!-- Lemon Wookie Hoodie (anime beige) -->
+      <article
+        class="product-card fade-in"
+        data-category="hoodie"
+        data-product-image="assets/img/apparel/lemon-wookie-anime-beige.png">
+        <div class="product-media"
+             style="background-image:url('assets/img/apparel/lemon-wookie-anime-beige.png');"></div>
+        <button class="quick-add" aria-label="Quick view">+</button>
+        <h3>Lemon Wookie Hoodie — Sand</h3>
+        <p class="product-type">Hoodie</p>
+        <p class="product-price">$75</p>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- =========================
+       CAPSULE HIGHLIGHTS (FILLED)
   ========================= -->
   <section class="dt-section dt-section-carousel">
     <div class="dt-section-header">
@@ -290,25 +375,31 @@
       <button class="carousel-btn carousel-btn-prev" aria-label="Previous">‹</button>
 
       <div class="carousel-track">
+
         <div class="carousel-item">
-          <div class="carousel-media"></div>
-          <p class="carousel-label">Classic Lion Set</p>
+          <div class="carousel-media"
+               style="background-image:url('assets/img/apparel/dtg-hoodie.png'); background-size:contain; background-repeat:no-repeat; background-position:center;"></div>
+          <p class="carousel-label">DTG Lion — Black</p>
         </div>
 
         <div class="carousel-item">
-          <div class="carousel-media"></div>
-          <p class="carousel-label">Black &amp; Gold Pack</p>
+          <div class="carousel-media"
+               style="background-image:url('assets/img/apparel/dtg-sweats-black.png'); background-size:contain; background-repeat:no-repeat; background-position:center;"></div>
+          <p class="carousel-label">Sweats — Black</p>
         </div>
 
         <div class="carousel-item">
-          <div class="carousel-media"></div>
-          <p class="carousel-label">Beanies &amp; Lids</p>
+          <div class="carousel-media"
+               style="background-image:url('assets/img/apparel/keep-it-dutch-hoodie-beige.png'); background-size:contain; background-repeat:no-repeat; background-position:center;"></div>
+          <p class="carousel-label">Keep It Dutch — Sand</p>
         </div>
 
         <div class="carousel-item">
-          <div class="carousel-media"></div>
-          <p class="carousel-label">Cozy Mornings</p>
+          <div class="carousel-media"
+               style="background-image:url('assets/img/apparel/fueled-by-shirt-black.png'); background-size:contain; background-repeat:no-repeat; background-position:center;"></div>
+          <p class="carousel-label">Lilac Diesel Tee</p>
         </div>
+
       </div>
 
       <button class="carousel-btn carousel-btn-next" aria-label="Next">›</button>
