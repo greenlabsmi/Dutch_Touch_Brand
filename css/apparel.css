@@ -339,6 +339,58 @@ body.dt-apparel-page .dt-section-header h2 {
 }
 
 /* ============================================================
+   SECTION HEADERS — SUBTITLES
+============================================================ */
+
+body.dt-apparel-page .dt-section-sub {
+  color:var(--muted);
+  font-size:14px;
+  max-width:520px;
+  margin-top:-6px;
+  margin-bottom:26px;
+  line-height:1.5;
+}
+
+/* ============================================================
+   SPOTLIGHT DROP
+============================================================ */
+
+body.dt-apparel-page .dt-section-spotlight {
+  padding-top:60px;
+}
+
+body.dt-apparel-page .product-grid-spotlight {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+  gap:40px;
+}
+
+body.dt-apparel-page .product-card-spotlight .product-media {
+  aspect-ratio: 3 / 4;
+  background-color:#111;
+  border-radius:20px;
+}
+
+body.dt-apparel-page .product-card-spotlight h3 {
+  font-size:16px;
+  font-weight:600;
+}
+
+body.dt-apparel-page .product-card-spotlight .product-price {
+  font-size:15px;
+}
+
+/* ============================================================
+   SECTION SPACING TIERS
+============================================================ */
+
+body.dt-apparel-page .dt-section-hot,
+body.dt-apparel-page .dt-section-new,
+body.dt-apparel-page .dt-section-graphics {
+  padding-top:80px;
+}
+
+/* ============================================================
    FILTERS
 ============================================================ */
 
@@ -432,17 +484,6 @@ body.dt-apparel-page .quick-add {
   color:#fff;
   font-size:16px;
   cursor:pointer;
-}
-
-/* Hover swap image */
-body.dt-apparel-page .product-media.has-hover {
-  transition:background-image .25s ease;
-}
-
-@media (hover:hover) {
-  body.dt-apparel-page .product-media.has-hover:hover {
-    background-image: attr(data-hover url);
-  }
 }
 
 /* ============================================================
