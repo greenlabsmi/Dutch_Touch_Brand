@@ -424,8 +424,8 @@ body.dt-apparel-page .filter-btn.is-active {
 
 body.dt-apparel-page .product-grid {
   display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
-  gap:32px;
+  grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+  gap:24px;
 }
 
 body.dt-apparel-page .product-card {
@@ -444,7 +444,7 @@ body.dt-apparel-page .product-card {
 }
 
 body.dt-apparel-page .product-media {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   border-radius:16px;
   background-size:contain;
   background-position:center;
@@ -484,6 +484,20 @@ body.dt-apparel-page .quick-add {
   color:#fff;
   font-size:16px;
   cursor:pointer;
+}
+
+/* ============================================================
+   PRODUCT GRID — COMPACT (GRAPHIC TEES)
+============================================================ */
+
+body.dt-apparel-page .product-grid--compact {
+  grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
+  gap:20px;
+}
+
+body.dt-apparel-page .product-grid--compact .product-media {
+  aspect-ratio: 1 / 1;
+  background-color:#111;
 }
 
 /* ============================================================
@@ -561,13 +575,26 @@ body.dt-apparel-page .product-modal-overlay.is-open {
 
 body.dt-apparel-page .product-modal {
   background:var(--surface-soft);
-  border-radius:var(--radius);
-  box-shadow:0 24px 60px rgba(0,0,0,0.75);
-  max-width:420px;
-  width:100%;
-  padding:18px 18px 20px;
+  border-radius:16px;
+  box-shadow:0 18px 48px rgba(0,0,0,0.7);
+  max-width:340px;
+  width:90%;
+  padding:16px;
   position:relative;
 }
+
+body.dt-apparel-page .product-modal-media {
+  margin-bottom:10px;
+}
+
+body.dt-apparel-page .product-modal-body h3 {
+  font-size:16px;
+}
+
+body.dt-apparel-page .product-modal-price {
+  margin-bottom:10px;
+}
+
 
 body.dt-apparel-page .product-modal-close {
   position:absolute;
