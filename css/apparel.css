@@ -434,6 +434,17 @@ body.dt-apparel-page .quick-add {
   cursor:pointer;
 }
 
+/* Hover swap image */
+body.dt-apparel-page .product-media.has-hover {
+  transition:background-image .25s ease;
+}
+
+@media (hover:hover) {
+  body.dt-apparel-page .product-media.has-hover:hover {
+    background-image: attr(data-hover url);
+  }
+}
+
 /* ============================================================
    CAPSULE CAROUSEL
 ============================================================ */
