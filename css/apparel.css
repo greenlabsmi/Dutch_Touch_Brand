@@ -583,19 +583,6 @@ body.dt-apparel-page .product-modal {
   position:relative;
 }
 
-body.dt-apparel-page .product-modal-media {
-  margin-bottom:10px;
-}
-
-body.dt-apparel-page .product-modal-body h3 {
-  font-size:16px;
-}
-
-body.dt-apparel-page .product-modal-price {
-  margin-bottom:10px;
-}
-
-
 body.dt-apparel-page .product-modal-close {
   position:absolute;
   top:10px;
@@ -610,7 +597,7 @@ body.dt-apparel-page .product-modal-close {
 body.dt-apparel-page .product-modal-media {
   border-radius:12px;
   overflow:hidden;
-  margin-bottom:14px;
+  margin-bottom:10px;
 }
 
 body.dt-apparel-page .product-modal-media img {
@@ -619,12 +606,11 @@ body.dt-apparel-page .product-modal-media img {
 }
 
 body.dt-apparel-page .product-modal-body h3 {
-  margin:0 0 4px;
-  font-size:18px;
+  font-size:16px;
 }
 
 body.dt-apparel-page .product-modal-price {
-  margin:0 0 14px;
+  margin-bottom:10px;
   font-weight:600;
   color:var(--gold);
 }
