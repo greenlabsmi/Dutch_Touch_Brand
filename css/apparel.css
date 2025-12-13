@@ -367,64 +367,71 @@ body.dt-apparel-page .filter-btn.is-active {
 }
 
 /* ============================================================
-   PRODUCT GRID
+   PRODUCT GRID — CLEAN / JEETER-STYLE
 ============================================================ */
 
 body.dt-apparel-page .product-grid {
   display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
-  gap:24px;
+  grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+  gap:32px;
 }
 
 body.dt-apparel-page .product-card {
   position:relative;
-  background:var(--surface-soft);
+  background:transparent;
   border-radius:var(--radius);
-  padding:14px;
-  box-shadow:0 15px 35px rgba(0,0,0,.55);
-  transition:transform .3s ease;
-}
-
-body.dt-apparel-page .product-card.is-hidden {
-  display:none;
+  padding:0;
+  box-shadow:none;
+  transition:transform .25s ease, box-shadow .25s ease;
 }
 
 @media(min-width:900px) {
   body.dt-apparel-page .product-card:hover {
-    transform:translateY(-6px);
+    transform:translateY(-4px);
   }
 }
 
 body.dt-apparel-page .product-media {
-  height:240px;
-  border-radius:12px;
-  background:linear-gradient(180deg,#eee,#ccc);
-  background-size:cover;
+  aspect-ratio: 4 / 5;
+  border-radius:16px;
+  background-size:contain;
   background-position:center;
+  background-repeat:no-repeat;
+  background-color:#0f0f0f;
+}
+
+body.dt-apparel-page .product-card h3 {
+  font-size:14px;
+  font-weight:500;
+  margin:10px 0 2px;
+  color:var(--ink);
+}
+
+body.dt-apparel-page .product-type {
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+
+body.dt-apparel-page .product-price {
+  font-size:14px;
+  font-weight:600;
+  color:var(--gold);
 }
 
 body.dt-apparel-page .quick-add {
   position:absolute;
   top:18px;
   right:18px;
-  width:32px;
-  height:32px;
+  width:30px;
+  height:30px;
   border-radius:50%;
   border:none;
-  background:rgba(0,0,0,0.8);
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(6px);
   color:#fff;
-  font-size:18px;
+  font-size:16px;
   cursor:pointer;
-}
-
-body.dt-apparel-page .product-type {
-  color:var(--muted);
-  font-size:13px;
-}
-
-body.dt-apparel-page .product-price {
-  margin-top:4px;
-  font-weight:600;
 }
 
 /* ============================================================
