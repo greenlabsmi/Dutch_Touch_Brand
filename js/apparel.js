@@ -106,6 +106,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+    // ------------------------------------------------------------
+  // PRODUCT IMAGE HOVER SWAP (DESKTOP ONLY)
+  // ------------------------------------------------------------
+  const hoverCards = document.querySelectorAll(
+    ".product-card[data-hover-image]"
+  );
+
+  hoverCards.forEach((card) => {
+    const media = card.querySelector(".product-media");
+    const mainImage = card.dataset.productImage;
+    const hoverImage = card.dataset.hoverImage;
+
+    if (!media || !mainImage || !hoverImage) return;
+
+    // Desktop hover only
+    card.addEventListener("mouseenter", () => {
+      if (window.innerWidth > 900) {
+        media.style.backgroundImage = `url('${hoverImage}')`;
+      }
+    });
+
+    card.addEventListener("mouseleave", () => {
+      if (window.innerWidth > 900) {
+        media.style.backgroundImage = `url('${mainImage}')`;
+      }
+    });
+  });
+
   // ------------------------------------------------------------
   // CAPSULE CAROUSEL
   // ------------------------------------------------------------
