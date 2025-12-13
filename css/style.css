@@ -452,3 +452,38 @@ body.dt-home .dt-footer-copy {
   color:var(--muted);
   opacity:.7;
 }
+
+/* ============================================================
+   SPOTLIGHT DROP
+============================================================ */
+
+body.dt-apparel-page .dt-spotlight {
+  margin-top:60px;
+}
+
+body.dt-apparel-page .spotlight-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:36px;
+}
+
+body.dt-apparel-page .spotlight-item {
+  text-align:center;
+}
+
+body.dt-apparel-page .spotlight-media {
+  aspect-ratio:4 / 5;
+  border-radius:18px;
+  background:#111 center / contain no-repeat;
+  margin-bottom:14px;
+}
+
+body.dt-apparel-page .spotlight-item h3 {
+  font-size:16px;
+  margin-bottom:4px;
+}
+
+body.dt-apparel-page .spotlight-item p {
+  font-weight:600;
+  color:var(--gold);
+}
