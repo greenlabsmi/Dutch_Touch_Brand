@@ -425,7 +425,13 @@ body.dt-apparel-page .filter-btn.is-active {
 body.dt-apparel-page .product-grid {
   display:grid;
   grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
-  gap:24px;
+  gap:18px;
+}
+
+@media (max-width: 640px) {
+  body.dt-apparel-page .product-grid {
+    gap:14px;
+  }
 }
 
 body.dt-apparel-page .product-card {
@@ -455,14 +461,14 @@ body.dt-apparel-page .product-media {
 body.dt-apparel-page .product-card h3 {
   font-size:14px;
   font-weight:500;
-  margin:10px 0 2px;
+  margin:8px 0 2px;
   color:var(--ink);
 }
 
 body.dt-apparel-page .product-type {
   font-size:12px;
   color:var(--muted);
-  margin-bottom:4px;
+  margin-bottom:2px;
 }
 
 body.dt-apparel-page .product-price {
