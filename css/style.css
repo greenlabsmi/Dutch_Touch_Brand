@@ -393,7 +393,7 @@ body.dt-home .section-copy {
 
 body.dt-home .dt-featured-stores {
   max-width: var(--container);
-  margin: 60px auto 40px;
+  margin: 48px auto 32px;
   padding: 0 18px;
   text-align: center;
 }
@@ -442,6 +442,12 @@ body.dt-home .store-card img {
   height: 72px;
   margin: 0 auto 14px;
   object-fit: contain;
+  transition: transform .3s ease, filter .3s ease;
+}
+
+body.dt-home .store-card:hover img {
+  transform: scale(1.04);
+  filter: brightness(1.15);
 }
 
 body.dt-home .store-card span {
