@@ -387,6 +387,61 @@ body.dt-home .section-copy {
   color:var(--muted);
   font-size:14px;
 }
+/* ============================================================
+   FEATURED RETAIL LOCATIONS — HOMEPAGE
+============================================================ */
+
+body.dt-home .dt-featured-stores {
+  max-width: var(--container);
+  margin: 60px auto 40px;
+  padding: 0 18px;
+  text-align: center;
+}
+
+body.dt-home .dt-featured-stores .section-copy {
+  max-width: 520px;
+  margin: 0 auto 30px;
+}
+
+body.dt-home .store-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+body.dt-home .store-card {
+  background: #0b0b0b;
+  border-radius: 18px;
+  padding: 26px 18px;
+  box-shadow:
+    0 8px 22px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(205,164,90,0.15);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+body.dt-home .store-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 14px 34px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(205,164,90,0.35);
+}
+
+body.dt-home .store-card img {
+  height: 46px;
+  margin: 0 auto 14px;
+  object-fit: contain;
+}
+
+body.dt-home .store-card span {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+body.dt-home .store-card small {
+  color: var(--muted);
+  font-size: 13px;
+}
 
 /* ============================================================
    FOOTER
