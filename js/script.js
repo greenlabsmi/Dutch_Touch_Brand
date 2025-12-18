@@ -5,10 +5,14 @@ console.log("DTG SCRIPT LOADED");
 // ===================================================================
 function toggleMenu() {
   const menu = document.getElementById("dt-menu");
-  if (!menu) return;
+  const hamburger = document.querySelector(".dt-nav-hamburger");
+  if (!menu || !hamburger) return;
 
   const isOpen = menu.classList.toggle("active");
   document.body.classList.toggle("no-scroll", isOpen);
+
+  // Accessibility state
+  hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
 
   if (isOpen) revealMenuLinks();
   else resetMenuLinks();
