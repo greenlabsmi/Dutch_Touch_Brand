@@ -63,13 +63,46 @@ document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".hero-slide");
   let index = 0;
 
-  if (slides.length > 1) {
-    setInterval(() => {
-      slides[index].classList.remove("active");
-      index = (index + 1) % slides.length;
-      slides[index].classList.add("active");
-    }, 6000);
-  }
+let heroInterval = null;
+let isPaused = false;
+
+function startHero() {
+  if (heroInterval) return;
+
+  heroInterval = setInterval(() => {
+    if (isPaused) return;
+
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 6000);
+}
+
+function pauseHero() {
+  isPaused = true;
+}
+
+function resumeHero() {
+  isPaused = false;
+}
+
+if (slides.length > 1) {
+  startHero();
+
+  // Pause on hover (desktop)
+  slides.forEach(slide => {
+    slide.addEventListener("mouseenter", pauseHero);
+    slide.addEventListener("mouseleave", resumeHero);
+
+    // Pause on touch (mobile)
+    slide.addEventListener("touchstart", pauseHero, { passive: true });
+    slide.addEventListener("touchend", resumeHero);
+
+    // Pause on keyboard focus
+    slide.addEventListener("focusin", pauseHero);
+    slide.addEventListener("focusout", resumeHero);
+  });
+}
 
   // ============================
   // SCROLL REVEAL — TILES
