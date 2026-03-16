@@ -57,7 +57,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (strainData) {
         // Populate the Modal text
         document.getElementById('modalName').innerText = strainData.name;
-        document.getElementById('modalBreeder').innerText = "Bred by " + strainData.breeder;
+        // FIX 2: Changed to "Genetics by" in the modal
+        document.getElementById('modalBreeder').innerText = "Genetics by " + strainData.breeder;
         
         // Handle the image (Standard image vs Fallback Logo)
         const imgEl = document.getElementById('modalImage');
@@ -67,7 +68,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             imgEl.style.padding = '0';
             imgEl.style.backgroundColor = 'transparent';
         } else {
-            imgEl.src = baseUrl + 'assets/img/dtg-logo-gold.png';
+            // FIX 1: Corrected fallback logo path for the modal
+            imgEl.src = baseUrl + 'assets/img/logo/dtg-logo-orange.png';
             imgEl.style.objectFit = 'contain';
             imgEl.style.padding = '3rem';
             imgEl.style.backgroundColor = '#0b0b0b';
