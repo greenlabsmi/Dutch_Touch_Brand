@@ -11,12 +11,11 @@ async function loadStrainLibrary() {
     const vaultGrid = document.querySelector('#vault-strains');
 
     strains.forEach(strain => {
-      // 1. Image Fallback Logic (Uses DTG Logo if no image exists)
-      const imageUrl = strain.image ? `${baseUrl}${strain.image}` : `${baseUrl}assets/img/dtg-logo-gold.png`;
-      // We will add a CSS class if it's a fallback image so we can style it perfectly
+      // FIX 1: Corrected fallback logo path to match your actual server files
+      const imageUrl = strain.image ? `${baseUrl}${strain.image}` : `${baseUrl}assets/img/logo/dtg-logo-orange.png`;
       const imageClass = strain.image ? 'strain-image' : 'strain-image fallback-logo';
 
-      // 2. Build the HTML Card
+      // FIX 2: Changed "Bred by" to "Genetics by"
       const cardHTML = `
         <article class="strain-card">
           <div class="strain-card-inner">
@@ -26,7 +25,7 @@ async function loadStrainLibrary() {
                 <h3 class="strain-name">${strain.name}</h3>
                 ${strain.award ? `<span class="strain-badge">Award Winner</span>` : ''}
               </div>
-              <p class="strain-meta">${strain.type.toUpperCase()} | Bred by ${strain.breeder}</p>
+              <p class="strain-meta">${strain.type.toUpperCase()} | Genetics by ${strain.breeder}</p>
               <p class="strain-meta" style="color: #d4af37; font-size: 0.85rem;">${strain.lineage}</p>
               <p class="strain-notes">${strain.description}</p>
             </div>
@@ -38,7 +37,6 @@ async function loadStrainLibrary() {
       if (strain.status === 'current' && currentGrid) {
         currentGrid.innerHTML += cardHTML;
       } else if (strain.status === 'vault' && vaultGrid && !isGreenLabs) {
-        // Only build the vault if we are NOT on the Green Labs site
         vaultGrid.innerHTML += cardHTML;
       }
     });
