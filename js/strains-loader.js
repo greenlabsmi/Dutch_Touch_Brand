@@ -1,6 +1,6 @@
 async function loadStrainLibrary() {
-  // Check which website we are currently on
-  const isGreenLabs = window.location.hostname.includes('Green-Labs');
+  // FIX: Check the full URL 'href' instead of 'hostname' so it sees "Green-Labs"
+  const isGreenLabs = window.location.href.includes('Green-Labs');
   const baseUrl = isGreenLabs ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' : '';
 
   try {
@@ -11,11 +11,9 @@ async function loadStrainLibrary() {
     const vaultGrid = document.querySelector('#vault-strains');
 
     strains.forEach(strain => {
-      // FIX 1: Corrected fallback logo path to match your actual server files
       const imageUrl = strain.image ? `${baseUrl}${strain.image}` : `${baseUrl}assets/img/logo/dtg-logo-orange.png`;
       const imageClass = strain.image ? 'strain-image' : 'strain-image fallback-logo';
 
-      // FIX 2: Changed "Bred by" to "Genetics by"
       const cardHTML = `
         <article class="strain-card">
           <div class="strain-card-inner">
@@ -33,7 +31,6 @@ async function loadStrainLibrary() {
         </article>
       `;
 
-      // 3. Sort into the correct grid based on "status"
       if (strain.status === 'current' && currentGrid) {
         currentGrid.innerHTML += cardHTML;
       } else if (strain.status === 'vault' && vaultGrid && !isGreenLabs) {
