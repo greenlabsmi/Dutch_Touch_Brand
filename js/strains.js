@@ -1,248 +1,172 @@
-/* ============================================================
-   DUTCH TOUCH GENETICS
-   STRAINS PAGE — FULL JS REPLACEMENT
-   Handles: Nav, Menu, Filters, Search, Modal
-   Scoped strictly to: body.dt-strains-page
-============================================================ */
+document.addEventListener('DOMContentLoaded', async () => {
+  // 1. Fetch the master database so we have all the rich details for the modal
+  let strains = [];
+  const isGreenLabs = window.location.hostname.includes('Green-Labs');
+  const baseUrl = isGreenLabs ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' : '';
 
-document.addEventListener("DOMContentLoaded", () => {
-  const body = document.body;
-  if (!body.classList.contains("dt-strains-page")) return;
-
-  /* ============================================================
-     NAV SCROLL
-  ============================================================ */
-  const nav = document.getElementById("dtNav");
-
-  function updateNav() {
-    if (window.scrollY > 10) nav.classList.add("scrolled");
-    else nav.classList.remove("scrolled");
+  try {
+    const response = await fetch('https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.json');
+    strains = await response.json();
+  } catch (error) {
+    console.error('Failed to load strains for modal/filtering:', error);
   }
 
-  updateNav();
-  window.addEventListener("scroll", updateNav);
-
-
-  /* ============================================================
-     SLIDE-OUT MENU
-  ============================================================ */
-  const menu = document.getElementById("dt-menu");
-  const menuLinks = document.querySelectorAll(".dt-menu-links a");
-  const hamburger = document.querySelector(".dt-nav-hamburger");
-  const menuClose = document.querySelector(".dt-menu-close");
-
-  hamburger.addEventListener("click", () => {
-    menu.classList.add("active");
-
-    // Animate links with delay
-    menuLinks.forEach((link, i) => {
-      setTimeout(() => link.classList.add("revealed"), 120 + i * 80);
-    });
-  });
-
-  menuClose.addEventListener("click", () => {
-    menu.classList.remove("active");
-    menuLinks.forEach(link => link.classList.remove("revealed"));
-  });
-
-
-  /* ============================================================
-     LOAD STRAIN CARD IMAGES INTO .strain-image DIVS
-  ============================================================ */
-  const strainCards = document.querySelectorAll(".strain-card");
-
-  strainCards.forEach(card => {
-    const imgPath = card.dataset.image;
-    const imgDiv = card.querySelector(".strain-image");
-    if (imgDiv && imgPath) {
-      imgDiv.style.backgroundImage = `url('${imgPath}')`;
-    }
-  });
-
-
-  /* ============================================================
-     FILTERS
-  ============================================================ */
-  const filterButtons = document.querySelectorAll(".strain-filter");
-
-  filterButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      // Highlight active filter
-      filterButtons.forEach(b => b.classList.remove("is-active"));
-      btn.classList.add("is-active");
-
-      applyFilters();
-    });
-  });
-
-
-  /* ============================================================
-     SEARCH
-     Matches: name, flavor, terpene list, type, lineage
-  ============================================================ */
-  const searchInput = document.getElementById("strainSearch");
-
-  searchInput.addEventListener("input", () => {
-    applyFilters();
-  });
-
-
-  /* ============================================================
-     COMBINED FILTER FUNCTION
-  ============================================================ */
-  function applyFilters() {
-    const activeFilter = document.querySelector(".strain-filter.is-active").dataset.filter;
-    const searchValue = searchInput.value.toLowerCase().trim();
-
-    strainCards.forEach(card => {
-      let isVisible = true;
-
-      // ---------- FILTER LOGIC ----------
-      const type = card.dataset.type.toLowerCase();
-      const award = card.dataset.award === "true";
-      const name = card.dataset.name.toLowerCase();
-      const flavor = (card.dataset.flavor || "").toLowerCase();
-      const lineage = (card.dataset.lineage || "").toLowerCase();
-      const terps = (card.dataset.terps || "").toLowerCase();
-
-      // FILTER by type/award/A-Z
-      if (activeFilter === "award" && !award) isVisible = false;
-      if (activeFilter === "sativa" && type !== "sativa") isVisible = false;
-      if (activeFilter === "hybrid" && type !== "hybrid") isVisible = false;
-      if (activeFilter === "indica" && type !== "indica") isVisible = false;
-
-      if (activeFilter === "az") {
-        // Force alphabetical sorting (implemented below)
-      }
-
-      // SEARCH
-      if (searchValue.length > 0) {
-        const haystack =
-          name +
-          flavor +
-          lineage +
-          terps +
-          type;
-
-        if (!haystack.includes(searchValue)) {
-          isVisible = false;
-        }
-      }
-
-      // APPLY VISIBILITY
-      if (isVisible) card.classList.remove("is-hidden");
-      else card.classList.add("is-hidden");
-    });
-
-    // A–Z SORTING
-    if (activeFilter === "az") sortAZ();
-  }
-
-
-  /* ============================================================
-     SORT A–Z (moves DOM elements)
-  ============================================================ */
-  function sortAZ() {
-    const grid = document.querySelector(".strain-grid");
-    const cardsArr = Array.from(strainCards);
-
-    cardsArr.sort((a, b) => {
-      const nameA = a.dataset.name.toLowerCase();
-      const nameB = b.dataset.name.toLowerCase();
-      return nameA.localeCompare(nameB);
-    });
-
-    cardsArr.forEach(card => grid.appendChild(card));
-  }
-
-
-  /* ============================================================
-     MODAL — Builds content from data attributes
-  ============================================================ */
-  let modal = null;
-
-  function buildModal(card) {
-    if (modal) modal.remove();
-
-    modal = document.createElement("div");
-    modal.classList.add("strain-modal");
-
-    modal.innerHTML = `
+  // 2. Dynamically create the Modal HTML and inject it into the page
+  const modalHTML = `
+    <div class="strain-modal" id="strainModal">
       <div class="strain-modal-dialog">
-        <button class="strain-modal-close">&times;</button>
-
+        <button class="strain-modal-close" id="closeModal">&times;</button>
         <div class="strain-modal-header">
-          <h3>${card.dataset.name}</h3>
-          <p>${card.dataset.type}</p>
+          <h3 id="modalName"></h3>
+          <p id="modalBreeder" style="color: #d4af37; font-weight: 600;"></p>
         </div>
-
         <div class="strain-modal-layout">
-
           <div class="strain-modal-media">
             <div class="strain-modal-image-frame">
-              <img src="${card.dataset.image}" alt="${card.dataset.name}">
-            </div>
-            <div class="strain-modal-tagline">
-              ${card.dataset.flavor || ""}
+              <img id="modalImage" src="" alt="" style="width: 100%; border-radius: 12px; border: 1px solid #222;">
             </div>
           </div>
-
           <div class="strain-modal-body">
-
             <div class="strain-modal-section">
-              <h4>Lineage</h4>
-              <p><span class="label">Mom:</span> ${card.dataset.mom || "Unknown"}<br>
-                 <span class="label">Dad:</span> ${card.dataset.dad || "Unknown"}</p>
+              <h4>Genetics</h4>
+              <p><span class="label">Type:</span> <span id="modalType"></span></p>
+              <p><span class="label">Lineage:</span> <span id="modalLineage"></span></p>
+              <p><span class="label">THC:</span> <span id="modalThc"></span></p>
             </div>
-
             <div class="strain-modal-section">
-              <h4>Effects</h4>
-              <p>${card.dataset.effects || ""}</p>
+              <h4>About</h4>
+              <p id="modalDesc"></p>
             </div>
-
-            <div class="strain-modal-section">
-              <h4>Accolades</h4>
-              <p>${card.dataset.accolades || "—"}</p>
-            </div>
-
-            <div class="strain-modal-section">
-              <h4>Top Terpenes</h4>
-              <p>${card.dataset.terps || ""}</p>
-            </div>
-
-            <div class="strain-modal-section">
-              <h4>Review</h4>
-              <p class="strain-modal-quote">${card.dataset.review || ""}</p>
-            </div>
-
           </div>
         </div>
       </div>
-    `;
+    </div>
+  `;
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
 
-    document.body.appendChild(modal);
+  const modal = document.getElementById('strainModal');
+  const closeModal = document.getElementById('closeModal');
 
-    modal.classList.add("open");
+  // 3. Setup Click Listeners for the Cards (Event Delegation)
+  document.body.addEventListener('click', (e) => {
+    const card = e.target.closest('.strain-card');
+    if (card) {
+      const strainName = card.querySelector('.strain-name').innerText;
+      const strainData = strains.find(s => s.name === strainName);
+      
+      if (strainData) {
+        // Populate the Modal text
+        document.getElementById('modalName').innerText = strainData.name;
+        document.getElementById('modalBreeder').innerText = "Bred by " + strainData.breeder;
+        
+        // Handle the image (Standard image vs Fallback Logo)
+        const imgEl = document.getElementById('modalImage');
+        if (strainData.image) {
+            imgEl.src = baseUrl + strainData.image;
+            imgEl.style.objectFit = 'cover';
+            imgEl.style.padding = '0';
+            imgEl.style.backgroundColor = 'transparent';
+        } else {
+            imgEl.src = baseUrl + 'assets/img/dtg-logo-gold.png';
+            imgEl.style.objectFit = 'contain';
+            imgEl.style.padding = '3rem';
+            imgEl.style.backgroundColor = '#0b0b0b';
+        }
+        
+        document.getElementById('modalType').innerText = strainData.type.toUpperCase();
+        document.getElementById('modalLineage').innerText = strainData.lineage;
+        document.getElementById('modalThc').innerText = strainData.thc || "N/A";
+        document.getElementById('modalDesc').innerText = strainData.description;
 
-    // Close events
-    modal.querySelector(".strain-modal-close").addEventListener("click", closeModal);
-    modal.addEventListener("click", e => {
-      if (e.target === modal) closeModal();
-    });
-  }
-
-  function closeModal() {
-    if (!modal) return;
-    modal.classList.remove("open");
-    setTimeout(() => modal.remove(), 200);
-  }
-
-
-  /* ============================================================
-     OPEN MODAL ON CARD CLICK
-  ============================================================ */
-  strainCards.forEach(card => {
-    card.addEventListener("click", () => buildModal(card));
+        // Open Modal & lock background scrolling
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden'; 
+      }
+    }
   });
 
+  // Close Modal Listeners
+  const closeDialog = () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+  closeModal.addEventListener('click', closeDialog);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeDialog();
+  });
+
+  // 4. Setup Filtering and Searching (Only on the DTG Strains page)
+  const searchInput = document.getElementById('strainSearch');
+  const filterBtns = document.querySelectorAll('.strain-filter');
+
+  function filterCards() {
+    if (!searchInput) return; // Stop if there's no search bar
+
+    const query = searchInput.value.toLowerCase();
+    const activeBtn = document.querySelector('.strain-filter.is-active');
+    const filterType = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+
+    const allCards = document.querySelectorAll('.strain-card');
+    
+    allCards.forEach(card => {
+      const name = card.querySelector('.strain-name').innerText.toLowerCase();
+      const desc = card.querySelector('.strain-notes').innerText.toLowerCase();
+      const meta = card.querySelector('.strain-meta').innerText.toLowerCase();
+      const hasAward = card.querySelector('.strain-badge') !== null;
+      
+      const matchesSearch = name.includes(query) || desc.includes(query) || meta.includes(query);
+      
+      let matchesFilter = false;
+      if (filterType === 'all' || filterType === 'az') {
+        matchesFilter = true;
+      } else if (filterType === 'award') {
+        matchesFilter = hasAward;
+      } else {
+        matchesFilter = meta.includes(filterType);
+      }
+
+      // Show or hide the card
+      if (matchesSearch && matchesFilter) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Handle A-Z Sort Visually
+    if (filterType === 'az') {
+      ['current-strains', 'vault-strains'].forEach(gridId => {
+        const grid = document.getElementById(gridId);
+        if(grid) {
+          Array.from(grid.children)
+            .sort((a, b) => {
+              const nameA = a.querySelector('.strain-name').innerText.toLowerCase();
+              const nameB = b.querySelector('.strain-name').innerText.toLowerCase();
+              return nameA.localeCompare(nameB);
+            })
+            .forEach(node => grid.appendChild(node));
+        }
+      });
+    }
+  }
+
+  // Attach search and filter events
+  if (searchInput) {
+    searchInput.addEventListener('input', filterCards);
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      filterCards();
+    });
+  });
+
+  // Automatically attach filters as soon as the dynamic cards finish loading
+  const observer = new MutationObserver(() => filterCards());
+  const gridToWatch = document.getElementById('current-strains');
+  if(gridToWatch) {
+      observer.observe(gridToWatch, { childList: true });
+  }
 });
