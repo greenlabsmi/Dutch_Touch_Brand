@@ -192,20 +192,20 @@
     "status": "vault"
   },
   {
-    "slug": "death-star",
-    "name": "Death Star",
+    "slug": "-star",
+    "name": " Star",
     "type": "indica",
     "award": false,
     "lineage": "Sensi Star x Sour Diesel",
-    "breeder": "Team Death Star",
+    "breeder": "Team  Star",
     "thc": "21.00%",
     "description": "Named for its skunky sweet jet fuel aromas. It has a powerful buzz that can make you feel sleepy, relaxed, and euphoric.",
-    "image": "assets/img/strains/death-star.png",
+    "image": "assets/img/strains/-star.png",
     "status": "current"
   },
   {
-    "slug": "death-by-funk",
-    "name": "Death X Funk",
+    "slug": "-by-funk",
+    "name": "Death By Funk",
     "type": "indica",
     "award": true,
     "lineage": "Death Star x Clusterfunk",
