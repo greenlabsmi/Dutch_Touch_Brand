@@ -576,6 +576,18 @@
     "status": "current"
   },
   {
+    "slug": "space-hippy",
+    "name": "Space Hippy",
+    "type": "hybrid",
+    "award": true,
+    "lineage": "DTG Exclusive",
+    "breeder": "Dutch Touch Genetics",
+    "thc": "TBD",
+    "description": "A High Times Cannabis Cup double-winner (2nd Place Nug Run Sugar Solvent & 3rd Place Disposable). A premium DTG exclusive.",
+    "image": "assets/img/strains/space-hippy.png",
+    "status": "vault"
+  },
+  {
     "slug": "space-monkey",
     "name": "Space Monkey",
     "type": "hybrid",
