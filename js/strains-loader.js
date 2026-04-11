@@ -1,5 +1,5 @@
 async function loadStrainLibrary() {
-  // FIX: Check the full URL 'href' instead of 'hostname' so it sees "Green-Labs"
+  // Check the full URL 'href' instead of 'hostname' so it sees "Green-Labs"
   const isGreenLabs = window.location.href.includes('Green-Labs');
   const baseUrl = isGreenLabs ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' : '';
 
@@ -7,8 +7,11 @@ async function loadStrainLibrary() {
     const response = await fetch('https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.json');
     const strains = await response.json();
 
-    const currentGrid = document.querySelector('#current-strains');
+    // Pointing everything directly to our consolidated library grid
     const vaultGrid = document.querySelector('#vault-strains');
+    
+    // Safety check just in case the grid hasn't loaded yet
+    if (!vaultGrid) return; 
 
     strains.forEach(strain => {
       const imageUrl = strain.image ? `${baseUrl}${strain.image}` : `${baseUrl}assets/img/logo/dtg-logo-orange.png`;
@@ -31,11 +34,8 @@ async function loadStrainLibrary() {
         </article>
       `;
 
-      if (strain.status === 'current' && currentGrid) {
-        currentGrid.innerHTML += cardHTML;
-      } else if (strain.status === 'vault' && vaultGrid && !isGreenLabs) {
-        vaultGrid.innerHTML += cardHTML;
-      }
+      // Just dump every card straight into the vault!
+      vaultGrid.innerHTML += cardHTML;
     });
 
   } catch (error) {
