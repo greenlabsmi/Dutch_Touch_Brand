@@ -731,4 +731,76 @@
     "image": "",
     "status": "vault"
   }
+  ,{
+    "slug": "lemon-wookie",
+    "name": "Lemon Wookie",
+    "type": "hybrid",
+    "award": true,
+    "lineage": "Lemon G x Wookie",
+    "breeder": "Bodhi Seeds",
+    "thc": "TBD%",
+    "description": "An award-winning Bodhi Seeds classic that perfectly marries the sharp, energetic citrus punch of Lemon G with the grounding, earthy funk of Wookie.",
+    "image": "assets/img/strains/lemon-wookie-bud.jpg",
+    "status": "current"
+  },
+  {
+    "slug": "vortex-11",
+    "name": "Vortex #11",
+    "type": "sativa",
+    "award": false,
+    "lineage": "Space Queen x Apollo 13",
+    "breeder": "TGA Genetics / Subcool's The Dank",
+    "thc": "TBD%",
+    "description": "A legendary Sativa-dominant powerhouse. Vortex is famous for its aggressively funky and tropical terpene profile, delivering a fast-acting, energetic buzz that is perfect for daytime adventures and creative focus.",
+    "image": "assets/img/strains/vortex-bud.jpg",
+    "status": "current"
+  },
+  {
+    "slug": "dead-prez",
+    "name": "Dead Prez",
+    "type": "indica",
+    "award": false,
+    "lineage": "Death Star x Dread Bread",
+    "breeder": "Dutch Touch Genetics",
+    "thc": "TBD%",
+    "description": "A heavy-hitting in-house cross from Dutch Touch Genetics. Dead Prez commands the room with a sour, aggressive diesel aroma backed by hints of citrus and spice. Expect a deeply pungent smoke and a heavy, deeply relaxing physical stone.",
+    "image": "assets/img/strains/dead-prez-bud.jpg",
+    "status": "current"
+  },
+  {
+    "slug": "super-silver-hashplant",
+    "name": "Super Silver Hashplant",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Super Silver Haze x '88 G13 Hash Plant",
+    "breeder": "Bodhi Seeds",
+    "thc": "TBD%",
+    "description": "Powered by a terpene profile dominant in Terpinolene, Beta-Caryophyllene, and Myrcene, this Bodhi Seeds cross offers the best of both worlds: a clear, motivated, and uplifted mental state anchored by a soothing, relaxed body.",
+    "image": "assets/img/strains/super-silver-hashplant-bud.jpg",
+    "status": "current"
+  },
+  {
+    "slug": "cobra-lips-1",
+    "name": "Cobra Lips #1",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Chem 3 x Appalachia",
+    "breeder": "Bodhi Seeds",
+    "thc": "TBD%",
+    "description": "Known for an incredibly complex and pungent terpene profile, Cobra Lips delivers a blast of earthy fuel that finishes with a surprising hit of tart green apple. It provides a highly potent, yet fully functional buzz that balances bright euphoria with physical ease.",
+    "image": "assets/img/strains/cobra-lips-1-bud.jpg",
+    "status": "current"
+  },
+  {
+    "slug": "illudium",
+    "name": "Illudium",
+    "type": "indica",
+    "award": false,
+    "lineage": "Hawaiian Indica x Pre-98 Bubba Kush",
+    "breeder": "Legendary Ohio Clone-Only",
+    "thc": "TBD%",
+    "description": "A legendary, highly sought-after Ohio clone-only strain. Illudium boasts a wildly complex flavor profile of dark coffee and sweet orange rind, wrapped in a heavy diesel base. Patients regularly turn to this heavy Indica for highly effective relief from insomnia, chronic pain, and stress.",
+    "image": "assets/img/strains/illudium-bud.jpg",
+    "status": "current"
+  }
 ]
