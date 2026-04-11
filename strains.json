@@ -730,18 +730,6 @@
     "description": "A sweet, creamy, and pungent hybrid from the legendary Ohio crew.",
     "image": "",
     "status": "vault"
-  }
-  ,{
-    "slug": "lemon-wookie",
-    "name": "Lemon Wookie",
-    "type": "hybrid",
-    "award": true,
-    "lineage": "Lemon G x Wookie",
-    "breeder": "Bodhi Seeds",
-    "thc": "TBD%",
-    "description": "An award-winning Bodhi Seeds classic that perfectly marries the sharp, energetic citrus punch of Lemon G with the grounding, earthy funk of Wookie.",
-    "image": "assets/img/strains/lemon-wookie-bud.jpg",
-    "status": "current"
   },
   {
     "slug": "vortex-11",
