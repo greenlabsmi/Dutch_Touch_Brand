@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   const observer = new MutationObserver(() => filterCards());
-  const gridToWatch = document.getElementById('current-strains');
+  const gridToWatch = document.getElementById('vault-strains');
   if(gridToWatch) observer.observe(gridToWatch, { childList: true });
 
   // 5. SIDE BAR ALPHA JUMP LOGIC
