@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         return; 
       }
         // If it DOES have a custom image, bypass the accordion and let it open the pop-up modal!
-      }
 
       // --- EXISTING MODAL LOGIC (Desktop, or Mobile with Photo) ---
       if (strainData) {
