@@ -790,49 +790,74 @@ body.dt-strains-page .dt-footer-copy {
 }
 
 /* ============================================================
-   MOBILE OVERRIDE: DENSE LIST VIEW
+   MOBILE OVERRIDE: IMAGE-LEFT ACCORDION LIST
 ============================================================ */
 @media (max-width: 768px) {
-  /* Tighten the grid to a flush list */
   .strain-grid {
-    gap: 0.5rem;
+    gap: 0.8rem;
   }
-  
-  /* Flatten the card into a minimal row */
+
   .strain-card {
-    border-radius: 8px;
+    border-radius: 12px;
     background: #111;
   }
-  
+
+  /* Force side-by-side: 80px image on left, text on right */
   .strain-card-inner {
     padding: 1rem;
+    display: grid;
+    grid-template-columns: 80px 1fr; 
+    gap: 15px;
+    align-items: center; /* Centers the text vertically with the image */
+  }
+
+  /* Make the image a crisp square */
+  .strain-image {
+    display: block !important; 
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  /* Stack the Name and Cross cleanly */
+  .strain-top {
     display: flex;
     flex-direction: column;
-  }
-  
-  /* Hide the large image completely for mobile speed/density */
-  .strain-image {
-    display: none !important; 
+    align-items: flex-start;
+    gap: 4px;
   }
 
-  /* Make the header a single inline row */
-  .strain-top {
-    justify-content: flex-start;
-    gap: 10px;
-    align-items: baseline;
+  .strain-name {
+    font-size: 1.15rem;
+    line-height: 1.1;
   }
-  
-  .strain-name { font-size: 1.1rem; }
-  
-  /* Hide the deep description by default to keep it scannable */
+
+  /* The genetics/cross */
+  .strain-meta {
+    font-size: 0.75rem;
+    margin: 0;
+    color: #d4af37;
+    line-height: 1.3;
+  }
+
+  .strain-badge {
+    display: none; /* Hides award badge to keep layout clean */
+  }
+
+  /* Hide description by default. When open, span across the whole card */
   .strain-notes {
-    display: none; 
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid #333;
+    display: none;
+    grid-column: 1 / -1; /* Forces text to drop below the image */
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #222;
+    font-size: 0.9rem;
+    color: #ccc;
   }
 
-  /* When JS adds an .is-expanded class, show the notes */
+  /* Show notes when clicked */
   .strain-card.is-expanded .strain-notes {
     display: block;
   }
