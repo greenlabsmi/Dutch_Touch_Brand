@@ -56,11 +56,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // --- MOBILE HYBRID CHECK ---
       if (window.innerWidth <= 768) {
-        // If there is NO custom image, toggle accordion and STOP.
-        if (!strainData || !strainData.image) {
-          card.classList.toggle('is-expanded');
-          return; 
-        }
+        // Always toggle the accordion on mobile so they can see the description
+        card.classList.toggle('is-expanded');
+        return; 
+      }
         // If it DOES have a custom image, bypass the accordion and let it open the pop-up modal!
       }
 
