@@ -870,3 +870,52 @@ body.dt-strains-page .dt-footer-copy {
     display: block;
   }
 }
+
+/* ============================================================
+   FEATURED HORIZONTAL SCROLLER
+   ============================================================ */
+.featured-scroller-wrap {
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+.featured-scroller {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 #111;
+}
+
+/* Custom Scrollbar for Webkit */
+.featured-scroller::-webkit-scrollbar {
+    height: 8px;
+}
+.featured-scroller::-webkit-scrollbar-track {
+    background: #111;
+    border-radius: 4px;
+}
+.featured-scroller::-webkit-scrollbar-thumb {
+    background-color: #d4af37;
+    border-radius: 4px;
+}
+
+.featured-scroller .strain-card {
+    flex: 0 0 320px; /* Fixed width so they line up beautifully */
+    scroll-snap-align: start;
+}
+
+/* ============================================================
+   ALPHA JUMP BAR LIFT EFFECT
+   ============================================================ */
+.alpha-btn {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s, text-shadow 0.2s;
+}
+
+.alpha-btn:hover {
+    color: #d4af37;
+    transform: scale(1.6) translateX(-5px); /* Lifts up and pushes out */
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
