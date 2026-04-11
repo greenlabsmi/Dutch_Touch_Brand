@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
               <h4>Genetics</h4>
               <p><span class="label">Type:</span> <span id="modalType"></span></p>
               <p><span class="label">Lineage:</span> <span id="modalLineage"></span></p>
-              <p><span class="label">THC:</span> <span id="modalThc"></span></p>
             </div>
             <div class="strain-modal-section">
               <h4>About</h4>
