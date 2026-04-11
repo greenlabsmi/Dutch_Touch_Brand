@@ -730,3 +730,52 @@ body.dt-strains-page .dt-footer-copy {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   MOBILE OVERRIDE: DENSE LIST VIEW
+============================================================ */
+@media (max-width: 768px) {
+  /* Tighten the grid to a flush list */
+  .strain-grid {
+    gap: 0.5rem;
+  }
+  
+  /* Flatten the card into a minimal row */
+  .strain-card {
+    border-radius: 8px;
+    background: #111;
+  }
+  
+  .strain-card-inner {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Hide the large image completely for mobile speed/density */
+  .strain-image {
+    display: none !important; 
+  }
+
+  /* Make the header a single inline row */
+  .strain-top {
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: baseline;
+  }
+  
+  .strain-name { font-size: 1.1rem; }
+  
+  /* Hide the deep description by default to keep it scannable */
+  .strain-notes {
+    display: none; 
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #333;
+  }
+
+  /* When JS adds an .is-expanded class, show the notes */
+  .strain-card.is-expanded .strain-notes {
+    display: block;
+  }
+}
