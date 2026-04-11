@@ -47,10 +47,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   const modal = document.getElementById('strainModal');
   const closeModal = document.getElementById('closeModal');
 
-  // 3. Setup Click Listeners for the Cards (Event Delegation)
+ // 3. Setup Click Listeners for the Cards (Event Delegation)
   document.body.addEventListener('click', (e) => {
     const card = e.target.closest('.strain-card');
     if (card) {
+      
+      // --- NEW MOBILE ACCORDION CHECK ---
+      // Check if we are on mobile. If yes, toggle accordion and stop.
+      if (window.innerWidth <= 768) {
+        card.classList.toggle('is-expanded');
+        return; 
+      }
+      // ----------------------------------
+
+      // --- EXISTING DESKTOP MODAL LOGIC ---
       const strainName = card.querySelector('.strain-name').innerText;
       const strainData = strains.find(s => s.name === strainName);
       
