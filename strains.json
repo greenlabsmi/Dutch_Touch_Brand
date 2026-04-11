@@ -6,10 +6,8 @@
     "award": false,
     "lineage": "Apollo 13 x Wonka Bars",
     "breeder": "Dutch Touch Genetics",
-    "thc": "19.57%",
     "description": "An ideal choice for experienced consumers. Relaxed, euphoric, and uplifted effects with flavors of vanilla, pungent earth, and skunk.",
-    "image": "assets/img/strains/13-layer-cake.png",
-    "status": "current"
+    "image": "assets/img/strains/13-layer-cake.png"
   },
   {
     "slug": "agent-orange",
@@ -18,10 +16,8 @@
     "award": false,
     "lineage": "Orange Velvet x Jack the Ripper",
     "breeder": "Subcool's The Dank",
-    "thc": "10-11.30%",
     "description": "A well-balanced hybrid with uplifting, motivating effects and an aroma of fresh-cut citrus.",
-    "image": "",
-    "status": "vault"
+    "image": ""
   },
   {
     "slug": "ajs-cream-cake",
@@ -30,10 +26,8 @@
     "award": false,
     "lineage": "AJ's Bitch x Ice Cream Cake",
     "breeder": "Subcool's The Dank",
-    "thc": "17.00%",
     "description": "Ideal for feeling focused and tingly. Features flowery, berry, and pungent flavors.",
-    "image": "",
-    "status": "vault"
+    "image": ""
   },
   {
     "slug": "ak-630",
@@ -42,10 +36,8 @@
     "award": false,
     "lineage": "Unknown",
     "breeder": "Subcool's The Dank",
-    "thc": "14-17.55%",
     "description": "A classic Subcool hybrid offering balanced effects.",
-    "image": "",
-    "status": "vault"
+    "image": ""
   },
   {
     "slug": "angelica",
@@ -54,10 +46,8 @@
     "award": false,
     "lineage": "Hell's Angels OG x ‘88 G13 Hashplant",
     "breeder": "Bodhi Seeds",
-    "thc": "20-25.30%",
     "description": "Flavor notes of lemon, hash, incense, and menthol flood your senses with a euphoric high that blankets your mind and body.",
-    "image": "assets/img/strains/angelica.png",
-    "status": "current"
+    "image": "assets/img/strains/angelica.png"
   },
   {
     "slug": "apollo-13",
@@ -66,10 +56,8 @@
     "award": false,
     "lineage": "P75 x Genius",
     "breeder": "Bros Grimm",
-    "thc": "17.70-19.29%",
     "description": "The high is clear and cerebral without paranoia. Citrus flavor and a happy high make Apollo 13 very popular at parties!",
-    "image": "",
-    "status": "vault"
+    "image": ""
   },
   {
     "slug": "banana-split",
@@ -78,10 +66,8 @@
     "award": false,
     "lineage": "Tangie x Banana Sherbet",
     "breeder": "DNA Genetics",
-    "thc": "",
     "description": "The familiar tangerine burst of the Tangie is backed with the bold fruity notes from the Banana Sherbet.",
-    "image": "assets/img/strains/banana-split.png",
-    "status": "current"
+    "image": "assets/img/strains/banana-split.png"
   },
   {
     "slug": "big-smooth",
@@ -90,10 +76,8 @@
     "award": false,
     "lineage": "Blueberry OG x Cookies and Cream",
     "breeder": "Exotic Genetix",
-    "thc": "",
     "description": "Creamy dessert hybrid with a mellow, floaty high.",
-    "image": "assets/img/strains/big-smooth.png",
-    "status": "current"
+    "image": "assets/img/strains/big-smooth.png"
   },
   {
     "slug": "bonkers",
@@ -102,10 +86,8 @@
     "award": false,
     "lineage": "Lemon Tree x Cookies and Cream",
     "breeder": "Exotic Genetix",
-    "thc": "12-15.00%",
     "description": "A fruity strain with a creamy lemon flavor profile that erupts from beautiful lime green buds. Smooth buzz toned down in intensity.",
-    "image": "",
-    "status": "vault"
+    "image": ""
   },
   {
     "slug": "caesar",
@@ -114,10 +96,8 @@
     "award": false,
     "lineage": "Original Glue x Triple OG",
     "breeder": "Exotic Genetix",
-    "thc": "16-18.66%",
     "description": "Bred to be a new leader in Glue-based genetics. Expect insane trichome production alongside a potent gassy nose.",
-    "image": "",
-    "status": "vault"
+    "image": ""
   },
   {
     "slug": "cheesequake",
@@ -126,10 +106,8 @@
     "award": false,
     "lineage": "Cheese x Querkle",
     "breeder": "Subcool's The Dank",
-    "thc": "15.00%",
     "description": "A uniquely funky cross blending sharp cheese aromas with deep purple fruit notes.",
-    "image": "",
-    "status": "vault"
+    "image": ""
   },
   {
     "slug": "chernobyl",
@@ -138,10 +116,8 @@
     "award": false,
     "lineage": "Trainwreck x Jack the Ripper x Trinity",
     "breeder": "Subcool's The Dank",
-    "thc": "14-16.00%",
     "description": "A legendary complex sativa-leaning hybrid with a loud lime-sherbet profile.",
-    "image": "",
-    "status": "vault"
+    "image": ""
   },
   {
     "slug": "chocolate-marshmallows-11",
@@ -150,10 +126,8 @@
     "award": false,
     "lineage": "GG4 x Mint Chocolate Chip",
     "breeder": "Exotic Genetix",
-    "thc": "",
     "description": "Flavors of sweet chocolate and creamy vanilla galore with a punch of skunky pungency.",
-    "image": "assets/img/strains/chocolate-marshmallows-11.png",
-    "status": "current"
+    "image": "assets/img/strains/chocolate-marshmallows-11.png"
   },
   {
     "slug": "clusterfunk",
@@ -162,610 +136,8 @@
     "award": false,
     "lineage": "Chem 91 x 88G13HP",
     "breeder": "Bodhi Seeds",
-    "thc": "20-25.88%",
     "description": "Deep notes of oil and fuelly funk paired with skunky, sour hues. Suitable for evening usage and for whenever you want to go nuclear.",
-    "image": "assets/img/strains/clusterfunk.png",
-    "status": "current"
-  },
-  {
-    "slug": "crunchberries-3",
-    "name": "Crunchberries #3",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Blueberry x Triple OG",
-    "breeder": "Exotic Genetix",
-    "thc": "17-18.94%",
-    "description": "Delivers an uplifting and peaceful effect with a vanilla-and-pine aroma. Practically white-colored with trichome density.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "dead-prez",
-    "name": "Dead Prez",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Unknown",
-    "breeder": "Dutch Touch Genetics",
-    "thc": "13-17.37%",
-    "description": "A solid, balanced hybrid bred in-house.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "-star",
-    "name": " Star",
-    "type": "indica",
-    "award": false,
-    "lineage": "Sensi Star x Sour Diesel",
-    "breeder": "Team  Star",
-    "thc": "21.00%",
-    "description": "Named for its skunky sweet jet fuel aromas. It has a powerful buzz that can make you feel sleepy, relaxed, and euphoric.",
-    "image": "assets/img/strains/-star.png",
-    "status": "current"
-  },
-  {
-    "slug": "-by-funk",
-    "name": "Death By Funk",
-    "type": "indica",
-    "award": true,
-    "lineage": "Death Star x Clusterfunk",
-    "breeder": "Dutch Touch Genetics",
-    "thc": "24-25.15%",
-    "description": "CAUTION: One of our most potent strains. Extremely sedative and psychoactive. Straight gas bred in-house.",
-    "image": "assets/img/strains/death-by-funk.png",
-    "status": "current"
-  },
-  {
-    "slug": "death-z",
-    "name": "Death Z",
-    "type": "indica",
-    "award": false,
-    "lineage": "Death Star x Z Skittlez",
-    "breeder": "Team Deathstar",
-    "thc": "",
-    "description": "Hops, floral, and hints of gas and citrus coming from its legendary parents.",
-    "image": "assets/img/strains/death-z.png",
-    "status": "current"
-  },
-  {
-    "slug": "double-bubble",
-    "name": "Double Bubble",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Bubble Gum x 88G13HP",
-    "breeder": "Bodhi Seeds",
-    "thc": "",
-    "description": "Aromas include tropical fruit, juicy fruit bubblegum, hash, musk, and sandalwood.",
-    "image": "assets/img/strains/double-bubble.png",
-    "status": "current"
-  },
-  {
-    "slug": "double-ds",
-    "name": "Double D's",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "GMO x Cookies-N-Cream FZ",
-    "breeder": "Exotic Genetix",
-    "thc": "23.69-25.63%",
-    "description": "Relaxed but alert hybrid with an insanely potent smooth flavor profile.",
-    "image": "assets/img/strains/double-d.png",
-    "status": "current"
-  },
-  {
-    "slug": "double-dutch-cookies",
-    "name": "Double Dutch Cookies",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Platinum Cookies x Dread Bread",
-    "breeder": "Dutch Touch Genetics",
-    "thc": "19.39%",
-    "description": "Super frosty appearance and sweet kush flavor notes with hints of mango cookies.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "dutch-breath-18",
-    "name": "Dutch Breath #18",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Garlic Breath x Higher Primate",
-    "breeder": "Dutch Touch Genetics",
-    "thc": "27.00%",
-    "description": "An incredibly potent, heavy-hitting in-house cross.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "falcon-9",
-    "name": "Falcon 9",
-    "type": "indica",
-    "award": false,
-    "lineage": "Sunset Sherbert x Tina",
-    "breeder": "Exotic Genetix",
-    "thc": "14.66-19.93%",
-    "description": "Noted for a smooth, gassy ice cream flavor profile. Starts as a strong head high before heavily settling into the body.",
-    "image": "assets/img/strains/falcon-9.png",
-    "status": "current"
-  },
-  {
-    "slug": "field-trip",
-    "name": "Field Trip",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "GSC x Sunshine Daydream",
-    "breeder": "Bodhi Seeds",
-    "thc": "19.55-20.32%",
-    "description": "A perfectly balanced 50/50 hybrid making it an ideal choice for experienced cannabis consumers.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "forbidden-jelly",
-    "name": "Forbidden Jelly",
-    "type": "hybrid",
-    "award": true,
-    "lineage": "Jelly Breath x Forbidden Fruit",
-    "breeder": "In House Genetics",
-    "thc": "16.96%",
-    "description": "Produces uplifting and cerebral effects. Gives off a nice relaxing body high without being sedated to the couch.",
-    "image": "assets/img/strains/forbidden-jelly.png",
-    "status": "current"
-  },
-  {
-    "slug": "goji-og",
-    "name": "Goji OG",
-    "type": "sativa",
-    "award": false,
-    "lineage": "Nepali OG x Snow Lotus",
-    "breeder": "Bodhi Seeds",
-    "thc": "15.82-19.00%",
-    "description": "A dynamic aroma including red berry, black cherry, strawberry, hawaiian punch, and licorice.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "gorilla-88",
-    "name": "Gorilla 88",
-    "type": "indica",
-    "award": false,
-    "lineage": "Gorilla Glue #4 x 88G13HP",
-    "breeder": "Bodhi Seeds",
-    "thc": "",
-    "description": "Powerful, relaxing, and euphoric. Inherits sticky GG4 pungency with added notes of cinnamon and earth.",
-    "image": "assets/img/strains/gorilla-88.png",
-    "status": "current"
-  },
-  {
-    "slug": "grape-gouda",
-    "name": "Grape Gouda",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Cheese Quake x Lavender Jack",
-    "breeder": "Dutch Touch Genetics",
-    "thc": "16.12%",
-    "description": "A loud combination of savory cheese and sweet lavender grape notes.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "grease-monkey",
-    "name": "Grease Monkey",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Original Glue x Cookies and Cream",
-    "breeder": "Exotic Genetix",
-    "thc": "15.43%",
-    "description": "Saddles the consumer with a lazy, munchie-fueled body buzz. Earthy and skunky overtones.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "guicy-g",
-    "name": "Guicy G",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "The Juice x Triple OG",
-    "breeder": "Exotic Genetix",
-    "thc": "",
-    "description": "Bouquet of fresh fruity berries, sugary citrus and touches of light spice dancing across your tongue.",
-    "image": "assets/img/strains/guicy-g.png",
-    "status": "current"
-  },
-  {
-    "slug": "hash-d",
-    "name": "Hash D",
-    "type": "indica",
-    "award": false,
-    "lineage": "Chem D x 88G13HP",
-    "breeder": "Bodhi Seeds",
-    "thc": "",
-    "description": "Pungent odor that combines fuel notes with earthy hashish undertones. Delivers a heavy hitting body stone.",
-    "image": "assets/img/strains/hash-d.png",
-    "status": "current"
-  },
-  {
-    "slug": "hawaiian-bread",
-    "name": "Hawaiian Bread",
-    "type": "sativa",
-    "award": false,
-    "lineage": "Illudium x Dread Bread",
-    "breeder": "Dutch Touch Genetics",
-    "thc": "19-20.68%",
-    "description": "Provides happy and creative thoughts with an aroma that will remind you of tropical fruits.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "jesus-og",
-    "name": "Jesus OG",
-    "type": "indica",
-    "award": false,
-    "lineage": "Hell's OG x Jack the Ripper",
-    "breeder": "Subcool's The Dank",
-    "thc": "13.7-15.10%",
-    "description": "Lemony kush aroma with heavy effects that relax the body while leaving the mind functional and clear.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "lemon-wookie",
-    "name": "Lemon Wookie #4",
-    "type": "hybrid",
-    "award": true,
-    "lineage": "Lemon G x Wookie",
-    "breeder": "Bodhi Seeds",
-    "thc": "",
-    "description": "Sharp lemon and diesel funk with energetic daytime vibes.",
-    "image": "assets/img/strains/lemon-wookie-4.png",
-    "status": "current"
-  },
-  {
-    "slug": "lilac-diesel",
-    "name": "Lilac Diesel",
-    "type": "sativa",
-    "award": true,
-    "lineage": "Silver Lemon Haze x Forbidden Fruit x NYC Cherry Pie x Citral Glue",
-    "breeder": "Ethos Genetics",
-    "thc": "21.9-26.00%",
-    "description": "Big buds have a complex terpene profile, including notes of citrus, sweet berries, earthy pine, and chem.",
-    "image": "assets/img/strains/lilac-diesel.png",
-    "status": "current"
-  },
-  {
-    "slug": "mango-hashplant-1",
-    "name": "Mango Hashplant #1",
-    "type": "indica",
-    "award": false,
-    "lineage": "Mango Biche x 88 G13 Hashplant",
-    "breeder": "Bodhi Seeds",
-    "thc": "21.70%",
-    "description": "Tight, resin-drenched flower clusters give off a deep, rich aroma. Breathtakingly powerful body-stone.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "milk-and-cookies",
-    "name": "Milk & Cookies",
-    "type": "indica",
-    "award": false,
-    "lineage": "Cookies and Cream x Triple OG",
-    "breeder": "Exotic Genetix",
-    "thc": "19-22.00%",
-    "description": "The odor is gassy, but sweet, with creamy hints of vanilla and orange citrus. Highly sedative body buzz.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "mr-clean",
-    "name": "Mr. Clean",
-    "type": "sativa",
-    "award": true,
-    "lineage": "Lime Skunk x The Cube",
-    "breeder": "Exotic Genetix",
-    "thc": "22.00%",
-    "description": "Known to have the ability to 'clean out' bad moods. Intense aroma of limes and sweet, tart candies.",
-    "image": "assets/img/strains/mr-clean.png",
-    "status": "current"
-  },
-  {
-    "slug": "mr-dread",
-    "name": "Mr. Dread",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Mr. Clean x Dread Bread",
-    "breeder": "Dutch Touch Genetics",
-    "thc": "",
-    "description": "A complex mix of sharp sativa energy from Mr. Clean and heavy hybrid body effects.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "mr-funk",
-    "name": "Mr. Funk",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Mr. Clean x Clusterfunk",
-    "breeder": "Dutch Touch Genetics",
-    "thc": "",
-    "description": "Loud, funky, and energizing in-house cross.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "orange-kush-cake",
-    "name": "Orange Kush Cake",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Wedding Cake x Jilly Bean x Sour Tangie x Roze Zkittlez x OG Eddy Lepp",
-    "breeder": "Ethos Genetics",
-    "thc": "16-20.80%",
-    "description": "Rich, complicated terpene profile including notes of sharp orange, citrus, gas, sour candy, and earthy sandalwood.",
-    "image": "assets/img/strains/orange-kush-cake.png",
-    "status": "current"
-  },
-  {
-    "slug": "pina-rita-2",
-    "name": "Pina Rita #2",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Highland Oaxacan Gold x Space Queen",
-    "breeder": "TGA Genetics (Subcool)",
-    "thc": "",
-    "description": "Famous for a unique combination of pineapple and cherry candy notes. Tasty, functional, and uplifting.",
-    "image": "assets/img/strains/pina-rita-2.png",
-    "status": "current"
-  },
-  {
-    "slug": "platinum-cookies",
-    "name": "Platinum Cookies",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Durban Poison x OG Kush",
-    "breeder": "Clone Only",
-    "thc": "15-19.29%",
-    "description": "A legendary balanced hybrid known for its sweet berry and candy flavors.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "querkle",
-    "name": "Querkle",
-    "type": "indica",
-    "award": false,
-    "lineage": "Purple Urkle x Space Queen",
-    "breeder": "Subcool's The Dank",
-    "thc": "15.80-19.47%",
-    "description": "Carries a strong grape and berry aroma. Blooms with vibrant lavender hues and a heavy dusting of crystal resin.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "sin-city-grapes",
-    "name": "Sin City Grapes #10",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Unknown",
-    "breeder": "Team Deathstar",
-    "thc": "13.44-22.57%",
-    "description": "Grape-forward hybrid with smooth evening chill.",
-    "image": "assets/img/strains/sin-city-grapes.png",
-    "status": "current"
-  },
-  {
-    "slug": "sky-lotus",
-    "name": "Sky Lotus",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Skywalker OG x Snow Lotus",
-    "breeder": "Bodhi Seeds",
-    "thc": "20-22.00%",
-    "description": "The aroma is a mixture of Pine-Sol, lemon, and sweet berries. Potent, punchy buzz that soaks up stress.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "solo-walker",
-    "name": "Solo Walker",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Sky Lotus x Higher Primate",
-    "breeder": "Dutch Touch Genetics",
-    "thc": "",
-    "description": "Musky, melon, guava, sweet and sour notes of funk.",
-    "image": "assets/img/strains/solo-walker.png",
-    "status": "current"
-  },
-  {
-    "slug": "space-hippy",
-    "name": "Space Hippy",
-    "type": "hybrid",
-    "award": true,
-    "lineage": "Apollo 13 x Dread Bread",
-    "breeder": "Dutch Touch Genetics",
-    "thc": "",
-    "description": "A High Times Cannabis Cup double-winner (2nd Place Nug Run Sugar Solvent & 3rd Place Disposable). A premium DTG exclusive.",
-    "image": "assets/img/strains/space-hippy.png",
-    "status": "vault"
-  },
-  {
-    "slug": "space-monkey",
-    "name": "Space Monkey",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "GG#4 x Wookie #15",
-    "breeder": "Bodhi Seeds",
-    "thc": "16.00%",
-    "description": "Pungent, funky, sour, and dank with a little sweet lavender. Great for daytime use.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "spirit-hashplant",
-    "name": "Spirit Hashplant",
-    "type": "indica",
-    "award": false,
-    "lineage": "Ghost OG x 88G13/HP",
-    "breeder": "Bodhi Seeds",
-    "thc": "",
-    "description": "Reports indicate a strong Ghost OG scent, often described as gassy, earthy, and piney.",
-    "image": "assets/img/strains/spirit-hashplant.png",
-    "status": "current"
-  },
-  {
-    "slug": "star-flight-guava",
-    "name": "Star Flight Guava",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "StarDawg Guava x Snow Lotus",
-    "breeder": "Bodhi Seeds",
-    "thc": "14.00%",
-    "description": "A fruity, chem-forward hybrid perfect for daytime relief.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "sticky-trap",
-    "name": "Sticky Trap",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Gorilla Glue 4 x Vortex",
-    "breeder": "High Bridge Seed Co",
-    "thc": "",
-    "description": "Creates a balanced blend of pungent earthiness from GG4 with sweet, tropical notes from Vortex.",
-    "image": "assets/img/strains/sticky-trap.png",
-    "status": "current"
-  },
-  {
-    "slug": "strawberry-daquiri",
-    "name": "Strawberry Daquiri",
-    "type": "sativa",
-    "award": false,
-    "lineage": "Strawberry Cough x Jack the Ripper",
-    "breeder": "TGA Genetics (Subcool)",
-    "thc": "",
-    "description": "Combines notes of strawberry, cherry and chocolate on an acidic background. Energetic and positive.",
-    "image": "assets/img/strains/strawberry-daquiri.png",
-    "status": "current"
-  },
-  {
-    "slug": "sunshine-daydream",
-    "name": "Sunshine Daydream",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Bubbashine x Appalachia",
-    "breeder": "Bodhi Seeds",
-    "thc": "18-19.85%",
-    "description": "A deeply relaxing, blissful hybrid heavily leaning into warm, buttery flavor profiles.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "super-silver-hash-plant",
-    "name": "Super Silver Hash Plant",
-    "type": "indica",
-    "award": false,
-    "lineage": "Super Silver Haze x '88 G13 Hash Plant",
-    "breeder": "Bodhi Seeds",
-    "thc": "18.97%",
-    "description": "Flavors of fuel, haze, and dank. Leaves you uplifted and motivated in mind while relaxed in body.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "thug-life",
-    "name": "Thug Life",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Extreme OG x Triple OG",
-    "breeder": "Exotic Genetix",
-    "thc": "14-15.20%",
-    "description": "Heavy OG genetics providing a classic, gas-heavy couch-lock experience.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "thunder-wookie",
-    "name": "Thunder Wookie",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Alaskan Thunderfuck x Wookie",
-    "breeder": "Bodhi Seeds",
-    "thc": "",
-    "description": "A complex mix of sharp, cold pine and earthy lavender funk.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "time-bandit",
-    "name": "Time Bandit",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Wifi 43 x 88 G13 Hashplant",
-    "breeder": "Bodhi Seeds",
-    "thc": "14.81-17.78%",
-    "description": "A heavy-hitting indica-dominant cross perfect for losing track of time.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "white-wampa",
-    "name": "White Wampa",
-    "type": "indica",
-    "award": false,
-    "lineage": "Death Star x Higher Primate",
-    "breeder": "Dutch Touch Genetics",
-    "thc": "",
-    "description": "Heavy, frosty indica with grounded body calm.",
-    "image": "assets/img/strains/white-wampa.png",
-    "status": "current"
-  },
-  {
-    "slug": "yodaz-cream",
-    "name": "Yoda'z Cream",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Unknown",
-    "breeder": "Team Death Star",
-    "thc": "17.87%",
-    "description": "A sweet, creamy, and pungent hybrid from the legendary Ohio crew.",
-    "image": "",
-    "status": "vault"
-  },
-  {
-    "slug": "vortex-11",
-    "name": "Vortex #11",
-    "type": "sativa",
-    "award": false,
-    "lineage": "Space Queen x Apollo 13",
-    "breeder": "TGA Genetics / Subcool's The Dank",
-    "thc": "TBD%",
-    "description": "A legendary Sativa-dominant powerhouse. Vortex is famous for its aggressively funky and tropical terpene profile, delivering a fast-acting, energetic buzz that is perfect for daytime adventures and creative focus.",
-    "image": "assets/img/strains/vortex-bud.jpg",
-    "status": "current"
-  },
-  {
-    "slug": "dead-prez",
-    "name": "Dead Prez",
-    "type": "indica",
-    "award": false,
-    "lineage": "Death Star x Dread Bread",
-    "breeder": "Dutch Touch Genetics",
-    "thc": "TBD%",
-    "description": "A heavy-hitting in-house cross from Dutch Touch Genetics. Dead Prez commands the room with a sour, aggressive diesel aroma backed by hints of citrus and spice. Expect a deeply pungent smoke and a heavy, deeply relaxing physical stone.",
-    "image": "assets/img/strains/dead-prez-bud.jpg",
-    "status": "current"
-  },
-  {
-    "slug": "super-silver-hashplant",
-    "name": "Super Silver Hashplant",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Super Silver Haze x '88 G13 Hash Plant",
-    "breeder": "Bodhi Seeds",
-    "thc": "TBD%",
-    "description": "Powered by a terpene profile dominant in Terpinolene, Beta-Caryophyllene, and Myrcene, this Bodhi Seeds cross offers the best of both worlds: a clear, motivated, and uplifted mental state anchored by a soothing, relaxed body.",
-    "image": "assets/img/strains/super-silver-hashplant-bud.jpg",
-    "status": "current"
+    "image": "assets/img/strains/clusterfunk.png"
   },
   {
     "slug": "cobra-lips-1",
@@ -774,10 +146,208 @@
     "award": false,
     "lineage": "Chem 3 x Appalachia",
     "breeder": "Bodhi Seeds",
-    "thc": "TBD%",
     "description": "Known for an incredibly complex and pungent terpene profile, Cobra Lips delivers a blast of earthy fuel that finishes with a surprising hit of tart green apple. It provides a highly potent, yet fully functional buzz that balances bright euphoria with physical ease.",
-    "image": "assets/img/strains/cobra-lips-1-bud.jpg",
-    "status": "current"
+    "image": "assets/img/strains/cobra-lips-1-bud.jpg"
+  },
+  {
+    "slug": "crunchberries-3",
+    "name": "Crunchberries #3",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Blueberry x Triple OG",
+    "breeder": "Exotic Genetix",
+    "description": "Delivers an uplifting and peaceful effect with a vanilla-and-pine aroma. Practically white-colored with trichome density.",
+    "image": ""
+  },
+  {
+    "slug": "dead-prez",
+    "name": "Dead Prez",
+    "type": "indica",
+    "award": false,
+    "lineage": "Death Star x Dread Bread",
+    "breeder": "Dutch Touch Genetics",
+    "description": "A heavy-hitting in-house cross from Dutch Touch Genetics. Dead Prez commands the room with a sour, aggressive diesel aroma backed by hints of citrus and spice. Expect a deeply pungent smoke and a heavy, deeply relaxing physical stone.",
+    "image": "assets/img/strains/dead-prez-bud.jpg"
+  },
+  {
+    "slug": "death-star",
+    "name": "Death Star",
+    "type": "indica",
+    "award": false,
+    "lineage": "Sensi Star x Sour Diesel",
+    "breeder": "Team Death Star",
+    "description": "Named for its skunky sweet jet fuel aromas. It has a powerful buzz that can make you feel sleepy, relaxed, and euphoric.",
+    "image": "assets/img/strains/death-star.png"
+  },
+  {
+    "slug": "death-by-funk",
+    "name": "Death By Funk",
+    "type": "indica",
+    "award": true,
+    "lineage": "Death Star x Clusterfunk",
+    "breeder": "Dutch Touch Genetics",
+    "description": "CAUTION: One of our most potent strains. Extremely sedative and psychoactive. Straight gas bred in-house.",
+    "image": "assets/img/strains/death-by-funk.png"
+  },
+  {
+    "slug": "death-z",
+    "name": "Death Z",
+    "type": "indica",
+    "award": false,
+    "lineage": "Death Star x Z Skittlez",
+    "breeder": "Team Deathstar",
+    "description": "Hops, floral, and hints of gas and citrus coming from its legendary parents.",
+    "image": "assets/img/strains/death-z.png"
+  },
+  {
+    "slug": "double-bubble",
+    "name": "Double Bubble",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Bubble Gum x 88G13HP",
+    "breeder": "Bodhi Seeds",
+    "description": "Aromas include tropical fruit, juicy fruit bubblegum, hash, musk, and sandalwood.",
+    "image": "assets/img/strains/double-bubble.png"
+  },
+  {
+    "slug": "double-ds",
+    "name": "Double D's",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "GMO x Cookies-N-Cream FZ",
+    "breeder": "Exotic Genetix",
+    "description": "Relaxed but alert hybrid with an insanely potent smooth flavor profile.",
+    "image": "assets/img/strains/double-d.png"
+  },
+  {
+    "slug": "double-dutch-cookies",
+    "name": "Double Dutch Cookies",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Platinum Cookies x Dread Bread",
+    "breeder": "Dutch Touch Genetics",
+    "description": "Super frosty appearance and sweet kush flavor notes with hints of mango cookies.",
+    "image": ""
+  },
+  {
+    "slug": "dutch-breath-18",
+    "name": "Dutch Breath #18",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Garlic Breath x Higher Primate",
+    "breeder": "Dutch Touch Genetics",
+    "description": "An incredibly potent, heavy-hitting in-house cross.",
+    "image": ""
+  },
+  {
+    "slug": "falcon-9",
+    "name": "Falcon 9",
+    "type": "indica",
+    "award": false,
+    "lineage": "Sunset Sherbert x Tina",
+    "breeder": "Exotic Genetix",
+    "description": "Noted for a smooth, gassy ice cream flavor profile. Starts as a strong head high before heavily settling into the body.",
+    "image": "assets/img/strains/falcon-9.png"
+  },
+  {
+    "slug": "field-trip",
+    "name": "Field Trip",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "GSC x Sunshine Daydream",
+    "breeder": "Bodhi Seeds",
+    "description": "A perfectly balanced 50/50 hybrid making it an ideal choice for experienced cannabis consumers.",
+    "image": ""
+  },
+  {
+    "slug": "forbidden-jelly",
+    "name": "Forbidden Jelly",
+    "type": "hybrid",
+    "award": true,
+    "lineage": "Jelly Breath x Forbidden Fruit",
+    "breeder": "In House Genetics",
+    "description": "Produces uplifting and cerebral effects. Gives off a nice relaxing body high without being sedated to the couch.",
+    "image": "assets/img/strains/forbidden-jelly.png"
+  },
+  {
+    "slug": "garlic-breath",
+    "name": "Garlic Breath",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "GMO x Mendo Breath",
+    "breeder": "ThugPug Genetics",
+    "description": "A slightly indica-dominant hybrid known for its extremely funky garlic aroma and savory flavor. Delivers a balanced high that deeply relaxes the body while sending the mind into an uplifted, euphoric daze.",
+    "image": ""
+  },
+  {
+    "slug": "goji-og",
+    "name": "Goji OG",
+    "type": "sativa",
+    "award": false,
+    "lineage": "Nepali OG x Snow Lotus",
+    "breeder": "Bodhi Seeds",
+    "description": "A dynamic aroma including red berry, black cherry, strawberry, hawaiian punch, and licorice.",
+    "image": ""
+  },
+  {
+    "slug": "gorilla-88",
+    "name": "Gorilla 88",
+    "type": "indica",
+    "award": false,
+    "lineage": "Gorilla Glue #4 x 88G13HP",
+    "breeder": "Bodhi Seeds",
+    "description": "Powerful, relaxing, and euphoric. Inherits sticky GG4 pungency with added notes of cinnamon and earth.",
+    "image": "assets/img/strains/gorilla-88.png"
+  },
+  {
+    "slug": "grape-gouda",
+    "name": "Grape Gouda",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Cheese Quake x Lavender Jack",
+    "breeder": "Dutch Touch Genetics",
+    "description": "A loud combination of savory cheese and sweet lavender grape notes.",
+    "image": ""
+  },
+  {
+    "slug": "grease-monkey",
+    "name": "Grease Monkey",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Original Glue x Cookies and Cream",
+    "breeder": "Exotic Genetix",
+    "description": "Saddles the consumer with a lazy, munchie-fueled body buzz. Earthy and skunky overtones.",
+    "image": ""
+  },
+  {
+    "slug": "guicy-g",
+    "name": "Guicy G",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "The Juice x Triple OG",
+    "breeder": "Exotic Genetix",
+    "description": "Bouquet of fresh fruity berries, sugary citrus and touches of light spice dancing across your tongue.",
+    "image": "assets/img/strains/guicy-g.png"
+  },
+  {
+    "slug": "hash-d",
+    "name": "Hash D",
+    "type": "indica",
+    "award": false,
+    "lineage": "Chem D x 88G13HP",
+    "breeder": "Bodhi Seeds",
+    "description": "Pungent odor that combines fuel notes with earthy hashish undertones. Delivers a heavy hitting body stone.",
+    "image": "assets/img/strains/hash-d.png"
+  },
+  {
+    "slug": "hawaiian-bread",
+    "name": "Hawaiian Bread",
+    "type": "sativa",
+    "award": false,
+    "lineage": "Illudium x Dread Bread",
+    "breeder": "Dutch Touch Genetics",
+    "description": "Provides happy and creative thoughts with an aroma that will remind you of tropical fruits.",
+    "image": ""
   },
   {
     "slug": "illudium",
@@ -786,9 +356,297 @@
     "award": false,
     "lineage": "Hawaiian Indica x Pre-98 Bubba Kush",
     "breeder": "Legendary Ohio Clone-Only",
-    "thc": "TBD%",
     "description": "A legendary, highly sought-after Ohio clone-only strain. Illudium boasts a wildly complex flavor profile of dark coffee and sweet orange rind, wrapped in a heavy diesel base. Patients regularly turn to this heavy Indica for highly effective relief from insomnia, chronic pain, and stress.",
-    "image": "assets/img/strains/illudium-bud.jpg",
-    "status": "current"
+    "image": "assets/img/strains/illudium-bud.jpg"
+  },
+  {
+    "slug": "jesus-og",
+    "name": "Jesus OG",
+    "type": "indica",
+    "award": false,
+    "lineage": "Hell's OG x Jack the Ripper",
+    "breeder": "Subcool's The Dank",
+    "description": "Lemony kush aroma with heavy effects that relax the body while leaving the mind functional and clear.",
+    "image": ""
+  },
+  {
+    "slug": "lemon-wookie",
+    "name": "Lemon Wookie #4",
+    "type": "hybrid",
+    "award": true,
+    "lineage": "Lemon G x Wookie",
+    "breeder": "Bodhi Seeds",
+    "description": "Sharp lemon and diesel funk with energetic daytime vibes.",
+    "image": "assets/img/strains/lemon-wookie-4.png"
+  },
+  {
+    "slug": "lilac-diesel",
+    "name": "Lilac Diesel",
+    "type": "sativa",
+    "award": true,
+    "lineage": "Silver Lemon Haze x Forbidden Fruit x NYC Cherry Pie x Citral Glue",
+    "breeder": "Ethos Genetics",
+    "description": "Big buds have a complex terpene profile, including notes of citrus, sweet berries, earthy pine, and chem.",
+    "image": "assets/img/strains/lilac-diesel.png"
+  },
+  {
+    "slug": "mango-hashplant-1",
+    "name": "Mango Hashplant #1",
+    "type": "indica",
+    "award": false,
+    "lineage": "Mango Biche x 88 G13 Hashplant",
+    "breeder": "Bodhi Seeds",
+    "description": "Tight, resin-drenched flower clusters give off a deep, rich aroma. Breathtakingly powerful body-stone.",
+    "image": ""
+  },
+  {
+    "slug": "milk-and-cookies",
+    "name": "Milk & Cookies",
+    "type": "indica",
+    "award": false,
+    "lineage": "Cookies and Cream x Triple OG",
+    "breeder": "Exotic Genetix",
+    "description": "The odor is gassy, but sweet, with creamy hints of vanilla and orange citrus. Highly sedative body buzz.",
+    "image": ""
+  },
+  {
+    "slug": "mr-clean",
+    "name": "Mr. Clean",
+    "type": "sativa",
+    "award": true,
+    "lineage": "Lime Skunk x The Cube",
+    "breeder": "Exotic Genetix",
+    "description": "Known to have the ability to 'clean out' bad moods. Intense aroma of limes and sweet, tart candies.",
+    "image": "assets/img/strains/mr-clean.png"
+  },
+  {
+    "slug": "mr-dread",
+    "name": "Mr. Dread",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Mr. Clean x Dread Bread",
+    "breeder": "Dutch Touch Genetics",
+    "description": "A complex mix of sharp sativa energy from Mr. Clean and heavy hybrid body effects.",
+    "image": ""
+  },
+  {
+    "slug": "mr-funk",
+    "name": "Mr. Funk",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Mr. Clean x Clusterfunk",
+    "breeder": "Dutch Touch Genetics",
+    "description": "Loud, funky, and energizing in-house cross.",
+    "image": ""
+  },
+  {
+    "slug": "orange-kush-cake",
+    "name": "Orange Kush Cake",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Wedding Cake x Jilly Bean x Sour Tangie x Roze Zkittlez x OG Eddy Lepp",
+    "breeder": "Ethos Genetics",
+    "description": "Rich, complicated terpene profile including notes of sharp orange, citrus, gas, sour candy, and earthy sandalwood.",
+    "image": "assets/img/strains/orange-kush-cake.png"
+  },
+  {
+    "slug": "pina-rita-2",
+    "name": "Pina Rita #2",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Highland Oaxacan Gold x Space Queen",
+    "breeder": "TGA Genetics (Subcool)",
+    "description": "Famous for a unique combination of pineapple and cherry candy notes. Tasty, functional, and uplifting.",
+    "image": "assets/img/strains/pina-rita-2.png"
+  },
+  {
+    "slug": "platinum-cookies",
+    "name": "Platinum Cookies",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Durban Poison x OG Kush",
+    "breeder": "Clone Only",
+    "description": "A legendary balanced hybrid known for its sweet berry and candy flavors.",
+    "image": ""
+  },
+  {
+    "slug": "querkle",
+    "name": "Querkle",
+    "type": "indica",
+    "award": false,
+    "lineage": "Purple Urkle x Space Queen",
+    "breeder": "Subcool's The Dank",
+    "description": "Carries a strong grape and berry aroma. Blooms with vibrant lavender hues and a heavy dusting of crystal resin.",
+    "image": ""
+  },
+  {
+    "slug": "sin-city-grapes",
+    "name": "Sin City Grapes #10",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Unknown",
+    "breeder": "Team Deathstar",
+    "description": "Grape-forward hybrid with smooth evening chill.",
+    "image": "assets/img/strains/sin-city-grapes.png"
+  },
+  {
+    "slug": "sky-lotus",
+    "name": "Sky Lotus",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Skywalker OG x Snow Lotus",
+    "breeder": "Bodhi Seeds",
+    "description": "The aroma is a mixture of Pine-Sol, lemon, and sweet berries. Potent, punchy buzz that soaks up stress.",
+    "image": ""
+  },
+  {
+    "slug": "solo-walker",
+    "name": "Solo Walker",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Sky Lotus x Higher Primate",
+    "breeder": "Dutch Touch Genetics",
+    "description": "Musky, melon, guava, sweet and sour notes of funk.",
+    "image": "assets/img/strains/solo-walker.png"
+  },
+  {
+    "slug": "space-hippy",
+    "name": "Space Hippy",
+    "type": "hybrid",
+    "award": true,
+    "lineage": "Apollo 13 x Dread Bread",
+    "breeder": "Dutch Touch Genetics",
+    "description": "A High Times Cannabis Cup double-winner (2nd Place Nug Run Sugar Solvent & 3rd Place Disposable). A premium DTG exclusive.",
+    "image": "assets/img/strains/space-hippy.png"
+  },
+  {
+    "slug": "space-monkey",
+    "name": "Space Monkey",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "GG#4 x Wookie #15",
+    "breeder": "Bodhi Seeds",
+    "description": "Pungent, funky, sour, and dank with a little sweet lavender. Great for daytime use.",
+    "image": ""
+  },
+  {
+    "slug": "spirit-hashplant",
+    "name": "Spirit Hashplant",
+    "type": "indica",
+    "award": false,
+    "lineage": "Ghost OG x 88G13/HP",
+    "breeder": "Bodhi Seeds",
+    "description": "Reports indicate a strong Ghost OG scent, often described as gassy, earthy, and piney.",
+    "image": "assets/img/strains/spirit-hashplant.png"
+  },
+  {
+    "slug": "star-flight-guava",
+    "name": "Star Flight Guava",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "StarDawg Guava x Snow Lotus",
+    "breeder": "Bodhi Seeds",
+    "description": "A fruity, chem-forward hybrid perfect for daytime relief.",
+    "image": ""
+  },
+  {
+    "slug": "sticky-trap",
+    "name": "Sticky Trap",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Gorilla Glue 4 x Vortex",
+    "breeder": "High Bridge Seed Co",
+    "description": "Creates a balanced blend of pungent earthiness from GG4 with sweet, tropical notes from Vortex.",
+    "image": "assets/img/strains/sticky-trap.png"
+  },
+  {
+    "slug": "strawberry-daquiri",
+    "name": "Strawberry Daquiri",
+    "type": "sativa",
+    "award": false,
+    "lineage": "Strawberry Cough x Jack the Ripper",
+    "breeder": "TGA Genetics (Subcool)",
+    "description": "Combines notes of strawberry, cherry and chocolate on an acidic background. Energetic and positive.",
+    "image": "assets/img/strains/strawberry-daquiri.png"
+  },
+  {
+    "slug": "sunshine-daydream",
+    "name": "Sunshine Daydream",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Bubbashine x Appalachia",
+    "breeder": "Bodhi Seeds",
+    "description": "A deeply relaxing, blissful hybrid heavily leaning into warm, buttery flavor profiles.",
+    "image": ""
+  },
+  {
+    "slug": "super-silver-hashplant",
+    "name": "Super Silver Hashplant",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Super Silver Haze x '88 G13 Hash Plant",
+    "breeder": "Bodhi Seeds",
+    "description": "Powered by a terpene profile dominant in Terpinolene, Beta-Caryophyllene, and Myrcene, this Bodhi Seeds cross offers the best of both worlds: a clear, motivated, and uplifted mental state anchored by a soothing, relaxed body.",
+    "image": "assets/img/strains/super-silver-hashplant-bud.jpg"
+  },
+  {
+    "slug": "thug-life",
+    "name": "Thug Life",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Extreme OG x Triple OG",
+    "breeder": "Exotic Genetix",
+    "description": "Heavy OG genetics providing a classic, gas-heavy couch-lock experience.",
+    "image": ""
+  },
+  {
+    "slug": "thunder-wookie",
+    "name": "Thunder Wookie",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Alaskan Thunderfuck x Wookie",
+    "breeder": "Bodhi Seeds",
+    "description": "A complex mix of sharp, cold pine and earthy lavender funk.",
+    "image": ""
+  },
+  {
+    "slug": "time-bandit",
+    "name": "Time Bandit",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Wifi 43 x 88 G13 Hashplant",
+    "breeder": "Bodhi Seeds",
+    "description": "A heavy-hitting indica-dominant cross perfect for losing track of time.",
+    "image": ""
+  },
+  {
+    "slug": "vortex-11",
+    "name": "Vortex #11",
+    "type": "sativa",
+    "award": false,
+    "lineage": "Space Queen x Apollo 13",
+    "breeder": "TGA Genetics / Subcool's The Dank",
+    "description": "A legendary Sativa-dominant powerhouse. Vortex is famous for its aggressively funky and tropical terpene profile, delivering a fast-acting, energetic buzz that is perfect for daytime adventures and creative focus.",
+    "image": "assets/img/strains/vortex-bud.jpg"
+  },
+  {
+    "slug": "white-wampa",
+    "name": "White Wampa",
+    "type": "indica",
+    "award": false,
+    "lineage": "Death Star x Higher Primate",
+    "breeder": "Dutch Touch Genetics",
+    "description": "Heavy, frosty indica with grounded body calm.",
+    "image": "assets/img/strains/white-wampa.png"
+  },
+  {
+    "slug": "yodaz-cream",
+    "name": "Yoda'z Cream",
+    "type": "hybrid",
+    "award": false,
+    "lineage": "Unknown",
+    "breeder": "Team Death Star",
+    "description": "A sweet, creamy, and pungent hybrid from the legendary Ohio crew.",
+    "image": ""
   }
 ]
