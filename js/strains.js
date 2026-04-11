@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const modal = document.getElementById('strainModal');
   const closeModal = document.getElementById('closeModal');
 
- // 3. Setup Click Listeners for the Cards (Event Delegation)
+  // 3. Setup Click Listeners for the Cards (Event Delegation)
   document.body.addEventListener('click', (e) => {
     const card = e.target.closest('.strain-card');
     if (card) {
@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (strainData) {
         // Populate the Modal text
         document.getElementById('modalName').innerText = strainData.name;
-        // FIX 2: Changed to "Genetics by" in the modal
         document.getElementById('modalBreeder').innerText = "Genetics by " + strainData.breeder;
         
         // Handle the image (Standard image vs Fallback Logo)
@@ -78,7 +77,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             imgEl.style.padding = '0';
             imgEl.style.backgroundColor = 'transparent';
         } else {
-            // FIX 1: Corrected fallback logo path for the modal
             imgEl.src = baseUrl + 'assets/img/logo/dtg-logo-orange.png';
             imgEl.style.objectFit = 'contain';
             imgEl.style.padding = '3rem';
@@ -181,4 +179,26 @@ document.addEventListener('DOMContentLoaded', async () => {
   if(gridToWatch) {
       observer.observe(gridToWatch, { childList: true });
   }
+
+  // 5. Alpha Jump Bar Logic
+  const alphaBtns = document.querySelectorAll('.alpha-btn');
+  alphaBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const letter = e.target.innerText.toLowerCase();
+      const allCards = document.querySelectorAll('.strain-card');
+      
+      for (let card of allCards) {
+        const name = card.querySelector('.strain-name').innerText.toLowerCase();
+        
+        // Find the first visible card that starts with the clicked letter
+        if (name.startsWith(letter) && card.style.display !== 'none') {
+          // Calculate position accounting for the fixed nav bar and jump bar
+          const y = card.getBoundingClientRect().top + window.scrollY - 140; 
+          window.scrollTo({top: y, behavior: 'smooth'});
+          break; // Stop looping once we found the first match
+        }
+      }
+    });
+  });
+
 });
