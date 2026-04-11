@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  // 1. Fetch the master database so we have all the rich details for the modal
+  // 1. Fetch the master database
   let strains = [];
   const isGreenLabs = window.location.hostname.includes('Green-Labs');
   const baseUrl = isGreenLabs ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' : '';
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Failed to load strains for modal/filtering:', error);
   }
 
-  // 2. Dynamically create the Modal HTML and inject it into the page
+  // 2. Dynamically create the Modal HTML
   const modalHTML = `
     <div class="strain-modal" id="strainModal">
       <div class="strain-modal-dialog">
@@ -51,25 +51,24 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.body.addEventListener('click', (e) => {
     const card = e.target.closest('.strain-card');
     if (card) {
-      
-      // --- NEW MOBILE ACCORDION CHECK ---
-      // Check if we are on mobile. If yes, toggle accordion and stop.
-      if (window.innerWidth <= 768) {
-        card.classList.toggle('is-expanded');
-        return; 
-      }
-      // ----------------------------------
-
-      // --- EXISTING DESKTOP MODAL LOGIC ---
       const strainName = card.querySelector('.strain-name').innerText;
       const strainData = strains.find(s => s.name === strainName);
-      
+
+      // --- MOBILE HYBRID CHECK ---
+      if (window.innerWidth <= 768) {
+        // If there is NO custom image, toggle accordion and STOP.
+        if (!strainData || !strainData.image) {
+          card.classList.toggle('is-expanded');
+          return; 
+        }
+        // If it DOES have a custom image, bypass the accordion and let it open the pop-up modal!
+      }
+
+      // --- EXISTING MODAL LOGIC (Desktop, or Mobile with Photo) ---
       if (strainData) {
-        // Populate the Modal text
         document.getElementById('modalName').innerText = strainData.name;
         document.getElementById('modalBreeder').innerText = "Genetics by " + strainData.breeder;
         
-        // Handle the image (Standard image vs Fallback Logo)
         const imgEl = document.getElementById('modalImage');
         if (strainData.image) {
             imgEl.src = baseUrl + strainData.image;
@@ -88,14 +87,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('modalThc').innerText = strainData.thc || "N/A";
         document.getElementById('modalDesc').innerText = strainData.description;
 
-        // Open Modal & lock background scrolling
         modal.classList.add('open');
         document.body.style.overflow = 'hidden'; 
       }
     }
   });
 
-  // Close Modal Listeners
   const closeDialog = () => {
     modal.classList.remove('open');
     document.body.style.overflow = '';
@@ -105,17 +102,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (e.target === modal) closeDialog();
   });
 
-  // 4. Setup Filtering and Searching (Only on the DTG Strains page)
+  // 4. Setup Filtering and Searching
   const searchInput = document.getElementById('strainSearch');
   const filterBtns = document.querySelectorAll('.strain-filter');
 
   function filterCards() {
-    if (!searchInput) return; // Stop if there's no search bar
+    if (!searchInput) return;
 
     const query = searchInput.value.toLowerCase();
     const activeBtn = document.querySelector('.strain-filter.is-active');
     const filterType = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
-
     const allCards = document.querySelectorAll('.strain-card');
     
     allCards.forEach(card => {
@@ -125,45 +121,29 @@ document.addEventListener('DOMContentLoaded', async () => {
       const hasAward = card.querySelector('.strain-badge') !== null;
       
       const matchesSearch = name.includes(query) || desc.includes(query) || meta.includes(query);
-      
       let matchesFilter = false;
-      if (filterType === 'all' || filterType === 'az') {
-        matchesFilter = true;
-      } else if (filterType === 'award') {
-        matchesFilter = hasAward;
-      } else {
-        matchesFilter = meta.includes(filterType);
-      }
+      
+      if (filterType === 'all' || filterType === 'az') matchesFilter = true;
+      else if (filterType === 'award') matchesFilter = hasAward;
+      else matchesFilter = meta.includes(filterType);
 
-      // Show or hide the card
-      if (matchesSearch && matchesFilter) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
+      if (matchesSearch && matchesFilter) card.style.display = 'block';
+      else card.style.display = 'none';
     });
 
-    // Handle A-Z Sort Visually
     if (filterType === 'az') {
       ['current-strains', 'vault-strains'].forEach(gridId => {
         const grid = document.getElementById(gridId);
         if(grid) {
           Array.from(grid.children)
-            .sort((a, b) => {
-              const nameA = a.querySelector('.strain-name').innerText.toLowerCase();
-              const nameB = b.querySelector('.strain-name').innerText.toLowerCase();
-              return nameA.localeCompare(nameB);
-            })
+            .sort((a, b) => a.querySelector('.strain-name').innerText.localeCompare(b.querySelector('.strain-name').innerText))
             .forEach(node => grid.appendChild(node));
         }
       });
     }
   }
 
-  // Attach search and filter events
-  if (searchInput) {
-    searchInput.addEventListener('input', filterCards);
-  }
+  if (searchInput) searchInput.addEventListener('input', filterCards);
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -173,32 +153,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // Automatically attach filters as soon as the dynamic cards finish loading
   const observer = new MutationObserver(() => filterCards());
   const gridToWatch = document.getElementById('current-strains');
-  if(gridToWatch) {
-      observer.observe(gridToWatch, { childList: true });
-  }
+  if(gridToWatch) observer.observe(gridToWatch, { childList: true });
 
-  // 5. Alpha Jump Bar Logic
-  const alphaBtns = document.querySelectorAll('.alpha-btn');
-  alphaBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const letter = e.target.innerText.toLowerCase();
-      const allCards = document.querySelectorAll('.strain-card');
-      
-      for (let card of allCards) {
-        const name = card.querySelector('.strain-name').innerText.toLowerCase();
+  // 5. SIDE BAR ALPHA JUMP LOGIC
+  const jumpBar = document.querySelector('.alpha-jump-bar');
+  if (jumpBar) {
+    // Generate the alphabet dynamically (plus # for numbers)
+    const alphabet = ["#", ..."ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")];
+    jumpBar.innerHTML = ''; 
+    alphabet.forEach(letter => {
+      const btn = document.createElement('button');
+      btn.className = 'alpha-btn';
+      btn.innerText = letter;
+      jumpBar.appendChild(btn);
+    });
+
+    jumpBar.addEventListener('click', (e) => {
+      if (e.target.classList.contains('alpha-btn')) {
+        const letter = e.target.innerText.toLowerCase();
+        const allCards = document.querySelectorAll('.strain-card');
         
-        // Find the first visible card that starts with the clicked letter
-        if (name.startsWith(letter) && card.style.display !== 'none') {
-          // Calculate position accounting for the fixed nav bar and jump bar
-          const y = card.getBoundingClientRect().top + window.scrollY - 140; 
-          window.scrollTo({top: y, behavior: 'smooth'});
-          break; // Stop looping once we found the first match
+        for (let card of allCards) {
+          const name = card.querySelector('.strain-name').innerText.toLowerCase();
+          
+          // Check if it starts with a number (for the # button) OR the specific letter
+          const isMatch = letter === '#' ? name.match(/^\d/) : name.startsWith(letter);
+          
+          if (isMatch && card.style.display !== 'none') {
+            // Calculate scroll position (offset by 100px so nav bar doesn't cover it)
+            const y = card.getBoundingClientRect().top + window.scrollY - 100; 
+            window.scrollTo({top: y, behavior: 'smooth'});
+            break; 
+          }
         }
       }
     });
-  });
-
+  }
 });
