@@ -53,15 +53,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       const strainName = card.querySelector('.strain-name').innerText;
       const strainData = strains.find(s => s.name === strainName);
 
-      // --- MOBILE HYBRID CHECK ---
+      // --- MOBILE 3D FLIP CHECK ---
       if (window.innerWidth <= 768) {
-        // Always toggle the accordion on mobile so they can see the description
-        card.classList.toggle('is-expanded');
+        // Stop the modal from opening on mobile so the 3D flip handles the click instead
         return; 
       }
-        // If it DOES have a custom image, bypass the accordion and let it open the pop-up modal!
 
-      // --- EXISTING MODAL LOGIC (Desktop, or Mobile with Photo) ---
+      // --- EXISTING MODAL LOGIC (Desktop) ---
       if (strainData) {
         document.getElementById('modalName').innerText = strainData.name;
         document.getElementById('modalBreeder').innerText = "Genetics by " + strainData.breeder;
@@ -189,37 +187,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 });
-
-// ============================================================
-// FEATURED SCROLLER INJECTION
-// ============================================================
-function populateFeaturedScroller() {
-    const featuredContainer = document.getElementById('featured-strains');
-    
-    // Stop if the container is missing or already has cards in it
-    if (!featuredContainer || featuredContainer.children.length > 0) return; 
-
-    // The names of the strains you want to highlight at the top
-    const topPicks = ['Apollo 13', 'Space Hippy', 'Yoda\'z Cream', 'Mr. Funk']; 
-    
-    // Find all rendered cards in the main vault
-    const mainCards = document.querySelectorAll('#vault-strains .strain-card');
-    
-    // If the loader hasn't built the cards yet, wait 100ms and try again
-    if (mainCards.length === 0) {
-        setTimeout(populateFeaturedScroller, 100);
-        return;
-    }
-    
-    mainCards.forEach(card => {
-        const nameNode = card.querySelector('.strain-name');
-        if (nameNode && topPicks.includes(nameNode.innerText)) {
-            // Clone the node so we don't remove it from the main library
-            const clone = card.cloneNode(true);
-            featuredContainer.appendChild(clone);
-        }
-    });
-}
-
-// Start the check!
-populateFeaturedScroller();
