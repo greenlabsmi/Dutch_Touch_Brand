@@ -48,30 +48,25 @@ async function loadStrainLibrary() {
         featuredScroller.innerHTML += trophyHTML;
       }
 
-      // ==========================================
-      // 2. MAIN VAULT LIBRARY (DESKTOP NORMAL + MOBILE 3D FLIP)
+     // ==========================================
+      // 2. MAIN VAULT LIBRARY (CLEAN TEASER CARD)
       // ==========================================
       const vaultHTML = `
         <article class="strain-card library-card ${highlightClass}">
-          <div class="strain-card-inner deli-card" onclick="if(window.innerWidth <= 768) this.classList.toggle('is-flipped');">
+          <div class="strain-card-inner">
             
-            <div class="deli-card__front" style="background-image: url('${imageUrl}');">
-              ${mobileBadgeHTML}
-              <div class="deli-card__hint">Tap for Info 🔄</div>
+            <div class="${imageClass} desktop-img" style="background-image: url('${imageUrl}');">
+              ${cornerBadgeHTML}
             </div>
-
-            <div class="deli-card__back">
-              <div class="${imageClass} desktop-img" style="background-image: url('${imageUrl}');">
-                ${cornerBadgeHTML}
+            
+            <div class="strain-content">
+              <div class="strain-top">
+                <h3 class="strain-name">${strain.name}</h3>
               </div>
-              <div class="strain-content">
-                <div class="strain-top">
-                  <h3 class="strain-name">${strain.name}</h3>
-                </div>
-                <p class="strain-meta">${strain.type.toUpperCase()} | Genetics by ${strain.breeder}</p>
-                <p class="strain-meta" style="color: #d4af37; font-size: 0.85rem;">${strain.lineage}</p>
-                <p class="strain-notes">${strain.description}</p>
-              </div>
+              <p class="strain-meta">${strain.type.toUpperCase()} | Genetics by ${strain.breeder}</p>
+              <p class="strain-meta" style="color: #d4af37; font-size: 0.85rem; margin-bottom: 8px;">${strain.lineage}</p>
+              <p class="strain-notes teaser-text">${strain.description}</p>
+              <div class="card-action">Tap for Full Details <span>→</span></div>
             </div>
 
           </div>
