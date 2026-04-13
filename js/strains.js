@@ -46,20 +46,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   const modal = document.getElementById('strainModal');
   const closeModal = document.getElementById('closeModal');
 
-  // 3. Setup Click Listeners for the Cards (Event Delegation)
+ // 3. Setup Click Listeners for the Cards (Event Delegation)
   document.body.addEventListener('click', (e) => {
+    
+    // 1. Check if they clicked a strain card
     const card = e.target.closest('.strain-card');
     if (card) {
       const strainName = card.querySelector('.strain-name').innerText;
       const strainData = strains.find(s => s.name === strainName);
 
-      // --- MOBILE 3D FLIP CHECK ---
-      if (window.innerWidth <= 768) {
-        // Stop the modal from opening on mobile so the 3D flip handles the click instead
-        return; 
-      }
-
-      // --- EXISTING MODAL LOGIC (Desktop) ---
       if (strainData) {
         document.getElementById('modalName').innerText = strainData.name;
         document.getElementById('modalBreeder').innerText = "Genetics by " + strainData.breeder;
@@ -79,12 +74,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         document.getElementById('modalType').innerText = strainData.type.toUpperCase();
         document.getElementById('modalLineage').innerText = strainData.lineage;
-        document.getElementById('modalThc').innerText = strainData.thc || "N/A";
         document.getElementById('modalDesc').innerText = strainData.description;
 
         modal.classList.add('open');
-        document.body.style.overflow = 'hidden'; 
+        document.body.style.overflow = 'hidden'; // Prevents background scrolling
       }
+    }
+
+    // 2. Check if they clicked outside the modal box to close it
+    if (e.target.classList.contains('strain-modal')) {
+        closeDialog();
     }
   });
 
@@ -92,10 +91,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     modal.classList.remove('open');
     document.body.style.overflow = '';
   };
+  
   closeModal.addEventListener('click', closeDialog);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeDialog();
-  });
 
   // 4. Setup Filtering and Searching
   const searchInput = document.getElementById('strainSearch');
