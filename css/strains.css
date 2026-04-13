@@ -972,35 +972,86 @@ body.dt-strains-page .dt-footer-copy {
 }
 
 /* ============================================================
-   MAIN LIBRARY: MOBILE 3D FLIP OVERRIDES
+   MAIN LIBRARY: UNIFORM GRID & MOBILE LAYOUT
    ============================================================ */
-/* DESKTOP (Keeps your standard layout) */
-@media (min-width: 769px) {
-    .library-card .deli-card__front { display: none; }
-    .library-card .deli-card__back { position: relative; transform: none !important; backface-visibility: visible; background: transparent; }
+/* Desktop Uniform Heights */
+#vault-strains .library-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+#vault-strains .strain-card-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0; /* Remove inner padding so image touches edges */
+}
+#vault-strains .desktop-img {
+    height: 220px;
+    width: 100%;
+    border-radius: 14px 14px 0 0;
+    margin-bottom: 0;
+}
+#vault-strains .strain-content {
+    padding: 1.2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+/* Truncate the description so cards stay the exact same height */
+.teaser-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+.card-action {
+    margin-top: auto;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #d4af37;
+    font-weight: 700;
 }
 
-/* MOBILE (Transforms grid into 3D Flip Tiles) */
+/* Mobile: Clean 2-Column Visual Grid */
 @media (max-width: 768px) {
-    #vault-strains { grid-template-columns: repeat(2, 1fr); gap: 1rem; } 
-    .library-card { background: transparent; border: none; padding: 0; box-shadow: none; }
-    .library-card .deli-card { position: relative; width: 100%; aspect-ratio: 2 / 3; perspective: 1000px; cursor: pointer; }
-    .library-card .deli-card__front,
-    .library-card .deli-card__back { position: absolute; inset: 0; border-radius: 16px; background-size: cover; background-position: center; background-color: #111; backface-visibility: hidden; transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1); box-shadow: 0 16px 40px rgba(0,0,0,0.4); border: 1px solid #222; overflow: hidden; }
-    
-    .library-card .deli-card__back { transform: rotateY(180deg); padding: 1rem; overflow-y: auto; }
-    .library-card .deli-card.is-flipped .deli-card__front { transform: rotateY(180deg); }
-    .library-card .deli-card.is-flipped .deli-card__back { transform: rotateY(360deg); }
-    
-    .library-card .desktop-img, 
-    .library-card .desktop-badge { display: none; } 
-    
-    .deli-card__hint { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: #fff; font-size: 10px; font-weight: 800; padding: 5px 8px; border-radius: 999px; }
-    .deli-badge-corner { position: absolute; top: -5px; left: -5px; z-index: 10; font-family: "Cinzel", serif; font-weight: 900; font-size: 10px; padding: 6px 10px; border-radius: 10px; background: #121413; color: #D6A34A; border: 1px solid rgba(214, 163, 74, 0.3); }
-    
-    .library-card .strain-name { font-size: 1.1rem; margin-top: 0; }
-    .library-card .strain-notes { font-size: 0.75rem; line-height: 1.3; }
-    .library-card .strain-meta { font-size: 0.7rem; }
+    #vault-strains {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    #vault-strains .desktop-img {
+        height: 150px;
+    }
+    #vault-strains .strain-content {
+        padding: 0.8rem;
+    }
+    #vault-strains .strain-name {
+        font-size: 1rem;
+        line-height: 1.1;
+    }
+    #vault-strains .strain-meta {
+        font-size: 0.7rem;
+    }
+    /* Hide the teaser paragraph on mobile to keep tiles neat */
+    .teaser-text {
+        display: none; 
+    }
+    .card-action {
+        font-size: 0.65rem;
+        margin-top: 8px;
+    }
+}
+
+/* ============================================================
+   CINEMATIC MODAL BACKGROUND CLICK
+   ============================================================ */
+.strain-modal {
+    backdrop-filter: blur(8px); /* Adds the Apple-style background blur */
+}
+.strain-modal-dialog {
+    cursor: default; /* Keeps normal cursor inside the box */
 }
 
 /* ============================================================
