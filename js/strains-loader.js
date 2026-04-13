@@ -15,15 +15,24 @@ async function loadStrainLibrary() {
       const imageUrl = strain.image ? `${baseUrl}${strain.image}` : `${baseUrl}assets/img/logo/dtg-logo-orange.png`;
       const imageClass = strain.image ? 'strain-image' : 'strain-image fallback-logo';
 
+      // Smart Badge Logic
+      let badgeText = '';
+      if (strain.award) badgeText = 'AWARD WINNER';
+      else if (strain.favorite) badgeText = 'FAN FAVORITE';
+
+      const highlightClass = badgeText ? 'is-award-winner' : '';
+      const cornerBadgeHTML = badgeText ? `<span class="corner-award-badge">${badgeText}</span>` : '';
+      const mobileBadgeHTML = badgeText ? `<div class="deli-badge-corner badge--fresh">${badgeText}</div>` : '';
+
       // ==========================================
-      // 1. TOP SCROLLER (AWARD WINNERS ONLY)
+      // 1. TOP SCROLLER (AWARDS & FAVORITES)
       // ==========================================
-      if (strain.award === true && featuredScroller) {
+      if (badgeText !== '' && featuredScroller) {
         const trophyHTML = `
-          <div class="strain-card trophy-card">
+          <div class="strain-card trophy-card ${highlightClass}">
             <div class="strain-card-inner">
               <div class="strain-image" style="background-image: url('${imageUrl}');">
-                <span class="corner-award-badge">AWARD WINNER</span>
+                ${cornerBadgeHTML}
               </div>
               <div class="strain-top">
                 <h3 class="strain-name">${strain.name}</h3>
@@ -42,17 +51,17 @@ async function loadStrainLibrary() {
       // 2. MAIN VAULT LIBRARY (DESKTOP NORMAL + MOBILE 3D FLIP)
       // ==========================================
       const vaultHTML = `
-        <article class="strain-card library-card ${strain.award ? 'is-award-winner' : ''}">
+        <article class="strain-card library-card ${highlightClass}">
           <div class="strain-card-inner deli-card" onclick="if(window.innerWidth <= 768) this.classList.toggle('is-flipped');">
             
             <div class="deli-card__front" style="background-image: url('${imageUrl}');">
-              ${strain.award ? `<div class="deli-badge-corner badge--fresh">AWARD WINNER</div>` : ''}
+              ${mobileBadgeHTML}
               <div class="deli-card__hint">Tap for Info 🔄</div>
             </div>
 
             <div class="deli-card__back">
               <div class="${imageClass} desktop-img" style="background-image: url('${imageUrl}');">
-                ${strain.award ? `<span class="corner-award-badge desktop-badge">AWARD WINNER</span>` : ''}
+                ${cornerBadgeHTML}
               </div>
               <div class="strain-content">
                 <div class="strain-top">
