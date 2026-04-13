@@ -1,6 +1,7 @@
 async function loadStrainLibrary() {
-  const isGreenLabs = window.location.href.includes('Green-Labs');
-  const baseUrl = isGreenLabs ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' : '';
+ // If this script is running anywhere OTHER than the master Dutch Touch site, use the master URL
+  const isExternalSite = !window.location.href.includes('Dutch_Touch_Brand');
+  const baseUrl = isExternalSite ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' : '';
 
   try {
     const response = await fetch('https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.json');
