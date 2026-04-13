@@ -971,3 +971,36 @@ body.dt-strains-page .dt-footer-copy {
    ============================================================ */
 .alpha-btn { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s, text-shadow 0.2s; }
 .alpha-btn:hover { color: #d4af37; transform: scale(1.6) translateX(-5px); text-shadow: 0 0 8px rgba(212, 175, 55, 0.6); }
+
+/* ============================================================
+   AWARD WINNER GOLD OUTLINE & CORNER BADGE
+   ============================================================ */
+/* 1. Give all award-winning cards the gold outline and subtle glow */
+.trophy-card,
+.library-card.is-award-winner .deli-card__back,
+.library-card.is-award-winner .deli-card__front {
+    border: 1px solid rgba(214, 163, 74, 0.8) !important;
+    box-shadow: 0 4px 15px rgba(214, 163, 74, 0.15) !important;
+}
+
+/* 2. Position the image to hold the absolute badge */
+.strain-image, .desktop-img {
+    position: relative;
+}
+
+/* 3. Top-left corner badge styling (Green Labs match) */
+.corner-award-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(180deg, rgba(214,163,74,.95), rgba(185,135,47,.95));
+    color: #121413;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    z-index: 5;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
