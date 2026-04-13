@@ -1019,65 +1019,90 @@ body.dt-strains-page .dt-footer-copy {
    MOBILE LAUNCH POLISH (MAX-WIDTH: 768px)
    ============================================================ */
 @media (max-width: 768px) {
-    /* 1. Header & Social Fix */
+    /* 1. Universal Nav Clearance */
+    body.dt-strains-page {
+        padding-top: 90px !important; /* Forces the entire page down so the nav doesn't cover the title */
+    }
+
     .dt-strains-header {
-        margin-top: 60px; /* Pushes content below the floating nav menu */
+        margin-top: 0;
         padding: 0 15px;
     }
+    
     .dt-strains-header h2 {
-        font-size: 1.8rem;
-        line-height: 1.1;
-        margin-bottom: 10px;
+        font-size: 1.6rem;
+        line-height: 1.2;
+        margin-bottom: 8px;
     }
 
-    /* 2. Featured Scroller Scaling */
+    /* 2. Top Scroller Trophy Cards (Fixing the weird layout) */
     .trophy-card {
-        flex: 0 0 75%; /* Shows one card and a peek of the next */
-        height: auto;
-        min-height: 180px;
+        flex: 0 0 85%; /* Shows one card beautifully, with the next peaking in */
+        min-height: auto;
     }
+    
+    .trophy-card .strain-card-inner {
+        display: flex;
+        flex-direction: column; /* Forces image on top, text below */
+    }
+    
     .trophy-card .strain-image {
-        height: 120px; /* Makes image the focus, not the black space */
+        width: 100%;
+        height: 180px; /* Gives the premium image room to breathe */
+        margin-bottom: 15px;
     }
 
-    /* 3. Library Grid & Alphabet Bar Buffer */
+    /* 3. Main Library Grid & A-Z Bar Fix */
     .library-layout-wrapper {
-        display: flex;
-        position: relative;
+        padding-right: 45px; /* Creates a permanent, safe 'lane' for the A-Z bar on the right */
     }
 
     #vault-strains {
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        padding-right: 45px; /* CRITICAL: Gives the A-Z bar its own lane */
-        padding-left: 15px;
-        width: 100%;
+        gap: 10px;
+        width: 100%; 
+        padding-left: 10px;
     }
 
-    /* 4. Tile Polish */
+    /* 4. Library Card Tile Polish */
     .library-card {
         border-radius: 12px;
-        background: #0b0b0b;
-        border: 1px solid #222;
+        overflow: hidden;
     }
+    
     .library-card .desktop-img {
-        height: 130px; /* Uniform height for the 'Deli' look */
+        height: 120px;
     }
+    
+    .library-card .strain-content {
+        padding: 10px;
+    }
+    
     .library-card .strain-name {
-        font-size: 0.9rem;
-        margin-bottom: 4px;
+        font-size: 0.95rem; 
+        margin-bottom: 5px;
+        line-height: 1.2;
+        word-wrap: break-word; /* Stops long names from breaking the box */
     }
+    
     .library-card .strain-meta {
         font-size: 0.65rem;
-        line-height: 1.2;
+        line-height: 1.3;
     }
 
-    /* 5. Alphabet Bar Positioning */
+    /* 5. Fix the yellow lineage text clipping */
+    .lineage-text {
+        font-size: 0.65rem !important;
+        white-space: normal !important; /* Lets long genetics wrap neatly to a second line instead of cutting off with '...' */
+        overflow: visible;
+    }
+
+    /* 6. Alphabet Bar Positioning */
     .alpha-jump-bar {
         width: 35px;
         font-size: 10px;
         right: 5px;
-        background: rgba(0,0,0,0.3);
+        background: rgba(0,0,0,0.4);
         backdrop-filter: blur(5px);
         border-radius: 20px;
         padding: 10px 0;
