@@ -64,7 +64,7 @@ async function loadStrainLibrary() {
                 <h3 class="strain-name">${strain.name}</h3>
               </div>
               <p class="strain-meta">${strain.type.toUpperCase()} | Genetics by ${strain.breeder}</p>
-              <p class="strain-meta" style="color: #d4af37; font-size: 0.85rem; margin-bottom: 8px;">${strain.lineage}</p>
+              <p class="strain-meta lineage-text">${strain.lineage}</p>
               <p class="strain-notes teaser-text">${strain.description}</p>
               <div class="card-action">Tap for Full Details <span>→</span></div>
             </div>
