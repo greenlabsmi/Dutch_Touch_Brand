@@ -923,16 +923,53 @@ body.dt-strains-page .dt-footer-copy {
 /* ============================================================
    TOP TROPHY SCROLLER (GREEN LABS MATCH)
    ============================================================ */
-.featured-scroller-wrap { width: 100vw; margin-left: calc(50% - 50vw); margin-bottom: 4rem; }
-.featured-scroller { display: flex; gap: 1.5rem; overflow-x: auto; padding: 10px 5vw 40px; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: rgba(214, 163, 74, 0.6) rgba(255, 255, 255, 0.02); }
-.featured-scroller::-webkit-scrollbar { height: 8px; display: block; }
-.featured-scroller::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); border-radius: 10px; margin: 0 5vw; }
-.featured-scroller::-webkit-scrollbar-thumb { background: rgba(214, 163, 74, 0.5); border-radius: 10px; }
-.featured-scroller::-webkit-scrollbar-thumb:hover { background: rgba(214, 163, 74, 0.9); }
+.featured-scroller-wrap { 
+    margin-bottom: 4rem; 
+}
 
-.trophy-card { flex: 0 0 260px; scroll-snap-align: center; background: #0b0d0c; border-radius: 22px; border: 1px solid rgba(255, 255, 255, 0.08); overflow: hidden; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-@media (min-width: 768px) { .trophy-card { flex: 0 0 280px; scroll-snap-align: start; } }
-.trophy-card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); border-color: rgba(214, 163, 74, 0.4); }
+.featured-scroller { 
+    display: flex; 
+    gap: 1.5rem; 
+    overflow-x: auto; 
+    padding: 10px 5vw 40px; 
+    margin-left: calc(50% - 50vw); 
+    width: 100vw; 
+    scroll-snap-type: x mandatory; 
+    scroll-padding-left: 5vw; /* Fixes the left cutoff! */
+    scroll-behavior: smooth; 
+    scrollbar-width: thin; 
+    scrollbar-color: rgba(214, 163, 74, 0.6) rgba(255, 255, 255, 0.02); 
+}
+
+/* Adds a bumper to the far right so the last item can fully scroll into view */
+.featured-scroller::after {
+    content: '';
+    flex: 0 0 1vw;
+}
+
+.trophy-card { 
+    flex: 0 0 260px; 
+    scroll-snap-align: center; 
+    background: #0b0d0c; 
+    border-radius: 22px; 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    overflow: hidden; 
+    position: relative; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
+}
+
+@media (min-width: 768px) { 
+    .trophy-card { 
+        flex: 0 0 280px; 
+        scroll-snap-align: start; 
+    } 
+}
+
+.trophy-card:hover { 
+    transform: translateY(-4px); 
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); 
+    border-color: rgba(214, 163, 74, 0.4); 
+}
 
 /* ============================================================
    MAIN LIBRARY: MOBILE 3D FLIP OVERRIDES
