@@ -18,7 +18,7 @@
     "lineage": "Orange Velvet x Jack the Ripper",
     "breeder": "Subcool's The Dank",
     "description": "A well-balanced hybrid with uplifting, motivating effects and an aroma of fresh-cut citrus.",
-    "image": ""
+    "image": "assets/img/strains/agent-orange-bud.jpg"
   },
   {
     "slug": "ajs-cream-cake",
@@ -59,7 +59,7 @@
     "lineage": "P75 x Genius",
     "breeder": "Bros Grimm",
     "description": "The high is clear and cerebral without paranoia. Citrus flavor and a happy high make Apollo 13 very popular at parties!",
-    "image": ""
+    "image": "assets/img/strains/apollo-bud.jpg"
   },
   {
     "slug": "banana-split",
@@ -162,7 +162,7 @@
     "lineage": "Blueberry x Triple OG",
     "breeder": "Exotic Genetix",
     "description": "Delivers an uplifting and peaceful effect with a vanilla-and-pine aroma. Practically white-colored with trichome density.",
-    "image": ""
+    "image": "assets/img/strains/crunchberries-bud.jpg"
   },
   {
     "slug": "dead-prez",
