@@ -1046,10 +1046,10 @@ body.dt-strains-page .dt-footer-copy {
         height: 210px; /* Pushed from 180px for a taller image window */
     }
     
-    /* 🌟 MAX ZOOM EFFECT 🌟 */
+    /* 🌟 FULL BORDER-TO-BORDER IMAGE 🌟 */
     .library-card .desktop-img:not(.fallback-logo) {
-        background-size: 160%; /* Pushed from 135% for a massive macro-style zoom */
-        background-position: center 50%; 
+        background-size: cover; /* Perfectly hits the edges without aggressive cropping */
+        background-position: center center; 
     }
     
     .library-card .strain-content {
