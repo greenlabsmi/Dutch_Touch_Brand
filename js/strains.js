@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  // 1. Fetch the master database
+  
+  // ============================================================
+  // 1. MASTER HUB DATA FETCH
+  // ============================================================
   let strains = [];
-  const isGreenLabs = window.location.hostname.includes('Green-Labs');
-  const baseUrl = isGreenLabs ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' : '';
+  const isExternalSite = !window.location.href.includes('Dutch_Touch_Brand');
+  const baseUrl = isExternalSite ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' : '';
 
   try {
     const response = await fetch('https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.json');
@@ -11,7 +14,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Failed to load strains for modal/filtering:', error);
   }
 
-  // 2. Dynamically create the Modal HTML
+  // ============================================================
+  // 2. GLOBAL NAV & HAMBURGER MENU LOGIC
+  // ============================================================
+  const nav = document.querySelector('.dt-nav');
+  const hamburger = document.querySelector('.dt-nav-hamburger');
+  const overlay = document.querySelector('.dt-menu-overlay');
+  const closeMenu = document.querySelector('.dt-menu-close');
+  const menuLinks = document.querySelectorAll('.dt-menu-links a');
+
+  // Sticky Glass Scroll Effect
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  }
+
+  // Slide-Out Menu Activation
+  if (hamburger && overlay) {
+    hamburger.addEventListener('click', () => {
+      overlay.classList.add('active');
+      menuLinks.forEach((link, index) => {
+        setTimeout(() => link.classList.add('revealed'), 100 + (index * 50));
+      });
+    });
+  }
+  if (closeMenu && overlay) {
+    closeMenu.addEventListener('click', () => {
+      overlay.classList.remove('active');
+      menuLinks.forEach(link => link.classList.remove('revealed'));
+    });
+  }
+
+  // ============================================================
+  // 3. DYNAMIC CINEMATIC MODAL
+  // ============================================================
   const modalHTML = `
     <div class="strain-modal" id="strainModal">
       <div class="strain-modal-dialog">
@@ -46,18 +84,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   const modal = document.getElementById('strainModal');
   const closeModal = document.getElementById('closeModal');
 
- // 3. Setup Click Listeners for the Cards (Event Delegation)
+  // ============================================================
+  // 4. CARD CLICK EVENT DELEGATION
+  // ============================================================
   document.body.addEventListener('click', (e) => {
     
-    // 1. Check if they clicked a strain card
+    // Check if they clicked a strain card
     const card = e.target.closest('.strain-card');
     if (card) {
-      const strainName = card.querySelector('.strain-name').innerText;
+      // Use textContent instead of innerText to read text even if hidden on mobile
+      const strainName = card.querySelector('.strain-name').textContent;
       const strainData = strains.find(s => s.name === strainName);
 
       if (strainData) {
-        document.getElementById('modalName').innerText = strainData.name;
-        document.getElementById('modalBreeder').innerText = "Genetics by " + strainData.breeder;
+        document.getElementById('modalName').textContent = strainData.name;
+        document.getElementById('modalBreeder').textContent = "Genetics by " + strainData.breeder;
         
         const imgEl = document.getElementById('modalImage');
         if (strainData.image) {
@@ -72,16 +113,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             imgEl.style.backgroundColor = '#0b0b0b';
         }
         
-        document.getElementById('modalType').innerText = strainData.type.toUpperCase();
-        document.getElementById('modalLineage').innerText = strainData.lineage;
-        document.getElementById('modalDesc').innerText = strainData.description;
+        document.getElementById('modalType').textContent = strainData.type.toUpperCase();
+        document.getElementById('modalLineage').textContent = strainData.lineage;
+        document.getElementById('modalDesc').textContent = strainData.description;
 
         modal.classList.add('open');
-        document.body.style.overflow = 'hidden'; // Prevents background scrolling
+        document.body.style.overflow = 'hidden'; 
       }
     }
 
-    // 2. Check if they clicked outside the modal box to close it
+    // Check if they clicked the background blur to close
     if (e.target.classList.contains('strain-modal')) {
         closeDialog();
     }
@@ -92,9 +133,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.body.style.overflow = '';
   };
   
-  closeModal.addEventListener('click', closeDialog);
+  if (closeModal) closeModal.addEventListener('click', closeDialog);
 
-  // 4. Setup Filtering and Searching
+  // ============================================================
+  // 5. SEARCH & FILTERING ENGINE
+  // ============================================================
   const searchInput = document.getElementById('strainSearch');
   const filterBtns = document.querySelectorAll('.strain-filter');
 
@@ -104,13 +147,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     const query = searchInput.value.toLowerCase();
     const activeBtn = document.querySelector('.strain-filter.is-active');
     const filterType = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
-    const allCards = document.querySelectorAll('.strain-card');
     
-    allCards.forEach(card => {
-      const name = card.querySelector('.strain-name').innerText.toLowerCase();
-      const desc = card.querySelector('.strain-notes').innerText.toLowerCase();
-      const meta = card.querySelector('.strain-meta').innerText.toLowerCase();
-      const hasAward = card.querySelector('.strain-badge') !== null;
+    // Only apply filters to the main vault, letting the top scroller stay pristine
+    const vaultCards = document.querySelectorAll('#vault-strains .strain-card');
+    
+    vaultCards.forEach(card => {
+      const name = (card.querySelector('.strain-name')?.textContent || '').toLowerCase();
+      const desc = (card.querySelector('.strain-notes')?.textContent || '').toLowerCase();
+      const meta = (card.querySelector('.strain-meta')?.textContent || '').toLowerCase();
+      
+      // Look for the specific class added by our loader
+      const hasAward = card.classList.contains('is-award-winner');
       
       const matchesSearch = name.includes(query) || desc.includes(query) || meta.includes(query);
       let matchesFilter = false;
@@ -119,19 +166,23 @@ document.addEventListener('DOMContentLoaded', async () => {
       else if (filterType === 'award') matchesFilter = hasAward;
       else matchesFilter = meta.includes(filterType);
 
-      if (matchesSearch && matchesFilter) card.style.display = 'block';
+      // Must be 'flex' so the CSS grid styling doesn't break
+      if (matchesSearch && matchesFilter) card.style.display = 'flex';
       else card.style.display = 'none';
     });
 
+    // A-Z Layout Reordering
     if (filterType === 'az') {
-      ['current-strains', 'vault-strains'].forEach(gridId => {
-        const grid = document.getElementById(gridId);
-        if(grid) {
-          Array.from(grid.children)
-            .sort((a, b) => a.querySelector('.strain-name').innerText.localeCompare(b.querySelector('.strain-name').innerText))
-            .forEach(node => grid.appendChild(node));
-        }
-      });
+      const grid = document.getElementById('vault-strains');
+      if(grid) {
+        Array.from(grid.children)
+          .sort((a, b) => {
+              const nameA = a.querySelector('.strain-name')?.textContent || '';
+              const nameB = b.querySelector('.strain-name')?.textContent || '';
+              return nameA.localeCompare(nameB);
+          })
+          .forEach(node => grid.appendChild(node));
+      }
     }
   }
 
@@ -149,32 +200,30 @@ document.addEventListener('DOMContentLoaded', async () => {
   const gridToWatch = document.getElementById('vault-strains');
   if(gridToWatch) observer.observe(gridToWatch, { childList: true });
 
-  // 5. SIDE BAR ALPHA JUMP LOGIC
+  // ============================================================
+  // 6. STICKY A-Z JUMP BAR LOGIC
+  // ============================================================
   const jumpBar = document.querySelector('.alpha-jump-bar');
   if (jumpBar) {
-    // Generate the alphabet dynamically (plus # for numbers)
     const alphabet = ["#", ..."ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")];
     jumpBar.innerHTML = ''; 
     alphabet.forEach(letter => {
       const btn = document.createElement('button');
       btn.className = 'alpha-btn';
-      btn.innerText = letter;
+      btn.textContent = letter;
       jumpBar.appendChild(btn);
     });
 
     jumpBar.addEventListener('click', (e) => {
       if (e.target.classList.contains('alpha-btn')) {
-        const letter = e.target.innerText.toLowerCase();
+        const letter = e.target.textContent.toLowerCase();
         const allCards = document.querySelectorAll('#vault-strains .strain-card');
         
         for (let card of allCards) {
-          const name = card.querySelector('.strain-name').innerText.toLowerCase();
-          
-          // Check if it starts with a number (for the # button) OR the specific letter
+          const name = (card.querySelector('.strain-name')?.textContent || '').toLowerCase();
           const isMatch = letter === '#' ? name.match(/^\d/) : name.startsWith(letter);
           
           if (isMatch && card.style.display !== 'none') {
-            // Calculate scroll position (offset by 100px so nav bar doesn't cover it)
             const y = card.getBoundingClientRect().top + window.scrollY - 160; 
             window.scrollTo({top: y, behavior: 'smooth'});
             break; 
