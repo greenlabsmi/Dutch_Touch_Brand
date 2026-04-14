@@ -7,7 +7,7 @@
     "lineage": "Apollo 13 x Wonka Bars",
     "breeder": "Dutch Touch Genetics",
     "description": "An ideal choice for experienced consumers. Relaxed, euphoric, and uplifted effects with flavors of vanilla, pungent earth, and skunk.",
-    "image": "assets/img/strains/13-layer-cake.png"
+    "image": "assets/img/strains/13-layer-cake-bud.jpg"
   },
   {
     "slug": "agent-orange",
@@ -69,7 +69,7 @@
     "lineage": "Tangie x Banana Sherbet",
     "breeder": "DNA Genetics",
     "description": "The familiar tangerine burst of the Tangie is backed with the bold fruity notes from the Banana Sherbet.",
-    "image": "assets/img/strains/banana-split.png"
+    "image": "assets/img/strains/banana-split-bud.jpg"
   },
   {
     "slug": "big-smooth",
@@ -151,7 +151,7 @@
     "lineage": "Chem 3 x Appalachia",
     "breeder": "Bodhi Seeds",
     "description": "Known for an incredibly complex and pungent terpene profile, Cobra Lips delivers a blast of earthy fuel that finishes with a surprising hit of tart green apple. It provides a highly potent, yet fully functional buzz that balances bright euphoria with physical ease.",
-    "image": "assets/img/strains/cobra-lips-1-bud.jpg"
+    "image": "assets/img/strains/cobra-lips-bud.jpg"
   },
   {
     "slug": "crunchberries-3",
@@ -172,7 +172,7 @@
     "lineage": "Death Star x Dread Bread",
     "breeder": "Dutch Touch Genetics",
     "description": "A heavy-hitting in-house cross from Dutch Touch Genetics. Dead Prez commands the room with a sour, aggressive diesel aroma backed by hints of citrus and spice. Expect a deeply pungent smoke and a heavy, deeply relaxing physical stone.",
-    "image": "assets/img/strains/dead-prez-bud.jpg"
+    "image": "assets/img/strains/dead-prez.png"
   },
   {
     "slug": "death-star",
@@ -203,7 +203,7 @@
     "lineage": "Death Star x Z Skittlez",
     "breeder": "Team Deathstar",
     "description": "Hops, floral, and hints of gas and citrus coming from its legendary parents.",
-    "image": "assets/img/strains/death-z.png"
+    "image": "assets/img/strains/death-z-bud-jpg"
   },
   {
     "slug": "double-bubble",
@@ -213,7 +213,7 @@
     "lineage": "Bubble Gum x 88G13HP",
     "breeder": "Bodhi Seeds",
     "description": "Aromas include tropical fruit, juicy fruit bubblegum, hash, musk, and sandalwood.",
-    "image": "assets/img/strains/double-bubble.png"
+    "image": "assets/img/strains/double-bubble-bud.jpg"
   },
   {
     "slug": "double-ds",
@@ -253,7 +253,7 @@
     "lineage": "Sunset Sherbert x Tina",
     "breeder": "Exotic Genetix",
     "description": "Noted for a smooth, gassy ice cream flavor profile. Starts as a strong head high before heavily settling into the body.",
-    "image": "assets/img/strains/falcon-9.png"
+    "image": "assets/img/strains/falcon-9-bud.jpg"
   },
   {
     "slug": "field-trip",
@@ -303,7 +303,7 @@
     "lineage": "Gorilla Glue #4 x 88G13HP",
     "breeder": "Bodhi Seeds",
     "description": "Powerful, relaxing, and euphoric. Inherits sticky GG4 pungency with added notes of cinnamon and earth.",
-    "image": "assets/img/strains/gorilla-88.png"
+    "image": "assets/img/strains/gorilla-88-bud.jpg"
   },
   {
     "slug": "grape-gouda",
@@ -333,7 +333,7 @@
     "lineage": "The Juice x Triple OG",
     "breeder": "Exotic Genetix",
     "description": "Bouquet of fresh fruity berries, sugary citrus and touches of light spice dancing across your tongue.",
-    "image": "assets/img/strains/guicy-g.png"
+    "image": "assets/img/strains/guicy-g-buds.jpg"
   },
   {
     "slug": "hash-d",
@@ -466,7 +466,7 @@
     "lineage": "Highland Oaxacan Gold x Space Queen",
     "breeder": "TGA Genetics (Subcool)",
     "description": "Famous for a unique combination of pineapple and cherry candy notes. Tasty, functional, and uplifting.",
-    "image": "assets/img/strains/pina-rita-2.png"
+    "image": "assets/img/strains/pina-rita.png"
   },
   {
     "slug": "platinum-cookies",
@@ -516,7 +516,7 @@
     "lineage": "Sky Lotus x Higher Primate",
     "breeder": "Dutch Touch Genetics",
     "description": "Musky, melon, guava, sweet and sour notes of funk.",
-    "image": "assets/img/strains/solo-walker.png"
+    "image": "assets/img/strains/solo-walker-bud.jpg"
   },
   {
     "slug": "space-hippy",
@@ -546,7 +546,7 @@
     "lineage": "Ghost OG x 88G13/HP",
     "breeder": "Bodhi Seeds",
     "description": "Reports indicate a strong Ghost OG scent, often described as gassy, earthy, and piney.",
-    "image": "assets/img/strains/spirit-hashplant.png"
+    "image": "assets/img/strains/spirit-hashplant-bud.jpg"
   },
   {
     "slug": "star-flight-guava",
@@ -566,7 +566,7 @@
     "lineage": "Gorilla Glue 4 x Vortex",
     "breeder": "High Bridge Seed Co",
     "description": "Creates a balanced blend of pungent earthiness from GG4 with sweet, tropical notes from Vortex.",
-    "image": "assets/img/strains/sticky-trap.png"
+    "image": "assets/img/strains/sticky-trap-bud-jpg"
   },
   {
     "slug": "strawberry-daquiri",
@@ -576,7 +576,7 @@
     "lineage": "Strawberry Cough x Jack the Ripper",
     "breeder": "TGA Genetics (Subcool)",
     "description": "Combines notes of strawberry, cherry and chocolate on an acidic background. Energetic and positive.",
-    "image": "assets/img/strains/strawberry-daquiri.png"
+    "image": "assets/img/strains/strawberry-daquiri-bud.jpg"
   },
   {
     "slug": "sunshine-daydream",
