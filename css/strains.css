@@ -1052,60 +1052,83 @@ body.dt-strains-page .dt-footer-copy {
         margin-bottom: 15px;
     }
 
-    /* 3. Main Library Grid & A-Z Bar Fix */
+    /* 3. Main Library Grid & Layout */
     .library-layout-wrapper {
-        padding-right: 45px; /* Creates a permanent, safe 'lane' for the A-Z bar on the right */
+        flex-direction: column; /* Stacks the A-Z bar ABOVE the grid instead of beside it */
+        padding-right: 10px; /* Removes the squished right lane */
+        padding-left: 10px;
     }
 
     #vault-strains {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 12px;
         width: 100%; 
-        padding-left: 10px;
+        padding-left: 0;
     }
 
-    /* 4. Library Card Tile Polish */
+    /* 4. Library Card Tile Polish (Image & Name ONLY) */
     .library-card {
         border-radius: 12px;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
     }
     
     .library-card .desktop-img {
-        height: 120px;
+        height: 160px; /* Taller, more prominent image */
     }
     
     .library-card .strain-content {
-        padding: 10px;
+        padding: 12px 8px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1; 
     }
     
     .library-card .strain-name {
-        font-size: 0.95rem; 
-        margin-bottom: 5px;
+        font-size: 1rem; 
+        margin: 0;
         line-height: 1.2;
-        word-wrap: break-word; /* Stops long names from breaking the box */
-    }
-    
-    .library-card .strain-meta {
-        font-size: 0.65rem;
-        line-height: 1.3;
     }
 
-    /* 5. Fix the yellow lineage text clipping */
-    .lineage-text {
-        font-size: 0.65rem !important;
-        white-space: normal !important; /* Lets long genetics wrap neatly to a second line instead of cutting off with '...' */
-        overflow: visible;
+    /* 5. Hide ALL extra text on mobile tiles */
+    .library-card .strain-meta,
+    .library-card .lineage-text,
+    .library-card .teaser-text,
+    .library-card .card-action {
+        display: none !important;
     }
 
-    /* 6. Alphabet Bar Positioning */
+    /* 6. Horizontal Alphabet Swipe Bar */
     .alpha-jump-bar {
-        width: 35px;
-        font-size: 10px;
-        right: 5px;
-        background: rgba(0,0,0,0.4);
-        backdrop-filter: blur(5px);
-        border-radius: 20px;
-        padding: 10px 0;
+        position: relative;
+        top: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        background: transparent;
+        border: none;
+        backdrop-filter: none;
+        box-shadow: none;
+        padding: 0 0 15px 0;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .alpha-jump-bar::-webkit-scrollbar {
+        display: none; /* Hides the ugly scrollbar for a clean swipe */
+    }
+
+    .alpha-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+        background: #111;
+        border-radius: 8px;
+        border: 1px solid #333;
+        flex-shrink: 0; /* Keeps buttons uniform while swiping */
     }
 }
 
