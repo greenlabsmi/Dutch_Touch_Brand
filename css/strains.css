@@ -62,8 +62,45 @@ body.dt-strains-page .dt-menu-links a.revealed { opacity:1; transform:translateX
    3. MAIN SECTION, SEARCH & FILTERS
 ============================================================ */
 .dt-strains-section { padding:4rem 2rem; max-width:1400px; margin:0 auto; }
-.dt-strains-header h2 { font-family:"Cinzel", serif; color:#fff; margin-bottom:0.3rem; }
-.dt-strains-header p { color:#999; margin-bottom:2rem; }
+/* ============================================================
+   PREMIUM SECTION HEADERS
+============================================================ */
+.dt-strains-header {
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.dt-strains-header h2 { 
+    font-family: "Cinzel", serif; 
+    color: #fff; 
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Gives the text a subtle 3D pop */
+}
+
+.dt-strains-header p { 
+    color: #d4af37; /* Changes subtext to premium gold */
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0; 
+    opacity: 0.9;
+}
+
+/* The Gold Accent Line */
+.dt-strains-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #d4af37, transparent);
+    border-radius: 2px;
+}
+
+.strain-search-wrap { margin-bottom:1.5rem; width:100%; }
 
 .strain-search-wrap { margin-bottom:1.5rem; width:100%; }
 .strain-search-input { width:100%; padding:0.8rem 1rem; border-radius:8px; border:1px solid #333; background:#0d0d0d; color:#eee; font-size:1rem; outline:none; transition:0.2s; }
@@ -99,8 +136,31 @@ body.dt-strains-page .dt-menu-links a.revealed { opacity:1; transform:translateX
 ============================================================ */
 .strain-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1.7rem; }
 
-.strain-card { background:#0a0a0a; border-radius:14px; border:1px solid #1a1a1a; cursor:pointer; overflow:hidden; position:relative; transition:transform 0.25s ease, box-shadow 0.25s ease; }
-.strain-card:hover { transform:translateY(-4px); box-shadow:0 0 20px rgba(212,175,55,0.25); }
+/* LAZY LOAD FADE-IN LOGIC */
+.strain-card { 
+    background: #0a0a0a; 
+    border-radius: 14px; 
+    border: 1px solid #1a1a1a; 
+    cursor: pointer; 
+    overflow: hidden; 
+    position: relative; 
+    
+    /* Starts invisible and pushed down */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); 
+}
+
+/* Triggered by the JS Observer when scrolling */
+.strain-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.strain-card.is-visible:hover { 
+    transform: translateY(-6px); 
+    box-shadow: 0 12px 30px rgba(214, 163, 74, 0.25); 
+}
 
 #vault-strains .library-card { display: flex; flex-direction: column; height: 100%; }
 #vault-strains .strain-card-inner { display: flex; flex-direction: column; height: 100%; padding: 0; }
@@ -172,6 +232,9 @@ body.dt-strains-page .dt-footer-copy { color:#777; font-size:13px; }
     /* Clear Nav Overlaps */
     body.dt-strains-page { padding-top: 90px !important; }
     .dt-strains-header { margin-top: 0; padding: 0 15px; }
+   .dt-strains-header { margin-top: 0; padding: 0 15px; text-align: center; }
+    .dt-strains-header p { margin: 0 auto; }
+    .dt-strains-header::after { left: 50%; transform: translateX(-50%); width: 100px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
     .dt-strains-header h2 { font-size: 1.6rem; line-height: 1.2; margin-bottom: 8px; }
 
     /* Fix Squished Grid Constraints */
