@@ -12,6 +12,10 @@ async function loadStrainLibrary() {
 
     if (!vaultGrid) return;
 
+    // Arrays to hold our data before we inject it into the page
+    let featuredItems = [];
+    let vaultHTMLBlocks = [];
+
     strains.forEach(strain => {
       
       // 1. .trim() destroys invisible spaces and line-breaks
@@ -30,32 +34,35 @@ async function loadStrainLibrary() {
       const cornerBadgeHTML = badgeText ? `<span class="corner-award-badge">${badgeText}</span>` : '';
 
       // ==========================================
-      // 1. TOP SCROLLER (AWARDS & FAVORITES)
+      // 1. TOP SCROLLER (COLLECT & CATEGORIZE)
       // ==========================================
       if (badgeText !== '' && featuredScroller) {
-        const trophyHTML = `
-          <div class="strain-card trophy-card ${highlightClass}">
-            <div class="strain-card-inner">
-              <div class="strain-image" style="background-image: url('${imageUrl}');">
-                ${cornerBadgeHTML}
-              </div>
-              <div class="strain-top">
-                <h3 class="strain-name">${strain.name}</h3>
-              </div>
-              <p class="strain-meta">${strain.type.toUpperCase()} | Genetics by ${strain.breeder}</p>
-              <div class="strain-content">
-                <p class="strain-notes">${strain.description}</p>
+        featuredItems.push({
+          isAward: strain.award ? true : false,
+          name: strain.name,
+          html: `
+            <div class="strain-card trophy-card ${highlightClass}">
+              <div class="strain-card-inner">
+                <div class="strain-image" style="background-image: url('${imageUrl}');">
+                  ${cornerBadgeHTML}
+                </div>
+                <div class="strain-top">
+                  <h3 class="strain-name">${strain.name}</h3>
+                </div>
+                <p class="strain-meta">${strain.type.toUpperCase()} | Genetics by ${strain.breeder}</p>
+                <div class="strain-content">
+                  <p class="strain-notes">${strain.description}</p>
+                </div>
               </div>
             </div>
-          </div>
-        `;
-        featuredScroller.innerHTML += trophyHTML;
+          `
+        });
       }
 
      // ==========================================
-      // 2. MAIN VAULT LIBRARY (CLEAN TEASER CARD)
+      // 2. MAIN VAULT LIBRARY (COLLECT TEASER CARD)
       // ==========================================
-      const vaultHTML = `
+      vaultHTMLBlocks.push(`
         <article class="strain-card library-card ${highlightClass}">
           <div class="strain-card-inner">
             
@@ -75,9 +82,25 @@ async function loadStrainLibrary() {
 
           </div>
         </article>
-      `;
-      vaultGrid.innerHTML += vaultHTML;
+      `);
     });
+
+    // ==========================================
+    // 3. SORT & INJECT THE ARRAYS
+    // ==========================================
+    
+    // Sort Scroller: Awards First, then A-Z Alphabetical
+    if (featuredScroller) {
+      featuredItems.sort((a, b) => {
+        if (a.isAward && !b.isAward) return -1; // Push a to the front
+        if (!a.isAward && b.isAward) return 1;  // Push b to the front
+        return a.name.localeCompare(b.name);    // Tie-breaker: Alphabetical
+      });
+      featuredScroller.innerHTML = featuredItems.map(item => item.html).join('');
+    }
+
+    // Inject Main Library
+    vaultGrid.innerHTML = vaultHTMLBlocks.join('');
 
   } catch (error) {
     console.error('Failed to load Strain Library:', error);
