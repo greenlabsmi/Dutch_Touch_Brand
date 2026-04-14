@@ -1021,17 +1021,22 @@ body.dt-strains-page .dt-footer-copy {
     }
 
     /* 3. Main Library Grid & Layout */
+    .dt-strains-section {
+        padding-left: 10px !important; /* Kills the massive 32px invisible border */
+        padding-right: 10px !important; /* Kills the massive 32px invisible border */
+    }
+
     .library-layout-wrapper {
         flex-direction: column; 
-        padding-right: 5px; /* Minimized outer padding to stretch tiles */
-        padding-left: 5px;  /* Minimized outer padding to stretch tiles */
+        padding-right: 0; /* Fully expanded to the edges */
+        padding-left: 0;  /* Fully expanded to the edges */
     }
 
     #vault-strains {
         grid-template-columns: repeat(2, 1fr);
-        gap: 8px; /* Tighter inner gap forces the two columns to grow wider */
+        gap: 12px; /* Clean, comfortable gap between the two tiles */
         width: 100%; 
-        padding-left: 0;
+        padding: 0; 
     }
 
     /* 4. Library Card Tile Polish (Image & Name ONLY) */
