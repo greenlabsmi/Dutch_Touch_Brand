@@ -151,7 +151,7 @@
     "lineage": "Chem 3 x Appalachia",
     "breeder": "Bodhi Seeds",
     "description": "Known for an incredibly complex and pungent terpene profile, Cobra Lips delivers a blast of earthy fuel that finishes with a surprising hit of tart green apple. It provides a highly potent, yet fully functional buzz that balances bright euphoria with physical ease.",
-    "image": "assets/img/strains/cobra-lips-bud.jpg"
+    "image": "assets/img/strains/cobra-lips-bud.png"
   },
   {
     "slug": "crunchberries-3",
@@ -203,7 +203,7 @@
     "lineage": "Death Star x Z Skittlez",
     "breeder": "Team Deathstar",
     "description": "Hops, floral, and hints of gas and citrus coming from its legendary parents.",
-    "image": "assets/img/strains/death-z-bud-jpg"
+    "image": "assets/img/strains/death-z-bud.jpg"
   },
   {
     "slug": "double-bubble",
@@ -576,7 +576,7 @@
     "lineage": "Strawberry Cough x Jack the Ripper",
     "breeder": "TGA Genetics (Subcool)",
     "description": "Combines notes of strawberry, cherry and chocolate on an acidic background. Energetic and positive.",
-    "image": "assets/img/strains/strawberry-daquiri-bud.jpg"
+    "image": "assets/img/strains/strawberry-daiquiri-bud.jpg"
   },
   {
     "slug": "sunshine-daydream",
