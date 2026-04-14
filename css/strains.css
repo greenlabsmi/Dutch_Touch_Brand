@@ -1054,14 +1054,14 @@ body.dt-strains-page .dt-footer-copy {
 
     /* 3. Main Library Grid & Layout */
     .library-layout-wrapper {
-        flex-direction: column; /* Stacks the A-Z bar ABOVE the grid instead of beside it */
-        padding-right: 10px; /* Removes the squished right lane */
-        padding-left: 10px;
+        flex-direction: column; 
+        padding-right: 5px; /* Minimized outer padding to stretch tiles */
+        padding-left: 5px;  /* Minimized outer padding to stretch tiles */
     }
 
     #vault-strains {
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 8px; /* Tighter inner gap forces the two columns to grow wider */
         width: 100%; 
         padding-left: 0;
     }
@@ -1075,11 +1075,19 @@ body.dt-strains-page .dt-footer-copy {
     }
     
     .library-card .desktop-img {
-        height: 160px; /* Taller, more prominent image */
+        height: 180px; /* Taller image box */
+    }
+    
+    /* 🌟 THE ZOOM EFFECT 🌟 
+       This zooms in on the plant photos to make the buds look massive, 
+       but ignores the fallback logo so it doesn't get distorted! */
+    .library-card .desktop-img:not(.fallback-logo) {
+        background-size: 135%; 
+        background-position: center 50%; 
     }
     
     .library-card .strain-content {
-        padding: 12px 8px;
+        padding: 12px 6px; /* Tighter padding gives more room to the image */
         text-align: center;
         display: flex;
         align-items: center;
@@ -1088,9 +1096,9 @@ body.dt-strains-page .dt-footer-copy {
     }
     
     .library-card .strain-name {
-        font-size: 1rem; 
+        font-size: 1.05rem; /* Slightly larger text to balance the bigger image */
         margin: 0;
-        line-height: 1.2;
+        line-height: 1.1;
     }
 
     /* 5. Hide ALL extra text on mobile tiles */
