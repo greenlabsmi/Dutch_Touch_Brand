@@ -51,7 +51,8 @@ async function loadStrainLibrary() {
                 </div>
                 <p class="strain-meta">${strain.type.toUpperCase()} | Genetics by ${strain.breeder}</p>
                 <div class="strain-content">
-                  <p class="strain-notes">${strain.description}</p>
+                  <p class="strain-notes teaser-text">${strain.description}</p>
+                  <div class="card-action">Tap for Full Details <span>→</span></div>
                 </div>
               </div>
             </div>
