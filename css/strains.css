@@ -1,82 +1,19 @@
 /* ============================================================
-   DUTCH TOUCH GENETICS
-   STRAINS PAGE — FULL FILE (NAV + LAYOUT + MODAL)
+   DUTCH TOUCH GENETICS STRAINS PAGE — MASTER CSS
    Scoped to: body.dt-strains-page
 ============================================================ */
 
-
 /* ============================================================
-   GLOBAL NAV (MATCHES HOMEPAGE NAV)
+   1. GLOBAL NAV & MENU OVERLAY 
 ============================================================ */
-body.dt-strains-page .dt-nav {
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  height:72px;
-
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  align-items:center;
-  padding:0 16px;
-
-  background:var(--nav-bg);
-  backdrop-filter:none;
-  transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
-  z-index:1100;
-}
-
-body.dt-strains-page .dt-nav.scrolled {
-  background:var(--nav-bg-solid);
-  backdrop-filter:blur(8px);
-  box-shadow:0 3px 16px rgba(0,0,0,0.55);
-}
-
-/* LEFT */
-body.dt-strains-page .dt-nav-left {
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-body.dt-strains-page .dt-nav-hamburger {
-  width:32px;
-  height:22px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  background:none;
-  border:none;
-  cursor:pointer;
-}
-
-body.dt-strains-page .dt-nav-hamburger span {
-  height:3px;
-  width:100%;
-  background:#F7F3E9; /* ink */
-  border-radius:4px;
-}
-
-/* LOGO */
-body.dt-strains-page .dt-nav-logo img {
-  height:28px;
-}
-
-/* CENTER TEXT */
-body.dt-strains-page .dt-nav-text {
-  justify-self:center;
-  font-family:Cinzel, serif;
-  font-weight:700;
-  font-size:28px;
-  white-space:nowrap;
-  color:#E67A00;
-  display:none;
-}
-
-body.dt-strains-page .dt-nav-text span {
-  color:#CDA45A;
-  animation:touchPulse 3.8s ease-in-out infinite alternate;
-}
+body.dt-strains-page .dt-nav { position:fixed; top:0; left:0; right:0; height:72px; display:grid; grid-template-columns:auto 1fr auto; align-items:center; padding:0 16px; background:var(--nav-bg); backdrop-filter:none; transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease; z-index:1100; }
+body.dt-strains-page .dt-nav.scrolled { background:var(--nav-bg-solid); backdrop-filter:blur(8px); box-shadow:0 3px 16px rgba(0,0,0,0.55); }
+body.dt-strains-page .dt-nav-left { display:flex; align-items:center; gap:12px; }
+body.dt-strains-page .dt-nav-hamburger { width:32px; height:22px; display:flex; flex-direction:column; justify-content:space-between; background:none; border:none; cursor:pointer; }
+body.dt-strains-page .dt-nav-hamburger span { height:3px; width:100%; background:#F7F3E9; border-radius:4px; }
+body.dt-strains-page .dt-nav-logo img { height:28px; }
+body.dt-strains-page .dt-nav-text { justify-self:center; font-family:Cinzel, serif; font-weight:700; font-size:28px; white-space:nowrap; color:#E67A00; display:none; }
+body.dt-strains-page .dt-nav-text span { color:#CDA45A; animation:touchPulse 3.8s ease-in-out infinite alternate; }
 
 @keyframes touchPulse {
   0%   { color:#CDA45A; text-shadow:0 0 0 rgba(255,200,120,0); }
@@ -84,1073 +21,188 @@ body.dt-strains-page .dt-nav-text span {
   100% { color:#CDA45A; text-shadow:0 0 0 rgba(255,200,120,0); }
 }
 
-/* SOCIAL ICONS */
-body.dt-strains-page .dt-nav-icons {
-  display:flex;
-  justify-content:flex-end;
-  align-items:center;
-  gap:14px;
-}
+body.dt-strains-page .dt-nav-icons { display:flex; justify-content:flex-end; align-items:center; gap:14px; }
+body.dt-strains-page .dt-nav-icons img { width:24px; height:24px; transition:transform .25s ease; }
+body.dt-strains-page .dt-nav-icons img:hover { transform:translateY(-2px) scale(1.12); }
 
-body.dt-strains-page .dt-nav-icons img {
-  width:24px;
-  height:24px;
-  transition:transform .25s ease;
-}
-
-body.dt-strains-page .dt-nav-icons img:hover {
-  transform:translateY(-2px) scale(1.12);
-}
-
-/* DESKTOP BREAKPOINT */
 @media (min-width:768px) {
   body.dt-strains-page .dt-nav-text { display:block; }
   body.dt-strains-page .dt-nav-hamburger { width:36px; height:26px; }
   body.dt-strains-page .dt-nav-hamburger span { width:30px; }
   body.dt-strains-page .dt-nav-logo img { height:36px; }
 }
-
 @media (max-width:767px) {
   body.dt-strains-page .dt-nav-icons img { width:20px; height:20px; }
   body.dt-strains-page .dt-nav-hamburger { width:30px; height:20px; }
 }
 
-.navbar {
-  background: transparent;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-  transition: background 0.3s ease;
-}
+body.dt-strains-page .dt-menu-overlay { position:fixed; top:0; left:0; width:75%; max-width:320px; height:100%; background:#000; transform:translateX(-100%); opacity:0; pointer-events:none; transition:transform .45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity .35s ease; z-index:3000; }
+body.dt-strains-page .dt-menu-overlay.active { transform:translateX(0); opacity:1; pointer-events:auto; }
+body.dt-strains-page .dt-menu-inner { padding:22px 20px; }
+body.dt-strains-page .dt-menu-close { background:none; border:none; color:#fff; font-size:42px; margin-bottom:16px; cursor:pointer; }
+body.dt-strains-page .dt-menu-logo { height:42px; margin-bottom:20px; }
+body.dt-strains-page .dt-menu-links a { display:block; font-family:Cinzel, serif; font-size:30px; margin-bottom:18px; opacity:0; transform:translateX(-22px); transition:opacity .45s ease, transform .45s ease; }
+body.dt-strains-page .dt-menu-links a.revealed { opacity:1; transform:translateX(0); }
 
 /* ============================================================
-   MENU OVERLAY — SLIDE OUT (MATCHES HOMEPAGE)
+   2. HERO SECTION
 ============================================================ */
+.dt-strains-hero { background: url('../assets/img/strains/strains-hero.png') center 42% / cover no-repeat; height: 60vh; min-height: 500px; max-height: 720px; margin-top: 72px; margin-bottom: 4rem; text-align: center; display: flex; flex-direction: column; justify-content: flex-start; padding: 10rem 1rem 2rem; position: relative; }
+.dt-strains-hero::after { content: ""; position: absolute; bottom: -1px; left: 0; right: 0; height: 150px; background: linear-gradient(to bottom, rgba(0,0,0,0), #000 ); pointer-events: none; }
+.strains-title { font-family: "Cinzel", serif; font-size: 4.1rem; font-weight: 700; line-height: 1.03; color: #F7F2E8; margin: 0 auto 0.7rem; text-shadow: 0 4px 18px rgba(0,0,0,0.55), 0 0 3px rgba(0,0,0,0.45); }
+.strains-subtitle { color: #E4D7BC; max-width: 560px; margin: 0 auto; font-size: 1.15rem; font-weight: 400; line-height: 1.38; text-shadow: 0 2px 8px rgba(0,0,0,0.55); opacity: 0.92; }
 
-body.dt-strains-page .dt-menu-overlay {
-  position:fixed;
-  top:0;
-  left:0;
-  width:75%;
-  max-width:320px;
-  height:100%;
-  background:#000;
-
-  transform:translateX(-100%);
-  opacity:0;
-  pointer-events:none;
-
-  transition:transform .45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity .35s ease;
-
-  z-index:3000;
-}
-
-body.dt-strains-page .dt-menu-overlay.active {
-  transform:translateX(0);
-  opacity:1;
-  pointer-events:auto;
-}
-
-body.dt-strains-page .dt-menu-inner {
-  padding:22px 20px;
-}
-
-body.dt-strains-page .dt-menu-close {
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:42px;
-  margin-bottom:16px;
-  cursor:pointer;
-}
-
-body.dt-strains-page .dt-menu-logo {
-  height:42px;
-  margin-bottom:20px;
-}
-
-body.dt-strains-page .dt-menu-links a {
-  display:block;
-  font-family:Cinzel, serif;
-  font-size:30px;
-  margin-bottom:18px;
-
-  opacity:0;
-  transform:translateX(-22px);
-  transition:opacity .45s ease, transform .45s ease;
-}
-
-body.dt-strains-page .dt-menu-links a.revealed {
-  opacity:1;
-  transform:translateX(0);
-}
-
-/* ============================================================
-   HERO — compact, responsive, image-based
-============================================================ */
-
-.dt-strains-hero {
-  /* image */
-  background: url('../assets/img/strains/strains-hero.png')
-    center 42% / cover no-repeat;
-  /* ↑ 42% = lower crop = we see more plants and shoulders */
-
-  /* height control */
-  height: 60vh;
-  min-height: 500px;
-  max-height: 720px;
-
-  /* layout */
-  margin-top: 72px; /* sits under nav */
-  margin-bottom: 4rem;
-  text-align: center;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-
-  /* ↓ text sits lower into the frame */
-  padding: 10rem 1rem 2rem;
-
-  position: relative;
-}
-
-/* bottom fade into content */
-.dt-strains-hero::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 150px;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0),
-    #000
-  );
-  pointer-events: none;
-}
-
-/* ============================================================
-   HERO TEXT — TITLE + SUBTITLE
-============================================================ */
-
-.strains-title {
-  font-family: "Cinzel", serif;
-  font-size: 4.1rem;
-  font-weight: 700;
-  line-height: 1.03;
-   color: #F7F2E8;
-  margin: 0 auto 0.7rem;
-  text-shadow:
-    0 4px 18px rgba(0,0,0,0.55),
-    0 0 3px rgba(0,0,0,0.45);
-}
-
-.strains-subtitle {
-color: #E4D7BC;
-  max-width: 560px;
-  margin: 0 auto;
-  font-size: 1.15rem;
-  font-weight: 400;
-  line-height: 1.38;
-  text-shadow:
-    0 2px 8px rgba(0,0,0,0.55);
-  opacity: 0.92;
-}
-
-/* ============================================================
-   MOBILE — wider crop + smaller text
-============================================================ */
 @media (max-width: 768px) {
-
-  .dt-strains-hero {
-    /* zoom OUT and slide down */
-    background-position: center 55%;
-
-    /* little shorter so more crop visible */
-    height: 52vh;
-    min-height: 420px;
-    max-height: 580px;
-
-    /* lower title into shoulder line */
-    padding-top: 8.5rem;
-  }
-
-  .strains-title {
-    font-size: 2.9rem;
-    line-height: 1.05;
-  }
-
-  .strains-subtitle {
-    font-size: 1.05rem;
-    max-width: 90%;
-  }
+  .dt-strains-hero { background-position: center 55%; height: 52vh; min-height: 420px; max-height: 580px; padding-top: 8.5rem; }
+  .strains-title { font-size: 2.9rem; line-height: 1.05; }
+  .strains-subtitle { font-size: 1.05rem; max-width: 90%; }
 }
 
 /* ============================================================
-   MAIN SECTION
+   3. MAIN SECTION, SEARCH & FILTERS
 ============================================================ */
+.dt-strains-section { padding:4rem 2rem; max-width:1400px; margin:0 auto; }
+.dt-strains-header h2 { font-family:"Cinzel", serif; color:#fff; margin-bottom:0.3rem; }
+.dt-strains-header p { color:#999; margin-bottom:2rem; }
 
-.dt-strains-section {
-  padding:4rem 2rem;
-  max-width:1400px;
-  margin:0 auto;
-}
-
-.dt-strains-header h2 {
-  font-family:"Cinzel", serif;
-  color:#fff;
-  margin-bottom:0.3rem;
-}
-
-.dt-strains-header p {
-  color:#999;
-  margin-bottom:2rem;
-}
-
-
-/* ============================================================
-   SEARCH BAR
-============================================================ */
-
-.strain-search-wrap {
-  margin-bottom:1.5rem;
-  width:100%;
-}
-
-.strain-search-input {
-  width:100%;
-  padding:0.8rem 1rem;
-  border-radius:8px;
-  border:1px solid #333;
-  background:#0d0d0d;
-  color:#eee;
-  font-size:1rem;
-  outline:none;
-  transition:0.2s;
-}
-
+.strain-search-wrap { margin-bottom:1.5rem; width:100%; }
+.strain-search-input { width:100%; padding:0.8rem 1rem; border-radius:8px; border:1px solid #333; background:#0d0d0d; color:#eee; font-size:1rem; outline:none; transition:0.2s; }
 .strain-search-input::placeholder { color:#666; }
+.strain-search-input:focus { border-color:#d4af37; box-shadow:0 0 0 2px rgba(212,175,55,0.25); }
 
-.strain-search-input:focus {
-  border-color:#d4af37;
-  box-shadow:0 0 0 2px rgba(212,175,55,0.25);
-}
-
+.strain-filters { display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:2rem; }
+.strain-filter { background:#111; border:1px solid #333; padding:0.55rem 1rem; border-radius:6px; color:#ccc; cursor:pointer; font-size:0.9rem; transition:0.2s; }
+.strain-filter:hover { border-color:#d4af37; color:#fff; }
+.strain-filter.is-active { background:#d4af37; border-color:#d4af37; color:#000; }
 
 /* ============================================================
-   FILTERS
+   4. GLASSMORPHISM A-Z JUMP BAR (DESKTOP)
 ============================================================ */
-
-.strain-filters {
-  display:flex;
-  gap:0.6rem;
-  flex-wrap:wrap;
-  margin-bottom:2rem;
-}
-
-.strain-filter {
-  background:#111;
-  border:1px solid #333;
-  padding:0.55rem 1rem;
-  border-radius:6px;
-  color:#ccc;
-  cursor:pointer;
-  font-size:0.9rem;
-  transition:0.2s;
-}
-
-.strain-filter:hover {
-  border-color:#d4af37;
-  color:#fff;
-}
-
-.strain-filter.is-active {
-  background:#d4af37;
-  border-color:#d4af37;
-  color:#000;
-}
+.library-layout-wrapper { display: block; }
+.alpha-jump-bar { position: sticky; top: 72px; width: 100%; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; background: rgba(11, 11, 11, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 10px; margin-bottom: 2rem; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.15); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); z-index: 100; gap: 6px; }
+.alpha-btn { background: transparent; border: none; color: rgba(255, 255, 255, 0.5); font-family: "Inter", sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; padding: 6px 12px; border-radius: 8px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.alpha-btn:hover { color: #000; background: #d4af37; transform: scale(1.15) translateY(-2px); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5); }
 
 /* ============================================================
-   PREMIUM HORIZONTAL A-Z JUMP BAR (DESKTOP)
-   ============================================================ */
-.library-layout-wrapper {
-    display: block; /* Removes the old side-by-side split */
-}
-
-.alpha-jump-bar {
-    position: sticky;
-    top: 72px; /* Docks perfectly under your global nav bar when scrolling */
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background: rgba(11, 11, 11, 0.85); /* Dark transparent base */
-    backdrop-filter: blur(16px); /* The Apple glass effect */
-    -webkit-backdrop-filter: blur(16px);
-    padding: 10px;
-    margin-bottom: 2rem;
-    border-radius: 12px;
-    border: 1px solid rgba(212, 175, 55, 0.15); /* Subtle gold frame */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    z-index: 100;
-    gap: 6px;
-}
-
-.alpha-btn {
-    background: transparent;
-    border: none;
-    color: rgba(255, 255, 255, 0.5);
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 6px 12px;
-    border-radius: 8px;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* The Premium Hover Pop */
-.alpha-btn:hover {
-    color: #000;
-    background: #d4af37;
-    transform: scale(1.15) translateY(-2px);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
-}
-
-/* ============================================================
-   GRID
+   5. TOP SCROLLER (AWARDS & FAVORITES)
 ============================================================ */
+.featured-scroller-wrap { margin-bottom: 4rem; }
+.featured-scroller { display: flex; gap: 1.5rem; overflow-x: auto; padding: 10px 5vw 40px; margin-left: calc(50% - 50vw); width: 100vw; scroll-snap-type: x mandatory; scroll-padding-left: 5vw; scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: rgba(214, 163, 74, 0.6) rgba(255, 255, 255, 0.02); }
+.featured-scroller::after { content: ''; flex: 0 0 1vw; }
 
-.strain-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
-  gap:1.7rem;
-}
-
+.trophy-card { flex: 0 0 260px; scroll-snap-align: center; background: #0b0d0c; border-radius: 22px; border: 1px solid rgba(255, 255, 255, 0.08); overflow: hidden; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; cursor: pointer; }
+@media (min-width: 768px) { .trophy-card { flex: 0 0 280px; scroll-snap-align: start; } }
+.trophy-card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); border-color: rgba(214, 163, 74, 0.4); }
 
 /* ============================================================
-   CARD TILE
+   6. MAIN LIBRARY GRID & CARDS (DESKTOP)
 ============================================================ */
+.strain-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1.7rem; }
 
-.strain-card {
-  background:#0a0a0a;
-  border-radius:14px;
-  border:1px solid #1a1a1a;
-  cursor:pointer;
-  overflow:hidden;
-  position:relative;
-  transition:transform 0.25s ease, box-shadow 0.25s ease;
-}
+.strain-card { background:#0a0a0a; border-radius:14px; border:1px solid #1a1a1a; cursor:pointer; overflow:hidden; position:relative; transition:transform 0.25s ease, box-shadow 0.25s ease; }
+.strain-card:hover { transform:translateY(-4px); box-shadow:0 0 20px rgba(212,175,55,0.25); }
 
-.strain-card:hover {
-  transform:translateY(-4px);
-  box-shadow:0 0 20px rgba(212,175,55,0.25);
-}
+#vault-strains .library-card { display: flex; flex-direction: column; height: 100%; }
+#vault-strains .strain-card-inner { display: flex; flex-direction: column; height: 100%; padding: 0; }
 
-.strain-card-inner { padding:1.2rem; }
+.strain-image, .desktop-img { height: 220px; width: 100%; border-radius: 14px 14px 0 0; margin-bottom: 0; background-color: #000; background-size: cover; background-repeat: no-repeat; background-position: center; position: relative; overflow: hidden; }
+.strain-image.fallback-logo, .desktop-img.fallback-logo { background-size: 40%; background-color: #0b0b0b; box-shadow: none; }
 
-.strain-image {
-  height: 200px;
-  border-radius: 14px;
-  margin-bottom: 1rem;
-
-  background-color: #000;
-  background-size: cover; /* ← KEY CHANGE (kills vertical gaps) */
-  background-repeat: no-repeat;
-  background-position: center;
-
-  position: relative;
-  overflow: hidden;
-
-  box-shadow: inset 0 0 25px rgba(0,0,0,0.7);
-}
-
-.strain-image.fallback-logo {
-  background-size: 40%;
-  background-color: #0b0b0b;
-  box-shadow: none;
-}
-
-.strain-top {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.strain-name {
-  color:#fff;
-  font-family:"Cinzel", serif;
-  font-size:1.3rem;
-  margin:0;
-}
-
-.strain-badge {
-  background:#d4af37;
-  color:#000;
-  padding:0.2rem 0.5rem;
-  border-radius:5px;
-  font-size:0.7rem;
-  font-weight:600;
-}
-
-.strain-meta {
-  color:#bbb;
-  font-size:0.95rem;
-  margin:0.4rem 0;
-}
-
-.strain-notes {
-  color:#888;
-  font-size:0.85rem;
-  line-height:1.4;
-}
-
+.strain-content { padding: 1.2rem; flex-grow: 1; display: flex; flex-direction: column; }
+.strain-top { display:flex; justify-content:space-between; align-items:flex-start; }
+.strain-name { color:#fff; font-family:"Cinzel", serif; font-size:1.3rem; margin:0 0 4px 0; font-weight: 900; }
+.strain-meta { color:#bbb; font-size:0.95rem; margin:0.4rem 0; }
+.strain-notes { color:#888; font-size:0.85rem; line-height:1.4; }
 .strain-card.is-hidden { display:none; }
 
+.teaser-text { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 1rem; }
+.card-action { margin-top: auto; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #d4af37; font-weight: 700; }
+.lineage-text { color: #d4af37; font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* GOLD AWARDS / CORNER BADGES */
+.trophy-card, .library-card.is-award-winner { border: 1px solid rgba(214, 163, 74, 0.8) !important; box-shadow: 0 4px 15px rgba(214, 163, 74, 0.15) !important; }
+.corner-award-badge { position: absolute; top: 10px; left: 10px; background: linear-gradient(180deg, rgba(214,163,74,.95), rgba(185,135,47,.95)); color: #121413; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.65rem; font-weight: 900; letter-spacing: 0.05em; white-space: nowrap; z-index: 5; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
 /* ============================================================
-   FIND US
+   7. CINEMATIC MODAL
 ============================================================ */
-
-.dt-strains-findus {
-  padding:4rem 2rem;
-  text-align:center;
-  background:#000;
-  border-top:1px solid #222;
-}
-
-.dt-strains-findus h2 {
-  font-family:"Cinzel", serif;
-  color:#fff;
-  margin-bottom:0.5rem;
-}
-
-.dt-strains-findus p {
-  color:#aaa;
-}
-
-/* ============================================================
-   FOOTER — MATCH HOMEPAGE (Strains Page Only)
-============================================================ */
-
-body.dt-strains-page .dt-footer {
-  background:#000;
-  padding:75px 20px 80px;
-  margin-top:80px;
-  text-align:center;
-  border-top:1px solid rgba(255,255,255,0.08);
-}
-
-/* Divider line */
-body.dt-strains-page .dt-footer-divider {
-  width:100%;
-  height:2px;
-  background:#d4af37;
-  margin:0 auto 28px auto;
-}
-
-/* Legal links */
-body.dt-strains-page .dt-footer-legal {
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  margin-bottom:28px;
-}
-
-body.dt-strains-page .dt-footer-legal a {
-  color:#eee;
-  font-size:14px;
-  text-transform:uppercase;
-  letter-spacing:0.6px;
-  transition:color .25s ease;
-}
-
-body.dt-strains-page .dt-footer-legal a:hover {
-  color:#d4af37;
-}
-
-/* Social icons */
-body.dt-strains-page .dt-footer-social {
-  display:flex;
-  justify-content:center;
-  gap:28px;
-  margin-bottom:26px;
-}
-
-body.dt-strains-page .dt-footer-social img {
-  width:26px;
-  height:26px;
-  opacity:0.85;
-  transition:transform .2s ease, opacity .2s ease;
-}
-
-body.dt-strains-page .dt-footer-social img:hover {
-  transform:translateY(-2px) scale(1.1);
-  opacity:1;
-}
-
-/* Copyright */
-body.dt-strains-page .dt-footer-copy {
-  color:#777;
-  font-size:13px;
-}
-
-/* ============================================================
-   STRAIN MODAL
-============================================================ */
-
-.strain-modal {
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.8);
-  opacity:0;
-  visibility:hidden;
-  transition:0.25s ease;
-  z-index:9999;
-}
-
-.strain-modal.open {
-  opacity:1;
-  visibility:visible;
-}
-
-.strain-modal-dialog {
-  position:relative;
-  background:#0f0f0f;
-  border-radius:16px;
-  padding:2rem;
-  width:90%;
-  max-width:900px;
-  margin:60px auto;
-  max-height:85vh;
-  overflow-y:auto;
-  border:1px solid #333;
-  box-shadow:0 0 25px rgba(212,175,55,0.2);
-}
-
-.strain-modal-close {
-  position:absolute;
-  top:18px;
-  right:22px;
-  font-size:2.2rem;
-  background:none;
-  border:none;
-  color:#fff;
-  cursor:pointer;
-}
-
-.strain-modal-header h3 {
-  font-family:"Cinzel", serif;
-  color:#fff;
-  font-size:2rem;
-  margin-bottom:0.2rem;
-}
-
-.strain-modal-header p {
-  color:#d4af37;
-  font-size:1rem;
-}
-
-.strain-modal-layout {
-  display:flex;
-  gap:2rem;
-  margin-top:1.5rem;
-}
-
+.strain-modal { position:fixed; inset:0; background:rgba(0,0,0,0.8); backdrop-filter: blur(8px); opacity:0; visibility:hidden; transition:0.25s ease; z-index:9999; }
+.strain-modal.open { opacity:1; visibility:visible; }
+.strain-modal-dialog { position:relative; background:#0f0f0f; border-radius:16px; padding:2rem; width:90%; max-width:900px; margin:60px auto; max-height:85vh; overflow-y:auto; border:1px solid #333; box-shadow:0 0 25px rgba(212,175,55,0.2); cursor: default; }
+.strain-modal-close { position:absolute; top:18px; right:22px; font-size:2.2rem; background:none; border:none; color:#fff; cursor:pointer; }
+.strain-modal-header h3 { font-family:"Cinzel", serif; color:#fff; font-size:2rem; margin-bottom:0.2rem; }
+.strain-modal-header p { color:#d4af37; font-size:1rem; }
+.strain-modal-layout { display:flex; gap:2rem; margin-top:1.5rem; }
 .strain-modal-media { width:40%; }
-
-.strain-modal-image-frame img {
-  width:100%;
-  border-radius:12px;
-  border:1px solid #222;
-}
-
-.strain-modal-tagline {
-  color:#aaa;
-  margin-top:0.6rem;
-  font-size:0.9rem;
-}
-
+.strain-modal-image-frame img { width:100%; border-radius:12px; border:1px solid #222; }
 .strain-modal-body { width:60%; }
-
 .strain-modal-section { margin-bottom:1.6rem; }
-
-.strain-modal-section h4 {
-  font-family:"Cinzel", serif;
-  color:#fff;
-  margin-bottom:0.4rem;
-}
-
-.strain-modal-section p {
-  color:#ccc;
-  line-height:1.4;
-}
-
-.label {
-  color:#d4af37;
-  width:90px;
-  display:inline-block;
-}
-
-.strain-modal-quote {
-  color:#bbb;
-  font-style:italic;
-}
-
-
-/* ============================================================
-   RESPONSIVE
-============================================================ */
+.strain-modal-section h4 { font-family:"Cinzel", serif; color:#fff; margin-bottom:0.4rem; }
+.strain-modal-section p { color:#ccc; line-height:1.4; }
+.label { color:#d4af37; width:90px; display:inline-block; }
 
 @media (max-width:800px) {
   .strain-modal-layout { flex-direction:column; }
-  .strain-modal-media,
-  .strain-modal-body { width:100%; }
-  .strain-modal-dialog {
-    margin:20px auto;
-    padding:1.5rem;
-  }
+  .strain-modal-media, .strain-modal-body { width:100%; }
+  .strain-modal-dialog { margin:20px auto; padding:1.5rem; }
 }
 
 /* ============================================================
-   THE VAULT — COMPACT HORIZONTAL LAYOUT
+   8. FOOTER & FIND US
 ============================================================ */
-/* Make the vault grid slightly wider to accommodate horizontal cards */
-#vault-strains {
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.2rem;
-}
+.dt-strains-findus { padding:4rem 2rem; text-align:center; background:#000; border-top:1px solid #222; }
+.dt-strains-findus h2 { font-family:"Cinzel", serif; color:#fff; margin-bottom:0.5rem; }
+.dt-strains-findus p { color:#aaa; }
 
-/* Force the inner card to sit side-by-side */
-#vault-strains .strain-card-inner {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.2rem;
-  padding: 1rem;
-}
-
-/* Shrink the massive image into a sleek square icon */
-#vault-strains .strain-image {
-  width: 85px;
-  height: 85px;
-  margin-bottom: 0;
-  flex-shrink: 0;
-  border-radius: 12px;
-  background-size: 55%; /* Sizes the logo perfectly */
-}
-
-/* Allow the text to take up the remaining space */
-#vault-strains .strain-content {
-  flex: 1;
-  min-width: 0; /* Prevents text from breaking the box layout */
-}
-
-/* Tighten up the typography for the compact card */
-#vault-strains .strain-name {
-  font-size: 1.1rem;
-}
-
-#vault-strains .strain-meta {
-  font-size: 0.75rem;
-  margin: 0.2rem 0;
-}
-
-/* Neatly truncate long descriptions to 2 lines so the cards stay uniform */
-#vault-strains .strain-notes {
-  font-size: 0.8rem;
-  margin-top: 0.4rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* Mobile adjustment so they don't break off-screen */
-@media (max-width: 768px) {
-  #vault-strains {
-    grid-template-columns: 1fr;
-  }
-}
+body.dt-strains-page .dt-footer { background:#000; padding:75px 20px 80px; margin-top:80px; text-align:center; border-top:1px solid rgba(255,255,255,0.08); }
+body.dt-strains-page .dt-footer-divider { width:100%; height:2px; background:#d4af37; margin:0 auto 28px auto; }
+body.dt-strains-page .dt-footer-legal { display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+body.dt-strains-page .dt-footer-legal a { color:#eee; font-size:14px; text-transform:uppercase; letter-spacing:0.6px; transition:color .25s ease; }
+body.dt-strains-page .dt-footer-legal a:hover { color:#d4af37; }
+body.dt-strains-page .dt-footer-social { display:flex; justify-content:center; gap:28px; margin-bottom:26px; }
+body.dt-strains-page .dt-footer-social img { width:26px; height:26px; opacity:0.85; transition:transform .2s ease, opacity .2s ease; }
+body.dt-strains-page .dt-footer-social img:hover { transform:translateY(-2px) scale(1.1); opacity:1; }
+body.dt-strains-page .dt-footer-copy { color:#777; font-size:13px; }
 
 /* ============================================================
-   MOBILE OVERRIDE: IMAGE-LEFT ACCORDION LIST
+   9. MOBILE LAUNCH POLISH (MAX-WIDTH: 768px)
+   All mobile overrides live here safely.
 ============================================================ */
 @media (max-width: 768px) {
-  .strain-grid {
-    gap: 0.8rem;
-  }
+    /* Clear Nav Overlaps */
+    body.dt-strains-page { padding-top: 90px !important; }
+    .dt-strains-header { margin-top: 0; padding: 0 15px; }
+    .dt-strains-header h2 { font-size: 1.6rem; line-height: 1.2; margin-bottom: 8px; }
 
-  .strain-card {
-    border-radius: 12px;
-    background: #111;
-  }
+    /* Fix Squished Grid Constraints */
+    .dt-strains-section { padding-left: 10px !important; padding-right: 10px !important; }
+    .library-layout-wrapper { flex-direction: column; padding-right: 0; padding-left: 0; }
 
-  /* Force side-by-side: 80px image on left, text on right */
-  .strain-card-inner {
-    padding: 1rem;
-    display: grid;
-    grid-template-columns: 80px 1fr; 
-    gap: 15px;
-    align-items: center; /* Centers the text vertically with the image */
-  }
+    /* Top Scroller Cards */
+    .trophy-card { flex: 0 0 85%; min-height: auto; }
+    .trophy-card .strain-card-inner { display: flex; flex-direction: column; padding: 0; }
+    .trophy-card .strain-image { width: 100%; height: 180px; margin-bottom: 0; border-radius: 14px 14px 0 0; }
+    .trophy-card .strain-top, .trophy-card .strain-meta, .trophy-card .strain-content { padding: 0 1.2rem; }
+    .trophy-card .strain-top { margin-top: 1.2rem; }
+    .trophy-card .strain-notes { margin-bottom: 1.2rem; }
 
-  /* Make the image a crisp square */
-  .strain-image {
-    display: block !important; 
-    width: 80px;
-    height: 80px;
-    margin: 0;
-    border-radius: 8px;
-    flex-shrink: 0;
-  }
-
-  /* Stack the Name and Cross cleanly */
-  .strain-top {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
-
-  .strain-name {
-    font-size: 1.15rem;
-    line-height: 1.1;
-  }
-
-  /* The genetics/cross */
-  .strain-meta {
-    font-size: 0.75rem;
-    margin: 0;
-    color: #d4af37;
-    line-height: 1.3;
-  }
-
-  .strain-badge {
-    display: none; /* Hides award badge to keep layout clean */
-  }
-
-  /* Hide description by default. When open, span across the whole card */
-  .strain-notes {
-    display: none;
-    grid-column: 1 / -1; /* Forces text to drop below the image */
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #222;
-    font-size: 0.9rem;
-    color: #ccc;
-  }
-
-  /* Show notes when clicked */
-  .strain-card.is-expanded .strain-notes {
-    display: block;
-  }
-}
-
-/* ============================================================
-   FEATURED HORIZONTAL SCROLLER
-   ============================================================ */
-.featured-scroller-wrap {
-    width: 100%;
-    margin-bottom: 4rem;
-}
-
-.featured-scroller {
-    display: flex;
-    overflow-x: auto;
-    gap: 1.5rem;
-    padding-bottom: 1rem;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-    scrollbar-color: #d4af37 #111;
-}
-
-/* Custom Scrollbar for Webkit */
-.featured-scroller::-webkit-scrollbar {
-    height: 8px;
-}
-.featured-scroller::-webkit-scrollbar-track {
-    background: #111;
-    border-radius: 4px;
-}
-.featured-scroller::-webkit-scrollbar-thumb {
-    background-color: #d4af37;
-    border-radius: 4px;
-}
-
-.featured-scroller .strain-card {
-    flex: 0 0 320px; /* Fixed width so they line up beautifully */
-    scroll-snap-align: start;
-}
-
-/* ============================================================
-   TOP TROPHY SCROLLER (GREEN LABS MATCH)
-   ============================================================ */
-.featured-scroller-wrap { 
-    margin-bottom: 4rem; 
-}
-
-.featured-scroller { 
-    display: flex; 
-    gap: 1.5rem; 
-    overflow-x: auto; 
-    padding: 10px 5vw 40px; 
-    margin-left: calc(50% - 50vw); 
-    width: 100vw; 
-    scroll-snap-type: x mandatory; 
-    scroll-padding-left: 5vw; /* Fixes the left cutoff! */
-    scroll-behavior: smooth; 
-    scrollbar-width: thin; 
-    scrollbar-color: rgba(214, 163, 74, 0.6) rgba(255, 255, 255, 0.02); 
-}
-
-/* Adds a bumper to the far right so the last item can fully scroll into view */
-.featured-scroller::after {
-    content: '';
-    flex: 0 0 1vw;
-}
-
-.trophy-card { 
-    flex: 0 0 260px; 
-    scroll-snap-align: center; 
-    background: #0b0d0c; 
-    border-radius: 22px; 
-    border: 1px solid rgba(255, 255, 255, 0.08); 
-    overflow: hidden; 
-    position: relative; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
-}
-
-@media (min-width: 768px) { 
-    .trophy-card { 
-        flex: 0 0 280px; 
-        scroll-snap-align: start; 
-    } 
-}
-
-.trophy-card:hover { 
-    transform: translateY(-4px); 
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); 
-    border-color: rgba(214, 163, 74, 0.4); 
-}
-
-/* ============================================================
-   MAIN LIBRARY: UNIFORM GRID & MOBILE LAYOUT
-   ============================================================ */
-/* Desktop Uniform Heights */
-#vault-strains .library-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-#vault-strains .strain-card-inner {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 0; /* Remove inner padding so image touches edges */
-}
-#vault-strains .desktop-img {
-    height: 220px;
-    width: 100%;
-    border-radius: 14px 14px 0 0;
-    margin-bottom: 0;
-}
-#vault-strains .strain-content {
-    padding: 1.2rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-/* Truncate the description so cards stay the exact same height */
-.teaser-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    margin-bottom: 1rem;
-}
-.card-action {
-    margin-top: auto;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #d4af37;
-    font-weight: 700;
-}
-
-/* ============================================================
-   MOBILE LAUNCH POLISH (MAX-WIDTH: 768px)
-   ============================================================ */
-@media (max-width: 768px) {
-    /* 1. Universal Nav Clearance */
-    body.dt-strains-page {
-        padding-top: 90px !important; /* Forces the entire page down so the nav doesn't cover the title */
-    }
-
-    .dt-strains-header {
-        margin-top: 0;
-        padding: 0 15px;
-    }
+    /* Main Library App-Like Tiles */
+    #vault-strains { grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; padding: 0; }
+    .library-card { border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+    .library-card .desktop-img { height: 210px; }
+    .library-card .desktop-img:not(.fallback-logo) { background-size: cover; background-position: center center; }
     
-    .dt-strains-header h2 {
-        font-size: 1.6rem;
-        line-height: 1.2;
-        margin-bottom: 8px;
-    }
+    .library-card .strain-content { padding: 12px 6px; text-align: center; display: flex; align-items: center; justify-content: center; flex-grow: 1; }
+    .library-card .strain-name { font-size: 1.05rem; margin: 0; line-height: 1.1; word-wrap: break-word; }
 
-    /* 2. Top Scroller Trophy Cards (Fixing the weird layout) */
-    .trophy-card {
-        flex: 0 0 85%; /* Shows one card beautifully, with the next peaking in */
-        min-height: auto;
-    }
-    
-    .trophy-card .strain-card-inner {
-        display: flex;
-        flex-direction: column; /* Forces image on top, text below */
-    }
-    
-    .trophy-card .strain-image {
-        width: 100%;
-        height: 180px; /* Gives the premium image room to breathe */
-        margin-bottom: 15px;
-    }
+    /* Hide Extra Text for Clean Tiles */
+    .library-card .strain-meta, 
+    .library-card .lineage-text, 
+    .library-card .teaser-text, 
+    .library-card .card-action { display: none !important; }
 
-    /* 3. Main Library Grid & Layout */
-    .dt-strains-section {
-        padding-left: 10px !important; /* Kills the massive 32px invisible border */
-        padding-right: 10px !important; /* Kills the massive 32px invisible border */
-    }
-
-    .library-layout-wrapper {
-        flex-direction: column; 
-        padding-right: 0; /* Fully expanded to the edges */
-        padding-left: 0;  /* Fully expanded to the edges */
-    }
-
-    #vault-strains {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px; /* Clean, comfortable gap between the two tiles */
-        width: 100%; 
-        padding: 0; 
-    }
-
-    /* 4. Library Card Tile Polish (Image & Name ONLY) */
-    .library-card {
-        border-radius: 12px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .library-card .desktop-img {
-        height: 210px; /* Pushed from 180px for a taller image window */
-    }
-    
-    /* 🌟 FULL BORDER-TO-BORDER IMAGE 🌟 */
-    .library-card .desktop-img:not(.fallback-logo) {
-        background-size: cover; /* Perfectly hits the edges without aggressive cropping */
-        background-position: center center; 
-    }
-    
-    .library-card .strain-content {
-        padding: 12px 6px; /* Tighter padding gives more room to the image */
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-grow: 1; 
-    }
-    
-    .library-card .strain-name {
-        font-size: 1.05rem; /* Slightly larger text to balance the bigger image */
-        margin: 0;
-        line-height: 1.1;
-    }
-
-    /* 5. Hide ALL extra text on mobile tiles */
-    .library-card .strain-meta,
-    .library-card .lineage-text,
-    .library-card .teaser-text,
-    .library-card .card-action {
-        display: none !important;
-    }
-
-    /* 6. Horizontal Alphabet Swipe Bar */
-    .alpha-jump-bar {
-        top: 90px; /* Sticks right under the mobile nav */
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding: 12px 10px;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-    }
-    
-    .alpha-btn {
-        background: rgba(255,255,255,0.05); /* Gives buttons shape for touch */
-        border: 1px solid rgba(255,255,255,0.1);
-        padding: 8px 16px;
-    }
-
-/* ============================================================
-   CINEMATIC MODAL BACKGROUND CLICK
-   ============================================================ */
-.strain-modal {
-    backdrop-filter: blur(8px); /* Adds the Apple-style background blur */
-}
-.strain-modal-dialog {
-    cursor: default; /* Keeps normal cursor inside the box */
-}
-
-/* ============================================================
-   ALPHA JUMP BAR LIFT
-   ============================================================ */
-.alpha-btn { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s, text-shadow 0.2s; }
-.alpha-btn:hover { color: #d4af37; transform: scale(1.6) translateX(-5px); text-shadow: 0 0 8px rgba(212, 175, 55, 0.6); }
-
-/* ============================================================
-   AWARD WINNER GOLD OUTLINE & CORNER BADGE
-   ============================================================ */
-/* 1. Give all award-winning cards the gold outline and subtle glow */
-.trophy-card,
-.library-card.is-award-winner .deli-card__back,
-.library-card.is-award-winner .deli-card__front {
-    border: 1px solid rgba(214, 163, 74, 0.8) !important;
-    box-shadow: 0 4px 15px rgba(214, 163, 74, 0.15) !important;
-}
-
-/* 2. Position the image to hold the absolute badge */
-.strain-image, .desktop-img {
-    position: relative;
-}
-
-/* 3. Top-left corner badge styling (Green Labs match) */
-.corner-award-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: linear-gradient(180deg, rgba(214,163,74,.95), rgba(185,135,47,.95));
-    color: #121413;
-    padding: 0.2rem 0.6rem;
-    border-radius: 6px;
-    font-size: 0.65rem;
-    font-weight: 900;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-    z-index: 5;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.lineage-text {
-    color: #d4af37;
-    font-size: 0.75rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; /* Keeps it to one clean line with "..." if too long */
+    /* Swipeable A-Z Jump Bar */
+    .alpha-jump-bar { position: relative; top: 90px; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; padding: 12px 10px; border-radius: 0; border-left: none; border-right: none; margin-bottom: 10px; background: transparent; backdrop-filter: none; box-shadow: none; }
+    .alpha-jump-bar::-webkit-scrollbar { display: none; }
+    .alpha-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; flex-shrink: 0; }
 }
