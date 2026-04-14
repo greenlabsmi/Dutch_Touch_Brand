@@ -344,7 +344,7 @@
     "lineage": "Chem D x 88G13HP",
     "breeder": "Bodhi Seeds",
     "description": "Pungent odor that combines fuel notes with earthy hashish undertones. Delivers a heavy hitting body stone.",
-    "image": "assets/img/strains/hash-d.png"
+    "image": "assets/img/strains/hash-d.jpg"
   },
   {
     "slug": "hawaiian-bread",
@@ -365,7 +365,7 @@
     "lineage": "Hawaiian Indica x Pre-98 Bubba Kush",
     "breeder": "Legendary Ohio Clone-Only",
     "description": "A legendary, highly sought-after Ohio clone-only strain. Illudium boasts a wildly complex flavor profile of dark coffee and sweet orange rind, wrapped in a heavy diesel base. Patients regularly turn to this heavy Indica for highly effective relief from insomnia, chronic pain, and stress.",
-    "image": "assets/img/strains/illudium-bud.jpg"
+    "image": "assets/img/strains/illudium.png"
   },
   {
     "slug": "jesus-og",
@@ -456,7 +456,7 @@
     "lineage": "Wedding Cake x Jilly Bean x Sour Tangie x Roze Zkittlez x OG Eddy Lepp",
     "breeder": "Ethos Genetics",
     "description": "Rich, complicated terpene profile including notes of sharp orange, citrus, gas, sour candy, and earthy sandalwood.",
-    "image": "assets/img/strains/orange-kush-cake.png"
+    "image": "assets/img/strains/orange-kush-cake.jpg"
   },
   {
     "slug": "pina-rita-2",
