@@ -13,8 +13,14 @@ async function loadStrainLibrary() {
     if (!vaultGrid) return;
 
     strains.forEach(strain => {
-      const imageUrl = strain.image ? `${baseUrl}${strain.image}` : `${baseUrl}assets/img/logo/dtg-logo-orange.png`;
-      const imageClass = strain.image ? 'strain-image' : 'strain-image fallback-logo';
+      strains.forEach(strain => {
+      
+      // 1. .trim() destroys invisible spaces and line-breaks
+      // 2. encodeURI() ensures the path is perfectly formatted for CSS
+      const cleanImage = strain.image ? encodeURI(strain.image.trim()) : ''; 
+      
+      const imageUrl = cleanImage ? `${baseUrl}${cleanImage}` : `${baseUrl}assets/img/logo/dtg-logo-orange.png`;
+      const imageClass = cleanImage ? 'strain-image' : 'strain-image fallback-logo';
 
       // Smart Badge Logic
       let badgeText = '';
