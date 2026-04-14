@@ -5,19 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dutch Touch Genetics • Strains</title>
 
-  <!-- Global + Strains styles -->
   <link rel="stylesheet" href="css/style.css?v=011">
-  <link rel="stylesheet" href="css/strains.css?v=003">
+  <link rel="stylesheet" href="css/strains.css?v=005">
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="dt-strains-page">
 
-  <!-- =========================
-       NAV
-  ========================== -->
   <header class="dt-nav" id="dtNav">
 
     <div class="dt-nav-left">
@@ -50,9 +45,6 @@
 
   </header>
 
-  <!-- =========================
-       SLIDE-OUT MENU
-  ========================== -->
   <div id="dt-menu" class="dt-menu-overlay">
     <div class="dt-menu-inner">
       <button class="dt-menu-close" aria-label="Close menu">×</button>
@@ -72,9 +64,6 @@
     </div>
   </div>
 
-  <!-- =========================
-       HERO
-  ========================== -->
   <section class="dt-strains-hero">
     <div class="dt-strains-hero-inner">
       <h1 class="strains-title">Strain Library</h1>
@@ -86,16 +75,12 @@
 
   <main class="dt-strains-main">
 
-    <!-- =========================
-         FILTERS + SEARCH
-    ========================== -->
     <section class="dt-strains-section">
       <div class="dt-strains-header">
         <h2>Browse Strains</h2>
         <p>Filter by award winners, type, or search by name, flavor, or terpene.</p>
       </div>
 
-      <!-- Search -->
       <div class="strain-search-wrap">
         <input 
           type="text" 
@@ -106,7 +91,6 @@
         >
       </div>
 
-      <!-- Filters -->
       <div class="strain-filters">
         <button class="strain-filter is-active" data-filter="all">All</button>
         <button class="strain-filter" data-filter="award">Award Winning</button>
@@ -117,29 +101,31 @@
       </div>
 
       <div class="dt-strains-header" style="margin-top: 2rem;">
-    <h2>Fan Favorites & Award Winners</h2>
-    <p>Our heaviest hitters, legendary cuts, and fan-favorite genetics.</p>
-</div>
-<div class="featured-scroller-wrap">
-    <div class="featured-scroller" id="featured-strains">
-        </div>
-</div>
+        <h2>Fan Favorites & Award Winners</h2>
+        <p>Our heaviest hitters, legendary cuts, and fan-favorite genetics.</p>
+      </div>
+      
+      <div class="featured-scroller-wrap">
+        <div class="featured-scroller" id="featured-strains">
+          </div>
+      </div>
       
       <div class="library-layout-wrapper" style="margin-top: 4rem;">
-        
         <div class="library-main-content">
+          
           <div class="dt-strains-header">
             <h2>Strain Library</h2>
             <p>Past genetics, legendary crosses, and retired mother plants.</p>
           </div>
-          <div class="strain-grid" id="vault-strains"></div>
+
+          <div class="alpha-jump-bar"></div>
+
+          <div class="strain-grid" id="vault-strains">
+            </div>
+        
         </div>
-
-        <div class="alpha-jump-bar"></div>
-
       </div>
 
-<script src="js/strains-loader.js"></script>
     </section>
 
     <section class="dt-strains-findus">
@@ -149,10 +135,7 @@
 
   </main>
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
- <footer class="dt-footer">
+  <footer class="dt-footer">
   <div class="dt-footer-divider"></div>
 
   <div class="dt-footer-legal">
@@ -179,6 +162,7 @@
   </p>
 </footer>
 
-  <script src="js/strains.js?v=004"></script>
+  <script src="js/strains-loader.js?v=005"></script>
+  <script src="js/strains.js?v=005"></script>
 </body>
 </html>
