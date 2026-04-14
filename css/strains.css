@@ -1075,14 +1075,12 @@ body.dt-strains-page .dt-footer-copy {
     }
     
     .library-card .desktop-img {
-        height: 180px; /* Taller image box */
+        height: 210px; /* Pushed from 180px for a taller image window */
     }
     
-    /* 🌟 THE ZOOM EFFECT 🌟 
-       This zooms in on the plant photos to make the buds look massive, 
-       but ignores the fallback logo so it doesn't get distorted! */
+    /* 🌟 MAX ZOOM EFFECT 🌟 */
     .library-card .desktop-img:not(.fallback-logo) {
-        background-size: 135%; 
+        background-size: 160%; /* Pushed from 135% for a massive macro-style zoom */
         background-position: center 50%; 
     }
     
