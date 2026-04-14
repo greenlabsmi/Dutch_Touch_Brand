@@ -13,7 +13,6 @@ async function loadStrainLibrary() {
     if (!vaultGrid) return;
 
     strains.forEach(strain => {
-      strains.forEach(strain => {
       
       // 1. .trim() destroys invisible spaces and line-breaks
       // 2. encodeURI() ensures the path is perfectly formatted for CSS
