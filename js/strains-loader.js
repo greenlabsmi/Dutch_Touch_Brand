@@ -1,5 +1,5 @@
 async function loadStrainLibrary() {
- // If this script is running anywhere OTHER than the master Dutch Touch site, use the master URL
+  // If this script is running anywhere OTHER than the master Dutch Touch site, use the master URL
   const isExternalSite = !window.location.href.includes('Dutch_Touch_Brand');
   const baseUrl = isExternalSite ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' : '';
 
@@ -23,7 +23,6 @@ async function loadStrainLibrary() {
 
       const highlightClass = badgeText ? 'is-award-winner' : '';
       const cornerBadgeHTML = badgeText ? `<span class="corner-award-badge">${badgeText}</span>` : '';
-      const mobileBadgeHTML = badgeText ? `<div class="deli-badge-corner badge--fresh">${badgeText}</div>` : '';
 
       // ==========================================
       // 1. TOP SCROLLER (AWARDS & FAVORITES)
