@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           
           if (isMatch && card.style.display !== 'none') {
             // Calculate scroll position (offset by 100px so nav bar doesn't cover it)
-            const y = card.getBoundingClientRect().top + window.scrollY - 100; 
+            const y = card.getBoundingClientRect().top + window.scrollY - 160; 
             window.scrollTo({top: y, behavior: 'smooth'});
             break; 
           }
