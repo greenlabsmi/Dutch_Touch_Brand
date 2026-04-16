@@ -295,3 +295,21 @@ body.dt-strains-page .dt-footer-copy { color:#777; font-size:13px; }
         flex-shrink: 0; 
     }
 }
+
+/* =========================================================
+   MOBILE HERO GAP FIX (STRAIN LIBRARY)
+========================================================= */
+@media (max-width: 768px) {
+    .dt-strains-hero {
+        padding-top: 80px !important; /* Shrinks the massive dead space */
+        min-height: auto !important; /* Allows the box to shrink */
+        padding-bottom: 40px !important;
+        background-position: center 15% !important; /* Keeps the image anchored nicely */
+    }
+    
+    /* Pulls the text up slightly so it feels perfectly centered */
+    .dt-strains-hero-inner,
+    .dt-strains-hero h1 {
+        margin-top: 0 !important;
+    }
+}
