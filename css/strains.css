@@ -231,8 +231,13 @@ body.dt-strains-page .dt-footer-copy { color:#777; font-size:13px; }
 @media (max-width: 768px) {
     /* Clear Nav Overlaps */
     body.dt-strains-page { padding-top: 90px !important; }
-    .dt-strains-header { margin-top: 0; padding: 0 15px; }
-   .dt-strains-header { margin-top: 0; padding: 0 15px; text-align: center; }
+    
+    /* Centered Headers with Bottom Padding for Gold Line */
+    .dt-strains-header { 
+        margin-top: 0; 
+        padding: 0 15px 20px; /* 0 top, 15px sides, 20px bottom! */
+        text-align: center; 
+    }
     .dt-strains-header p { margin: 0 auto; }
     .dt-strains-header::after { left: 50%; transform: translateX(-50%); width: 100px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
     .dt-strains-header h2 { font-size: 1.6rem; line-height: 1.2; margin-bottom: 8px; }
