@@ -167,10 +167,11 @@ body.dt-stores-page .dt-menu-links a:hover {
    HERO
 ============================================================ */
 .dt-stores-hero {
-  height: 45vh;
-  min-height: 380px;
-  /* Added a dark overlay and anchored the image to 'top center' */
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('../assets/img/banners/visit-us-hero.jpg') top center/cover no-repeat;
+  height: 55vh;
+  min-height: 450px;
+
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('../assets/img/banners/visit-us-hero.jpg') center 25% / cover no-repeat;
+  
   padding-top: 72px;
   display: flex;
   flex-direction: column;
