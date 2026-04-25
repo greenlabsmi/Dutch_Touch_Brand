@@ -5,19 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dutch Touch Genetics • Products</title>
 
-  <!-- Global + Products styles -->
   <link rel="stylesheet" href="css/style.css?v=011">
   <link rel="stylesheet" href="css/products.css?v=001">
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="dt-products-page">
 
-  <!-- =========================
-       NAV (copied from strains)
-  ========================== -->
   <header class="dt-nav" id="dtNav">
 
     <div class="dt-nav-left">
@@ -50,9 +45,6 @@
 
   </header>
 
-  <!-- =========================
-       SLIDE-OUT MENU
-  ========================== -->
   <div id="dt-menu" class="dt-menu-overlay">
     <div class="dt-menu-inner">
       <button class="dt-menu-close" aria-label="Close menu">×</button>
@@ -72,71 +64,68 @@
     </div>
   </div>
 
-  <!-- =========================
-       HERO (matches strains feel)
-  ========================== -->
-  <section class="dt-products-hero">
-    <div class="dt-products-hero-inner">
-      <h1 class="products-title">Product Lineup</h1>
-      <p class="products-subtitle">
-        Award-winning disposables, RSO, gummies, resin, rosin, and more from Dutch Touch Genetics.
-      </p>
-    </div>
-  </section>
 
-  <main class="dt-products-main">
-
-    <!-- =========================
-         FILTERS + SEARCH
-    ========================== -->
-    <section class="dt-products-section">
-      <div class="dt-products-header">
-        <h2>Browse Products</h2>
-        <p>Filter by category or search by strain, format, or RSO-based products.</p>
+  <main>
+      <div class="construction-overlay" style="height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; text-align: center; padding: 20px;">
+          <h1 style="font-family: 'Cinzel', serif; color: #D6A34A; font-size: clamp(28px, 5vw, 42px); line-height: 1.2; margin-bottom: 15px;">SITE UNDER CONSTRUCTION</h1>
+          <p style="color: #fff; max-width: 500px; margin: 0 auto; line-height: 1.6; font-size: 16px;">We are currently finalizing our Shopify integration. Follow our socials or check back soon for the official launch of the DTG Collection.</p>
       </div>
-
-      <!-- Search -->
-      <div class="product-search-wrap">
-        <input
-          type="text"
-          id="productSearch"
-          class="product-search-input"
-          placeholder="Search by name, category, or RSO..."
-          autocomplete="off"
-        >
-      </div>
-
-      <!-- Filters -->
-      <div class="product-filters">
-        <button class="product-filter is-active" data-filter="all">All</button>
-        <button class="product-filter" data-filter="award">Award Winning</button>
-        <button class="product-filter" data-filter="disposable">Disposables</button>
-        <button class="product-filter" data-filter="rso">RSO</button>
-        <button class="product-filter" data-filter="gummies">Gummies</button>
-        <button class="product-filter" data-filter="distillate">Distillate</button>
-        <button class="product-filter" data-filter="resin">Resin</button>
-        <button class="product-filter" data-filter="rosin">Rosin</button>
-        <button class="product-filter" data-filter="darts">Darts</button>
-      </div>
-
-      <!-- =========================
-           PRODUCT GRID
-      ========================== -->
-      <div class="product-grid" id="productGrid">
-        <!-- JS injects product cards -->
-      </div>
-    </section>
-
-    <section class="dt-products-findus">
-      <h2>Find Dutch Touch Products</h2>
-      <p>Coming soon: a locator to find Dutch Touch Genetics products across Michigan.</p>
-    </section>
-
   </main>
 
-  <!-- =========================
-       FOOTER (copied from strains)
-  ========================== -->
+
+  <div style="display: none;">
+
+    <section class="dt-products-hero">
+      <div class="dt-products-hero-inner">
+        <h1 class="products-title">Product Lineup</h1>
+        <p class="products-subtitle">
+          Award-winning disposables, RSO, gummies, resin, rosin, and more from Dutch Touch Genetics.
+        </p>
+      </div>
+    </section>
+
+    <main class="dt-products-main">
+
+      <section class="dt-products-section">
+        <div class="dt-products-header">
+          <h2>Browse Products</h2>
+          <p>Filter by category or search by strain, format, or RSO-based products.</p>
+        </div>
+
+        <div class="product-search-wrap">
+          <input
+            type="text"
+            id="productSearch"
+            class="product-search-input"
+            placeholder="Search by name, category, or RSO..."
+            autocomplete="off"
+          >
+        </div>
+
+        <div class="product-filters">
+          <button class="product-filter is-active" data-filter="all">All</button>
+          <button class="product-filter" data-filter="award">Award Winning</button>
+          <button class="product-filter" data-filter="disposable">Disposables</button>
+          <button class="product-filter" data-filter="rso">RSO</button>
+          <button class="product-filter" data-filter="gummies">Gummies</button>
+          <button class="product-filter" data-filter="distillate">Distillate</button>
+          <button class="product-filter" data-filter="resin">Resin</button>
+          <button class="product-filter" data-filter="rosin">Rosin</button>
+          <button class="product-filter" data-filter="darts">Darts</button>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+          </div>
+      </section>
+
+      <section class="dt-products-findus">
+        <h2>Find Dutch Touch Products</h2>
+        <p>Coming soon: a locator to find Dutch Touch Genetics products across Michigan.</p>
+      </section>
+
+    </main>
+
+  </div>
   <footer class="dt-footer">
     <div class="dt-footer-divider"></div>
 
@@ -160,7 +149,7 @@
     </div>
 
     <p class="dt-footer-copy">
-      © 2025 Dutch Touch Genetics. All rights reserved.
+      © 2026 Dutch Touch Genetics. All rights reserved.
     </p>
   </footer>
 
