@@ -171,7 +171,7 @@ body.dt-stores-page .dt-menu-links a:hover {
   height:45vh;
   min-height:380px;
 
-  background:url('../assets/img/strains/strains-hero.png') center/cover no-repeat;
+  background:url('..assets/img/banners/visit-us-hero.jpg') center/cover no-repeat;
   padding-top:72px;
 
   display:flex;
