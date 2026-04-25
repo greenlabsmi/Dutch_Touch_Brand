@@ -169,8 +169,8 @@ body.dt-stores-page .dt-menu-links a:hover {
 .dt-stores-hero {
   height: 45vh;
   min-height: 380px;
-  /* Fixed the missing slash before 'assets' */
-  background: url('../assets/img/banners/visit-us-hero.jpg') center/cover no-repeat;
+  /* Added a dark overlay and anchored the image to 'top center' */
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('../assets/img/banners/visit-us-hero.jpg') top center/cover no-repeat;
   padding-top: 72px;
   display: flex;
   flex-direction: column;
@@ -180,42 +180,49 @@ body.dt-stores-page .dt-menu-links a:hover {
 }
 
 .stores-title {
-  font-family:"Cinzel", serif;
-  font-size:3.6rem;
-  color:#fff;
-  margin-bottom:0.5rem;
+  font-family: "Cinzel", serif;
+  font-size: 3.6rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.8); /* Helps text pop against bright spots */
 }
 
 .stores-subtitle {
-  color:#ccc;
-  font-size:1.2rem;
+  color: #f7f3e9; /* Brighter than the old grey */
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
 /* ============================================================
    STORES GRID
 ============================================================ */
-
 .dt-stores-section {
-  max-width:1400px;
-  margin:0 auto;
-  padding:3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  text-align: center; /* Centers the 'Flagship Locations' headers too */
 }
 
 .dt-stores-header h2 {
-  font-family:"Cinzel", serif;
-  color:#fff;
-  margin-bottom:0.4rem;
+  font-family: "Cinzel", serif;
+  color: #fff;
+  margin-bottom: 0.4rem;
 }
 
 .dt-stores-header p {
-  color:#999;
-  margin-bottom:2rem;
+  color: #999;
+  margin-bottom: 3rem; /* Gave this a little more breathing room */
 }
 
 .stores-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(360px, 1fr));
-  gap:1.7rem;
+  display: grid;
+  /* auto-fit forces them to stretch, max-width keeps them from getting TOO huge */
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2.5rem; /* Increased the gap for a premium feel */
+  max-width: 1000px; /* Limits the stretch so it looks balanced */
+  margin: 0 auto; /* Centers the whole grid */
+  text-align: left; /* Keeps the text inside the cards aligned left */
 }
 
 .store-card {
