@@ -4,11 +4,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 1. MASTER HUB DATA FETCH
   // ============================================================
   let strains = [];
-  const isExternalSite = !window.location.href.includes('Dutch_Touch_Brand');
-  const baseUrl = isExternalSite ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' : '';
+  const baseUrl = '';
 
   try {
-    const response = await fetch('https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.json');
+    const response = await fetch('strains.json');
     strains = await response.json();
   } catch (error) {
     console.error('Failed to load strains for modal/filtering:', error);
