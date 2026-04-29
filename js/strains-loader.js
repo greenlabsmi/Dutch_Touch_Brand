@@ -1,9 +1,8 @@
 async function loadStrainLibrary() {
-  const isExternalSite = !window.location.href.includes('Dutch_Touch_Brand');
-  const baseUrl = isExternalSite ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' : '';
+  const baseUrl = '';
 
   try {
-    const response = await fetch('https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.json');
+    const response = await fetch('strains.json');
     const strains = await response.json();
 
     const vaultGrid = document.querySelector('#vault-strains');
