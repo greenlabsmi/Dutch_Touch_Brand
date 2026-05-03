@@ -201,8 +201,8 @@ body.dt-stores-page .dt-menu-links a:hover {
 .dt-stores-section {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 3rem 2rem;
-  text-align: center; /* Centers the 'Flagship Locations' headers too */
+  padding: 1.5rem 2rem; /* Changed from 3rem to 1.5rem to pull it up */
+  text-align: center;
 }
 
 .dt-stores-header h2 {
