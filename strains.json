@@ -276,6 +276,15 @@
     "image": "assets/img/strains/forbidden-jelly.png"
   },
   {
+  "name": "Field Trip",
+  "slug": "field-trip",
+  "type": "Hybrid",
+  "lineage": "GSC x Sunshine Daydream",
+  "breeder": "Dutch Touch Genetics",
+  "description": "Uplifting and nostalgic. This balanced hybrid features classic earthy dough notes with a bright, spacey citrus kick.",
+  "image": "assets/img/strains/field-trip-bud.jpg"
+},
+  {
     "slug": "garlic-breath",
     "name": "Garlic Breath",
     "type": "hybrid",
@@ -479,6 +488,15 @@
     "image": ""
   },
   {
+  "name": "Peanut Butter N' Chocolate",
+  "slug": "pb-n-chocolate",
+  "type": "Indica",
+  "lineage": "Dosidos x Mint Chocolate Chip",
+  "breeder": "Dutch Touch Genetics",
+  "description": "A heavy-hitting dessert strain. Rich, creamy nuttiness on the inhale with a deep, dark cocoa finish that anchors the body.",
+  "image": "assets/img/strains/pb-n-chocolate-bud.jpg"
+},
+  {
     "slug": "querkle",
     "name": "Querkle",
     "type": "indica",
@@ -598,6 +616,15 @@
     "description": "Powered by a terpene profile dominant in Terpinolene, Beta-Caryophyllene, and Myrcene, this Bodhi Seeds cross offers the best of both worlds: a clear, motivated, and uplifted mental state anchored by a soothing, relaxed body.",
     "image": "assets/img/strains/super-silver-hashplant-bud.jpg"
   },
+  {
+  "name": "Sin City Grapes",
+  "slug": "sin-city-grapes",
+  "type": "Indica",
+  "lineage": "Grape Ape x Sin City Kush",
+  "breeder": "Dutch Touch Genetics",
+  "description": "Visual mastery with deep purple hues. Smells of sweet fermented grapes and musk. The ultimate 'night-cap' strain.",
+  "image": "assets/img/strains/sin-city-grapes-bud.jpg"
+}
   {
     "slug": "thug-life",
     "name": "Thug Life",
