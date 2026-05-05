@@ -283,7 +283,7 @@
   "breeder": "Dutch Touch Genetics",
   "description": "Uplifting and nostalgic. This balanced hybrid features classic earthy dough notes with a bright, spacey citrus kick.",
   "image": "assets/img/strains/field-trip-bud.jpg"
-},
+  },
   {
     "slug": "garlic-breath",
     "name": "Garlic Breath",
@@ -495,7 +495,7 @@
   "breeder": "Dutch Touch Genetics",
   "description": "A heavy-hitting dessert strain. Rich, creamy nuttiness on the inhale with a deep, dark cocoa finish that anchors the body.",
   "image": "assets/img/strains/pb-n-chocolate-bud.jpg"
-},
+  },
   {
     "slug": "querkle",
     "name": "Querkle",
@@ -614,7 +614,7 @@
   "breeder": "Team Death Star",
   "description": "Visual mastery with deep purple hues. Smells of sweet fermented grapes and musk. The ultimate 'night-cap' strain.",
   "image": "assets/img/strains/sin-city-grapes-bud.jpg"
-},
+  },
   {
     "slug": "thug-life",
     "name": "Thug Life",
