@@ -256,16 +256,6 @@
     "image": "assets/img/strains/falcon-9-bud.jpg"
   },
   {
-    "slug": "field-trip",
-    "name": "Field Trip",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "GSC x Sunshine Daydream",
-    "breeder": "Bodhi Seeds",
-    "description": "A perfectly balanced 50/50 hybrid making it an ideal choice for experienced cannabis consumers.",
-    "image": ""
-  },
-  {
     "slug": "forbidden-jelly",
     "name": "Forbidden Jelly",
     "type": "hybrid",
