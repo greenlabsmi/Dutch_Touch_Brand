@@ -507,16 +507,6 @@
     "image": ""
   },
   {
-    "slug": "sin-city-grapes",
-    "name": "Sin City Grapes #10",
-    "type": "hybrid",
-    "award": false,
-    "lineage": "Unknown",
-    "breeder": "Team Deathstar",
-    "description": "Grape-forward hybrid with smooth evening chill.",
-    "image": "assets/img/strains/sin-city-grapes.png"
-  },
-  {
     "slug": "sky-lotus",
     "name": "Sky Lotus",
     "type": "hybrid",
@@ -621,7 +611,7 @@
   "slug": "sin-city-grapes",
   "type": "Indica",
   "lineage": "Grape Ape x Sin City Kush",
-  "breeder": "Dutch Touch Genetics",
+  "breeder": "Team Death Star",
   "description": "Visual mastery with deep purple hues. Smells of sweet fermented grapes and musk. The ultimate 'night-cap' strain.",
   "image": "assets/img/strains/sin-city-grapes-bud.jpg"
 },
