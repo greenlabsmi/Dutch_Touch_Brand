@@ -15,12 +15,30 @@
         h1 { font-family: 'Cinzel', serif; color: var(--gold); text-align: center; font-size: 36px; margin-bottom: 5px; text-shadow: 0 4px 15px rgba(214, 164, 65, 0.2); }
         .subtitle { text-align: center; color: #aaa; font-size: 14px; margin-bottom: 30px; }
         
-        /* Carousel Styles */
-        .carousel-title { font-family: 'Cinzel', serif; font-size: 18px; color: #fff; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; }
-        .carousel-container { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 20px; margin-bottom: 30px; scroll-snap-type: x mandatory; scrollbar-width: none; }
-        .carousel-container::-webkit-scrollbar { display: none; }
-        .carousel-container .card { flex: 0 0 140px; scroll-snap-align: start; cursor: pointer; }
-        .empty-carousel { font-size: 14px; color: #666; font-style: italic; padding: 20px 0; }
+        /* Collection View Controls */
+        .carousel-title { font-family: 'Cinzel', serif; font-size: 18px; color: #fff; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; text-align: center; }
+        .view-controls { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
+        .view-btn { background: transparent; border: 1px solid rgba(214, 164, 65, 0.5); color: var(--gold); padding: 6px 16px; border-radius: 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; }
+        .view-btn.active { background: var(--gold); color: #000; border-color: var(--gold); box-shadow: 0 0 10px rgba(214, 164, 65, 0.4); }
+
+        /* Dynamic Collection Wrapper */
+        .my-collection-wrapper { margin-bottom: 40px; min-height: 180px; width: 100%; transition: 0.3s; }
+        .empty-carousel { font-size: 13px; color: #666; font-style: italic; text-align: center; padding: 40px 0; }
+
+        /* 1. Carousel View */
+        .view-carousel { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+        .view-carousel::-webkit-scrollbar { display: none; }
+        .view-carousel .card { flex: 0 0 120px; scroll-snap-align: start; cursor: pointer; }
+
+        /* 2. Grid View */
+        .view-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; }
+        .view-grid .card { width: 100%; cursor: pointer; }
+
+        /* 3. Fanned View */
+        .view-fan { display: flex; justify-content: center; align-items: center; padding: 40px 0; overflow: visible; }
+        .view-fan .card { width: 100px; margin-left: -60px; cursor: pointer; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s; transform-origin: bottom center; box-shadow: -5px 0 15px rgba(0,0,0,0.8); border-radius: 8px; border: 1px solid rgba(214, 164, 65, 0.3); }
+        .view-fan .card:first-child { margin-left: 0; }
+        .view-fan .card:hover, .view-fan .card:active { transform: translateY(-40px) scale(1.15) rotate(0deg) !important; z-index: 1000 !important; box-shadow: 0 20px 30px rgba(0,0,0,0.9); margin: 0 10px; }
 
         /* Set Styles */
         .set-container { margin-bottom: 50px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
@@ -73,9 +91,16 @@
     <h1>THE DUTCH DECK</h1>
     <p class="subtitle" id="collection-counter">Loading Cards...</p>
 
-    <div class="carousel-title">MY COLLECTION</div>
-    <div class="carousel-container" id="my-carousel"></div>
+    <div class="carousel-title">MY COLLECTED CARDS</div>
+    <div class="view-controls" id="view-controls">
+        <button class="view-btn active" onclick="setView('carousel', this)">Carousel</button>
+        <button class="view-btn" onclick="setView('grid', this)">Grid</button>
+        <button class="view-btn" onclick="setView('fan', this)">Fanned Deck</button>
+    </div>
+    
+    <div id="my-collection-wrapper" class="my-collection-wrapper view-carousel"></div>
 
+    <div class="carousel-title" style="margin-top: 40px;">THE MASTER BINDER</div>
     <div id="binder"></div>
 
     <div class="modal" id="card-modal">
@@ -124,34 +149,65 @@
         </div>
     </div>
 
-    <script src="assets/js/deck-db.js?v=2.1"></script>
+    <script src="assets/js/deck-db.js?v=2.2"></script>
     <script>
         const collected = JSON.parse(localStorage.getItem('dutchDeck')) || [];
         const binder = document.getElementById('binder');
-        const carousel = document.getElementById('my-carousel');
         let currentCardId = null;
         let qrShowing = false;
+        let currentView = 'carousel';
         
         // Update Counter
         document.getElementById('collection-counter').innerText = `${collected.length} / ${GL_CARDS.length} Cards Found`;
 
-        // Render Carousel
-        if (collected.length === 0) {
-            carousel.innerHTML = `<div class="empty-carousel">Scan your first QR code in-store to start your collection!</div>`;
-        } else {
-            collected.forEach(id => {
+        // Render My Collection Display
+        function renderMyCollection() {
+            const wrapper = document.getElementById('my-collection-wrapper');
+            wrapper.innerHTML = '';
+            wrapper.className = `my-collection-wrapper view-${currentView}`;
+
+            if (collected.length === 0) {
+                wrapper.innerHTML = `<div class="empty-carousel">Scan your first QR code in-store to start your deck!</div>`;
+                return;
+            }
+
+            const total = collected.length;
+            const middleIndex = (total - 1) / 2;
+
+            collected.forEach((id, index) => {
                 const cardData = GL_CARDS.find(c => c.id === id);
                 if (cardData) {
                     const cardEl = document.createElement('div');
                     cardEl.className = 'card';
                     cardEl.innerHTML = `<img src="${cardData.image}">`;
                     cardEl.onclick = () => openCardModal(cardData, true);
-                    carousel.appendChild(cardEl);
+                    
+                    // Dynamic math for the Fanned Out effect
+                    if (currentView === 'fan') {
+                        const offset = index - middleIndex;
+                        const rotation = offset * 5; // Rotate 5 degrees per card away from center
+                        const yOffset = Math.abs(offset) * 4; // Push outer cards slightly lower for a curve
+                        cardEl.style.transform = `rotate(${rotation}deg) translateY(${yOffset}px)`;
+                        cardEl.style.zIndex = index;
+                    }
+                    
+                    wrapper.appendChild(cardEl);
                 }
             });
         }
 
-        // Render Sets
+        // View Toggle Logic
+        function setView(viewType, btnElement) {
+            currentView = viewType;
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+            renderMyCollection();
+        }
+
+        // Initial Load
+        renderMyCollection();
+
+        // Render Sets for the Master Binder
         GL_SETS.forEach(set => {
             const setDiv = document.createElement('div');
             setDiv.className = 'set-container';
@@ -181,7 +237,7 @@
                 grid.appendChild(cardEl);
             });
 
-            // Set Completion Logic (Auto-popup first time)
+            // Set Completion Auto-Popup
             if (isComplete && !localStorage.getItem(`notified-${set.id}`)) {
                 showAchievement(set.id);
                 localStorage.setItem(`notified-${set.id}`, 'true');
@@ -204,7 +260,6 @@
             document.getElementById('save-instruction').style.display = 'none';
             document.getElementById('save-btn').innerText = "Save Image";
 
-            // Reset QR state
             img.style.display = 'block';
             qrBox.style.display = 'none';
             toggleBtn.innerText = "📱 Redeem (Budtender Scan)";
@@ -216,12 +271,10 @@
                 document.getElementById('modal-reward').innerText = `Collector Perk: ${cardData.reward}`;
                 document.getElementById('modal-reward').style.color = "#2ef8bb";
                 
-                // Enable actions
                 toggleBtn.style.display = "block";
                 actionBtns.style.display = "grid";
                 hint.style.display = "block";
                 
-                // Generate Dynamic QR Code based on Reward text
                 qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(cardData.reward)}`;
                 
                 document.getElementById('modal-share-btn').onclick = () => {
@@ -238,7 +291,6 @@
                 document.getElementById('modal-reward').innerText = "Locked: Keep searching to discover!";
                 document.getElementById('modal-reward').style.color = "#aaa";
                 
-                // Disable actions
                 toggleBtn.style.display = "none";
                 actionBtns.style.display = "none";
                 hint.style.display = "none";
@@ -246,17 +298,15 @@
             modal.style.display = 'flex';
         }
 
-        // Save tip trigger function
         function showSaveTip() {
             document.getElementById('save-instruction').style.display = 'block';
             document.getElementById('save-btn').innerText = "Tap & Hold Image Above";
         }
 
-        // Show Achievement logic
         function showAchievement(setId) {
             const set = GL_SETS.find(s => s.id === setId);
             const primaryCard = GL_CARDS.find(c => c.id === set.cardIds[0]);
-            document.getElementById('comp-img').src = primaryCard.image; // Pulls the first card in the set to show off
+            document.getElementById('comp-img').src = primaryCard.image; 
             document.getElementById('comp-modal').style.display = 'flex';
         }
 
@@ -266,19 +316,18 @@
             document.getElementById('modal-qr').style.display = qrShowing ? 'flex' : 'none';
             document.getElementById('zoom-hint').style.display = qrShowing ? 'none' : 'block';
             document.getElementById('toggle-qr-btn').innerText = qrShowing ? "Flip Back to Card" : "📱 Redeem (Budtender Scan)";
-            document.getElementById('save-instruction').style.display = 'none'; // Hide tip if QR opens
+            document.getElementById('save-instruction').style.display = 'none'; 
         }
 
         function closeModal() { document.getElementById('card-modal').style.display = 'none'; }
 
         // Fullscreen Swipe Gallery Logic
         function openFullscreen() {
-            if(qrShowing || !collected.includes(currentCardId)) return; // Don't open if QR is showing or locked
+            if(qrShowing || !collected.includes(currentCardId)) return; 
             
             const gallery = document.getElementById('fs-gallery');
             gallery.innerHTML = ''; 
             
-            // Populate gallery with ONLY unlocked cards
             collected.forEach(id => {
                 const cData = GL_CARDS.find(c => c.id === id);
                 if(cData) {
@@ -292,7 +341,6 @@
             
             document.getElementById('fs-modal').style.display = 'flex';
             
-            // Snap to the specific card they clicked
             setTimeout(() => {
                 document.getElementById(`fs-item-${currentCardId}`).scrollIntoView({ behavior: 'instant', inline: 'center' });
             }, 50);
