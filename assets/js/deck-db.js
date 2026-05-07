@@ -42,10 +42,10 @@ const GL_CARDS = [
     { id: 'face-off-og-alt', name: 'Face Off OG (Variant)', image: 'assets/img/greenlabs-logo.png', reward: 'Special Promo', rarity: 'Holographic' },
     
     // === STORE EXPLORER ===
-    { id: 'bodyguards', name: 'The Bodyguards', image: 'assets/img/strains/the-bodyguard-card.jpg', reward: 'Security Discount', rarity: 'Store Special' },
-    { id: 'chalkboard', name: 'The Chalkboard', image: 'assets/img/strains/chalk-board-card.jpg', reward: 'Free Sticker', rarity: 'Explorer Series' },
+    { id: 'the-bodyguard', name: 'The Bodyguards', image: 'assets/img/strains/the-bodyguard-card.jpg', reward: 'Security Discount', rarity: 'Store Special' },
+    { id: 'chalk-board', name: 'The Chalkboard', image: 'assets/img/strains/chalk-board-card.jpg', reward: 'Free Sticker', rarity: 'Explorer Series' },
     { id: 'monolith', name: 'The Monolith', image: 'assets/img/strains/monolith-card.jpg', reward: 'Free Sticker', rarity: 'Explorer Series' },
-    { id: 'merch', name: 'Merch Stand', image: 'assets/img/strains/merch-garden-card.jpg', reward: '10% Off Merch', rarity: 'Explorer Series' },
+    { id: 'merch-garden', name: 'Merch Stand', image: 'assets/img/strains/merch-garden-card.jpg', reward: '10% Off Merch', rarity: 'Explorer Series' },
     { id: 'favorite-customer', name: 'Favorite Customer', image: 'assets/img/greenlabs-logo.png', reward: 'High Five', rarity: 'Explorer Series' }
 ];
 
