@@ -25,6 +25,7 @@ const GL_CARDS = [
     { id: 'pb-chocolate', name: 'PB n Chocolate', image: 'assets/img/strains/peanut-butter-n-chocolate-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
     { id: 'choc-marshmallows', name: 'Choc Marshmallows', image: 'assets/img/strains/chocolate-marshmallow.png', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
     { id: 'orange-kush-cake', name: 'Orange Kush Cake', image: 'assets/img/strains/orange-kush-cake-bud.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa-Hybrid' },
+    { id: 'bubblegum-88g13hp', name: 'Bubble Gum 88G13', image: 'assets/img/strains/bubblegum-88g13hp-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
 
     // === THE TROPHY CASE (Award Winners) ===
     { id: 'super-silver-hashplant', name: 'Super Silver Hashplant', image: 'assets/img/strains/super-silver-hashplant-card.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
@@ -35,7 +36,7 @@ const GL_CARDS = [
 
     // === THE VARIANT VAULT (Variants) ===
     { id: 'hash-d-alt', name: 'Hash D (Shiny Variant)', image: 'assets/img/strains/hash-d-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
-    { id: 'bubblegum-88g13hp', name: 'Bubblegum (Pink Variant)', image: 'assets/img/bubblegum-88g13hp', reward: 'Special Promo', rarity: 'Holographic' },
+    { id: 'bubblegum-pink', name: 'Bubblegum (Pink Variant)', image: 'assets/img/greenlabs-logo.png', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'banana-split-alt', name: 'Banana Split (Pink Variant)', image: 'assets/img/strains/banana-split-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'falcon-9-alt', name: 'Falcon 9 (Shiny Variant)', image: 'assets/img/strains/falcon-9-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'face-off-og-alt', name: 'Face Off OG (Variant)', image: 'assets/img/greenlabs-logo.png', reward: 'Special Promo', rarity: 'Holographic' },
