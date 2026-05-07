@@ -1,7 +1,7 @@
 const GL_CARDS = [
     // === THE JEDI COUNCIL ===
     { id: 'lemon-wookie', name: 'Lemon Wookie', image: 'assets/img/strains/lemon-wookie-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica-Hybrid' },
-    { id: 'falcon-9', name: 'Falcon 9', image: 'assets/img/strains/falcon-9-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica-Dominant' },
+    { id: 'falcon-9', name: 'Falcon 9', image: 'assets/img/strains/falcon-9.jpg', reward: '$1 Off 1/8th', rarity: 'Indica-Dominant' },
     { id: 'solo-walker', name: 'Solo Walker', image: 'assets/img/strains/solo-walker-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
     { id: 'death-z', name: 'Death Z', image: 'assets/img/strains/death-z-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
     { id: 'death-star', name: 'Death Star', image: 'assets/img/strains/death-star-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
@@ -9,23 +9,23 @@ const GL_CARDS = [
     // === THE NIGHT SHIFT (Indicas) ===
     { id: 'clusterfunk', name: 'Clusterfunk', image: 'assets/img/strains/clusterfunk-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
     { id: 'hash-d', name: 'Hash D', image: 'assets/img/strains/hash-d-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
-    { id: 'garlic-breath', name: 'Garlic Breath', image: 'assets/img/strains/garlic-breath-art.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
-    { id: 'illudium', name: 'Illudium', image: 'assets/img/strains/illudium-art.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
-    { id: 'gorilla-88', name: 'Gorilla 88', image: 'assets/img/strains/gorilla-88-art.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
+    { id: 'garlic-breath', name: 'Garlic Breath', image: 'assets/img/strains/garlic-breath-bud.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
+    { id: 'illudium', name: 'Illudium', image: 'assets/img/strains/illudium.png', reward: '$1 Off 1/8th', rarity: 'Indica' },
+    { id: 'gorilla-88', name: 'Gorilla 88', image: 'assets/img/strains/gorilla-88-bud.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
 
     // === THE FRUIT BASKET ===
     { id: 'sin-city-grapes', name: 'Sin City Grapes', image: 'assets/img/strains/sin-city-grapes-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
     { id: 'banana-split', name: 'Banana Split', image: 'assets/img/strains/banana-split-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
-    { id: 'pina-rita', name: 'Pina Rita', image: 'assets/img/strains/pina-rita-art.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
-    { id: 'strawberry-daiquiri', name: 'Strawberry Daiquiri', image: 'assets/img/strains/strawberry-daiquiri-art.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
-    { id: 'guicy-g', name: 'Guicy G', image: 'assets/img/strains/guicy-g-art.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
+    { id: 'pina-rita', name: 'Pina Rita', image: 'assets/img/strains/pina-rita.png', reward: '$1 Off 1/8th', rarity: 'Sativa' },
+    { id: 'strawberry-daiquiri', name: 'Strawberry Daiquiri', image: 'assets/img/strains/strawberry-daiquiri-bud.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
+    { id: 'guicy-g', name: 'Guicy G', image: 'assets/img/greenlabs-logo.png', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
 
     // === THE DUTCH BAKERY ===
     { id: '13-layer-cake', name: '13 Layer Cake', image: 'assets/img/strains/13-layer-cake-card.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
     { id: 'pb-chocolate', name: 'PB n Chocolate', image: 'assets/img/strains/peanut-butter-n-chocolate-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
-    { id: 'choc-marshmallows', name: 'Choc Marshmallows', image: 'assets/img/strains/chocolate-marshmellow-14-art.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
+    { id: 'choc-marshmallows', name: 'Choc Marshmallows', image: 'assets/img/strains/chocolate-marshmallow.png', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
     { id: 'bubblegum-88g13hp', name: 'Bubble Gum 88G13', image: 'assets/img/strains/bubblegum-88g13hp-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
-    { id: 'orange-kush-cake', name: 'Orange Kush Cake', image: 'assets/img/strains/orange-kush-cake-card.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa-Hybrid' },
+    { id: 'orange-kush-cake', name: 'Orange Kush Cake', image: 'assets/img/strains/orange-kush-cake-bud.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa-Hybrid' },
 
     // === THE TROPHY CASE (Award Winners) ===
     { id: 'super-silver-hashplant', name: 'Super Silver Hashplant', image: 'assets/img/strains/super-silver-hashplant-card.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
@@ -36,17 +36,17 @@ const GL_CARDS = [
 
     // === THE VARIANT VAULT (Variants) ===
     { id: 'hash-d-alt', name: 'Hash D (Shiny Variant)', image: 'assets/img/strains/hash-d-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
-    { id: 'bubblegum-pink', name: 'Bubblegum (Pink Variant)', image: 'assets/img/strains/bubblegum-pink-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
+    { id: 'bubblegum-pink', name: 'Bubblegum (Pink Variant)', image: 'assets/img/greenlabs-logo.png', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'banana-split-alt', name: 'Banana Split (Pink Variant)', image: 'assets/img/strains/banana-split-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'falcon-9-alt', name: 'Falcon 9 (Shiny Variant)', image: 'assets/img/strains/falcon-9-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
-    { id: 'face-off-og-alt', name: 'Face Off OG (Variant)', image: 'assets/img/strains/face-off-og-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
+    { id: 'face-off-og-alt', name: 'Face Off OG (Variant)', image: 'assets/img/greenlabs-logo.png', reward: 'Special Promo', rarity: 'Holographic' },
     
     // === STORE EXPLORER ===
-    { id: 'bodyguards', name: 'The Bodyguards', image: 'assets/img/hero.jpg', reward: 'Security Discount', rarity: 'Store Special' },
-    { id: 'chalkboard', name: 'The Chalkboard', image: 'assets/img/greenlabs-logo.png', reward: 'Free Sticker', rarity: 'Explorer Series' },
+    { id: 'bodyguards', name: 'The Bodyguards', image: 'assets/img/strains/the-bodyguard-card.jpg', reward: 'Security Discount', rarity: 'Store Special' },
+    { id: 'chalkboard', name: 'The Chalkboard', image: 'assets/img/strains/chalk-board-card.jpg', reward: 'Free Sticker', rarity: 'Explorer Series' },
     { id: 'monolith', name: 'The Monolith', image: 'assets/img/strains/monolith-card.jpg', reward: 'Free Sticker', rarity: 'Explorer Series' },
-    { id: 'merch', name: 'Merch Stand', image: 'assets/img/strains/merch-card.jpg', reward: '10% Off Merch', rarity: 'Explorer Series' },
-    { id: 'favorite-customer', name: 'Favorite Customer', image: 'assets/img/strains/favorite-customer-card.jpg', reward: 'High Five', rarity: 'Explorer Series' }
+    { id: 'merch', name: 'Merch Stand', image: 'assets/img/strains/merch-garden-card.jpg', reward: '10% Off Merch', rarity: 'Explorer Series' },
+    { id: 'favorite-customer', name: 'Favorite Customer', image: 'assets/img/greenlabs-logo.png', reward: 'High Five', rarity: 'Explorer Series' }
 ];
 
 const GL_SETS = [
