@@ -22,7 +22,7 @@ const GL_CARDS = [
 
     // === THE DUTCH BAKERY ===
     { id: '13-layer-cake', name: '13 Layer Cake', image: 'assets/img/strains/13-layer-cake-card.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
-    { id: 'pb-chocolate', name: 'PB n Chocolate', image: 'assets/img/strains/peanut-butter-n-chocolate-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
+    { id: 'pb-n-chocolate', name: 'PB n Chocolate', image: 'assets/img/strains/peanut-butter-n-chocolate-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
     { id: 'choc-marshmallows', name: 'Choc Marshmallows', image: 'assets/img/strains/chocolate-marshmallow.png', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
     { id: 'orange-kush-cake', name: 'Orange Kush Cake', image: 'assets/img/strains/orange-kush-cake-bud.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa-Hybrid' },
     { id: 'bubblegum-88g13hp', name: 'Bubble Gum 88G13', image: 'assets/img/strains/bubblegum-88g13hp-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
@@ -53,7 +53,7 @@ const GL_SETS = [
     { id: 'jedi', name: 'The Jedi Council', tagline: 'The Force is strong with these galactic genetics.', reward: '20% Off Set', cardIds: ['lemon-wookie', 'falcon-9', 'solo-walker', 'death-z', 'death-star'] },
     { id: 'night-shift', name: 'The Night Shift', tagline: 'Heavy-hitting Indicas to lock you in for the night.', reward: 'Free Sleep Edible', cardIds: ['clusterfunk', 'hash-d', 'garlic-breath', 'illudium', 'gorilla-88'] },
     { id: 'fruit-basket', name: 'The Fruit Basket', tagline: 'A tropical storm of juicy terpene profiles.', reward: '10% Off Fruity Extracts', cardIds: ['sin-city-grapes', 'banana-split', 'pina-rita', 'strawberry-daiquiri', 'guicy-g'] },
-    { id: 'bakery', name: 'The Dutch Bakery', tagline: 'Freshly baked, sweet, and sticky.', reward: 'Free 100mg Edible', cardIds: ['13-layer-cake', 'pb-chocolate', 'choc-marshmallows', 'bubblegum-88g13hp', 'orange-kush-cake', 'garlic-breath'] },
+    { id: 'bakery', name: 'The Dutch Bakery', tagline: 'Freshly baked, sweet, and sticky.', reward: 'Free 100mg Edible', cardIds: ['13-layer-cake', 'pb-n-chocolate', 'choc-marshmallows', 'bubblegum-88g13hp', 'orange-kush-cake', 'garlic-breath'] },
     { id: 'trophy-case', name: 'The Trophy Case', tagline: 'Decorated champions and cup-winning classics.', reward: 'Free Pre-roll', cardIds: ['super-silver-hashplant', 'mr-clean', 'lilac-diesel', 'cobra-lips', 'field-trip'] },
     { id: 'shiny-vault', name: 'The Variant Vault', tagline: 'Ultra-rare holos and alternate artworks.', reward: '$10 Store Credit', cardIds: ['hash-d-alt', 'bubblegum-pink', 'banana-split-alt', 'falcon-9-alt', 'face-off-og-alt'] },
     { id: 'explorer', name: 'Store Explorer', tagline: 'Hidden secrets scattered around Green Labs.', reward: 'Mystery Bag', cardIds: ['the-bodyguard', 'chalk-board', 'monolith', 'merch-garden', 'favorite-customer'] }
