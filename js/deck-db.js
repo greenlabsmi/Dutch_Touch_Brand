@@ -18,7 +18,7 @@ const GL_CARDS = [
     { id: 'banana-split', name: 'Banana Split', image: 'assets/img/strains/banana-split-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
     { id: 'pina-rita', name: 'Pina Rita', image: 'assets/img/strains/pina-rita.png', reward: '$1 Off 1/8th', rarity: 'Sativa' },
     { id: 'strawberry-daiquiri', name: 'Strawberry Daiquiri', image: 'assets/img/strains/strawberry-daiquiri-bud.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
-    { id: 'guicy-g', name: 'Guicy G', image: 'assets/img/greenlabs-logo.png', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
+    { id: 'guicy-g', name: 'Guicy G', image: 'assets/img/guicy-g-bud.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
 
     // === THE DUTCH BAKERY ===
     { id: '13-layer-cake', name: '13 Layer Cake', image: 'assets/img/strains/13-layer-cake-card.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
@@ -36,7 +36,7 @@ const GL_CARDS = [
 
     // === THE VARIANT VAULT (Variants) ===
     { id: 'hash-d-alt', name: 'Hash D (Shiny Variant)', image: 'assets/img/strains/hash-d-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
-    { id: 'bubblegum-pink', name: 'Bubblegum (Pink Variant)', image: 'assets/img/greenlabs-logo.png', reward: 'Special Promo', rarity: 'Holographic' },
+    { id: 'bubblegum-pink', name: 'Bubblegum (Pink Variant)', image: 'assets/img/bubblegum-88g13hp-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'banana-split-alt', name: 'Banana Split (Pink Variant)', image: 'assets/img/strains/banana-split-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'falcon-9-alt', name: 'Falcon 9 (Shiny Variant)', image: 'assets/img/strains/falcon-9-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'face-off-og-alt', name: 'Face Off OG (Variant)', image: 'assets/img/greenlabs-logo.png', reward: 'Special Promo', rarity: 'Holographic' },
