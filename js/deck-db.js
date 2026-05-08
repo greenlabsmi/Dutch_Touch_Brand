@@ -56,5 +56,5 @@ const GL_SETS = [
     { id: 'bakery', name: 'The Dutch Bakery', tagline: 'Freshly baked, sweet, and sticky.', reward: 'Free 100mg Edible', cardIds: ['13-layer-cake', 'pb-chocolate', 'choc-marshmallows', 'bubblegum-88g13hp', 'orange-kush-cake', 'garlic-breath'] },
     { id: 'trophy-case', name: 'The Trophy Case', tagline: 'Decorated champions and cup-winning classics.', reward: 'Free Pre-roll', cardIds: ['super-silver-hashplant', 'mr-clean', 'lilac-diesel', 'cobra-lips', 'field-trip'] },
     { id: 'shiny-vault', name: 'The Variant Vault', tagline: 'Ultra-rare holos and alternate artworks.', reward: '$10 Store Credit', cardIds: ['hash-d-alt', 'bubblegum-pink', 'banana-split-alt', 'falcon-9-alt', 'face-off-og-alt'] },
-    { id: 'explorer', name: 'Store Explorer', tagline: 'Hidden secrets scattered around Green Labs.', reward: 'Mystery Bag', cardIds: ['bodyguards', 'chalkboard', 'monolith', 'merch', 'favorite-customer'] }
+    { id: 'explorer', name: 'Store Explorer', tagline: 'Hidden secrets scattered around Green Labs.', reward: 'Mystery Bag', cardIds: ['the-bodyguard', 'chalk-board', 'monolith', 'merch-garden', 'favorite-customer'] }
 ];
