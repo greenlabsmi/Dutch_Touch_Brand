@@ -47,7 +47,12 @@ const GL_CARDS = [
     { id: 'chalk-board', name: 'The Chalkboard', image: 'assets/img/strains/chalk-board-card.jpg', reward: 'Free Sticker', rarity: 'Explorer Series' },
     { id: 'monolith', name: 'The Monolith', image: 'assets/img/strains/monolith-card.jpg', reward: 'Free Sticker', rarity: 'Explorer Series' },
     { id: 'merch-garden', name: 'Merch Stand', image: 'assets/img/strains/merch-garden-card.jpg', reward: '10% Off Merch', rarity: 'Explorer Series' },
-    { id: 'favorite-customer', name: 'Favorite Customer', image: 'assets/img/favorite-customer-card', reward: 'High Five', rarity: 'Explorer Series' }
+    { id: 'favorite-customer', name: 'Favorite Customer', image: 'assets/img/favorite-customer-card', reward: 'High Five', rarity: 'Explorer Series' },
+
+    // === KEEP IT PINK ===
+    { id: 'bubblegum-pink', name: 'Bubblegum (Pink Variant)', image: 'assets/img/strains/bubblegum-88g13hp-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
+    { id: 'banana-split-alt', name: 'Banana Split (Pink Variant)', image: 'assets/img/strains/banana-split-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
+    { id: '13-layer-cake', name: '13 Layer Cake', image: 'assets/img/strains/13-layer-cake-card.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' }
 ];
 
 const GL_SETS = [
