@@ -47,7 +47,7 @@ const GL_CARDS = [
     { id: 'chalk-board', name: 'The Chalkboard', image: 'assets/img/strains/chalk-board-card.jpg', reward: 'Free Sticker', rarity: 'Explorer Series' },
     { id: 'monolith', name: 'The Monolith', image: 'assets/img/strains/monolith-card.jpg', reward: 'Free Sticker', rarity: 'Explorer Series' },
     { id: 'merch-garden', name: 'Merch Stand', image: 'assets/img/strains/merch-garden-card.jpg', reward: '10% Off Merch', rarity: 'Explorer Series' },
-    { id: 'favorite-customer', name: 'Favorite Customer', image: 'assets/img/greenlabs-logo.png', reward: 'High Five', rarity: 'Explorer Series' }
+    { id: 'favorite-customer', name: 'Favorite Customer', image: 'assets/img/favorite-customer-card', reward: 'High Five', rarity: 'Explorer Series' }
 ];
 
 const GL_SETS = [
