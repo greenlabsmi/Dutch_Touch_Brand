@@ -18,7 +18,7 @@ const GL_CARDS = [
     { id: 'banana-split', name: 'Banana Split', image: 'assets/img/strains/banana-split-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
     { id: 'pina-rita', name: 'Pina Rita', image: 'assets/img/strains/pina-rita.png', reward: '$1 Off 1/8th', rarity: 'Sativa' },
     { id: 'strawberry-daiquiri', name: 'Strawberry Daiquiri', image: 'assets/img/strains/strawberry-daiquiri-bud.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
-    { id: 'guicy-g', name: 'Guicy G', image: 'assets/img/guicy-g-bud.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
+    { id: 'guicy-g', name: 'Guicy G', image: 'assets/img/strains/guicy-g-bud.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
 
     // === THE DUTCH BAKERY ===
     { id: '13-layer-cake', name: '13 Layer Cake', image: 'assets/img/strains/13-layer-cake-card.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
@@ -36,10 +36,11 @@ const GL_CARDS = [
 
     // === THE VARIANT VAULT (Variants) ===
     { id: 'hash-d-alt', name: 'Hash D (Shiny Variant)', image: 'assets/img/strains/hash-d-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
-    { id: 'bubblegum-pink', name: 'Bubblegum (Pink Variant)', image: 'assets/img/bubblegum-88g13hp-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
+    { id: 'bubblegum-pink', name: 'Bubblegum (Pink Variant)', image: 'assets/img/strains/bubblegum-88g13hp-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'banana-split-alt', name: 'Banana Split (Pink Variant)', image: 'assets/img/strains/banana-split-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'falcon-9-alt', name: 'Falcon 9 (Shiny Variant)', image: 'assets/img/strains/falcon-9-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
-    { id: 'face-off-og-alt', name: 'Face Off OG (Variant)', image: 'assets/img/greenlabs-logo.png', reward: 'Special Promo', rarity: 'Holographic' },
+    { id: 'sin-city-grapes-alt', name: 'Sin City Grapes (Variant)', image: 'assets/img/strains/sin-city-grapes-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
+    { id: 'face-off-og-alt', name: 'Face Off OG (Variant)', image: 'assets/img/greenlabs-logo.png', rarity: 'Holographic' },
     
     // === STORE EXPLORER ===
     { id: 'the-bodyguard', name: 'The Bodyguards', image: 'assets/img/strains/the-bodyguard-card.jpg', reward: 'Security Discount', rarity: 'Store Special' },
@@ -55,6 +56,7 @@ const GL_SETS = [
     { id: 'fruit-basket', name: 'The Fruit Basket', tagline: 'A tropical storm of juicy terpene profiles.', reward: '10% Off Fruity Extracts', cardIds: ['sin-city-grapes', 'banana-split', 'pina-rita', 'strawberry-daiquiri', 'guicy-g'] },
     { id: 'bakery', name: 'The Dutch Bakery', tagline: 'Freshly baked, sweet, and sticky.', reward: 'Free 100mg Edible', cardIds: ['13-layer-cake', 'pb-n-chocolate', 'choc-marshmallows', 'bubblegum-88g13hp', 'orange-kush-cake', 'garlic-breath'] },
     { id: 'trophy-case', name: 'The Trophy Case', tagline: 'Decorated champions and cup-winning classics.', reward: 'Free Pre-roll', cardIds: ['super-silver-hashplant', 'mr-clean', 'lilac-diesel', 'cobra-lips', 'field-trip'] },
-    { id: 'shiny-vault', name: 'The Variant Vault', tagline: 'Ultra-rare holos and alternate artworks.', reward: '$10 Store Credit', cardIds: ['hash-d-alt', 'bubblegum-pink', 'banana-split-alt', 'falcon-9-alt', 'face-off-og-alt'] },
+    { id: 'shiny-vault', name: 'The Variant Vault', tagline: 'Ultra-rare holos and alternate artworks.', reward: '$10 Store Credit', cardIds: ['hash-d-alt', 'banana-split-alt', 'falcon-9-alt', 'sin-city-grapes-alt', 'face-off-og-alt'] },
+    { id: 'keep-it-pink', name: 'KEEP IT PINK', tagline: 'Pink genetics for the refined palette.', reward: 'Special Pink Pre-roll', cardIds: ['bubblegum-pink', 'banana-split-alt', '13-layer-cake'] },
     { id: 'explorer', name: 'Store Explorer', tagline: 'Hidden secrets scattered around Green Labs.', reward: 'Mystery Bag', cardIds: ['the-bodyguard', 'chalk-board', 'monolith', 'merch-garden', 'favorite-customer'] }
 ];
