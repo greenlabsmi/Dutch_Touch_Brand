@@ -6,8 +6,8 @@
     <title>New Card Unlocked! | The Dutch Deck</title>
     
     <meta property="og:title" content="A New Card Appears!">
-    <meta property="og:description" content="I just found a rare strain card at Green Labs! Can you collect them all?">
-    <meta property="og:image" content="https://dutchtouchgenetics.com/assets/img/deck-share.jpg">
+    <meta property="og:description" content="I just found a rare strain card in the Dutch Deck! Can you collect them all?">
+    <meta property="og:image" content="https://dutchtouchgenetics.com/assets/img/dutch-deck-share.jpg">
     <meta property="og:url" content="https://dutchtouchgenetics.com/deck.html">
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <script src="js/deck-db.js?v=2.3"></script>
+    <script src="js/deck-db.js?v=2.4"></script>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const scannedId = urlParams.get('id');
@@ -56,14 +56,12 @@
             document.getElementById('name-label').innerText = card.name;
             document.getElementById('card-art').src = card.image;
             
-            // Connect to the new Dutch Deck storage
             let collected = JSON.parse(localStorage.getItem('dutchDeck')) || [];
             
             if (!collected.includes(scannedId)) {
                 collected.push(scannedId);
                 localStorage.setItem('dutchDeck', JSON.stringify(collected));
             } else {
-                // If they scan a card they already have
                 document.getElementById('status-msg').innerText = "🔄 DUPLICATE FOUND!";
                 document.getElementById('status-msg').style.color = "#aaa";
                 document.getElementById('status-msg').style.animation = "none";
@@ -83,7 +81,7 @@
             if (navigator.share) {
                 navigator.share({
                     title: 'The Dutch Deck!',
-                    text: `Check out the ${card.name} card I found at Green Labs!`,
+                    text: `Check out the ${card ? card.name : 'premium card'} I found in the Dutch Deck!`,
                     url: window.location.href
                 });
             } else {
