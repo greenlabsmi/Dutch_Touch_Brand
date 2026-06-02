@@ -34,6 +34,7 @@ let eventsData = null;
 let dropsData = null;
 let merchData = null;
 let rosterData = null;
+let deliGalleryData = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
@@ -51,14 +52,16 @@ async function bootKeepItDutch() {
     events,
     drops,
     merch,
-    roster
+    roster,
+    deliGallery
   ] = await Promise.all([
     fetchJson("strains.json", []),
     fetchJson("data/leaderboard.json", null),
     fetchJson("data/events.json", null),
     fetchJson("data/drops.json", null),
     fetchJson("data/merch.json", null),
-    fetchJson("data/roster.json", null)
+    fetchJson("data/roster.json", null),
+    fetchJson("data/deli-gallery.json", null)
   ]);
 
   allStrains = strains;
@@ -67,8 +70,12 @@ async function bootKeepItDutch() {
   dropsData = drops;
   merchData = merch;
   rosterData = roster;
+  deliGalleryData = deliGallery;
 
   const leaderboardItems = leaderboardData?.leaderboard || [];
+
+  renderDeliGallery();
+  initDeliGalleryFilters();
 
   renderLeaderboard(leaderboardItems);
   renderChampion(leaderboardItems[0]);
@@ -167,6 +174,87 @@ function inferTerps(strain) {
   }
 
   return ["Myrcene", "Limonene", "Caryophyllene"];
+}
+
+/* -----------------------------
+   Deli Gallery
+----------------------------- */
+
+function renderDeliGallery(filter = "all") {
+  const track = document.getElementById("deliGalleryTrack");
+  if (!track || !Array.isArray(deliGalleryData?.items)) return;
+
+  const items = deliGalleryData.items.filter(item => {
+    if (filter === "all") return true;
+
+    if (filter === "deals") {
+      const badge = String(item.badge || "").toLowerCase();
+      return item.badgeClass === "deal" || badge.includes("special") || badge.includes("$");
+    }
+
+    return item.category === filter;
+  });
+
+  track.innerHTML = items.map(item => `
+    <article class="gallery-card-wrap" data-category="${item.category}">
+      <div class="gallery-flip-card" role="button" tabindex="0" aria-label="Flip ${item.name} card">
+        <div class="gallery-flip-inner">
+          <div class="gallery-face front">
+            <span class="gallery-badge ${item.badgeClass || ""}">${item.badge || item.typeLabel}</span>
+            <span class="gallery-hint">Tap Art</span>
+            <img src="${item.bud}" alt="${item.name} flower" onerror="this.src='${PLACEHOLDER_LOGO}'">
+          </div>
+
+          <div class="gallery-face back">
+            <span class="gallery-badge ${item.badgeClass || ""}">${item.badge || item.typeLabel}</span>
+            <span class="gallery-hint">Tap Bud</span>
+            <img src="${item.art}" alt="${item.name} art" onerror="this.src='${item.bud || PLACEHOLDER_LOGO}'">
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-info">
+        <div class="gallery-info-row">
+          <div>
+            <h3>${item.name}</h3>
+            <p class="gallery-meta">${item.typeLabel}${item.thc ? ` • ${item.thc}` : ""}</p>
+          </div>
+          <span class="gallery-price">${item.price || ""}</span>
+        </div>
+
+        <p>${item.tagline || ""}</p>
+
+        <div class="gallery-actions">
+          <a href="${item.profileUrl || "#strains"}" class="mini-link">Explore</a>
+          <a href="#join" class="mini-link">Vote</a>
+        </div>
+      </div>
+    </article>
+  `).join("");
+
+  document.querySelectorAll(".gallery-flip-card").forEach(card => {
+    card.addEventListener("click", () => {
+      card.classList.toggle("is-flipped");
+      if (typeof triggerHaptic === "function") triggerHaptic();
+    });
+
+    card.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        card.classList.toggle("is-flipped");
+      }
+    });
+  });
+}
+
+function initDeliGalleryFilters() {
+  document.querySelectorAll("#galleryFilters button").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("#galleryFilters button").forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+      renderDeliGallery(button.dataset.filter);
+    });
+  });
 }
 
 /* -----------------------------
