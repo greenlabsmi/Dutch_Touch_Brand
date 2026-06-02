@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Keep It Dutch Club | Dutch Touch Genetics</title>
+  <meta name="description" content="The home of Dutch Touch Genetics culture, deli rankings, Dutch Deck, rosin drops, events, merch, and strain education." />
+
+  <link rel="stylesheet" href="css/keep-it-dutch.css" />
+
+  <!-- Existing Dutch Deck DB -->
+  <script src="js/deck-db.js" defer></script>
+
+  <!-- New page logic -->
+  <script src="js/keep-it-dutch.js" defer></script>
+</head>
+
+<body>
+  <div class="kid-bg"></div>
+  <div class="kid-noise"></div>
+
+  <header class="kid-header" id="top">
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <a class="kid-brand" href="index.html">
+      <img src="assets/img/logo/dtg-logo-orange.png" alt="Dutch Touch Genetics" />
+      <span>Keep It Dutch</span>
+    </a>
+
+    <nav class="kid-nav" id="kidNav">
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#strains">Strains</a>
+      <a href="#deck">Dutch Deck</a>
+      <a href="#events">Events</a>
+      <a href="#join">Join</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="kid-hero section reveal">
+      <div class="hero-glow"></div>
+
+      <p class="eyebrow">Internal Demo / DTG Future Preview</p>
+
+      <h1>
+        Keep It
+        <span>Dutch</span>
+      </h1>
+
+      <p class="hero-copy">
+        The official culture hub for Dutch Touch Genetics — weekly deli rankings,
+        Hall of Fame strains, Dutch Deck collectibles, rosin drops, event nights,
+        merch, and the story behind the flower.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#leaderboard" class="btn btn-gold">View Leaderboard</a>
+        <a href="#join" class="btn btn-ghost">Join the Club</a>
+      </div>
+
+      <div class="hero-ticker" aria-label="DTG culture ticker">
+        <div>
+          <span>Weekly Deli Rankings</span>
+          <span>Rosin Spot Coming Soon</span>
+          <span>Dutch Deck Unlocks</span>
+          <span>Food Trucks + Music</span>
+          <span>Hall of Fame Strains</span>
+          <span>Monthly Drops</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section class="section leaderboard-section reveal" id="leaderboard">
+      <div class="section-head">
+        <p class="eyebrow">Updated Weekly</p>
+        <h2>Dutch Deli Leaderboard</h2>
+        <p>
+          The official weekly rankings based on what’s moving at the deli counter.
+          The TV slides get them curious. This page pulls them into the DTG world.
+        </p>
+      </div>
+
+      <div class="leaderboard-layout">
+        <article class="champ-card" id="champCard">
+          <div class="skeleton-card"></div>
+        </article>
+
+        <div class="rank-panel">
+          <div class="rank-panel-head">
+            <span>Rank</span>
+            <span>Strain</span>
+            <span>Sold</span>
+          </div>
+
+          <div class="rank-list" id="rankList"></div>
+        </div>
+      </div>
+
+      <div class="leaderboard-stats">
+        <article>
+          <strong id="totalGrams">6.9k+</strong>
+          <span>grams tracked this week</span>
+        </article>
+        <article>
+          <strong id="strainCount">36</strong>
+          <span>deli strains competing</span>
+        </article>
+        <article>
+          <strong>7x</strong>
+          <span>cup-winning legacy</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- TITLE FIGHT / FAN VOTE -->
+    <section class="section title-fight reveal">
+      <div class="fight-card">
+        <p class="eyebrow">Weekly Storyline</p>
+        <h2 id="fightTitle">Title Fight Loading...</h2>
+        <p id="fightCopy">
+          The champion is holding the crown, but the challenger is chasing fast.
+        </p>
+
+        <a href="#join" class="btn btn-gold">Vote For Your Favorite</a>
+      </div>
+
+      <div class="fan-ranking-card">
+        <p class="eyebrow">Fan Rankings</p>
+        <h3>Official vs. Fan Favorite</h3>
+        <p>
+          Sales decide the official leaderboard. Fans decide the culture ranking.
+          Scan in-store, vote online, and pick your team.
+        </p>
+
+        <div class="team-tags" id="teamTags">
+          <span>Team Mr. Clean</span>
+          <span>Team Lemon Wookie</span>
+          <span>Team Death By Funk</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- HALL OF FAME -->
+    <section class="section reveal" id="hall">
+      <div class="section-head">
+        <p class="eyebrow">Legacy Wall</p>
+        <h2>DTG Hall of Fame</h2>
+        <p>
+          These are the strains and products that built the Dutch Touch story.
+          Permanent legends. Monthly rankings change — Hall of Fame status does not.
+        </p>
+      </div>
+
+      <div class="carousel-shell">
+        <button class="carousel-btn prev" data-target="hallTrack">‹</button>
+        <div class="hof-track" id="hallTrack"></div>
+        <button class="carousel-btn next" data-target="hallTrack">›</button>
+      </div>
+    </section>
+
+    <!-- STRAIN INTELLIGENCE -->
+    <section class="section reveal" id="strains">
+      <div class="section-head split-head">
+        <div>
+          <p class="eyebrow">Terpene Focused</p>
+          <h2>Strain Intelligence</h2>
+          <p>
+            Not just “indica, hybrid, sativa.” This section turns each strain into
+            a profile: lineage, aroma, terpenes, flavor, awards, cards, and test results.
+          </p>
+        </div>
+
+        <a href="strains.html" class="btn btn-ghost">Full Strain Library</a>
+      </div>
+
+      <div class="strain-tabs" id="strainTabs">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="award">Award Winners</button>
+        <button data-filter="favorite">Fan Favorites</button>
+        <button data-filter="sativa">Sativa</button>
+        <button data-filter="hybrid">Hybrid</button>
+        <button data-filter="indica">Indica</button>
+      </div>
+
+      <div class="strain-grid" id="strainGrid"></div>
+    </section>
+
+    <!-- ROSIN SPOT -->
+    <section class="section rosin-section reveal" id="rosin">
+      <div class="rosin-content">
+        <p class="eyebrow">Coming Soon</p>
+        <h2>The Rosin Spot</h2>
+        <p>
+          A future hash-focused destination inside the DTG ecosystem — fresh press,
+          cold cure, live rosin education, batch notes, terp breakdowns, and limited
+          drops built for the people who actually care about the plant.
+        </p>
+
+        <div class="rosin-pills">
+          <span>Fresh Press</span>
+          <span>Cold Cure</span>
+          <span>Hash Education</span>
+          <span>Batch Notes</span>
+        </div>
+
+        <a href="#join" class="btn btn-gold">Get Rosin Drop Alerts</a>
+      </div>
+
+      <div class="rosin-card-stack">
+        <article>
+          <h3>Fresh Press Friday</h3>
+          <p>Mock concept for future weekly hash drops.</p>
+        </article>
+        <article>
+          <h3>Terp Notes</h3>
+          <p>Flavor, aroma, texture, and cultivar pairing notes.</p>
+        </article>
+        <article>
+          <h3>Hash Flight</h3>
+          <p>Educational rosin comparison experience.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- DUTCH DECK -->
+    <section class="section deck-section reveal" id="deck">
+      <div class="section-head split-head">
+        <div>
+          <p class="eyebrow">Collect The Strains</p>
+          <h2>Dutch Deck</h2>
+          <p>
+            Dutch Deck turns DTG strains into collectible cards with lore, classes,
+            rewards, unlocks, and set completion. The cards make the brand collectible.
+          </p>
+        </div>
+
+        <a href="deck.html" class="btn btn-gold">Open Dutch Deck</a>
+      </div>
+
+      <div class="deck-preview-layout">
+        <div class="deck-feature" id="deckFeature"></div>
+        <div class="deck-set-grid" id="deckSetGrid"></div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="section events-section reveal" id="events">
+      <div class="event-hero">
+        <div>
+          <p class="eyebrow">Mock Future Event</p>
+          <h2>Dutch Summer Sessions</h2>
+          <p>
+            A weekly community night at Green Labs: live local music, food trucks,
+            vendor pop-ups, DTG strain drops, Dutch Deck booth, rosin education,
+            and exclusive event merch.
+          </p>
+
+          <div class="event-meta">
+            <span>Green Labs Outdoor Lot</span>
+            <span>Food Trucks</span>
+            <span>Music</span>
+            <span>DTG Drops</span>
+          </div>
+
+          <a href="#join" class="btn btn-gold">Join Event List</a>
+        </div>
+      </div>
+
+      <div class="event-grid" id="eventGrid">
+        <article>
+          <strong>01</strong>
+          <h3>Leaderboard Reveal</h3>
+          <p>Weekly champion announced in-store and online.</p>
+        </article>
+        <article>
+          <strong>02</strong>
+          <h3>Dutch Deck Booth</h3>
+          <p>Collect cards, unlock drops, and rep your favorite strain.</p>
+        </article>
+        <article>
+          <strong>03</strong>
+          <h3>Food + Music</h3>
+          <p>Turn Green Labs from a stop into a destination.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- MERCH -->
+    <section class="section merch-section reveal" id="merch">
+      <div class="section-head">
+        <p class="eyebrow">Rep Your Strain</p>
+        <h2>Merch Drops</h2>
+        <p>
+          The goal is not random cannabis merch. It’s team identity:
+          Team Mr. Clean, Lemon Wookie drops, Death By Funk stickers,
+          event-exclusive shirts, and Dutch Deli collectibles.
+        </p>
+      </div>
+
+      <div class="merch-grid" id="merchGrid">
+        <article>
+          <div class="mock-product">DTG</div>
+          <h3>Team Mr. Clean Tee</h3>
+          <p>Mock Shopify product</p>
+        </article>
+        <article>
+          <div class="mock-product">LW</div>
+          <h3>Lemon Wookie Hoodie</h3>
+          <p>Mock Shopify product</p>
+        </article>
+        <article>
+          <div class="mock-product">DBF</div>
+          <h3>Death By Funk Sticker Pack</h3>
+          <p>Mock Shopify product</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- JOIN -->
+    <section class="section join-section reveal" id="join">
+      <div class="join-card">
+        <p class="eyebrow">Join The Club</p>
+        <h2>Vote. Collect. Get Drops. Stay Dutch.</h2>
+        <p>
+          This is where the page becomes valuable: email capture, favorite strain,
+          interest tagging, event list, merch list, Dutch Deck updates, and future
+          SMS/email campaigns.
+        </p>
+
+        <form id="kidForm" class="kid-form">
+          <div class="form-row">
+            <input type="text" name="firstName" placeholder="First name" required />
+            <input type="email" name="email" placeholder="Email address" required />
+          </div>
+
+          <div class="form-row">
+            <input type="tel" name="phone" placeholder="Phone optional" />
+            <select name="favoriteStrain" id="favoriteStrain" required>
+              <option value="">Favorite strain</option>
+            </select>
+          </div>
+
+          <div class="interest-box">
+            <label><input type="checkbox" name="interests" value="Flower" /> Flower</label>
+            <label><input type="checkbox" name="interests" value="Rosin" /> Rosin</label>
+            <label><input type="checkbox" name="interests" value="Dutch Deck" /> Dutch Deck</label>
+            <label><input type="checkbox" name="interests" value="Events" /> Events</label>
+            <label><input type="checkbox" name="interests" value="Merch" /> Merch</label>
+          </div>
+
+          <label class="consent-line">
+            <input type="checkbox" required />
+            I confirm I am 21+ and agree to receive DTG updates.
+          </label>
+
+          <button class="btn btn-gold" type="submit">Cast My Vote</button>
+          <p class="form-message" id="formMessage"></p>
+        </form>
+
+        <p class="fine-print">
+          Demo form only. Hook this into Klaviyo, Shopify, Typeform, Google Forms,
+          AlpineIQ, or another approved marketing capture platform before launch.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="kid-footer">
+    <img src="assets/img/banners/dtg-font-logo.png" alt="Dutch Touch Genetics" />
+    <p>Keep It Dutch Club — internal demo / future brand hub.</p>
+    <a href="#top">Back to top</a>
+  </footer>
+</body>
+</html>
