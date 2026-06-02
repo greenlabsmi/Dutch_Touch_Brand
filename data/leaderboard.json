@@ -1,0 +1,156 @@
+{
+  "status": "demo",
+  "updatedLabel": "This Week",
+  "updatedDate": "2026-06-01",
+  "source": "Weekly deli sales dashboard",
+  "headline": "Dutch Deli Top 10",
+  "subheadline": "Official weekly rankings based on what moved at the deli counter.",
+  "totalGramsTracked": 6905.97,
+  "totalStrainsTracked": 37,
+  "leaderboard": [
+    {
+      "rank": 1,
+      "slug": "mr-clean",
+      "name": "Mr. Clean",
+      "brand": "Dutch Touch Genetics",
+      "category": "Deli Flower",
+      "gramsSold": 1926.45,
+      "movement": "hold",
+      "movementLabel": "Current Champion",
+      "badge": "Current Champion",
+      "story": "The clean king holds the crown with a massive weekly lead.",
+      "team": "Team Mr. Clean"
+    },
+    {
+      "rank": 2,
+      "slug": "lilac-diesel",
+      "name": "Lilac Diesel",
+      "brand": "Dutch Touch Genetics",
+      "category": "Deli Flower",
+      "gramsSold": 1150.19,
+      "movement": "up",
+      "movementLabel": "Challenger",
+      "badge": "Title Challenger",
+      "story": "Floral gas with serious championship pressure.",
+      "team": "Team Lilac Diesel"
+    },
+    {
+      "rank": 3,
+      "slug": "lemon-wookie",
+      "name": "Lemon Wookie #4",
+      "brand": "Dutch Touch Genetics",
+      "category": "Deli Flower",
+      "gramsSold": 913.76,
+      "movement": "hold",
+      "movementLabel": "Hall of Famer",
+      "badge": "Hall of Famer",
+      "story": "A bright citrus legend staying dangerous in the top three.",
+      "team": "Team Lemon Wookie"
+    },
+    {
+      "rank": 4,
+      "slug": "clusterfunk",
+      "name": "Clusterfunk",
+      "brand": "Dutch Touch Genetics",
+      "category": "Deli Flower",
+      "gramsSold": 664.32,
+      "movement": "up",
+      "movementLabel": "Staff Favorite",
+      "badge": "Staff Favorite",
+      "story": "Funky, heavy, and moving fast with loyal fans.",
+      "team": "Team Clusterfunk"
+    },
+    {
+      "rank": 5,
+      "slug": "solo-walker",
+      "name": "Solo Walker",
+      "brand": "Dutch Touch Genetics",
+      "category": "Deli Flower",
+      "gramsSold": 624.78,
+      "movement": "up",
+      "movementLabel": "Top Mover",
+      "badge": "Top Mover",
+      "story": "A steady climber with Jedi-level momentum.",
+      "team": "Team Solo Walker"
+    },
+    {
+      "rank": 6,
+      "slug": "ripped-bubba-4",
+      "name": "Ripped Bubba #4",
+      "brand": "Dutch Touch Genetics",
+      "category": "Deli Flower",
+      "gramsSold": 332.44,
+      "movement": "new",
+      "movementLabel": "New Heat",
+      "badge": "New Heat",
+      "story": "A heavy hitter breaking into the weekly board.",
+      "team": "Team Ripped Bubba"
+    },
+    {
+      "rank": 7,
+      "slug": "pb-n-chocolate",
+      "name": "Peanut Butter N' Chocolate",
+      "brand": "Dutch Touch Genetics",
+      "category": "Deli Flower",
+      "gramsSold": 315.19,
+      "movement": "hold",
+      "movementLabel": "Dutch Bakery",
+      "badge": "Dutch Bakery",
+      "story": "Dessert strain energy with rich, heavy appeal.",
+      "team": "Team PB Chocolate"
+    },
+    {
+      "rank": 8,
+      "slug": "hash-d",
+      "name": "Hash D",
+      "brand": "Dutch Touch Genetics",
+      "category": "Deli Flower",
+      "gramsSold": 278.87,
+      "movement": "hold",
+      "movementLabel": "Hash Classic",
+      "badge": "Hash Classic",
+      "story": "Fuel, earth, hash, and old-school weight.",
+      "team": "Team Hash D"
+    },
+    {
+      "rank": 9,
+      "slug": "spirit-hashplant",
+      "name": "Spirit Hashplant",
+      "brand": "Dutch Touch Genetics",
+      "category": "Deli Flower",
+      "gramsSold": 253.05,
+      "movement": "up",
+      "movementLabel": "Hashplant Watch",
+      "badge": "Hashplant Watch",
+      "story": "A Bodhi-backed hashplant profile gaining traction.",
+      "team": "Team Spirit Hashplant"
+    },
+    {
+      "rank": 10,
+      "slug": "green-crack",
+      "name": "Green Crack",
+      "brand": "Sapura",
+      "category": "Deli Flower",
+      "gramsSold": 223.72,
+      "movement": "guest",
+      "movementLabel": "Guest Spot",
+      "badge": "Guest Spot",
+      "story": "A guest deli strain holding its own among DTG heavyweights.",
+      "team": "Team Green Crack"
+    }
+  ],
+  "storylines": [
+    {
+      "title": "Mr. Clean Holds The Crown",
+      "copy": "Mr. Clean is the clear weekly champion, leading the board by more than 700 grams over the nearest challenger."
+    },
+    {
+      "title": "Lilac Diesel Is Chasing",
+      "copy": "Lilac Diesel is putting real pressure on the top spot and gives the leaderboard a clean championship race."
+    },
+    {
+      "title": "DTG Owns The Board",
+      "copy": "Nine of the Top 10 deli strains this week are Dutch Touch Genetics, turning deli analytics into brand proof."
+    }
+  ]
+}
