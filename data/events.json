@@ -1,0 +1,82 @@
+{
+  "status": "demo",
+  "featuredEvent": {
+    "id": "dutch-summer-sessions",
+    "title": "Dutch Summer Sessions",
+    "dateLabel": "Coming Soon",
+    "timeLabel": "Friday Nights",
+    "location": "Green Labs Outdoor Lot",
+    "city": "Luna Pier, MI",
+    "tagline": "Music, food trucks, local vendors, DTG drops, Dutch Deck, and community nights at the home of Dutch Touch Genetics.",
+    "description": "Dutch Summer Sessions is the future weekly community event concept for Green Labs and Dutch Touch Genetics. The idea is simple: turn the property into a destination, not just a dispensary stop.",
+    "image": "assets/img/banners/dutch-summer-sessions.jpg",
+    "features": [
+      "Live local music",
+      "Food trucks",
+      "Local vendor pop-ups",
+      "Dutch Deli leaderboard reveal",
+      "DTG strain drops",
+      "Dutch Deck booth",
+      "Rosin education table",
+      "Limited event merch"
+    ],
+    "schedule": [
+      {
+        "time": "5:00 PM",
+        "title": "Food Trucks Open",
+        "description": "Guests arrive, grab food, check the leaderboard, and scan into the Keep It Dutch Club."
+      },
+      {
+        "time": "6:00 PM",
+        "title": "Dutch Deli Leaderboard Reveal",
+        "description": "This week's Top 10 strains are announced on the TVs and online."
+      },
+      {
+        "time": "7:00 PM",
+        "title": "Local Music Set",
+        "description": "Live music builds the community atmosphere and keeps guests on site longer."
+      },
+      {
+        "time": "8:00 PM",
+        "title": "DTG Drop Spotlight",
+        "description": "Featured strain, rosin preview, merch drop, or Dutch Deck card reveal."
+      }
+    ],
+    "cta": {
+      "label": "Join Event List",
+      "target": "#join"
+    }
+  },
+  "eventConcepts": [
+    {
+      "id": "food-truck-friday",
+      "title": "Food Truck Friday",
+      "type": "Community",
+      "description": "Weekly food truck rotation with in-store leaderboard voting and DTG feature strains."
+    },
+    {
+      "id": "rosin-spotlight",
+      "title": "Rosin Spotlight",
+      "type": "Education",
+      "description": "A guided hash education table focused on fresh press, cold cure, terpene preservation, and batch notes."
+    },
+    {
+      "id": "dads-against-predators",
+      "title": "Dads Against Predators Collab",
+      "type": "Collaboration",
+      "description": "A cause-driven collaboration concept combining awareness, merch, community presence, and a launch event."
+    },
+    {
+      "id": "dutch-deck-night",
+      "title": "Dutch Deck Night",
+      "type": "Collectibles",
+      "description": "Card reveals, QR unlocks, strain profiles, and limited collector rewards."
+    },
+    {
+      "id": "grower-qa",
+      "title": "Meet The Grow",
+      "type": "Education",
+      "description": "Behind-the-scenes DTG storytelling with cultivation notes, terpene education, and strain history."
+    }
+  ]
+}
