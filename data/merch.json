@@ -1,0 +1,73 @@
+{
+  "status": "demo",
+  "headline": "Rep Your Strain",
+  "subheadline": "Mock merch concepts for the Keep It Dutch Club pitch.",
+  "products": [
+    {
+      "id": "team-mr-clean-tee",
+      "name": "Team Mr. Clean Tee",
+      "collection": "Deli Champions",
+      "priceLabel": "$35",
+      "status": "Mockup",
+      "image": "assets/img/merch/team-mr-clean-tee.jpg",
+      "description": "A clean, bold tee for fans of the current Dutch Deli champion.",
+      "linkedStrain": "mr-clean",
+      "cta": "Coming Soon"
+    },
+    {
+      "id": "lemon-wookie-hoodie",
+      "name": "Lemon Wookie Hoodie",
+      "collection": "Hall of Fame",
+      "priceLabel": "$75",
+      "status": "Mockup",
+      "image": "assets/img/merch/lemon-wookie-hoodie.jpg",
+      "description": "A premium hoodie built around the citrus-heavy DTG legend.",
+      "linkedStrain": "lemon-wookie",
+      "cta": "Coming Soon"
+    },
+    {
+      "id": "death-by-funk-sticker-pack",
+      "name": "Death By Funk Sticker Pack",
+      "collection": "The Night Shift",
+      "priceLabel": "$10",
+      "status": "Mockup",
+      "image": "assets/img/merch/death-by-funk-sticker-pack.jpg",
+      "description": "Funky, loud, collectible stickers for one of DTG's heaviest legends.",
+      "linkedStrain": "death-by-funk",
+      "cta": "Coming Soon"
+    },
+    {
+      "id": "dutch-deli-hat",
+      "name": "Dutch Deli Hat",
+      "collection": "Dutch Deli",
+      "priceLabel": "$30",
+      "status": "Mockup",
+      "image": "assets/img/merch/dutch-deli-hat.jpg",
+      "description": "Simple, wearable deli culture branding for everyday customers.",
+      "linkedStrain": "",
+      "cta": "Coming Soon"
+    },
+    {
+      "id": "summer-sessions-shirt",
+      "name": "Dutch Summer Sessions Shirt",
+      "collection": "Events",
+      "priceLabel": "$35",
+      "status": "Mockup",
+      "image": "assets/img/merch/summer-sessions-shirt.jpg",
+      "description": "Event-exclusive shirt concept for food truck and music nights.",
+      "linkedStrain": "",
+      "cta": "Event Exclusive"
+    },
+    {
+      "id": "dutch-deck-sticker-sheet",
+      "name": "Dutch Deck Sticker Sheet",
+      "collection": "Dutch Deck",
+      "priceLabel": "$8",
+      "status": "Mockup",
+      "image": "assets/img/merch/dutch-deck-sticker-sheet.jpg",
+      "description": "A collectible sticker sheet tied into card unlocks and strain drops.",
+      "linkedStrain": "",
+      "cta": "Coming Soon"
+    }
+  ]
+}
