@@ -1,0 +1,33 @@
+{
+  "status": "demo",
+  "staffPicks": [
+    {
+      "name": "Dane",
+      "role": "Brand / Digital",
+      "pick": "Death By Funk",
+      "slug": "death-by-funk",
+      "quote": "When life’s a clusterfunk, roll it up and vibe."
+    },
+    {
+      "name": "Kas",
+      "role": "In-Store Marketing",
+      "pick": "Lemon Wookie #4",
+      "slug": "lemon-wookie",
+      "quote": "Bright, citrusy, and easy to recommend."
+    },
+    {
+      "name": "Bri",
+      "role": "Inventory",
+      "pick": "Lilac Diesel",
+      "slug": "lilac-diesel",
+      "quote": "Floral gas with a loyal following."
+    },
+    {
+      "name": "DTG Grow Team",
+      "role": "Cultivation",
+      "pick": "Mr. Clean",
+      "slug": "mr-clean",
+      "quote": "A champion for a reason."
+    }
+  ]
+}
