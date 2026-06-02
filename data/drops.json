@@ -1,0 +1,85 @@
+{
+  "status": "demo",
+  "currentDrop": {
+    "id": "keep-it-dutch-june-drop",
+    "month": "June",
+    "name": "The Keep It Dutch Drop",
+    "headline": "Leaderboard heat, Hall of Fame legends, Dutch Deck unlocks, and the future of rosin culture.",
+    "description": "A monthly drop format that connects deli flower, collectibles, merch, events, and customer engagement into one DTG culture moment.",
+    "theme": "Deli Champions",
+    "launchLabel": "Mock June Drop",
+    "featuredStrains": [
+      {
+        "slug": "mr-clean",
+        "name": "Mr. Clean",
+        "role": "Current Champion",
+        "copy": "The clean king leads the board and headlines the monthly drop."
+      },
+      {
+        "slug": "lilac-diesel",
+        "name": "Lilac Diesel",
+        "role": "Title Challenger",
+        "copy": "Floral gas and championship pressure from the #2 spot."
+      },
+      {
+        "slug": "lemon-wookie",
+        "name": "Lemon Wookie #4",
+        "role": "Hall of Famer",
+        "copy": "A citrus-heavy DTG legend with collectible card energy."
+      }
+    ],
+    "dutchDeck": [
+      {
+        "cardId": "mr-clean",
+        "name": "Mr. Clean",
+        "dropCode": "D-001",
+        "rarity": "Gold Champion"
+      },
+      {
+        "cardId": "lemon-wookie",
+        "name": "Lemon Wookie #4",
+        "dropCode": "D-002",
+        "rarity": "Hall of Fame"
+      }
+    ],
+    "rosinPreview": {
+      "title": "The Rosin Spot Preview",
+      "description": "A future hash drop built around small-batch rosin, terpene education, and fresh press culture.",
+      "products": [
+        "Fresh Press Feature",
+        "Cold Cure Batch Notes",
+        "Hash Flight Education"
+      ]
+    },
+    "cta": {
+      "label": "Join Drop Alerts",
+      "target": "#join"
+    }
+  },
+  "futureDrops": [
+    {
+      "id": "dutch-bakery",
+      "name": "The Dutch Bakery",
+      "theme": "Dessert Strains",
+      "featured": ["Peanut Butter N' Chocolate", "13 Layercake", "Chocolate Marshmallows"]
+    },
+    {
+      "id": "night-shift",
+      "name": "The Night Shift",
+      "theme": "Heavy Indicas",
+      "featured": ["Death By Funk", "Clusterfunk", "Hash D", "Spirit Hashplant"]
+    },
+    {
+      "id": "summer-vibe",
+      "name": "Summer Vibe",
+      "theme": "Fruit, citrus, tropical energy",
+      "featured": ["Pina Rita #2", "Orange Kush Cake", "Banana Split", "Guicy G"]
+    },
+    {
+      "id": "trophy-case",
+      "name": "The Trophy Case",
+      "theme": "Award winners and DTG legends",
+      "featured": ["Mr. Clean", "Lilac Diesel", "Lemon Wookie #4", "Space Hippy", "Forbidden Jelly"]
+    }
+  ]
+}
