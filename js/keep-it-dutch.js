@@ -1,15 +1,4 @@
-const DEMO_LEADERBOARD = [
-  { rank: 1, slug: "mr-clean", name: "Mr. Clean", gramsSold: 1926.45, badge: "Current Champion" },
-  { rank: 2, slug: "lilac-diesel", name: "Lilac Diesel", gramsSold: 1150.19, badge: "Challenger" },
-  { rank: 3, slug: "lemon-wookie", name: "Lemon Wookie #4", gramsSold: 913.76, badge: "Hall of Famer" },
-  { rank: 4, slug: "clusterfunk", name: "Clusterfunk", gramsSold: 664.32, badge: "Staff Favorite" },
-  { rank: 5, slug: "solo-walker", name: "Solo Walker", gramsSold: 624.78, badge: "Top Mover" },
-  { rank: 6, slug: "ripped-bubba-4", name: "Ripped Bubba #4", gramsSold: 332.44, badge: "" },
-  { rank: 7, slug: "pb-n-chocolate", name: "Peanut Butter N' Chocolate", gramsSold: 315.19, badge: "" },
-  { rank: 8, slug: "hash-d", name: "Hash D", gramsSold: 278.87, badge: "" },
-  { rank: 9, slug: "spirit-hashplant", name: "Spirit Hashplant", gramsSold: 253.05, badge: "" },
-  { rank: 10, slug: "green-crack", name: "Green Crack", gramsSold: 223.72, badge: "" }
-];
+const PLACEHOLDER_LOGO = "assets/img/logo/dtg-logo-orange.png";
 
 const FALLBACK_TERPS = {
   "mr-clean": ["Limonene", "Pinene", "Terpinolene"],
@@ -39,31 +28,64 @@ const HALL_OF_FAME_SLUGS = [
   "space-hippy"
 ];
 
-const PLACEHOLDER_LOGO = "assets/img/logo/dtg-logo-orange.png";
-
 let allStrains = [];
-let leaderboard = [];
+let leaderboardData = null;
+let eventsData = null;
+let dropsData = null;
+let merchData = null;
+let rosterData = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initRevealAnimations();
   initCarousels();
+  initStrainTabs();
   initForm();
   bootKeepItDutch();
 });
 
 async function bootKeepItDutch() {
-  allStrains = await fetchJson("strains.json", []);
-  leaderboard = await fetchLeaderboard();
+  const [
+    strains,
+    leaderboard,
+    events,
+    drops,
+    merch,
+    roster
+  ] = await Promise.all([
+    fetchJson("strains.json", []),
+    fetchJson("data/leaderboard.json", null),
+    fetchJson("data/events.json", null),
+    fetchJson("data/drops.json", null),
+    fetchJson("data/merch.json", null),
+    fetchJson("data/roster.json", null)
+  ]);
 
-  renderLeaderboard(leaderboard);
-  renderChampion(leaderboard[0]);
-  renderTitleFight(leaderboard);
-  renderHallOfFame(allStrains);
+  allStrains = strains;
+  leaderboardData = leaderboard;
+  eventsData = events;
+  dropsData = drops;
+  merchData = merch;
+  rosterData = roster;
+
+  const leaderboardItems = leaderboardData?.leaderboard || [];
+
+  renderLeaderboard(leaderboardItems);
+  renderChampion(leaderboardItems[0]);
+  renderTitleFight(leaderboardItems);
+  renderHallOfFame();
   renderStrainGrid(allStrains);
-  renderVoteOptions(allStrains);
+  renderVoteOptions(allStrains, leaderboardItems);
   renderDeckPreview();
+  renderEvents();
+  renderMerch();
+  renderRoster();
+  renderDropDetails();
 }
+
+/* -----------------------------
+   Data helpers
+----------------------------- */
 
 async function fetchJson(path, fallback) {
   try {
@@ -76,18 +98,21 @@ async function fetchJson(path, fallback) {
   }
 }
 
-async function fetchLeaderboard() {
-  const data = await fetchJson("data/leaderboard.json", null);
-
-  if (data && Array.isArray(data.leaderboard)) {
-    return data.leaderboard;
-  }
-
-  return DEMO_LEADERBOARD;
-}
-
 function normalizeSlug(slug = "") {
   return slug.toLowerCase().trim();
+}
+
+function slugify(value = "") {
+  return value
+    .toLowerCase()
+    .replace(/#/g, "")
+    .replace(/&/g, "and")
+    .replace(/'/g, "")
+    .replace(/\./g, "")
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 function findStrain(slugOrName) {
@@ -115,25 +140,39 @@ function imageForStrain(strain, preferred = "bud") {
   return `assets/img/strains/${slug}-bud.jpg`;
 }
 
-function slugify(value = "") {
-  return value
-    .toLowerCase()
-    .replace(/#/g, "")
-    .replace(/&/g, "and")
-    .replace(/'/g, "")
-    .replace(/\./g, "")
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "");
-}
-
 function formatGrams(value) {
   const number = Number(value || 0);
   return `${number.toLocaleString(undefined, { maximumFractionDigits: 0 })}g`;
 }
 
-/* Leaderboard */
+function cleanDescription(text = "", limit = 140) {
+  const clean = text.replace(/🏆/g, "").replace(/\s+/g, " ").trim();
+  if (clean.length <= limit) return clean;
+  return `${clean.slice(0, limit).trim()}...`;
+}
+
+function inferTerps(strain) {
+  const text = `${strain.description || ""} ${strain.lineage || ""}`.toLowerCase();
+
+  if (text.includes("lemon") || text.includes("citrus") || text.includes("orange")) {
+    return ["Limonene", "Terpinolene", "Caryophyllene"];
+  }
+
+  if (text.includes("fuel") || text.includes("diesel") || text.includes("funk")) {
+    return ["Myrcene", "Caryophyllene", "Humulene"];
+  }
+
+  if (text.includes("grape") || text.includes("berry") || text.includes("lavender")) {
+    return ["Myrcene", "Linalool", "Caryophyllene"];
+  }
+
+  return ["Myrcene", "Limonene", "Caryophyllene"];
+}
+
+/* -----------------------------
+   Leaderboard
+----------------------------- */
+
 function renderChampion(item) {
   const champCard = document.getElementById("champCard");
   if (!champCard || !item) return;
@@ -145,7 +184,8 @@ function renderChampion(item) {
     <span class="badge">${item.badge || "Current Champion"}</span>
     <img class="champ-image" src="${image}" alt="${item.name}" onerror="this.src='${PLACEHOLDER_LOGO}'">
     <h3>${item.name}</h3>
-    <p>${formatGrams(item.gramsSold)} sold this week. The current Dutch Deli champion and the strain everyone is chasing.</p>
+    <p>${item.story || `${formatGrams(item.gramsSold)} sold this week.`}</p>
+    <p><strong>${formatGrams(item.gramsSold)}</strong> sold this week</p>
     <a class="btn btn-ghost" href="#join">Vote for ${item.name}</a>
   `;
 }
@@ -170,12 +210,14 @@ function renderLeaderboard(items) {
     `;
   }).join("");
 
-  const total = items.reduce((sum, item) => sum + Number(item.gramsSold || 0), 0);
+  const total = leaderboardData?.totalGramsTracked ||
+    items.reduce((sum, item) => sum + Number(item.gramsSold || 0), 0);
+
   const totalGrams = document.getElementById("totalGrams");
   const strainCount = document.getElementById("strainCount");
 
   if (totalGrams) totalGrams.textContent = `${(total / 1000).toFixed(1)}k+`;
-  if (strainCount) strainCount.textContent = String(items.length);
+  if (strainCount) strainCount.textContent = String(leaderboardData?.totalStrainsTracked || items.length);
 
   document.querySelectorAll(".rank-item").forEach(item => {
     item.addEventListener("click", () => {
@@ -200,12 +242,14 @@ function renderTitleFight(items) {
   fightTitle.textContent = `${champ.name} vs. ${challenger.name}`;
 
   fightCopy.textContent =
-    `${champ.name} holds the crown with ${formatGrams(champ.gramsSold)}, but ${challenger.name} is chasing hard. ` +
-    `Only ${formatGrams(gap)} separates the champ from the #1 challenger.`;
+    `${champ.name} holds the crown with ${formatGrams(champ.gramsSold)}, while ${challenger.name} is chasing hard. Only ${formatGrams(gap)} separates the champion from the #1 challenger.`;
 }
 
-/* Hall */
-function renderHallOfFame(strains) {
+/* -----------------------------
+   Hall of Fame
+----------------------------- */
+
+function renderHallOfFame() {
   const track = document.getElementById("hallTrack");
   if (!track) return;
 
@@ -222,7 +266,10 @@ function renderHallOfFame(strains) {
   `).join("");
 }
 
-/* Strains */
+/* -----------------------------
+   Strain Intelligence
+----------------------------- */
+
 function renderStrainGrid(strains, filter = "all") {
   const grid = document.getElementById("strainGrid");
   if (!grid) return;
@@ -244,8 +291,11 @@ function renderStrainGrid(strains, filter = "all") {
     return `
       <article class="strain-card">
         <img src="${imageForStrain(strain, "bud")}" alt="${strain.name}" onerror="this.src='${PLACEHOLDER_LOGO}'">
+
         <div class="strain-card-body">
           ${strain.award ? `<span class="badge">Award Winner</span>` : ""}
+          ${strain.favorite ? `<span class="badge">Fan Favorite</span>` : ""}
+
           <h3>${strain.name}</h3>
 
           <div class="strain-meta">
@@ -253,33 +303,20 @@ function renderStrainGrid(strains, filter = "all") {
             <span>${strain.breeder || "Dutch Touch Genetics"}</span>
           </div>
 
-          <p>${cleanDescription(strain.description, 120)}</p>
+          <p>${cleanDescription(strain.description, 125)}</p>
 
           <div class="terp-list">
             ${terps.map(terp => `<span>${terp}</span>`).join("")}
+          </div>
+
+          <div class="card-actions">
+            <a href="strains.html#${strain.slug}" class="mini-link">View Profile</a>
+            <a href="#" class="mini-link">Test Results</a>
           </div>
         </div>
       </article>
     `;
   }).join("");
-}
-
-function inferTerps(strain) {
-  const text = `${strain.description || ""} ${strain.lineage || ""}`.toLowerCase();
-
-  if (text.includes("lemon") || text.includes("citrus") || text.includes("orange")) {
-    return ["Limonene", "Terpinolene", "Caryophyllene"];
-  }
-
-  if (text.includes("fuel") || text.includes("diesel") || text.includes("funk")) {
-    return ["Myrcene", "Caryophyllene", "Humulene"];
-  }
-
-  if (text.includes("grape") || text.includes("berry") || text.includes("lavender")) {
-    return ["Myrcene", "Linalool", "Caryophyllene"];
-  }
-
-  return ["Myrcene", "Limonene", "Caryophyllene"];
 }
 
 function initStrainTabs() {
@@ -292,13 +329,16 @@ function initStrainTabs() {
   });
 }
 
-/* Deck */
+/* -----------------------------
+   Dutch Deck
+----------------------------- */
+
 function renderDeckPreview() {
   const feature = document.getElementById("deckFeature");
   const setGrid = document.getElementById("deckSetGrid");
 
-  const cards = Array.isArray(window.GL_CARDS) ? window.GL_CARDS : (typeof GL_CARDS !== "undefined" ? GL_CARDS : []);
-  const sets = Array.isArray(window.GL_SETS) ? window.GL_SETS : (typeof GL_SETS !== "undefined" ? GL_SETS : []);
+  const cards = typeof GL_CARDS !== "undefined" ? GL_CARDS : [];
+  const sets = typeof GL_SETS !== "undefined" ? GL_SETS : [];
 
   const featuredCard = cards.find(card => card.id === "mr-clean") || cards[0];
 
@@ -324,13 +364,121 @@ function renderDeckPreview() {
   }
 }
 
-/* Vote options */
-function renderVoteOptions(strains) {
+/* -----------------------------
+   Events
+----------------------------- */
+
+function renderEvents() {
+  const eventHero = document.querySelector(".event-hero > div");
+  const eventGrid = document.getElementById("eventGrid");
+
+  const event = eventsData?.featuredEvent;
+
+  if (eventHero && event) {
+    eventHero.innerHTML = `
+      <p class="eyebrow">Mock Future Event</p>
+      <h2>${event.title}</h2>
+      <p>${event.tagline}</p>
+
+      <div class="event-meta">
+        <span>${event.location}</span>
+        <span>${event.timeLabel}</span>
+        <span>${event.city}</span>
+        <span>${event.dateLabel}</span>
+      </div>
+
+      <a href="${event.cta?.target || "#join"}" class="btn btn-gold">
+        ${event.cta?.label || "Join Event List"}
+      </a>
+    `;
+  }
+
+  if (eventGrid && Array.isArray(eventsData?.eventConcepts)) {
+    eventGrid.innerHTML = eventsData.eventConcepts.slice(0, 6).map((item, index) => `
+      <article>
+        <strong>${String(index + 1).padStart(2, "0")}</strong>
+        <h3>${item.title}</h3>
+        <p>${item.description}</p>
+      </article>
+    `).join("");
+  }
+}
+
+/* -----------------------------
+   Monthly Drops
+----------------------------- */
+
+function renderDropDetails() {
+  const rosinContent = document.querySelector(".rosin-content");
+  const drop = dropsData?.currentDrop;
+
+  if (!rosinContent || !drop) return;
+
+  const rosin = drop.rosinPreview;
+
+  rosinContent.innerHTML = `
+    <p class="eyebrow">${drop.launchLabel || "Monthly Drop"}</p>
+    <h2>${rosin?.title || "The Rosin Spot"}</h2>
+    <p>${rosin?.description || drop.description}</p>
+
+    <div class="rosin-pills">
+      ${(rosin?.products || []).map(product => `<span>${product}</span>`).join("")}
+    </div>
+
+    <a href="${drop.cta?.target || "#join"}" class="btn btn-gold">
+      ${drop.cta?.label || "Join Drop Alerts"}
+    </a>
+  `;
+}
+
+/* -----------------------------
+   Merch
+----------------------------- */
+
+function renderMerch() {
+  const merchGrid = document.getElementById("merchGrid");
+  if (!merchGrid || !Array.isArray(merchData?.products)) return;
+
+  merchGrid.innerHTML = merchData.products.slice(0, 6).map(product => `
+    <article>
+      <div class="mock-product">
+        ${product.image ? `<img src="${product.image}" alt="${product.name}" onerror="this.parentElement.textContent='DTG'">` : product.name.slice(0, 3)}
+      </div>
+      <span class="badge">${product.collection || "Merch Drop"}</span>
+      <h3>${product.name}</h3>
+      <p>${product.description}</p>
+      <p><strong>${product.priceLabel || ""}</strong> ${product.status || ""}</p>
+      <a href="${product.shopifyUrl || "#join"}" class="btn btn-ghost">
+        ${product.shopifyUrl ? "Shop Now" : product.cta || "Coming Soon"}
+      </a>
+    </article>
+  `).join("");
+}
+
+/* -----------------------------
+   Roster / Staff Picks
+----------------------------- */
+
+function renderRoster() {
+  const teamTags = document.getElementById("teamTags");
+  if (!teamTags || !Array.isArray(rosterData?.staffPicks)) return;
+
+  teamTags.innerHTML = rosterData.staffPicks.map(person => `
+    <span>${person.name}: ${person.pick}</span>
+  `).join("");
+}
+
+/* -----------------------------
+   Vote Options
+----------------------------- */
+
+function renderVoteOptions(strains, leaderboardItems) {
   const select = document.getElementById("favoriteStrain");
   if (!select) return;
 
-  const prioritySlugs = leaderboard.map(item => item.slug);
+  const prioritySlugs = leaderboardItems.map(item => item.slug);
   const priority = prioritySlugs.map(slug => findStrain(slug)).filter(Boolean);
+
   const remaining = strains
     .filter(strain => !prioritySlugs.includes(strain.slug))
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -343,7 +491,10 @@ function renderVoteOptions(strains) {
   `;
 }
 
-/* Form */
+/* -----------------------------
+   Form
+----------------------------- */
+
 function initForm() {
   const form = document.getElementById("kidForm");
   const message = document.getElementById("formMessage");
@@ -376,14 +527,9 @@ function initForm() {
   });
 }
 
-/* Utility */
-function cleanDescription(text = "", limit = 140) {
-  const clean = text.replace(/🏆/g, "").replace(/\s+/g, " ").trim();
-
-  if (clean.length <= limit) return clean;
-
-  return `${clean.slice(0, limit).trim()}...`;
-}
+/* -----------------------------
+   UI Helpers
+----------------------------- */
 
 function initRevealAnimations() {
   const els = document.querySelectorAll(".reveal");
@@ -431,6 +577,3 @@ function initMobileMenu() {
     });
   });
 }
-
-/* Start tabs after DOM exists */
-document.addEventListener("DOMContentLoaded", initStrainTabs);
