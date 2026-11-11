@@ -5,6 +5,34 @@
   "note": "Demo culture gallery based on currently available deli items. Pricing and availability may rotate.",
   "items": [
     {
+      "slug": "grape-pie",
+      "name": "Grape Pie",
+      "category": "hybrid",
+      "typeLabel": "Hybrid",
+      "badge": "Drops Tomorrow!",
+      "badgeClass": "fresh",
+      "price": "Core Tier • $90 / oz",
+      "thc": "26.89% THC",
+      "tagline": "Genetics and full strain info coming soon.",
+      "bud": "assets/img/strains/grape-pie-art.jpg",
+      "art": "assets/img/strains/grape-pie-art.jpg",
+      "profileUrl": "#deli-gallery"
+    },
+    {
+      "slug": "electric-hashplant-2",
+      "name": "Electric Hashplant #2",
+      "category": "hybrid",
+      "typeLabel": "Hybrid",
+      "badge": "Drops Tomorrow!",
+      "badgeClass": "fresh",
+      "price": "Core Tier • $90 / oz",
+      "thc": "28.04% THC",
+      "tagline": "Genetics and full strain info coming soon.",
+      "bud": "assets/img/strains/electric-hashplant-2-art.jpg",
+      "art": "assets/img/strains/electric-hashplant-2-art.jpg",
+      "profileUrl": "#deli-gallery"
+    },
+    {
       "slug": "mr-clean",
       "name": "Mr. Clean",
       "category": "sativa",
